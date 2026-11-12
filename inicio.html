@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VELA | Biografías digitales personalizadas para regalar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vela: {
+              marfil: '#F8F6F0',
+              crema: '#F1EBE2',
+              arena: '#E8E1D5',
+              topo: '#978577',
+              topoclaro: '#B2A396',
+              chocolate: '#26231F',
+              burdeos: '#682D35',
+              linea: '#E4DDD3'
+            }
+          },
+          fontFamily: {
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8F6F0; color: #26231F; }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-vela-topo selection:text-white">
+
+  <!-- NAVEGACIÓN SUPERIOR FIJA / RESPONSIVE CON LOGO OFICIAL -->
+  <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="inicio.html" class="flex items-center gap-3">
+        <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
+      </a>
+
+      <!-- Menú Escritorio -->
+      <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80">
+        <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors py-1">La biografía</a>
+        <a href="como-funciona.html" class="hover:text-vela-chocolate transition-colors py-1">Cómo funciona</a>
+        <a href="ejemplos.html" class="hover:text-vela-chocolate transition-colors py-1">Ejemplos</a>
+        <a href="precios.html" class="hover:text-vela-chocolate transition-colors py-1">Precios</a>
+        <a href="nosotros.html" class="hover:text-vela-chocolate transition-colors py-1">Nosotros</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
+          Crear biografía
+        </a>
+        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-4">
+      <a href="la-biografia.html" class="block text-base text-vela-chocolate py-1">La biografía</a>
+      <a href="como-funciona.html" class="block text-base text-vela-chocolate py-1">Cómo funciona</a>
+      <a href="ejemplos.html" class="block text-base text-vela-chocolate py-1">Ejemplos</a>
+      <a href="precios.html" class="block text-base text-vela-chocolate py-1">Precios</a>
+      <a href="nosotros.html" class="block text-base text-vela-chocolate py-1">Nosotros</a>
+      <div class="pt-2">
+        <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECCIÓN 1: HERO EMOCIONAL (Imagen limpia con la abuela y fondo suave, y TEXTO + BOTONES 100% HTML) -->
+    <section class="relative min-h-[85vh] lg:min-h-[88vh] flex items-center bg-[#483524] text-white overflow-hidden">
+      <!-- Imagen de fondo limpia sin ningún texto ni botones integrados -->
+      <img src="assets/hero-clean-bg.jpg" alt="Abuela abrazada cariñosamente por su nieta" class="absolute inset-0 w-full h-full object-cover object-left lg:object-center" />
+
+      <div class="relative max-w-7xl mx-auto px-6 py-16 sm:py-24 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
+        <!-- Columna izquierda: espacio libre para la fotografía del abrazo -->
+        <div class="hidden lg:block lg:col-span-6 min-h-[520px]"></div>
+
+        <!-- Columna derecha: TEXTO Y BOTONES 100% HTML (exactamente como en la captura adjunta) -->
+        <div class="lg:col-span-6 bg-[#483524]/85 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-0 p-8 lg:p-0 rounded-sm lg:pl-10">
+          
+          <!-- H1 Serif Editorial -->
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] tracking-tight mb-6 text-[#F8F6F0]">
+            Su vida, convertida<br/>
+            en una historia<br/>
+            <span class="italic text-[#E4DDD3]">para siempre.</span>
+          </h1>
+
+          <!-- Subtítulo refinado -->
+          <p class="text-base sm:text-lg lg:text-xl text-[#F8F6F0]/90 font-light leading-relaxed mb-10 max-w-md">
+            Biografías digitales personalizadas, con sobre de regalo y tarjeta QR física.
+          </p>
+
+          <!-- Botones 100% HTML con diseño exacto -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <!-- Botón Primario Claro -->
+            <a href="precios.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-[#FAF6F0] text-[#26231F] text-sm font-medium rounded-lg hover:bg-white transition-all shadow-md">
+              Crear mi biografía
+            </a>
+            <!-- Botón Secundario Borde Fino -->
+            <a href="ejemplos.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-[#FAF6F0]/50 text-[#FAF6F0] text-sm font-medium rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm">
+              Ver ejemplos
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: VÍDEO EMOCIONAL (El vídeo oficial de legadosvela.com con Rita - Cuideo) -->
+    <section class="bg-[#1E1B18] text-vela-marfil py-24 sm:py-32 border-b border-[#2D2925]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-white">
+              Cuando una voz se escucha, una vida deja de ser una lista de fechas.
+            </h2>
+            <div class="w-12 h-[1px] bg-vela-topo/40 my-4"></div>
+            <p class="text-vela-marfil/75 text-base sm:text-lg font-light leading-relaxed">
+              Hay recuerdos que viven en una conversación, en una fotografía o en las palabras que alguien repite desde hace años. Escucharlos es el primer paso para conservarlos.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7">
+            <!-- Reproductor de vídeo oficial de legadosvela.com -->
+            <div id="video-container" class="relative rounded-sm overflow-hidden bg-black border border-white/10 shadow-2xl aspect-[16/9] group">
+              <img id="video-poster" src="assets/rita-poster-1280.webp" alt="Historias de la vida con Rita" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700" />
+              
+              <div id="play-overlay" class="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer" onclick="playDocumentaryVideo()">
+                <button class="w-20 h-20 rounded-full bg-vela-marfil/90 text-vela-chocolate flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 group-hover:bg-white transition-all" aria-label="Reproducir vídeo testimonial">
+                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+
+              <div id="video-caption" class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-white/80 bg-black/70 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10">
+                <span>Historias de la vida, con Rita (80 años, Barcelona)</span>
+                <span class="text-vela-topoclaro font-serif italic">Fuente: Cuideo ®</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: LÍNEA DE VIDA -->
+    <section class="py-24 sm:py-32 bg-[#F8F6F0]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl mb-16 sm:mb-20">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mb-5">
+            Toda vida deja huellas. VELA las convierte en <span class="italic text-vela-topo">capítulos</span>.
+          </h2>
+          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+            Desde la infancia hasta hoy, cada etapa encuentra su lugar sin reducir una vida a una lista de fechas.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="hidden lg:block absolute top-[28px] left-0 right-0 h-[1px] bg-vela-linea"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative">
+            
+            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
+              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
+              <span class="font-serif text-2xl font-light text-vela-topo">01</span>
+              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Infancia</h3>
+              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
+                La casa donde empezó todo y las primeras historias que todavía recordamos.
+              </p>
+            </div>
+
+            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
+              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
+              <span class="font-serif text-2xl font-light text-vela-topo">02</span>
+              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Decisiones</h3>
+              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
+                Los caminos que cambiaron nuestra vida y las oportunidades que nos hicieron crecer.
+              </p>
+            </div>
+
+            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
+              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
+              <span class="font-serif text-2xl font-light text-vela-topo">03</span>
+              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Familia</h3>
+              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
+                Las personas, las costumbres y los momentos compartidos.
+              </p>
+            </div>
+
+            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
+              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
+              <span class="font-serif text-2xl font-light text-vela-topo">04</span>
+              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Oficio</h3>
+              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
+                Los años de trabajo, los aprendizajes y las experiencias que nos definieron.
+              </p>
+            </div>
+
+            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
+              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-burdeos"></div>
+              <span class="font-serif text-2xl font-light text-vela-burdeos">05</span>
+              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Hoy</h3>
+              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
+                Una historia que continúa escribiéndose.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: PREGUNTAS FRECUENTES -->
+    <section class="py-24 sm:py-32 bg-[#F1EBE2] border-t border-b border-vela-linea">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          
+          <div class="lg:col-span-4">
+            <h2 class="font-serif text-3xl sm:text-4xl font-normal text-vela-chocolate mb-5">
+              Antes de empezar a contar.
+            </h2>
+            <p class="text-base text-vela-chocolate/75 font-light leading-relaxed mb-8">
+              Las dudas importantes suelen ser sencillas: precio, privacidad, participación y qué pasa cuando la biografía está lista.
+            </p>
+            <div class="p-6 bg-[#F8F6F0] rounded-sm border border-vela-linea">
+              <h4 class="font-serif text-lg text-vela-chocolate mb-2">¿Tienes una consulta específica?</h4>
+              <p class="text-xs text-vela-chocolate/70 leading-relaxed mb-4">Estamos aquí para acompañarte en cada paso del proceso.</p>
+              <a href="nosotros.html" class="inline-block text-xs uppercase tracking-wider text-vela-burdeos font-medium border-b border-vela-burdeos pb-0.5 hover:text-black">Hablar con nosotros →</a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8 divide-y divide-vela-linea">
+            
+            <details class="group py-6" open>
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>1. ¿Qué incluye el precio de la biografía?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                Incluye la maquetación editorial completa organizada en capítulos, el acceso digital multiplataforma (móvil, tablet, PC), la descarga de la biografía en PDF de alta calidad, y la entrega física a domicilio de un sobre marfil VELA con tarjeta personalizada de dedicatoria y código QR de acceso.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>2. ¿Puedo crear mi propia autobiografía?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                Sí. Puedes redactar tus propias memorias en primera persona. VELA te formulará preguntas de apoyo para inspirarte y ayudarte a estructurar tus recuerdos etapa a etapa.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>3. ¿Puedo crear la biografía de otra persona?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                Por supuesto. Es el uso más habitual: hijos o nietos que quieren homenajear y regalar la biografía a sus padres o abuelos reuniendo anécdotas y fotos familiares.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>4. ¿La historia será pública?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                No. Todas las biografías en VELA son estrictamente privadas. Sólo tienen acceso tú y las personas con quienes decidas compartir el enlace o la tarjeta QR física.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>5. ¿Los colaboradores necesitan una cuenta?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                No. Tus familiares y amigos pueden enviar notas de voz, textos y fotografías a través de un enlace privado directo, sin registros obligatorios ni contraseñas.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>6. ¿Qué hace exactamente VELA?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                VELA es un asistente editorial inteligente. Te escucha, transcribe testimonios orales, sugiere temas de conversación, organiza los recuerdos en capítulos narrativos y maqueta la biografía en el estilo editorial que elijas. Tú siempre tienes el control final.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>7. ¿Qué ocurre cuando vence el plazo?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                El plazo se refiere al tiempo para recopilar testimonios de tus colaboradores. Al finalizar ese periodo, la biografía se consolida, se genera la edición definitiva y permanece disponible para siempre en formato digital y PDF.
+              </p>
+            </details>
+
+            <details class="group py-6">
+              <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
+                <span>8. ¿Qué diferencia hay entre los planes?</span>
+                <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
+                Los planes varían en la extensión de la biografía (de 15 a 75 páginas), el número de fotografías incluidas y los días disponibles para recibir colaboraciones familiares. Todos comparten la misma calidad editorial y el sobre físico con QR.
+              </p>
+            </details>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EDITORIAL CON LOGO OFICIAL -->
+  <footer class="bg-[#1E1B18] text-vela-marfil py-16 border-t border-[#2D2925]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+        <div class="md:col-span-5 space-y-4">
+          <img src="assets/vela-logo.png" alt="VELA" class="h-8 w-auto brightness-200 contrast-125" />
+          <p class="text-xs uppercase tracking-widest text-vela-topo">Porque una vida merece ser contada</p>
+          <p class="text-sm text-vela-marfil/60 font-light max-w-sm pt-2">
+            Plataforma editorial para transformar vivencias familiares en un legado íntimo, digital y eterno.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 grid grid-cols-2 gap-8 text-xs font-light">
+          <div class="space-y-3">
+            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Navegación</span>
+            <a href="la-biografia.html" class="block hover:text-white">La biografía</a>
+            <a href="como-funciona.html" class="block hover:text-white">Cómo funciona</a>
+            <a href="ejemplos.html" class="block hover:text-white">Ejemplos</a>
+            <a href="precios.html" class="block hover:text-white">Precios</a>
+            <a href="nosotros.html" class="block hover:text-white">Nosotros</a>
+          </div>
+          <div class="space-y-3">
+            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Legal</span>
+            <a href="#" class="block hover:text-white">Aviso legal</a>
+            <a href="#" class="block hover:text-white">Privacidad</a>
+            <a href="#" class="block hover:text-white">Cookies</a>
+            <a href="#" class="block hover:text-white">Términos de servicio</a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Presentación física</span>
+          <p class="text-xs text-vela-marfil/70 font-light leading-relaxed">
+            Envío a toda España del sobre marfil con sello lacrado y tarjeta de dedicatoria personalizada con código QR.
+          </p>
+          <a href="precios.html" class="inline-block text-xs text-vela-crema border-b border-vela-crema/40 pb-0.5 hover:border-white">Ver opciones de biografías →</a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-vela-marfil/40 font-light">
+        <p>© 2026 VELA. Todos los derechos reservados.</p>
+        <p class="mt-2 sm:mt-0">Diseñado con sensibilidad editorial y tipográfica.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function playDocumentaryVideo() {
+      const container = document.getElementById('video-container');
+      container.innerHTML = `
+        <iframe 
+          class="w-full h-full"
+          src="https://www.youtube-nocookie.com/embed/nmH0569NAFY?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=es" 
+          title="Historias de la vida, con Rita (80 años, Barcelona)" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      `;
+    }
+
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

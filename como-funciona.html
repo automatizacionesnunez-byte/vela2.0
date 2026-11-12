@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cómo funciona | VELA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vela: {
+              marfil: '#F8F6F0',
+              crema: '#F1EBE2',
+              arena: '#E8E1D5',
+              topo: '#978577',
+              topoclaro: '#B2A396',
+              chocolate: '#26231F',
+              burdeos: '#682D35',
+              linea: '#E4DDD3'
+            }
+          },
+          fontFamily: {
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8F6F0; color: #26231F; }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-vela-topo selection:text-white">
+
+  <!-- HEADER GLOBAL CON LOGO OFICIAL -->
+  <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="inicio.html" class="flex items-center gap-3">
+        <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80">
+        <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors py-1">La biografía</a>
+        <a href="como-funciona.html" class="text-vela-chocolate font-semibold border-b-2 border-vela-burdeos pb-1">Cómo funciona</a>
+        <a href="ejemplos.html" class="hover:text-vela-chocolate transition-colors py-1">Ejemplos</a>
+        <a href="precios.html" class="hover:text-vela-chocolate transition-colors py-1">Precios</a>
+        <a href="nosotros.html" class="hover:text-vela-chocolate transition-colors py-1">Nosotros</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
+          Crear biografía
+        </a>
+        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-4">
+      <a href="la-biografia.html" class="block text-base text-vela-chocolate py-1">La biografía</a>
+      <a href="como-funciona.html" class="block text-base font-semibold text-vela-burdeos py-1">Cómo funciona</a>
+      <a href="ejemplos.html" class="block text-base text-vela-chocolate py-1">Ejemplos</a>
+      <a href="precios.html" class="block text-base text-vela-chocolate py-1">Precios</a>
+      <a href="nosotros.html" class="block text-base text-vela-chocolate py-1">Nosotros</a>
+      <div class="pt-2">
+        <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECCIÓN 1: EL PROCESO EN TRES PASOS -->
+    <section class="py-20 lg:py-28 bg-[#F8F6F0] border-b border-vela-linea">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-3xl mb-16 sm:mb-20">
+          <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Acompañamiento editorial</span>
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-vela-chocolate mt-3 mb-6">
+            Un proceso sencillo, <span class="italic text-vela-topo">acompañado en todo momento</span>.
+          </h1>
+          <p class="text-lg sm:text-xl text-vela-chocolate/80 font-light leading-relaxed">
+            Recopila recuerdos, anécdotas y fotografías familiares. VELA los transforma en una biografía cuidada, estructurada y lista para compartir.
+          </p>
+        </div>
+
+        <!-- Tres tarjetas horizontales conectadas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          <!-- PASO 01 -->
+          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-serif text-3xl font-light text-vela-topo block mb-4">01</span>
+              <span class="text-xs uppercase tracking-wider text-vela-burdeos font-semibold block mb-1">Empieza y comparte</span>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Recopila los recuerdos</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                Regístrate, crea tu proyecto y comparte un enlace privado con familiares y amigos. Todos podrán contribuir aportando historias, fotografías, documentos y audios.
+              </p>
+              
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea space-y-2 text-xs">
+                <div class="flex items-center gap-2 text-vela-chocolate font-medium">
+                  <span class="w-2 h-2 rounded-full bg-green-600"></span> Enlace de aportación abierto
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-1 text-[11px] text-vela-topo">
+                  <span class="bg-white px-2 py-1 border border-vela-linea rounded">🎙️ Grabar audio</span>
+                  <span class="bg-white px-2 py-1 border border-vela-linea rounded">✍️ Escribir recuerdo</span>
+                  <span class="bg-white px-2 py-1 border border-vela-linea rounded">📷 Subir fotos</span>
+                  <span class="bg-white px-2 py-1 border border-vela-linea rounded">📄 Documentos</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-[11px] text-vela-topo italic pt-6 border-t border-vela-linea mt-6">
+              Los colaboradores invitados no necesitan crear ninguna cuenta.
+            </p>
+          </div>
+
+          <!-- PASO 02 -->
+          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-serif text-3xl font-light text-vela-topo block mb-4">02</span>
+              <span class="text-xs uppercase tracking-wider text-vela-burdeos font-semibold block mb-1">Asistente VELA</span>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">VELA organiza tu historia</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                Nuestra inteligencia artificial reúne las aportaciones, resume los testimonios, identifica los momentos importantes y propone una estructura organizada por capítulos.
+              </p>
+
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea space-y-1.5 text-xs">
+                <div class="flex justify-between text-[11px] font-medium text-vela-chocolate">
+                  <span>Capítulos estructurados</span>
+                  <span class="text-vela-burdeos">8 listos</span>
+                </div>
+                <div class="space-y-1 text-[11px] text-vela-chocolate/70">
+                  <div class="flex justify-between border-b border-vela-linea/60 py-0.5"><span>01. Orígenes</span><span>100%</span></div>
+                  <div class="flex justify-between border-b border-vela-linea/60 py-0.5"><span>02. Infancia</span><span>100%</span></div>
+                  <div class="flex justify-between border-b border-vela-linea/60 py-0.5"><span>03. Crecer</span><span>100%</span></div>
+                  <div class="flex justify-between py-0.5"><span>04. Construir una vida</span><span>100%</span></div>
+                </div>
+              </div>
+            </div>
+            <p class="text-[11px] text-vela-topo italic pt-6 border-t border-vela-linea mt-6">
+              Cada testimonio se integra preservando el tono original de su voz.
+            </p>
+          </div>
+
+          <!-- PASO 03 -->
+          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-serif text-3xl font-light text-vela-topo block mb-4">03</span>
+              <span class="text-xs uppercase tracking-wider text-vela-burdeos font-semibold block mb-1">Edición definitiva</span>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Revisa, personaliza y disfruta</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                Supervisa el contenido, corrige nombres y fechas, añade recuerdos y elige el diseño editorial que prefieras. VELA prepara la maquetación final de tu biografía.
+              </p>
+
+              <div class="grid grid-cols-3 gap-2 pt-2">
+                <div class="text-center">
+                  <img src="assets/templates/letter_page_01.jpg" alt="Letter" class="w-full h-auto rounded border border-vela-linea shadow-sm" />
+                  <span class="text-[10px] text-vela-topo mt-1 block">Letter</span>
+                </div>
+                <div class="text-center">
+                  <img src="assets/templates/noir_page_01.jpg" alt="Noir" class="w-full h-auto rounded border border-vela-linea shadow-sm" />
+                  <span class="text-[10px] text-vela-topo mt-1 block">Noir</span>
+                </div>
+                <div class="text-center">
+                  <img src="assets/templates/nude_page_01.jpg" alt="Nude" class="w-full h-auto rounded border border-vela-linea shadow-sm" />
+                  <span class="text-[10px] text-vela-topo mt-1 block">Nude</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-[11px] text-vela-topo italic pt-6 border-t border-vela-linea mt-6">
+              Descarga en PDF y sobre físico con QR entregado en mano.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: VELA, TU COMPAÑERO DE VIAJE (Con el Mockup del Portátil y el Chat Conversacional en Pantalla) -->
+    <section class="py-24 sm:py-32 bg-[#F1EBE2]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Tecnología humana</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-tight">
+              VELA, tu compañero de viaje.
+            </h2>
+            <p class="text-xs uppercase tracking-widest text-vela-burdeos font-medium">Una inteligencia artificial que te escucha, te guía y te ayuda a recordar.</p>
+            <p class="text-base text-vela-chocolate/80 font-light leading-relaxed">
+              No tienes que tener toda una vida organizada antes de comenzar. VELA te acompaña, te hace preguntas, te propone ideas y te ayuda a transformar recuerdos dispersos en una historia que merece ser contada.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-vela-linea">
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea">
+                <h4 class="font-serif text-base text-vela-chocolate font-medium mb-1">1. Te hace preguntas</h4>
+                <p class="text-xs text-vela-chocolate/75 font-light">Para ayudarte a recordar momentos, anécdotas, lugares y personas clave.</p>
+              </div>
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea">
+                <h4 class="font-serif text-base text-vela-chocolate font-medium mb-1">2. Te da ideas y recomendaciones</h4>
+                <p class="text-xs text-vela-chocolate/75 font-light">Te propone nuevos temas y enfoques para enriquecer cada capítulo.</p>
+              </div>
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea">
+                <h4 class="font-serif text-base text-vela-chocolate font-medium mb-1">3. Ordena y resume</h4>
+                <p class="text-xs text-vela-chocolate/75 font-light">Organiza las aportaciones orales y escritas preparando una primera versión estructurada.</p>
+              </div>
+              <div class="p-4 bg-[#F8F6F0] rounded border border-vela-linea">
+                <h4 class="font-serif text-base text-vela-chocolate font-medium mb-1">4. Te ayuda a personalizar</h4>
+                <p class="text-xs text-vela-chocolate/75 font-light">Puedes revisar, modificar y completar con total libertad cada parte de tu biografía.</p>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <p class="font-serif italic text-vela-chocolate text-base mb-4">
+                "VELA te ayuda a ordenar los recuerdos. Tú decides cómo contar tu historia."
+              </p>
+              <a href="precios.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-vela-chocolate text-white text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-black transition-all">
+                Comenzar mi biografía →
+              </a>
+            </div>
+          </div>
+
+          <!-- MOCKUP DEL PORTÁTIL CON LA PLATAFORMA INTERACTIVA VELA EN LA PANTALLA -->
+          <div class="lg:col-span-7">
+            <!-- Marco de pantalla de portátil moderno -->
+            <div class="relative mx-auto rounded-t-2xl bg-[#1E1E1E] p-3 sm:p-4 shadow-2xl border-t-2 border-x-2 border-[#333333] max-w-2xl">
+              <!-- Cámara webcam / borde superior -->
+              <div class="flex justify-center pb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#111111] border border-[#333333] inline-block"></span>
+              </div>
+
+              <!-- Pantalla del portátil con la interfaz VELA real -->
+              <div class="bg-white rounded-md overflow-hidden border border-vela-linea shadow-inner p-4 sm:p-6 space-y-4">
+                
+                <!-- Barra superior de la plataforma -->
+                <div class="flex items-center justify-between border-b border-vela-linea pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-vela-burdeos"></span>
+                    <span class="font-serif text-base sm:text-lg font-medium text-vela-chocolate">VELA · Proyecto de Familia</span>
+                  </div>
+                  <span class="text-[11px] text-vela-topo">Capítulo 02: Infancia</span>
+                </div>
+
+                <!-- Chat interactivo con VELA -->
+                <div class="space-y-3 pt-1">
+                  <!-- Mensaje IA VELA -->
+                  <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-full bg-vela-chocolate text-white text-xs flex items-center justify-center font-serif shrink-0">V</div>
+                    <div class="bg-[#F8F6F0] p-3 rounded-sm border border-vela-linea max-w-md text-xs leading-relaxed text-vela-chocolate">
+                      <p class="font-semibold text-[10px] text-vela-burdeos mb-0.5">VELA</p>
+                      ¿Cuál es uno de los primeros recuerdos que conservas de tu infancia?
+                    </div>
+                  </div>
+
+                  <!-- Mensaje Usuario -->
+                  <div class="flex items-start gap-2.5 justify-end">
+                    <div class="bg-[#F1EBE2] p-3 rounded-sm border border-vela-linea max-w-md text-xs leading-relaxed text-vela-chocolate text-right">
+                      <p class="font-semibold text-[10px] text-vela-topo mb-0.5">Tú</p>
+                      Recuerdo los veranos en casa de mis abuelos. Siempre nos reuníamos alrededor de una mesa enorme bajo el parral.
+                    </div>
+                  </div>
+
+                  <!-- Mensaje IA VELA seguimiento -->
+                  <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-full bg-vela-chocolate text-white text-xs flex items-center justify-center font-serif shrink-0">V</div>
+                    <div class="bg-[#F8F6F0] p-3 rounded-sm border border-vela-linea max-w-md text-xs leading-relaxed text-vela-chocolate">
+                      <p class="font-semibold text-[10px] text-vela-burdeos mb-0.5">VELA</p>
+                      Qué bonito recuerdo. ¿Recuerdas alguna anécdota o persona especial de aquellos veranos que quieras incluir en este capítulo?
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Acciones de carga multimedia -->
+                <div class="border-t border-vela-linea pt-3 space-y-2.5">
+                  <div class="flex flex-wrap gap-1.5 text-[11px]">
+                    <span class="px-2.5 py-1 bg-[#F8F6F0] border border-vela-linea rounded text-vela-chocolate">🎙️ Grabar nota de voz</span>
+                    <span class="px-2.5 py-1 bg-[#F8F6F0] border border-vela-linea rounded text-vela-chocolate">📷 Adjuntar fotografía</span>
+                    <span class="px-2.5 py-1 bg-[#F8F6F0] border border-vela-linea rounded text-vela-chocolate">📄 Subir documento</span>
+                  </div>
+                  <div class="relative">
+                    <input type="text" placeholder="Escribe un recuerdo o respuesta..." class="w-full text-xs px-3.5 py-2.5 bg-[#FAF8F5] border border-vela-linea rounded text-vela-chocolate focus:outline-none" disabled />
+                    <span class="absolute right-3 top-2 text-xs text-vela-topo">Enviar</span>
+                  </div>
+                </div>
+
+                <div class="text-[10px] text-vela-topo flex justify-between items-center pt-1 border-t border-vela-linea/40">
+                  <span>🔒 Privacidad protegida · Solo accesible por ti y tu familia</span>
+                  <span>8 recuerdos recopilados hoy</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Base / Teclado del portátil -->
+            <div class="relative mx-auto bg-[#D1D5DB] h-3.5 sm:h-4 rounded-b-xl max-w-2xl shadow-xl flex justify-center items-center">
+              <span class="w-16 h-1 rounded-full bg-[#9CA3AF]"></span>
+            </div>
+
+            <div class="flex justify-between items-center text-xs text-vela-chocolate/65 pt-4 px-3">
+              <span>Plataforma interactiva VELA · Asistencia guiada por IA</span>
+              <span class="font-serif italic text-vela-burdeos">Privado y protegido</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER GLOBAL -->
+  <footer class="bg-[#1E1B18] text-vela-marfil py-16 border-t border-[#2D2925]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+        <div class="md:col-span-5 space-y-4">
+          <img src="assets/vela-logo.png" alt="VELA" class="h-8 w-auto brightness-200 contrast-125" />
+          <p class="text-xs uppercase tracking-widest text-vela-topo">Porque una vida merece ser contada</p>
+          <p class="text-sm text-vela-marfil/60 font-light max-w-sm pt-2">
+            Plataforma editorial para transformar vivencias familiares en un legado íntimo, digital y eterno.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 grid grid-cols-2 gap-8 text-xs font-light">
+          <div class="space-y-3">
+            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Navegación</span>
+            <a href="la-biografia.html" class="block hover:text-white">La biografía</a>
+            <a href="como-funciona.html" class="block hover:text-white">Cómo funciona</a>
+            <a href="ejemplos.html" class="block hover:text-white">Ejemplos</a>
+            <a href="precios.html" class="block hover:text-white">Precios</a>
+            <a href="nosotros.html" class="block hover:text-white">Nosotros</a>
+          </div>
+          <div class="space-y-3">
+            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Legal</span>
+            <a href="#" class="block hover:text-white">Aviso legal</a>
+            <a href="#" class="block hover:text-white">Privacidad</a>
+            <a href="#" class="block hover:text-white">Cookies</a>
+            <a href="#" class="block hover:text-white">Términos de servicio</a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Presentación física</span>
+          <p class="text-xs text-vela-marfil/70 font-light leading-relaxed">
+            Envío a toda España del sobre marfil con sello lacrado y tarjeta de dedicatoria personalizada con código QR.
+          </p>
+          <a href="precios.html" class="inline-block text-xs text-vela-crema border-b border-vela-crema/40 pb-0.5 hover:border-white">Ver opciones de biografías →</a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-vela-marfil/40 font-light">
+        <p>© 2026 VELA. Todos los derechos reservados.</p>
+        <p class="mt-2 sm:mt-0">Diseñado con sensibilidad editorial y tipográfica.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
