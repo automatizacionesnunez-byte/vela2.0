@@ -1,0 +1,56 @@
+---
+// Footer.astro
+---
+
+<footer class="bg-vela-chocolate text-vela-marfil border-t border-white/10 pt-20 pb-12">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+    <div class="md:col-span-5 space-y-6">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/assets/vela-logo-white.png" alt="VELA" class="h-8 sm:h-9 w-auto" />
+      </a>
+      <p class="text-sm text-vela-marfil/70 max-w-sm font-light leading-relaxed">
+        Preservamos la memoria viva de las familias españolas mediante biografías cuidadas, entrevistas pausadas y edición editorial de lujo.
+      </p>
+      <div class="pt-2 text-xs text-vela-marfil/50 space-y-1">
+        <p>Madrid · Valencia · Sevilla · Barcelona</p>
+        <p>Atención directa: contacto@legadosvela.com</p>
+      </div>
+    </div>
+
+    <div class="md:col-span-2 space-y-4">
+      <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Explorar</span>
+      <ul class="space-y-2.5 text-sm font-light text-vela-marfil/80">
+        <li><a href="/la-biografia" class="hover:text-white transition-colors">La biografía</a></li>
+        <li><a href="/como-funciona" class="hover:text-white transition-colors">Cómo funciona</a></li>
+        <li><a href="/precios" class="hover:text-white transition-colors">Precios y planes</a></li>
+        <li><a href="/nosotros" class="hover:text-white transition-colors">Sobre nosotros</a></li>
+        <li><a href="/ejemplos" class="hover:text-white transition-colors">Muestras y 3D</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-2 space-y-4">
+      <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Legal</span>
+      <ul class="space-y-2.5 text-sm font-light text-vela-marfil/80">
+        <li><a href="/privacidad" class="hover:text-white transition-colors">Política de privacidad</a></li>
+        <li><a href="/terminos" class="hover:text-white transition-colors">Términos de servicio</a></li>
+        <li><a href="/cookies" class="hover:text-white transition-colors">Política de cookies</a></li>
+        <li><a href="/aviso-legal" class="hover:text-white transition-colors">Aviso legal</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-3 space-y-4">
+      <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Presentación física</span>
+      <p class="text-xs text-vela-marfil/70 font-light leading-relaxed">
+        Envío a toda España del sobre marfil con sello lacrado y tarjeta de dedicatoria personalizada con código QR.
+      </p>
+      <a href="/precios" class="inline-block text-xs text-vela-crema border-b border-vela-crema/40 pb-0.5 hover:border-white">Ver opciones de biografías →</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-vela-marfil/40 font-light gap-4">
+    <p>© {new Date().getFullYear()} VELA. Todos los derechos reservados.</p>
+    <p class="flex items-center gap-2">
+      <span>Edición editorial artesanal para familias</span>
+    </p>
+  </div>
+</footer>

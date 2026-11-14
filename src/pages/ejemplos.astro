@@ -1,114 +1,13 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ejemplos de Biografías | VELA — Tres formas de contar una vida</title>
-  <meta name="description"
-    content="Descubre cómo la vida de cada persona puede convertirse en una biografía digital única con nuestras tres plantillas editoriales: Nude, Noir y Letter." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/vela-polish.css">
-  <link rel="icon" href="assets/vela-mark.png" type="image/png">
-  <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js"}}</script>
-  <script src="assets/vendor/gsap/gsap.min.js" defer></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            vela: {
-              marfil: '#F8F6F0',
-              crema: '#F1EBE2',
-              arena: '#E8E1D5',
-              topo: '#978577',
-              topoclaro: '#B2A396',
-              chocolate: '#26231F',
-              burdeos: '#682D35',
-              linea: '#E4DDD3'
-            }
-          },
-          fontFamily: {
-            serif: ['Newsreader', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #F8F6F0;
-      color: #26231F;
-    }
-
-    .tablet-frame {
-      box-shadow: 0 20px 40px -15px rgba(38, 35, 31, 0.18), 0 0 0 1px rgba(38, 35, 31, 0.08);
-    }
-
-    .spread-sheet {
-      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
-    }
-  </style>
-</head>
-
-<body class="vela-examples-page font-sans antialiased selection:bg-vela-topo selection:text-white">
-
-  <!-- HEADER GLOBAL -->
-  <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80">
-        <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors py-1">La biografía</a>
-        <a href="como-funciona.html" class="hover:text-vela-chocolate transition-colors py-1">Cómo funciona</a>
-        <a href="ejemplos.html"
-          class="text-vela-chocolate font-semibold border-b-2 border-vela-burdeos pb-1">Ejemplos</a>
-        <a href="precios.html" class="hover:text-vela-chocolate transition-colors py-1">Precios</a>
-        <a href="nosotros.html" class="hover:text-vela-chocolate transition-colors py-1">Nosotros</a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <a href="https://www.legadosvela.com/login"
-          class="hidden sm:inline-flex items-center text-[13px] font-medium text-vela-chocolate/75 hover:text-vela-chocolate transition-colors">
-          Iniciar sesión
-        </a>
-        <a href="precios.html"
-          class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
-          Crear biografía
-        </a>
-        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Menú móvil -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-vela-chocolate/10 bg-[#F8F6F0] px-6 py-6 space-y-4">
-      <nav class="flex flex-col gap-3 text-base font-medium text-vela-chocolate" aria-label="Menú móvil">
-        <a href="la-biografia.html" class="py-1.5 border-b border-vela-chocolate/10">La biografía</a>
-        <a href="como-funciona.html" class="py-1.5 border-b border-vela-chocolate/10">Cómo funciona</a>
-        <a href="ejemplos.html" class="py-1.5 border-b border-vela-chocolate/10 text-vela-borgona font-semibold">Ejemplos</a>
-        <a href="precios.html" class="py-1.5 border-b border-vela-chocolate/10">Precios</a>
-        <a href="nosotros.html" class="py-1.5 border-b border-vela-chocolate/10">Nosotros</a>
-      </nav>
-      <div class="pt-2 flex flex-col gap-3">
-        <a href="https://www.legadosvela.com/login" class="w-full text-center py-2.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium">Iniciar sesión</a>
-        <a href="precios.html" class="w-full text-center py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium">Crear biografía</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
+<BaseLayout
+  title="Ejemplos de Biografías | VELA — Tres formas de contar una vida"
+  description="Descubre cómo la vida de cada persona puede convertirse en una biografía digital única con nuestras tres plantillas editoriales: Nude, Noir y Letter."
+  bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-page-ejemplos"
+>
+<main>
     <!-- ARCHIVO 3D PROTAGONISTA: SALA DE LECTURA DIGITAL -->
     <section class="vela-biography-experience py-16 sm:py-24" aria-labelledby="vela-3d-title">
       <div class="max-w-[1400px] mx-auto px-6 sm:px-10">
@@ -166,12 +65,12 @@
                 <div class="vela-css-tablet">
                   <span class="vela-css-camera"></span>
                   <div class="vela-css-screen">
-                    <img data-vela-css-page-left src="assets/templates/nude_page_01.jpg" alt="" />
-                    <img data-vela-css-page-right src="assets/templates/nude_page_02.jpg" alt="" />
+                    <img data-vela-css-page-left src="/assets/templates/nude_page_01.jpg" alt="" />
+                    <img data-vela-css-page-right src="/assets/templates/nude_page_02.jpg" alt="" />
                   </div>
                   <span class="vela-css-glass"></span>
                 </div>
-                <div class="vela-css-memory"><img data-vela-css-memory src="assets/templates/nude_page_07.jpg" alt="" /></div>
+                <div class="vela-css-memory"><img data-vela-css-memory src="/assets/templates/nude_page_07.jpg" alt="" /></div>
                 <div class="vela-css-note"><small>CAPÍTULO</small><strong data-vela-css-note-title>Orígenes</strong><span data-vela-css-note-number>01</span></div>
               </div>
             </div>
@@ -183,14 +82,14 @@
                 <div class="vela-gallery-ambient"></div>
                 <div class="vela-gallery-grain"></div>
                 <div class="vela-gallery-gallery" data-vela-gallery-gallery>
-                  <button type="button" class="vela-gallery-card vela-gallery-card--nude" data-vela-gallery-card="nude" tabindex="0" aria-label="Abrir la biografía de Carlota, plantilla Nude"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="nude" src="assets/templates/nude_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carlota</b><small>Nude · cálida y atemporal</small></span></button>
-                  <button type="button" class="vela-gallery-card vela-gallery-card--noir" data-vela-gallery-card="noir" tabindex="0" aria-label="Abrir la biografía de Juan, plantilla Noir"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="noir" src="assets/templates/noir_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Juan</b><small>Noir · sobria y con carácter</small></span></button>
-                  <button type="button" class="vela-gallery-card vela-gallery-card--letter" data-vela-gallery-card="letter" tabindex="0" aria-label="Abrir la biografía de Carmen, plantilla Letter"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="letter" src="assets/templates/letter_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carmen</b><small>Letter · clásica e íntima</small></span></button>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--nude" data-vela-gallery-card="nude" tabindex="0" aria-label="Abrir la biografía de Carlota, plantilla Nude"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="nude" src="/assets/templates/nude_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carlota</b><small>Nude · cálida y atemporal</small></span></button>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--noir" data-vela-gallery-card="noir" tabindex="0" aria-label="Abrir la biografía de Juan, plantilla Noir"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="noir" src="/assets/templates/noir_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Juan</b><small>Noir · sobria y con carácter</small></span></button>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--letter" data-vela-gallery-card="letter" tabindex="0" aria-label="Abrir la biografía de Carmen, plantilla Letter"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="letter" src="/assets/templates/letter_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carmen</b><small>Letter · clásica e íntima</small></span></button>
                 </div>
                 <div class="vela-gallery-reader" data-vela-gallery-reader>
                   <div class="vela-gallery-reader__shadow"></div>
-                  <div class="vela-gallery-device"><span class="vela-gallery-device__camera"></span><div class="vela-gallery-spread" data-vela-gallery-spread><img data-vela-gallery-page-left src="assets/templates/nude_page_01.jpg" alt="" /><img data-vela-gallery-page-right src="assets/templates/nude_page_02.jpg" alt="" /></div><span class="vela-gallery-device__glass"></span></div>
-                  <div class="vela-gallery-memory"><img data-vela-gallery-memory src="assets/templates/nude_page_07.jpg" alt="" /></div>
+                  <div class="vela-gallery-device"><span class="vela-gallery-device__camera"></span><div class="vela-gallery-spread" data-vela-gallery-spread><img data-vela-gallery-page-left src="/assets/templates/nude_page_01.jpg" alt="" /><img data-vela-gallery-page-right src="/assets/templates/nude_page_02.jpg" alt="" /></div><span class="vela-gallery-device__glass"></span></div>
+                  <div class="vela-gallery-memory"><img data-vela-gallery-memory src="/assets/templates/nude_page_07.jpg" alt="" /></div>
                   <div class="vela-gallery-note"><small>CAPÍTULO</small><strong data-vela-gallery-note>Orígenes</strong><span data-vela-gallery-number>01</span></div>
                 </div>
               </div>
@@ -225,7 +124,7 @@
               <button type="button" class="vela-fallback-envelope vela-fallback-envelope--noir" data-vela-envelope="noir"><span>JUAN</span><small>NOIR</small></button>
               <button type="button" class="vela-fallback-envelope vela-fallback-envelope--letter" data-vela-envelope="letter"><span>CARMEN</span><small>LETTER</small></button>
             </div>
-            <div class="vela-fallback-reader"><div class="vela-fallback-device__top"><span>VELA</span><span data-vela-fallback-template>NUDE</span></div><img data-vela-fallback-cover src="assets/templates/nude_page_01.jpg" alt="Biografía digital de Carlota" /></div>
+            <div class="vela-fallback-reader"><div class="vela-fallback-device__top"><span>VELA</span><span data-vela-fallback-template>NUDE</span></div><img data-vela-fallback-cover src="/assets/templates/nude_page_01.jpg" alt="Biografía digital de Carlota" /></div>
           </div>
 
           <div class="vela-scene-meta mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4" aria-live="polite">
@@ -253,15 +152,15 @@
           <div class="lg:col-span-5 flex justify-center lg:justify-end">
             <div class="vela-polaroids-stack" aria-label="Álbum de recuerdos reales">
               <figure class="vela-polaroid vela-polaroid--1">
-                <img src="assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías" loading="lazy" />
+                <img src="/assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías" loading="lazy" />
                 <span>Sobremesas</span>
               </figure>
               <figure class="vela-polaroid vela-polaroid--2">
-                <img src="assets/carmen-hero-1600.webp" alt="Retrato familiar generacional" loading="lazy" />
+                <img src="/assets/carmen-hero-1600.webp" alt="Retrato familiar generacional" loading="lazy" />
                 <span>Raíces</span>
               </figure>
               <figure class="vela-polaroid vela-polaroid--3">
-                <img src="assets/vela-sobre-qr-1200.webp" alt="Sobre lacrado VELA con tarjeta QR" loading="lazy" />
+                <img src="/assets/vela-sobre-qr-1200.webp" alt="Sobre lacrado VELA con tarjeta QR" loading="lazy" />
                 <span>Para siempre</span>
               </figure>
             </div>
@@ -298,14 +197,14 @@
 
               <div class="vela-story-stage">
                 <div class="vela-story-tablet">
-                  <img src="assets/templates/nude_page_07.jpg" alt="Portada interior de la historia de Carlota" loading="lazy" />
+                  <img src="/assets/templates/nude_page_07.jpg" alt="Portada interior de la historia de Carlota" loading="lazy" />
                 </div>
                 <div class="vela-story-fan">
                   <div class="vela-story-sheet">
-                    <img data-slide-left="nude" src="assets/templates/nude_page_01.jpg" alt="Página izquierda biografía Nude" loading="lazy" />
+                    <img data-slide-left="nude" src="/assets/templates/nude_page_01.jpg" alt="Página izquierda biografía Nude" loading="lazy" />
                   </div>
                   <div class="vela-story-sheet">
-                    <img data-slide-right="nude" src="assets/templates/nude_page_03.jpg" alt="Página derecha biografía Nude" loading="lazy" />
+                    <img data-slide-right="nude" src="/assets/templates/nude_page_03.jpg" alt="Página derecha biografía Nude" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -348,14 +247,14 @@
 
               <div class="vela-story-stage">
                 <div class="vela-story-tablet">
-                  <img src="assets/templates/noir_page_01.jpg" alt="Portada colección Noir de Juan Román Ortiz" loading="lazy" />
+                  <img src="/assets/templates/noir_page_01.jpg" alt="Portada colección Noir de Juan Román Ortiz" loading="lazy" />
                 </div>
                 <div class="vela-story-fan">
                   <div class="vela-story-sheet">
-                    <img data-slide-left="noir" src="assets/templates/noir_page_02.jpg" alt="Página izquierda biografía Noir" loading="lazy" />
+                    <img data-slide-left="noir" src="/assets/templates/noir_page_02.jpg" alt="Página izquierda biografía Noir" loading="lazy" />
                   </div>
                   <div class="vela-story-sheet">
-                    <img data-slide-right="noir" src="assets/templates/noir_page_03.jpg" alt="Página derecha biografía Noir" loading="lazy" />
+                    <img data-slide-right="noir" src="/assets/templates/noir_page_03.jpg" alt="Página derecha biografía Noir" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -398,14 +297,14 @@
 
               <div class="vela-story-stage">
                 <div class="vela-story-tablet">
-                  <img src="assets/templates/letter_page_01.jpg" alt="Portada colección Letter de Carmen" loading="lazy" />
+                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada colección Letter de Carmen" loading="lazy" />
                 </div>
                 <div class="vela-story-fan">
                   <div class="vela-story-sheet">
-                    <img data-slide-left="letter" src="assets/templates/letter_page_02.jpg" alt="Página izquierda biografía Letter" loading="lazy" />
+                    <img data-slide-left="letter" src="/assets/templates/letter_page_02.jpg" alt="Página izquierda biografía Letter" loading="lazy" />
                   </div>
                   <div class="vela-story-sheet">
-                    <img data-slide-right="letter" src="assets/templates/letter_page_03.jpg" alt="Página derecha biografía Letter" loading="lazy" />
+                    <img data-slide-right="letter" src="/assets/templates/letter_page_03.jpg" alt="Página derecha biografía Letter" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -493,11 +392,11 @@
           una edición para siempre.
         </p>
         <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="precios.html"
+          <a href="/precios"
             class="w-full sm:w-auto px-8 py-3.5 bg-vela-chocolate text-white text-sm font-medium rounded-sm hover:bg-black transition-all shadow-sm">
             Crear mi biografía
           </a>
-          <a href="como-funciona.html"
+          <a href="/como-funciona"
             class="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-vela-chocolate text-vela-chocolate text-sm font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
             Ver cómo funciona
           </a>
@@ -507,45 +406,5 @@
   </main>
 
   <!-- FOOTER EDITORIAL -->
-  <footer class="bg-[#1E1B18] text-vela-marfil/80 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
-      <div class="md:col-span-5 space-y-4">
-        <a href="index.html" class="inline-block"><img src="assets/vela-logo-white.png" alt="VELA" class="h-8 w-auto object-contain" /></a>
-        <p class="text-sm text-vela-marfil/65 font-light leading-relaxed max-w-sm">
-          Preservamos la voz, las anécdotas y el legado de las personas que más quieres en biografías editoriales cuidadas al detalle.
-        </p>
-      </div>
-
-      <div class="md:col-span-3 space-y-3 text-sm">
-        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Explorar</p>
-        <ul class="space-y-2.5 font-light">
-          <li><a href="la-biografia.html" class="hover:text-vela-marfil transition-colors">La biografía</a></li>
-          <li><a href="como-funciona.html" class="hover:text-vela-marfil transition-colors">Cómo funciona</a></li>
-          <li><a href="ejemplos.html" class="hover:text-vela-marfil transition-colors">Ejemplos</a></li>
-          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Precios</a></li>
-        </ul>
-      </div>
-
-      <div class="md:col-span-4 space-y-3 text-sm">
-        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Proyecto</p>
-        <ul class="space-y-2.5 font-light">
-          <li><a href="nosotros.html" class="hover:text-vela-marfil transition-colors">Sobre nosotros</a></li>
-          <li><a href="https://www.legadosvela.com/login" class="hover:text-vela-marfil transition-colors">Iniciar sesión</a></li>
-          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Crear biografía</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-vela-marfil/50 font-light">
-        <p>© 2026 VELA · Legados para siempre.</p>
-        <p>Hecho para guardar historias reales en familia.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script type="module" src="assets/vela-3d-examples.js"></script>
-  <script src="assets/vela-ui.js" defer></script>
-</body>
-
-</html>
+<script is:inline type="module" src="assets/vela-3d-examples.js"></script>
+</BaseLayout>

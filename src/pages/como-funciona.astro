@@ -1,92 +1,13 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cómo funciona VELA — De un recuerdo hablado a un legado eterno</title>
-  <meta name="description"
-    content="Descubre cómo funciona VELA paso a paso: responde con audios o textos guiados, organiza capítulos automáticamente y entrega una biografía digital con tarjeta QR lacrada." />
-  <link rel="icon" type="image/png" href="assets/vela-mark.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'vela-marfil': '#F8F6F0',
-            'vela-crema': '#EFECE6',
-            'vela-chocolate': '#26231F',
-            'vela-topo': '#978577',
-            'vela-borgona': '#682D35',
-            'vela-oro': '#C5A982',
-          },
-          fontFamily: {
-            serif: ['"Newsreader"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-  <link rel="stylesheet" href="assets/vela-polish.css" />
-</head>
-
-<body class="bg-vela-marfil text-vela-chocolate font-sans antialiased vela-page-subpage">
-
-  <!-- HEADER UNIFICADO -->
-  <header class="vela-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-vela-marfil/95 backdrop-blur-md border-b border-vela-chocolate/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between gap-6">
-      <a href="index.html" class="flex items-center gap-3 shrink-0"><img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" /></a>
-
-      <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-vela-chocolate/75" aria-label="Navegación principal">
-        <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors">La biografía</a>
-        <a href="como-funciona.html" class="text-vela-chocolate font-semibold border-b border-vela-chocolate/50 pb-0.5">Cómo funciona</a>
-        <a href="ejemplos.html" class="hover:text-vela-chocolate transition-colors">Ejemplos</a>
-        <a href="precios.html" class="hover:text-vela-chocolate transition-colors">Precios</a>
-        <a href="nosotros.html" class="hover:text-vela-chocolate transition-colors">Nosotros</a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <a href="https://www.legadosvela.com/login"
-          class="hidden sm:inline-flex items-center text-[13px] font-medium text-vela-chocolate/75 hover:text-vela-chocolate transition-colors">
-          Iniciar sesión
-        </a>
-        <a href="precios.html"
-          class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
-          Crear biografía
-        </a>
-        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div id="mobile-menu" class="hidden md:hidden bg-vela-marfil border-t border-vela-chocolate/10 px-6 py-6 space-y-4">
-      <nav class="flex flex-col gap-3 text-base font-medium text-vela-chocolate" aria-label="Menú móvil">
-        <a href="la-biografia.html" class="py-1.5 border-b border-vela-chocolate/10">La biografía</a>
-        <a href="como-funciona.html" class="py-1.5 border-b border-vela-chocolate/10 text-vela-borgona font-semibold">Cómo funciona</a>
-        <a href="ejemplos.html" class="py-1.5 border-b border-vela-chocolate/10">Ejemplos</a>
-        <a href="precios.html" class="py-1.5 border-b border-vela-chocolate/10">Precios</a>
-        <a href="nosotros.html" class="py-1.5 border-b border-vela-chocolate/10">Nosotros</a>
-      </nav>
-      <div class="pt-2 flex flex-col gap-3">
-        <a href="https://www.legadosvela.com/login" class="w-full text-center py-2.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium">Iniciar sesión</a>
-        <a href="precios.html" class="w-full text-center py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium">Crear biografía</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
+<BaseLayout
+  title="Cómo funciona VELA — De un recuerdo hablado a un legado eterno"
+  description="Descubre cómo funciona VELA paso a paso: responde con audios o textos guiados, organiza capítulos automáticamente y entrega una biografía digital con tarjeta QR lacrada."
+  bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-page-como-funciona"
+>
+<main>
 
     <!-- HERO EDITORIAL DE PROCESO -->
         <!-- SECCIÓN CÓMO FUNCIONA: UN PROCESO SENCILLO (REPLICA IMAGE 2 & IMAGE 1) -->
@@ -104,11 +25,11 @@
               Recopila recuerdos, anécdotas y fotografías, y VELA los transforma en una biografía cuidada, estructurada y lista para compartir.
             </p>
             <div class="pt-2 flex flex-wrap items-center gap-4">
-              <a href="precios.html"
+              <a href="/precios"
                 class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
                 Empezar una biografía
               </a>
-              <a href="ejemplos.html"
+              <a href="/ejemplos"
                 class="inline-flex items-center justify-center px-6 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-vela-crema transition-colors">
                 Ver biografías reales
               </a>
@@ -119,15 +40,15 @@
             <div class="w-full max-w-md rounded-md bg-vela-crema/75 border border-vela-chocolate/10 p-6 sm:p-8 flex flex-col items-center gap-4 shadow-[0_20px_50px_-20px_rgba(38,35,31,0.14)]">
               <div class="vela-polaroids-stack" aria-label="Recuerdos familiares y fotografías antiguas">
                 <figure class="vela-polaroid vela-polaroid--1">
-                  <img src="assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías antiguas" loading="eager" />
+                  <img src="/assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías antiguas" loading="eager" />
                   <span>En familia</span>
                 </figure>
                 <figure class="vela-polaroid vela-polaroid--2">
-                  <img src="assets/carmen-hero-1600.webp" alt="Retrato generacional cálido" loading="eager" />
+                  <img src="/assets/carmen-hero-1600.webp" alt="Retrato generacional cálido" loading="eager" />
                   <span>Toda una vida</span>
                 </figure>
                 <figure class="vela-polaroid vela-polaroid--3">
-                  <img src="assets/tecnologia-sensibilidad.webp" alt="Grabando recuerdos con calma" loading="eager" />
+                  <img src="/assets/tecnologia-sensibilidad.webp" alt="Grabando recuerdos con calma" loading="eager" />
                   <span>Cada detalle</span>
                 </figure>
               </div>
@@ -549,11 +470,11 @@
           Elige el formato que mejor se adapte a la profundidad que buscas y empieza a grabar o escribir hoy mismo desde cualquier lugar.
         </p>
         <div class="pt-2 flex flex-wrap justify-center gap-4">
-          <a href="precios.html"
+          <a href="/precios"
             class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
             Ver planes y precios
           </a>
-          <a href="ejemplos.html"
+          <a href="/ejemplos"
             class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-vela-crema transition-colors">
             Abrir libros de ejemplo
           </a>
@@ -564,44 +485,5 @@
   </main>
 
   <!-- FOOTER DARK EDITORIAL UNIFICADO -->
-  <footer class="bg-[#1E1B18] text-vela-marfil/80 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
-      <div class="md:col-span-5 space-y-4">
-        <a href="index.html" class="inline-block"><img src="assets/vela-logo-white.png" alt="VELA" class="h-8 w-auto object-contain" /></a>
-        <p class="text-sm text-vela-marfil/65 font-light leading-relaxed max-w-sm">
-          Preservamos la voz, las anécdotas y el legado de las personas que más quieres en biografías editoriales cuidadas al detalle.
-        </p>
-      </div>
 
-      <div class="md:col-span-3 space-y-3 text-sm">
-        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Explorar</p>
-        <ul class="space-y-2.5 font-light">
-          <li><a href="la-biografia.html" class="hover:text-vela-marfil transition-colors">La biografía</a></li>
-          <li><a href="como-funciona.html" class="hover:text-vela-marfil transition-colors">Cómo funciona</a></li>
-          <li><a href="ejemplos.html" class="hover:text-vela-marfil transition-colors">Ejemplos</a></li>
-          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Precios</a></li>
-        </ul>
-      </div>
-
-      <div class="md:col-span-4 space-y-3 text-sm">
-        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Proyecto</p>
-        <ul class="space-y-2.5 font-light">
-          <li><a href="nosotros.html" class="hover:text-vela-marfil transition-colors">Sobre nosotros</a></li>
-          <li><a href="https://www.legadosvela.com/login" class="hover:text-vela-marfil transition-colors">Iniciar sesión</a></li>
-          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Crear biografía</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-vela-marfil/50 font-light">
-        <p>© 2026 VELA · Legados para siempre.</p>
-        <p>Hecho para guardar historias reales en familia.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/vela-ui.js"></script>
-</body>
-
-</html>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+  currentPath?: string;
+}
+
+const {
+  title = "VELA | Biografías familiares de lujo convertidas en relatos editoriales",
+  description = "Convertimos la vida de tus padres y abuelos en una biografía de lujo. Entrevistas pausadas, redacción editorial artesanal, libretos impresos y acceso digital con código QR.",
+  bodyClass = "bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white",
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/assets/sobre-ambos-lados-mesa.webp" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/vela-mark.png" type="image/png" />
+
+  <!-- Google Fonts: Newsreader & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class={bodyClass}>
+  <Navbar currentPath={currentPath} />
+  
+  <slot />
+
+  <Footer />
+
+  <!-- Interacción UI global (Menú móvil, Accordion FAQ, Conmutadores) -->
+  <script is:inline src="/assets/vela-ui.js"></script>
+</body>
+</html>
