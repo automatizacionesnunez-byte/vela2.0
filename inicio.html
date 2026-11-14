@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/vela-polish.css">
+  <link rel="icon" href="assets/vela-mark.png" type="image/png">
   <script>
     tailwind.config = {
       theme: {
@@ -41,7 +43,7 @@
   <!-- NAVEGACIÓN SUPERIOR FIJA / RESPONSIVE CON LOGO OFICIAL -->
   <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="inicio.html" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3">
         <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
       </a>
 
@@ -55,6 +57,10 @@
       </nav>
 
       <div class="flex items-center gap-4">
+        <a href="https://www.legadosvela.com/login"
+          class="vela-login-link hidden sm:inline-flex items-center text-[13px] font-medium transition-colors">
+          Iniciar sesión
+        </a>
         <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
           Crear biografía
         </a>
@@ -72,6 +78,7 @@
       <a href="precios.html" class="block text-base text-vela-chocolate py-1">Precios</a>
       <a href="nosotros.html" class="block text-base text-vela-chocolate py-1">Nosotros</a>
       <div class="pt-2">
+        <a href="https://www.legadosvela.com/login" class="block w-full text-center py-2.5 border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium rounded-sm mb-3">Iniciar sesión</a>
         <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
       </div>
     </div>
@@ -112,6 +119,27 @@
             <a href="ejemplos.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-[#FAF6F0]/50 text-[#FAF6F0] text-sm font-medium rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm">
               Ver ejemplos
             </a>
+          </div>
+          <p class="mt-5 text-xs sm:text-sm text-[#F8F6F0]/85 font-light tracking-wide">
+            Desde 25 € · Pago único · Sobre con tarjeta QR física incluido
+          </p>
+          <div class="mt-5 pt-5 border-t border-[#F8F6F0]/15 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-2.5 text-[11px] sm:text-xs text-[#F8F6F0]/80 font-light max-w-2xl">
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+              Audios y textos guiados
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+              Voz de toda la familia
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+              3 colecciones editoriales
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+              Lectura privada con QR
+            </span>
           </div>
 
         </div>
@@ -156,7 +184,158 @@
     </section>
 
     <!-- SECCIÓN 3: LÍNEA DE VIDA -->
-    <section class="py-24 sm:py-32 bg-[#F8F6F0]">
+    
+    <!-- DEMO INTERACTIVA 3 PASOS: ESCUCHA EL ORIGEN. DESCUBRE EL RESULTADO -->
+    <section class="py-20 lg:py-24 bg-[#EFECE6]/60 border-y border-vela-chocolate/10" id="origin-demo">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10">
+        <div class="max-w-2xl mb-12">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.12] text-vela-chocolate">
+            Escucha el origen. <em class="italic text-[#682D35]">Descubre el resultado.</em>
+          </h2>
+          <p class="mt-4 text-vela-chocolate/75 font-light leading-relaxed">
+            Así pasa una conversación cotidiana en voz alta a convertirse en un recuerdo coral de toda la familia y, finalmente, en páginas maquetadas para siempre.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- PESTAÑAS DE 3 PASOS -->
+          <div class="lg:col-span-5 space-y-3" role="tablist" aria-label="Etapas del recuerdo en VELA">
+            <button type="button" class="vela-demo-tab is-active" role="tab" aria-selected="true" data-demo-tab="voz">
+              <span class="vela-demo-tab__step">01 · Tu voz</span>
+              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Un audio sin guion, contado con naturalidad</span>
+              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">Carmen graba cuatro minutos recordando los veranos en casa de sus abuelos.</span>
+            </button>
+
+            <button type="button" class="vela-demo-tab" role="tab" aria-selected="false" data-demo-tab="familia">
+              <span class="vela-demo-tab__step">02 · Otras voces</span>
+              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Hijos y nietos suman su mirada</span>
+              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">Cada familiar aporta desde su móvil anécdotas que completan la escena.</span>
+            </button>
+
+            <button type="button" class="vela-demo-tab" role="tab" aria-selected="false" data-demo-tab="biografia">
+              <span class="vela-demo-tab__step">03 · La biografía</span>
+              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Capítulos maquetados con voz e imagen</span>
+              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">El relato queda editado en formato editorial junto a sus fotos y audio original.</span>
+            </button>
+          </div>
+
+          <!-- PANEL VISUAL DINÁMICO -->
+          <div class="lg:col-span-7 bg-[#F8F6F0] border border-vela-chocolate/12 rounded-sm p-7 sm:p-9 shadow-[0_20px_50px_-24px_rgba(38,35,31,0.16)] min-h-[21rem] flex flex-col justify-between">
+            <!-- PANEL 1: TU VOZ -->
+            <div data-demo-panel="voz" class="space-y-6">
+              <div class="flex items-center gap-4">
+                <img src="assets/carmen-hero-1600.webp" alt="Retrato de Carmen" class="w-16 h-16 rounded-full object-cover border border-vela-chocolate/15 shrink-0" loading="lazy" />
+                <div>
+                  <p class="font-serif text-xl text-vela-chocolate">Carmen, 78 años</p>
+                  <p class="text-xs text-vela-topo">Nota de voz · Capítulo 2: Veranos en el pueblo</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 flex items-center gap-4">
+                <div class="w-9 h-9 rounded-full bg-[#682D35] text-white flex items-center justify-center shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+                <div class="vela-audio-bars flex-1" aria-hidden="true">
+                  <span style="height: 35%"></span><span style="height: 65%"></span><span style="height: 90%"></span>
+                  <span style="height: 45%"></span><span style="height: 75%"></span><span style="height: 100%"></span>
+                  <span style="height: 55%"></span><span style="height: 85%"></span><span style="height: 40%"></span>
+                  <span style="height: 70%"></span><span style="height: 95%"></span><span style="height: 50%"></span>
+                  <span style="height: 65%"></span><span style="height: 80%"></span><span style="height: 38%"></span>
+                  <span style="height: 60%"></span><span style="height: 92%"></span><span style="height: 48%"></span>
+                  <span style="height: 75%"></span><span style="height: 55%"></span>
+                </div>
+                <span class="text-xs font-mono text-vela-topo shrink-0">04:12</span>
+              </div>
+
+              <blockquote class="font-serif italic text-lg sm:text-xl text-vela-chocolate/90 leading-relaxed border-l-2 border-[#682D35]/40 pl-4">
+                «Cuando llegábamos en el coche de línea ya olía a higuera y a tierra mojada. Mi madre nos dejaba correr descalzos hasta el pozo antes de llamar a cenar.»
+              </blockquote>
+            </div>
+
+            <!-- PANEL 2: OTRAS VOCES -->
+            <div data-demo-panel="familia" class="hidden space-y-5">
+              <div class="flex items-center justify-between gap-4 border-b border-vela-chocolate/10 pb-4">
+                <div class="flex items-center gap-3">
+                  <img src="assets/carmen-family-1200.webp" alt="Familia conversando en la mesa" class="w-16 h-12 rounded-sm object-cover border border-vela-chocolate/15" loading="lazy" />
+                  <div>
+                    <p class="font-serif text-xl text-vela-chocolate">Miradas compartidas</p>
+                    <p class="text-xs text-vela-topo">2 aportaciones recibidas por enlace familiar</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-3.5">
+                <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 space-y-1.5">
+                  <p class="text-xs font-semibold text-[#682D35]">Lucía · Hija</p>
+                  <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
+                    «Siempre nos preparaba almendras garrapiñadas en una lata azul antes de volver al internado en septiembre. Todavía guardo la receta en un papel suyo.»
+                  </p>
+                </div>
+                <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 space-y-1.5">
+                  <p class="text-xs font-semibold text-[#682D35]">Marcos · Nieto</p>
+                  <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
+                    «Lo que mejor recuerdo es verla coser botones mientras me enseñaba a decir los nombres de los ríos de memoria sin mirar el mapa.»
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANEL 3: LA BIOGRAFIA -->
+            <div data-demo-panel="biografia" class="hidden space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                <div class="sm:col-span-6 grid grid-cols-2 gap-2.5">
+                  <div class="aspect-[3/4] rounded-[2px] overflow-hidden border border-vela-chocolate/15 shadow-sm bg-white">
+                    <img src="assets/templates/letter_page_03.jpg" alt="Página prólogo edición Letter" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div class="aspect-[3/4] rounded-[2px] overflow-hidden border border-vela-chocolate/15 shadow-sm bg-white translate-y-2">
+                    <img src="assets/templates/letter_page_04.jpg" alt="Página álbum familiar edición Letter" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                </div>
+                <div class="sm:col-span-6 space-y-3">
+                  <p class="font-serif text-2xl text-vela-chocolate leading-snug">Edición maquetada en colección Letter</p>
+                  <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
+                    Las voces y los recuerdos familiares se funden en capítulos cuidados, listos para leer en cualquier dispositivo o abrir desde el sobre con tarjeta QR.
+                  </p>
+                  <a href="ejemplos.html" class="inline-flex items-center gap-2 text-xs font-semibold text-[#682D35] hover:underline pt-1">
+                    <span>Explorar libros completos en Ejemplos</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-vela-chocolate/10 flex flex-wrap items-center justify-between gap-3 text-xs text-vela-topo">
+              <span>Editable en todo momento antes de cerrar la edición</span>
+              <a href="como-funciona.html" class="text-vela-chocolate font-medium hover:underline">Ver proceso completo →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var tabs = document.querySelectorAll('[data-demo-tab]');
+          var panels = document.querySelectorAll('[data-demo-panel]');
+          if (!tabs.length || !panels.length) return;
+          tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+              var target = tab.getAttribute('data-demo-tab');
+              tabs.forEach(function (t) {
+                var active = t === tab;
+                t.classList.toggle('is-active', active);
+                t.setAttribute('aria-selected', active ? 'true' : 'false');
+              });
+              panels.forEach(function (p) {
+                var show = p.getAttribute('data-demo-panel') === target;
+                p.classList.toggle('hidden', !show);
+              });
+            });
+          });
+        })();
+      </script>
+    </section>
+
+  <section class="py-24 sm:py-32 bg-[#F8F6F0]">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-3xl mb-16 sm:mb-20">
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mb-5">
@@ -223,7 +402,59 @@
     </section>
 
     <!-- SECCIÓN 4: PREGUNTAS FRECUENTES -->
-    <section class="py-24 sm:py-32 bg-[#F1EBE2] border-t border-b border-vela-linea">
+    
+    <!-- PRIVACIDAD Y SEGURIDAD: UNA HISTORIA INTIMA MERECE UN ESPACIO SEGURO -->
+    <section class="py-20 lg:py-24 bg-[#F8F6F0] border-t border-vela-chocolate/10">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6">
+          <div class="rounded-sm overflow-hidden border border-vela-chocolate/12 shadow-[0_24px_60px_-24px_rgba(38,35,31,0.18)]">
+            <img src="assets/tecnologia-sensibilidad.webp" alt="Entorno íntimo y sereno para conservar recuerdos familiares" class="w-full h-[360px] sm:h-[420px] object-cover" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.55rem] leading-[1.12] text-vela-chocolate">
+            Una historia íntima merece un <em class="italic text-[#682D35]">espacio seguro.</em>
+          </h2>
+          <p class="text-base text-vela-chocolate/75 font-light leading-relaxed">
+            La memoria familiar no es contenido para redes ni material de entrenamiento público. Cuidamos cada archivo con el respeto de un archivo privado de casa.
+          </p>
+
+          <ul class="space-y-4 pt-2 border-t border-vela-chocolate/10">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#682D35] mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              <div>
+                <h3 class="text-sm font-semibold text-vela-chocolate">Acceso privado bajo enlace familiar</h3>
+                <p class="text-sm text-vela-chocolate/70 font-light">Solo leen y escuchan la biografía las personas a las que decidas entregar el enlace o la tarjeta QR.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#682D35] mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              <div>
+                <h3 class="text-sm font-semibold text-vela-chocolate">Propiedad íntegra para tu familia</h3>
+                <p class="text-sm text-vela-chocolate/70 font-light">Nunca cedemos ni vendemos vuestros relatos, voces o fotografías. Puedes descargar o eliminar tu archivo en cualquier momento.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#682D35] mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div>
+                <h3 class="text-sm font-semibold text-vela-chocolate">Sin suscripciones mensuales</h3>
+                <p class="text-sm text-vela-chocolate/70 font-light">Pago único desde 25 € según la extensión que necesites, para que puedas regalar y construir el relato sin prisas.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[#682D35] mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" /></svg>
+              <div>
+                <h3 class="text-sm font-semibold text-vela-chocolate">Entrega física incluida en cada biografía</h3>
+                <p class="text-sm text-vela-chocolate/70 font-light">Sobre lacrado artesanal con tarjeta y QR directo para regalar en mano el día que elijas.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  <section class="py-24 sm:py-32 bg-[#F1EBE2] border-t border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
@@ -330,6 +561,29 @@
   </main>
 
   <!-- FOOTER EDITORIAL CON LOGO OFICIAL -->
+  
+    <!-- CTA EMOCIONAL FINAL -->
+    <section class="py-20 lg:py-28 bg-[#EFECE6]/75 border-t border-vela-chocolate/10">
+      <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] text-vela-chocolate">
+          Empieza por una historia. <em class="italic text-[#682D35]">Las demás llegarán después.</em>
+        </h2>
+        <p class="text-base text-vela-chocolate/75 font-light max-w-xl mx-auto leading-relaxed">
+          Basta un primer recuerdo en voz alta para encender una conversación que tu familia releerá durante años.
+        </p>
+        <div class="pt-3 flex flex-wrap justify-center gap-4">
+          <a href="precios.html"
+            class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
+            Crear biografía desde 25 €
+          </a>
+          <a href="ejemplos.html"
+            class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-white transition-colors">
+            Ver ejemplos reales
+          </a>
+        </div>
+      </div>
+    </section>
+
   <footer class="bg-[#1E1B18] text-vela-marfil py-16 border-t border-[#2D2925]">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
@@ -360,7 +614,6 @@
         </div>
 
         <div class="md:col-span-3 space-y-4">
-          <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Presentación física</span>
           <p class="text-xs text-vela-marfil/70 font-light leading-relaxed">
             Envío a toda España del sobre marfil con sello lacrado y tarjeta de dedicatoria personalizada con código QR.
           </p>
@@ -390,11 +643,7 @@
       `;
     }
 
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
   </script>
+  <script src="assets/vela-ui.js" defer></script>
 </body>
 </html>

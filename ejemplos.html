@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ejemplos de Biografías | VELA — Tres formas de contar una vida</title>
-  <meta name="description" content="Descubre cómo la vida de cada persona puede convertirse en una biografía digital única con nuestras tres plantillas editoriales: Nude, Noir y Letter." />
+  <meta name="description"
+    content="Descubre cómo la vida de cada persona puede convertirse en una biografía digital única con nuestras tres plantillas editoriales: Nude, Noir y Letter." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/vela-polish.css">
+  <link rel="icon" href="assets/vela-mark.png" type="image/png">
+  <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js"}}</script>
+  <script src="assets/vendor/gsap/gsap.min.js" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -34,382 +42,463 @@
     }
   </script>
   <style>
-    body { background-color: #F8F6F0; color: #26231F; }
+    body {
+      background-color: #F8F6F0;
+      color: #26231F;
+    }
+
     .tablet-frame {
       box-shadow: 0 20px 40px -15px rgba(38, 35, 31, 0.18), 0 0 0 1px rgba(38, 35, 31, 0.08);
     }
+
     .spread-sheet {
-      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-vela-topo selection:text-white">
+
+<body class="vela-examples-page font-sans antialiased selection:bg-vela-topo selection:text-white">
 
   <!-- HEADER GLOBAL -->
   <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="inicio.html" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3">
         <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
       </a>
 
       <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80">
         <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors py-1">La biografía</a>
         <a href="como-funciona.html" class="hover:text-vela-chocolate transition-colors py-1">Cómo funciona</a>
-        <a href="ejemplos.html" class="text-vela-chocolate font-semibold border-b-2 border-vela-burdeos pb-1">Ejemplos</a>
+        <a href="ejemplos.html"
+          class="text-vela-chocolate font-semibold border-b-2 border-vela-burdeos pb-1">Ejemplos</a>
         <a href="precios.html" class="hover:text-vela-chocolate transition-colors py-1">Precios</a>
         <a href="nosotros.html" class="hover:text-vela-chocolate transition-colors py-1">Nosotros</a>
       </nav>
 
       <div class="flex items-center gap-4">
-        <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
+        <a href="https://www.legadosvela.com/login"
+          class="hidden sm:inline-flex items-center text-[13px] font-medium text-vela-chocolate/75 hover:text-vela-chocolate transition-colors">
+          Iniciar sesión
+        </a>
+        <a href="precios.html"
+          class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
           Crear biografía
         </a>
         <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
     </div>
 
     <!-- Menú móvil -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-4">
-      <a href="la-biografia.html" class="block text-base text-vela-chocolate py-1">La biografía</a>
-      <a href="como-funciona.html" class="block text-base text-vela-chocolate py-1">Cómo funciona</a>
-      <a href="ejemplos.html" class="block text-base font-semibold text-vela-burdeos py-1">Ejemplos</a>
-      <a href="precios.html" class="block text-base text-vela-chocolate py-1">Precios</a>
-      <a href="nosotros.html" class="block text-base text-vela-chocolate py-1">Nosotros</a>
-      <div class="pt-2">
-        <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-vela-chocolate/10 bg-[#F8F6F0] px-6 py-6 space-y-4">
+      <nav class="flex flex-col gap-3 text-base font-medium text-vela-chocolate" aria-label="Menú móvil">
+        <a href="la-biografia.html" class="py-1.5 border-b border-vela-chocolate/10">La biografía</a>
+        <a href="como-funciona.html" class="py-1.5 border-b border-vela-chocolate/10">Cómo funciona</a>
+        <a href="ejemplos.html" class="py-1.5 border-b border-vela-chocolate/10 text-vela-borgona font-semibold">Ejemplos</a>
+        <a href="precios.html" class="py-1.5 border-b border-vela-chocolate/10">Precios</a>
+        <a href="nosotros.html" class="py-1.5 border-b border-vela-chocolate/10">Nosotros</a>
+      </nav>
+      <div class="pt-2 flex flex-col gap-3">
+        <a href="https://www.legadosvela.com/login" class="w-full text-center py-2.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium">Iniciar sesión</a>
+        <a href="precios.html" class="w-full text-center py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium">Crear biografía</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- SECCIÓN PRINCIPAL: EDITORIAL SHOWCASE (ESTILO FIGMA / STITCH) -->
-    <section class="py-16 sm:py-24 bg-[#F8F6F0]">
+    <!-- ARCHIVO 3D PROTAGONISTA: SALA DE LECTURA DIGITAL -->
+    <section class="vela-biography-experience py-16 sm:py-24" aria-labelledby="vela-3d-title">
       <div class="max-w-[1400px] mx-auto px-6 sm:px-10">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          <!-- COLUMNA IZQUIERDA: TITULAR EDITORIAL Y ANCLAS -->
-          <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-8">
-            <div>
-              <span class="text-xs uppercase tracking-[0.22em] text-vela-topo font-semibold block mb-4">
-                — HISTORIAS REALES
-              </span>
-              <h1 class="font-serif text-4xl sm:text-5xl xl:text-6xl text-vela-chocolate font-normal leading-[1.12]">
-                Tres formas <br/>
-                <span class="italic text-vela-topo">de contar una vida.</span>
-              </h1>
-            </div>
-
-            <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-              Cada persona tiene una historia distinta. Por eso cada biografía combina recuerdos, fotografías y una voz propia en una edición que se siente personal.
+        <div class="vela-biography-intro grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+          <div class="lg:col-span-7">
+            <h1 id="vela-3d-title" class="font-serif text-5xl sm:text-6xl xl:text-7xl text-vela-chocolate font-normal leading-[.98]">
+              Tres vidas. <br /><span class="italic text-vela-topo">Tres formas de conservarlas.</span>
+            </h1>
+            <p class="mt-6 max-w-2xl text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+              Elige un sobre, abre una historia y entra en la biografía digital que VELA ha creado a partir de recuerdos, fotografías y palabras.
             </p>
-
-            <!-- PILLS DE ACCESO RÁPIDO -->
-            <div class="flex flex-wrap gap-2.5 pt-2">
-              <a href="#carlota" class="inline-flex items-center px-4 py-2 rounded-full bg-[#EFE9DF] hover:bg-[#E8E1D5] text-xs sm:text-sm font-medium text-vela-chocolate transition-all border border-vela-linea">
-                Carlota · <span class="text-vela-topo ml-1">Nude</span>
-              </a>
-              <a href="#juan" class="inline-flex items-center px-4 py-2 rounded-full bg-[#EFE9DF] hover:bg-[#E8E1D5] text-xs sm:text-sm font-medium text-vela-chocolate transition-all border border-vela-linea">
-                Juan · <span class="text-vela-topo ml-1">Noir</span>
-              </a>
-              <a href="#carmen" class="inline-flex items-center px-4 py-2 rounded-full bg-[#EFE9DF] hover:bg-[#E8E1D5] text-xs sm:text-sm font-medium text-vela-chocolate transition-all border border-vela-linea">
-                Carmen · <span class="text-vela-topo ml-1">Letter</span>
-              </a>
-            </div>
-
-            <div class="pt-6 border-t border-vela-linea/80 space-y-4">
-              <div class="flex items-center gap-3 text-xs text-vela-topo">
-                <svg class="w-4 h-4 text-vela-burdeos" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Acceso digital optimizado para iPad, tablet y móvil</span>
-              </div>
-              <div class="flex items-center gap-3 text-xs text-vela-topo">
-                <svg class="w-4 h-4 text-vela-burdeos" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Descarga en alta resolución en PDF editorial</span>
-              </div>
-              <div class="flex items-center gap-3 text-xs text-vela-topo">
-                <svg class="w-4 h-4 text-vela-burdeos" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Entrega física con sobre de lacre y tarjeta QR</span>
-              </div>
-            </div>
           </div>
-
-          <!-- COLUMNA DERECHA: CABECERA CON FOTOS RETRO + LAS 3 HISTORIAS EDITORIALES -->
-          <div class="lg:col-span-8 space-y-16">
-            
-            <!-- ENCABEZADO DERECHO CON POLAROIDS Y SUBTÍTULO -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-vela-linea">
-              <div class="max-w-md">
-                <span class="text-[11px] uppercase tracking-[0.2em] text-vela-topo font-semibold block mb-2">— EJEMPLOS</span>
-                <h2 class="font-serif text-3xl sm:text-4xl text-vela-chocolate font-normal leading-tight">
-                  Historias reales, <br/>
-                  <span class="italic text-vela-topo">tres formas de contarlas.</span>
-                </h2>
-                <p class="text-sm text-vela-chocolate/70 font-light mt-2">
-                  Descubre cómo la vida de cada persona puede convertirse en una biografía única, con un estilo propio y una maquetación cuidada.
-                </p>
-              </div>
-
-              <!-- Collage de fotos vintage original -->
-              <div class="relative w-40 sm:w-48 h-28 flex-shrink-0 self-start sm:self-center">
-                <img src="assets/polaroids-collage.jpg" alt="Recuerdos familiares" class="w-full h-full object-contain rounded drop-shadow-md" />
-              </div>
-            </div>
-
-            <!-- CARD 1: CARLOTA · NUDE -->
-            <article id="carlota" class="bg-[#FBF9F6] border border-vela-linea rounded-2xl p-6 sm:p-8 space-y-8 scroll-mt-28">
-              
-              <div class="flex flex-col sm:flex-row gap-6 items-start">
-                <!-- Avatar Carlota -->
-                <div class="w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0 rounded-lg overflow-hidden bg-vela-arena border border-vela-linea shadow-sm">
-                  <img src="assets/carlota_avatar.jpg" alt="Carlota Medina García" class="w-full h-full object-cover object-center" />
-                </div>
-
-                <!-- Datos Biografía Carlota -->
-                <div class="flex-1 space-y-2.5">
-                  <span class="text-[10px] tracking-[0.2em] uppercase text-vela-topo font-semibold block">
-                    LA HISTORIA DE UNA VIDA PLENA
-                  </span>
-                  <h3 class="font-serif text-3xl sm:text-4xl font-normal text-vela-chocolate">
-                    Carlota
-                  </h3>
-                  <p class="text-sm sm:text-base text-vela-chocolate/80 font-light leading-relaxed">
-                    La vida de Carlota, marcada por la familia, el trabajo y una profunda pasión por los suyos, contada con cercanía y emoción.
-                  </p>
-                  <div class="pt-2 flex flex-wrap items-center gap-3">
-                    <span class="inline-block px-3 py-1 bg-[#F1EBE2] border border-vela-linea rounded text-xs font-medium text-vela-burdeos">
-                      Plantilla Nude
-                    </span>
-                    <span class="text-xs text-vela-topo italic font-serif">
-                      Cálida, elegante y atemporal.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Visor de Mockup Tablet + Páginas Interiores Carlota -->
-              <div class="bg-[#F3EEE7] rounded-xl p-4 sm:p-6 border border-vela-linea/60">
-                <div class="relative flex items-center justify-center">
-                  
-                  <!-- Botón Prev -->
-                  <button onclick="prevSlide('nude')" class="absolute left-2 sm:left-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página anterior">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                  </button>
-
-                  <!-- Escenario Mockup: Tablet Portada + Doble Página Interior -->
-                  <div class="w-full max-w-2xl flex items-center justify-center gap-3 sm:gap-6 py-2">
-                    <!-- Tablet con pantalla dinámica -->
-                    <div class="tablet-frame relative w-[170px] sm:w-[220px] aspect-[3/4] bg-[#1A1817] rounded-[18px] p-2.5 sm:p-3 flex-shrink-0">
-                      <div class="w-full h-full bg-white rounded-[10px] overflow-hidden relative shadow-inner">
-                        <img id="nude-cover" src="assets/templates/nude_page_01.jpg" alt="Portada Biografía Carlota" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-
-                    <!-- Doble página editorial desplegada al lado -->
-                    <div class="hidden sm:flex items-center gap-2 flex-1 max-w-[340px]">
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-r-sm overflow-hidden border border-vela-linea/50">
-                        <img id="nude-spread1" src="assets/templates/nude_page_02.jpg" alt="Página interior Carlota" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-l-sm overflow-hidden border border-vela-linea/50">
-                        <img id="nude-spread2" src="assets/templates/nude_page_03.jpg" alt="Página interior Carlota" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Botón Next -->
-                  <button onclick="nextSlide('nude')" class="absolute right-2 sm:right-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página siguiente">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-
-                <!-- Indicadores de slide / páginas -->
-                <div class="flex items-center justify-center gap-2 mt-4">
-                  <span id="dot-nude-0" class="w-2 h-2 rounded-full bg-vela-chocolate transition-all"></span>
-                  <span id="dot-nude-1" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-nude-2" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-nude-3" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                </div>
-              </div>
-
-            </article>
-
-            <!-- CARD 2: JUAN · NOIR -->
-            <article id="juan" class="bg-[#FBF9F6] border border-vela-linea rounded-2xl p-6 sm:p-8 space-y-8 scroll-mt-28">
-              
-              <div class="flex flex-col sm:flex-row gap-6 items-start">
-                <!-- Avatar Juan -->
-                <div class="w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0 rounded-lg overflow-hidden bg-vela-arena border border-vela-linea shadow-sm">
-                  <img src="assets/juan_avatar.jpg" alt="Juan Benítez Vidal" class="w-full h-full object-cover object-center grayscale" />
-                </div>
-
-                <!-- Datos Biografía Juan -->
-                <div class="flex-1 space-y-2.5">
-                  <span class="text-[10px] tracking-[0.2em] uppercase text-vela-topo font-semibold block">
-                    EL COMPAÑERO DE CAMINO
-                  </span>
-                  <h3 class="font-serif text-3xl sm:text-4xl font-normal text-vela-chocolate">
-                    Juan
-                  </h3>
-                  <p class="text-sm sm:text-base text-vela-chocolate/80 font-light leading-relaxed">
-                    La historia de Juan, un hombre tranquilo y generoso, que siempre puso a los suyos en el centro de su vida.
-                  </p>
-                  <div class="pt-2 flex flex-wrap items-center gap-3">
-                    <span class="inline-block px-3 py-1 bg-[#26231F] text-[#F8F6F0] rounded text-xs font-medium">
-                      Plantilla Noir
-                    </span>
-                    <span class="text-xs text-vela-topo italic font-serif">
-                      Moderna, sobria y con carácter.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Visor de Mockup Tablet + Páginas Interiores Juan -->
-              <div class="bg-[#F3EEE7] rounded-xl p-4 sm:p-6 border border-vela-linea/60">
-                <div class="relative flex items-center justify-center">
-                  
-                  <!-- Botón Prev -->
-                  <button onclick="prevSlide('noir')" class="absolute left-2 sm:left-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página anterior">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                  </button>
-
-                  <!-- Escenario Mockup: Tablet Portada + Doble Página Interior -->
-                  <div class="w-full max-w-2xl flex items-center justify-center gap-3 sm:gap-6 py-2">
-                    <!-- Tablet con pantalla dinámica Noir -->
-                    <div class="tablet-frame relative w-[170px] sm:w-[220px] aspect-[3/4] bg-[#1A1817] rounded-[18px] p-2.5 sm:p-3 flex-shrink-0">
-                      <div class="w-full h-full bg-[#111] rounded-[10px] overflow-hidden relative shadow-inner">
-                        <img id="noir-cover" src="assets/templates/noir_page_01.jpg" alt="Portada Biografía Juan" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-
-                    <!-- Doble página editorial desplegada al lado -->
-                    <div class="hidden sm:flex items-center gap-2 flex-1 max-w-[340px]">
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-r-sm overflow-hidden border border-vela-linea/50">
-                        <img id="noir-spread1" src="assets/templates/noir_page_02.jpg" alt="Página interior Juan" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-l-sm overflow-hidden border border-vela-linea/50">
-                        <img id="noir-spread2" src="assets/templates/noir_page_03.jpg" alt="Página interior Juan" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Botón Next -->
-                  <button onclick="nextSlide('noir')" class="absolute right-2 sm:right-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página siguiente">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-
-                <!-- Indicadores de slide / páginas -->
-                <div class="flex items-center justify-center gap-2 mt-4">
-                  <span id="dot-noir-0" class="w-2 h-2 rounded-full bg-vela-chocolate transition-all"></span>
-                  <span id="dot-noir-1" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-noir-2" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-noir-3" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                </div>
-              </div>
-
-            </article>
-
-            <!-- CARD 3: CARMEN · LETTER -->
-            <article id="carmen" class="bg-[#FBF9F6] border border-vela-linea rounded-2xl p-6 sm:p-8 space-y-8 scroll-mt-28">
-              
-              <div class="flex flex-col sm:flex-row gap-6 items-start">
-                <!-- Avatar Carmen -->
-                <div class="w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0 rounded-lg overflow-hidden bg-white border border-vela-linea shadow-sm flex items-center justify-center p-2">
-                  <img src="assets/carmen_avatar.jpg" alt="Carmen Rodríguez Sánchez" class="w-full h-full object-contain" />
-                </div>
-
-                <!-- Datos Biografía Carmen -->
-                <div class="flex-1 space-y-2.5">
-                  <span class="text-[10px] tracking-[0.2em] uppercase text-vela-topo font-semibold block">
-                    UNA VIDA HECHA DE PEQUEÑAS GRANDES HISTORIAS
-                  </span>
-                  <h3 class="font-serif text-3xl sm:text-4xl font-normal text-vela-chocolate">
-                    Carmen
-                  </h3>
-                  <p class="text-sm sm:text-base text-vela-chocolate/80 font-light leading-relaxed">
-                    La historia de Carmen, una mujer curiosa, creativa y con un gran sentido del humor, narrada como una carta que recorre toda una vida.
-                  </p>
-                  <div class="pt-2 flex flex-wrap items-center gap-3">
-                    <span class="inline-block px-3 py-1 bg-[#F1EBE2] border border-vela-linea rounded text-xs font-medium text-vela-chocolate">
-                      Plantilla Letter
-                    </span>
-                    <span class="text-xs text-vela-topo italic font-serif">
-                      Clásica, cercana y llena de memoria.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Visor de Mockup Tablet + Páginas Interiores Carmen -->
-              <div class="bg-[#F3EEE7] rounded-xl p-4 sm:p-6 border border-vela-linea/60">
-                <div class="relative flex items-center justify-center">
-                  
-                  <!-- Botón Prev -->
-                  <button onclick="prevSlide('letter')" class="absolute left-2 sm:left-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página anterior">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                  </button>
-
-                  <!-- Escenario Mockup: Tablet Portada + Doble Página Interior -->
-                  <div class="w-full max-w-2xl flex items-center justify-center gap-3 sm:gap-6 py-2">
-                    <!-- Tablet con pantalla dinámica Letter -->
-                    <div class="tablet-frame relative w-[170px] sm:w-[220px] aspect-[3/4] bg-[#1A1817] rounded-[18px] p-2.5 sm:p-3 flex-shrink-0">
-                      <div class="w-full h-full bg-white rounded-[10px] overflow-hidden relative shadow-inner">
-                        <img id="letter-cover" src="assets/templates/letter_page_01.jpg" alt="Portada Biografía Carmen" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-
-                    <!-- Doble página editorial desplegada al lado -->
-                    <div class="hidden sm:flex items-center gap-2 flex-1 max-w-[340px]">
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-r-sm overflow-hidden border border-vela-linea/50">
-                        <img id="letter-spread1" src="assets/templates/letter_page_02.jpg" alt="Página interior Carmen" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                      <div class="spread-sheet flex-1 aspect-[3/4] bg-white rounded-l-sm overflow-hidden border border-vela-linea/50">
-                        <img id="letter-spread2" src="assets/templates/letter_page_03.jpg" alt="Página interior Carmen" class="w-full h-full object-cover transition-opacity duration-300" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Botón Next -->
-                  <button onclick="nextSlide('letter')" class="absolute right-2 sm:right-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-vela-chocolate shadow-md flex items-center justify-center transition-transform hover:scale-105" aria-label="Página siguiente">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-
-                <!-- Indicadores de slide / páginas -->
-                <div class="flex items-center justify-center gap-2 mt-4">
-                  <span id="dot-letter-0" class="w-2 h-2 rounded-full bg-vela-chocolate transition-all"></span>
-                  <span id="dot-letter-1" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-letter-2" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                  <span id="dot-letter-3" class="w-2 h-2 rounded-full bg-vela-linea transition-all"></span>
-                </div>
-              </div>
-
-            </article>
-
+          <div class="lg:col-span-5 lg:pb-1">
+            <p class="text-sm text-vela-topo leading-relaxed max-w-md lg:ml-auto">
+              Una pequeña colección de vidas, presentada como una experiencia editorial viva.
+            </p>
           </div>
-
         </div>
 
+        <div class="vela-biography-showcase is-fallback mt-12 lg:mt-16" data-vela-biography-showcase data-vela-state="archive">
+          <div class="vela-biography-toolbar flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-5">
+            <div>
+              <p class="vela-archive-instruction">Desliza para recorrer la estantería o selecciona un sobre.</p>
+              <div class="vela-archive-picker mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Seleccionar historia">
+                <button type="button" class="is-active" data-vela-archive-tab="nude" role="tab" aria-selected="true">Carlota <em>Nude</em></button>
+                <button type="button" data-vela-archive-tab="noir" role="tab" aria-selected="false">Juan <em>Noir</em></button>
+                <button type="button" data-vela-archive-tab="letter" role="tab" aria-selected="false">Carmen <em>Letter</em></button>
+              </div>
+              <div class="vela-gallery-utility" aria-label="Características de la biografía digital">
+                <span>Edición digital</span><i aria-hidden="true"></i><span>Capítulos</span><i aria-hidden="true"></i><span>PDF · QR</span>
+              </div>
+            </div>
+            <div class="text-xs text-vela-topo flex items-center gap-2" data-vela-scene-status>
+              <span class="vela-status-dot" aria-hidden="true"></span>
+              <span data-vela-status-text>Explora con el cursor o desliza</span>
+            </div>
+          </div>
+
+          <div class="vela-archive-stage" data-vela-scene-shell data-vela-biography-scene data-template="nude" data-vela-state="archive" tabindex="0" aria-label="Archivo de historias VELA">
+            <div class="vela-scene-loading" data-vela-scene-loading role="status">Preparando el archivo<span>···</span></div>
+            <div class="vela-scene-error" data-vela-scene-error role="status">La experiencia 3D no está disponible. Puedes explorar la vista editorial.</div>
+            <div class="vela-archive-copy" aria-live="polite"><span data-vela-scene-kicker>ARCHIVO DE HISTORIAS</span><strong data-vela-scene-name>Elige una vida</strong><small data-vela-scene-caption>Abre un sobre para entrar en su memoria.</small></div>
+            <div class="vela-reader-copy" aria-live="polite"><span data-vela-reader-kicker>PLANTILLA NUDE</span><strong data-vela-reader-name>Carlota</strong><small data-vela-reader-caption>La historia de una vida plena</small></div>
+            <div class="vela-3d-hint">Mueve para explorar · selecciona un sobre</div>
+            <div class="vela-css-scene" data-vela-css-scene aria-hidden="true">
+              <div class="vela-css-shelf-back"></div>
+              <div class="vela-css-shelf-light"></div>
+              <div class="vela-css-shelf">
+                <button type="button" class="vela-css-envelope vela-css-envelope--nude" data-vela-css-envelope="nude" tabindex="-1"><span>Carlota</span><small>Nude</small><i></i></button>
+                <button type="button" class="vela-css-envelope vela-css-envelope--noir" data-vela-css-envelope="noir" tabindex="-1"><span>Juan</span><small>Noir</small><i></i></button>
+                <button type="button" class="vela-css-envelope vela-css-envelope--letter" data-vela-css-envelope="letter" tabindex="-1"><span>Carmen</span><small>Letter</small><i></i></button>
+              </div>
+              <div class="vela-css-reader">
+                <div class="vela-css-reader-shadow"></div>
+                <div class="vela-css-tablet">
+                  <span class="vela-css-camera"></span>
+                  <div class="vela-css-screen">
+                    <img data-vela-css-page-left src="assets/templates/nude_page_01.jpg" alt="" />
+                    <img data-vela-css-page-right src="assets/templates/nude_page_02.jpg" alt="" />
+                  </div>
+                  <span class="vela-css-glass"></span>
+                </div>
+                <div class="vela-css-memory"><img data-vela-css-memory src="assets/templates/nude_page_07.jpg" alt="" /></div>
+                <div class="vela-css-note"><small>CAPÍTULO</small><strong data-vela-css-note-title>Orígenes</strong><span data-vela-css-note-number>01</span></div>
+              </div>
+            </div>
+            <div class="vela-gallery-scene" data-vela-gallery-scene>
+              <div class="vela-gallery-layer" data-vela-gallery-layer>
+                <div class="vela-gallery-wall"></div>
+                <div class="vela-gallery-beams"></div>
+                <div class="vela-gallery-plinth"></div>
+                <div class="vela-gallery-ambient"></div>
+                <div class="vela-gallery-grain"></div>
+                <div class="vela-gallery-gallery" data-vela-gallery-gallery>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--nude" data-vela-gallery-card="nude" tabindex="0" aria-label="Abrir la biografía de Carlota, plantilla Nude"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="nude" src="assets/templates/nude_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carlota</b><small>Nude · cálida y atemporal</small></span></button>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--noir" data-vela-gallery-card="noir" tabindex="0" aria-label="Abrir la biografía de Juan, plantilla Noir"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="noir" src="assets/templates/noir_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Juan</b><small>Noir · sobria y con carácter</small></span></button>
+                  <button type="button" class="vela-gallery-card vela-gallery-card--letter" data-vela-gallery-card="letter" tabindex="0" aria-label="Abrir la biografía de Carmen, plantilla Letter"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="letter" src="assets/templates/letter_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carmen</b><small>Letter · clásica e íntima</small></span></button>
+                </div>
+                <div class="vela-gallery-reader" data-vela-gallery-reader>
+                  <div class="vela-gallery-reader__shadow"></div>
+                  <div class="vela-gallery-device"><span class="vela-gallery-device__camera"></span><div class="vela-gallery-spread" data-vela-gallery-spread><img data-vela-gallery-page-left src="assets/templates/nude_page_01.jpg" alt="" /><img data-vela-gallery-page-right src="assets/templates/nude_page_02.jpg" alt="" /></div><span class="vela-gallery-device__glass"></span></div>
+                  <div class="vela-gallery-memory"><img data-vela-gallery-memory src="assets/templates/nude_page_07.jpg" alt="" /></div>
+                  <div class="vela-gallery-note"><small>CAPÍTULO</small><strong data-vela-gallery-note>Orígenes</strong><span data-vela-gallery-number>01</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="vela-scene-vignette" aria-hidden="true"></div>
+          </div>
+
+          <div class="vela-scene-controls mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div class="flex items-center gap-3">
+              <button type="button" class="vela-scene-arrow" data-vela-chapter-prev aria-label="Capítulo anterior">←</button>
+              <div class="vela-chapter-dots flex items-center gap-2" role="tablist" aria-label="Capítulos de la biografía">
+                <button type="button" class="is-active" data-vela-chapter="0" aria-label="Capítulo 1" aria-selected="true"></button>
+                <button type="button" data-vela-chapter="1" aria-label="Capítulo 2" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="2" aria-label="Capítulo 3" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="3" aria-label="Capítulo 4" aria-selected="false"></button>
+              </div>
+              <button type="button" class="vela-scene-arrow" data-vela-chapter-next aria-label="Capítulo siguiente">→</button>
+            </div>
+            <button type="button" class="vela-return-archive" data-vela-close>← Volver al archivo</button>
+          </div>
+
+          <div class="vela-chapter-rail mt-7" aria-label="Recorrido por la biografía">
+            <div><span data-vela-chapter-label="0">Orígenes</span><small>01</small></div>
+            <div><span data-vela-chapter-label="1">Infancia</span><small>02</small></div>
+            <div><span data-vela-chapter-label="2">Momentos clave</span><small>03</small></div>
+            <div><span data-vela-chapter-label="3">Legado</span><small>04</small></div>
+          </div>
+
+          <div class="vela-archive-fallback" data-vela-editorial-fallback aria-label="Vista editorial alternativa">
+            <div class="vela-fallback-shelf">
+              <button type="button" class="vela-fallback-envelope vela-fallback-envelope--nude" data-vela-envelope="nude"><span>CARLOTA</span><small>NUDE</small></button>
+              <button type="button" class="vela-fallback-envelope vela-fallback-envelope--noir" data-vela-envelope="noir"><span>JUAN</span><small>NOIR</small></button>
+              <button type="button" class="vela-fallback-envelope vela-fallback-envelope--letter" data-vela-envelope="letter"><span>CARMEN</span><small>LETTER</small></button>
+            </div>
+            <div class="vela-fallback-reader"><div class="vela-fallback-device__top"><span>VELA</span><span data-vela-fallback-template>NUDE</span></div><img data-vela-fallback-cover src="assets/templates/nude_page_01.jpg" alt="Biografía digital de Carlota" /></div>
+          </div>
+
+          <div class="vela-scene-meta mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4" aria-live="polite">
+            <div><span>01</span><strong data-vela-meta-title>Una vida plena</strong></div>
+            <div><span>02</span><strong data-vela-meta-style>Cálida, elegante y atemporal</strong></div>
+            <div><span>03</span><strong data-vela-meta-format>Lectura digital · PDF · QR</strong></div>
+          </div>
+        </div>
       </div>
+    </section>
+    <!-- SECCIÓN PRINCIPAL: EDITORIAL SHOWCASE (ESTILO FIGMA / STITCH) -->
+    <section class="py-20 lg:py-24 bg-[#F8F6F0] border-t border-vela-chocolate/10" id="stories-showcase">
+      <div class="max-w-6xl mx-auto px-6 lg:px-10">
+
+        <!-- CABECERA EDITORIAL DE HISTORIAS -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pb-14">
+          <div class="lg:col-span-7 space-y-5">
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] leading-[1.08] text-vela-chocolate tracking-tight">
+              Historias reales, <em class="italic text-[#682D35]">tres formas de contarlas.</em>
+            </h2>
+            <p class="text-base text-vela-chocolate/75 font-light leading-relaxed max-w-xl">
+              Cada persona tiene una cadencia y una sensibilidad propia. Aquí puedes recorrer las páginas interiores de nuestras tres colecciones editoriales antes de abrir su edición interactiva completa.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="vela-polaroids-stack" aria-label="Álbum de recuerdos reales">
+              <figure class="vela-polaroid vela-polaroid--1">
+                <img src="assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías" loading="lazy" />
+                <span>Sobremesas</span>
+              </figure>
+              <figure class="vela-polaroid vela-polaroid--2">
+                <img src="assets/carmen-hero-1600.webp" alt="Retrato familiar generacional" loading="lazy" />
+                <span>Raíces</span>
+              </figure>
+              <figure class="vela-polaroid vela-polaroid--3">
+                <img src="assets/vela-sobre-qr-1200.webp" alt="Sobre lacrado VELA con tarjeta QR" loading="lazy" />
+                <span>Para siempre</span>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- HISTORIA 1: CARLOTA (NUDE) -->
+        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="nude">
+          <div class="lg:col-span-5 space-y-4">
+            <p class="font-serif italic text-base text-[#682D35]">Carlota Medina García · Colección Nude</p>
+            <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
+              La historia de una vida plena
+            </h3>
+            <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
+              Un relato luminoso y sereno construido a partir de conversaciones breves, recetas anotadas y memorias compartidas por sus hijos. Papel marfil cálido y márgenes respirados.
+            </p>
+            <p class="text-xs text-vela-topo tracking-wide pt-1">
+              Capítulos: Orígenes · Infancia · Momentos clave · Legado
+            </p>
+            <div class="pt-3">
+              <button type="button" data-open-story="nude"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
+                <span>Abrir edición interactiva Nude</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col items-center">
+            <div class="vela-story-visor w-full">
+              <button type="button" class="vela-story-arrow" data-story-prev="nude" aria-label="Páginas anteriores de Carlota">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              </button>
+
+              <div class="vela-story-stage">
+                <div class="vela-story-tablet">
+                  <img src="assets/templates/nude_page_07.jpg" alt="Portada interior de la historia de Carlota" loading="lazy" />
+                </div>
+                <div class="vela-story-fan">
+                  <div class="vela-story-sheet">
+                    <img data-slide-left="nude" src="assets/templates/nude_page_01.jpg" alt="Página izquierda biografía Nude" loading="lazy" />
+                  </div>
+                  <div class="vela-story-sheet">
+                    <img data-slide-right="nude" src="assets/templates/nude_page_03.jpg" alt="Página derecha biografía Nude" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="vela-story-arrow" data-story-next="nude" aria-label="Páginas siguientes de Carlota">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="nude">Pliego 1 de 3 · Portada e índice editorial</p>
+          </div>
+        </article>
+
+        <!-- HISTORIA 2: JUAN (NOIR) -->
+        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="noir">
+          <div class="lg:col-span-5 lg:order-2 space-y-4">
+            <p class="font-serif italic text-base text-[#682D35]">Juan Román Ortiz · Colección Noir</p>
+            <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
+              El compañero de camino
+            </h3>
+            <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
+              Contrastes sobrios en tinta oscura, retrato editorial y estructura firme por décadas. Pensada para biografías llenas de oficio, criterio propio y aprendizaje familiar.
+            </p>
+            <p class="text-xs text-vela-topo tracking-wide pt-1">
+              Capítulos: Orígenes · El carácter · Una vida plena · Lo que permanece
+            </p>
+            <div class="pt-3">
+              <button type="button" data-open-story="noir"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
+                <span>Abrir edición interactiva Noir</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 lg:order-1 flex flex-col items-center">
+            <div class="vela-story-visor w-full">
+              <button type="button" class="vela-story-arrow" data-story-prev="noir" aria-label="Páginas anteriores de Juan">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              </button>
+
+              <div class="vela-story-stage">
+                <div class="vela-story-tablet">
+                  <img src="assets/templates/noir_page_01.jpg" alt="Portada colección Noir de Juan Román Ortiz" loading="lazy" />
+                </div>
+                <div class="vela-story-fan">
+                  <div class="vela-story-sheet">
+                    <img data-slide-left="noir" src="assets/templates/noir_page_02.jpg" alt="Página izquierda biografía Noir" loading="lazy" />
+                  </div>
+                  <div class="vela-story-sheet">
+                    <img data-slide-right="noir" src="assets/templates/noir_page_03.jpg" alt="Página derecha biografía Noir" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="vela-story-arrow" data-story-next="noir" aria-label="Páginas siguientes de Juan">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="noir">Pliego 1 de 3 · Ex libris y prólogo de Carlos Mendoza</p>
+          </div>
+        </article>
+
+        <!-- HISTORIA 3: CARMEN (LETTER) -->
+        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="letter">
+          <div class="lg:col-span-5 space-y-4">
+            <p class="font-serif italic text-base text-[#682D35]">Carmen · Colección Letter</p>
+            <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
+              Una vida hecha de pequeñas historias
+            </h3>
+            <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
+              Inspirada en el papel epistolario clásico y los álbumes anotados en casa. Perfecta cuando hijos y nietos envían voces y recuerdos desde distintas ciudades.
+            </p>
+            <p class="text-xs text-vela-topo tracking-wide pt-1">
+              Capítulos: La carta · Familia · Viajes y hallazgos · Para siempre
+            </p>
+            <div class="pt-3">
+              <button type="button" data-open-story="letter"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
+                <span>Abrir edición interactiva Letter</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col items-center">
+            <div class="vela-story-visor w-full">
+              <button type="button" class="vela-story-arrow" data-story-prev="letter" aria-label="Páginas anteriores de Carmen">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              </button>
+
+              <div class="vela-story-stage">
+                <div class="vela-story-tablet">
+                  <img src="assets/templates/letter_page_01.jpg" alt="Portada colección Letter de Carmen" loading="lazy" />
+                </div>
+                <div class="vela-story-fan">
+                  <div class="vela-story-sheet">
+                    <img data-slide-left="letter" src="assets/templates/letter_page_02.jpg" alt="Página izquierda biografía Letter" loading="lazy" />
+                  </div>
+                  <div class="vela-story-sheet">
+                    <img data-slide-right="letter" src="assets/templates/letter_page_03.jpg" alt="Página derecha biografía Letter" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="vela-story-arrow" data-story-next="letter" aria-label="Páginas siguientes de Carmen">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="letter">Pliego 1 de 3 · Ex libris y prólogo familiar</p>
+          </div>
+        </article>
+
+      </div>
+
+      <script>
+        (function () {
+          var slides = {
+            nude: [
+              { left: 'assets/templates/nude_page_01.jpg', right: 'assets/templates/nude_page_03.jpg', caption: 'Pliego 1 de 3 · Portada e índice editorial' },
+              { left: 'assets/templates/nude_page_04.jpg', right: 'assets/templates/nude_page_05.jpg', caption: 'Pliego 2 de 3 · Prólogo y nuestra familia' },
+              { left: 'assets/templates/nude_page_06.jpg', right: 'assets/templates/nude_page_08.jpg', caption: 'Pliego 3 de 3 · Línea vital y orígenes' }
+            ],
+            noir: [
+              { left: 'assets/templates/noir_page_02.jpg', right: 'assets/templates/noir_page_03.jpg', caption: 'Pliego 1 de 3 · Ex libris y prólogo de Carlos Mendoza' },
+              { left: 'assets/templates/noir_page_04.jpg', right: 'assets/templates/noir_page_05.jpg', caption: 'Pliego 2 de 3 · Nuestra familia y línea de vida' },
+              { left: 'assets/templates/noir_page_06.jpg', right: 'assets/templates/noir_page_08.jpg', caption: 'Pliego 3 de 3 · Orígenes e infancia' }
+            ],
+            letter: [
+              { left: 'assets/templates/letter_page_02.jpg', right: 'assets/templates/letter_page_03.jpg', caption: 'Pliego 1 de 3 · Ex libris y prólogo familiar' },
+              { left: 'assets/templates/letter_page_04.jpg', right: 'assets/templates/letter_page_05.jpg', caption: 'Pliego 2 de 3 · Álbum familiar y línea de la vida' },
+              { left: 'assets/templates/letter_page_07.jpg', right: 'assets/templates/letter_page_08.jpg', caption: 'Pliego 3 de 3 · Una infancia feliz y parte II' }
+            ]
+          };
+          var state = { nude: 0, noir: 0, letter: 0 };
+
+          function renderStory(key) {
+            var idx = state[key];
+            var item = slides[key][idx];
+            var leftEl = document.querySelector('[data-slide-left="' + key + '"]');
+            var rightEl = document.querySelector('[data-slide-right="' + key + '"]');
+            var capEl = document.querySelector('[data-story-caption="' + key + '"]');
+            if (leftEl) leftEl.src = item.left;
+            if (rightEl) rightEl.src = item.right;
+            if (capEl) capEl.textContent = item.caption;
+          }
+
+          document.querySelectorAll('[data-story-prev]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var k = btn.getAttribute('data-story-prev');
+              state[k] = (state[k] - 1 + slides[k].length) % slides[k].length;
+              renderStory(k);
+            });
+          });
+
+          document.querySelectorAll('[data-story-next]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var k = btn.getAttribute('data-story-next');
+              state[k] = (state[k] + 1) % slides[k].length;
+              renderStory(k);
+            });
+          });
+
+          document.querySelectorAll('[data-open-story]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var tpl = btn.getAttribute('data-open-story');
+              var stage = document.getElementById('vela-3d-stage') || document.querySelector('.vela-hero-archive');
+              if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              if (window.VelaArchive3D && typeof window.VelaArchive3D.openReader === 'function') {
+                window.VelaArchive3D.openReader(tpl);
+              }
+            });
+          });
+        })();
+      </script>
     </section>
 
     <!-- BANNER INFERIOR DE ACCIÓN -->
     <section class="py-20 bg-[#F1EBE2] border-t border-vela-linea text-center">
       <div class="max-w-3xl mx-auto px-6 space-y-6">
-        <span class="text-xs uppercase tracking-[0.2em] text-vela-topo font-semibold block">Tu historia, con tu estilo</span>
         <h2 class="font-serif text-3xl sm:text-4xl text-vela-chocolate font-normal">
           ¿Listo para empezar a escribir su legado?
         </h2>
         <p class="text-base text-vela-chocolate/80 font-light leading-relaxed">
-          Nuestra inteligencia artificial te acompañará paso a paso para reunir recuerdos familiares y convertirlos en una edición para siempre.
+          Nuestra inteligencia artificial te acompañará paso a paso para reunir recuerdos familiares y convertirlos en
+          una edición para siempre.
         </p>
         <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="precios.html" class="w-full sm:w-auto px-8 py-3.5 bg-vela-chocolate text-white text-sm font-medium rounded-sm hover:bg-black transition-all shadow-sm">
+          <a href="precios.html"
+            class="w-full sm:w-auto px-8 py-3.5 bg-vela-chocolate text-white text-sm font-medium rounded-sm hover:bg-black transition-all shadow-sm">
             Crear mi biografía
           </a>
-          <a href="como-funciona.html" class="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-vela-chocolate text-vela-chocolate text-sm font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
+          <a href="como-funciona.html"
+            class="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-vela-chocolate text-vela-chocolate text-sm font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
             Ver cómo funciona
           </a>
         </div>
@@ -418,127 +507,48 @@
   </main>
 
   <!-- FOOTER EDITORIAL -->
-  <footer class="bg-vela-marfil border-t border-vela-linea py-16 text-vela-chocolate">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div class="space-y-4 md:col-span-1">
-          <img src="assets/vela-logo.png" alt="VELA" class="h-8 w-auto object-contain" />
-          <p class="text-xs font-serif italic text-vela-topo">
-            Porque una vida merece ser contada.
-          </p>
-          <p class="text-xs text-vela-topo leading-relaxed">
-            Plataforma editorial digital para transformar memorias familiares en historias inolvidables.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="text-xs uppercase tracking-wider text-vela-topo font-semibold mb-4">Navegación</h4>
-          <ul class="space-y-2 text-xs text-vela-chocolate/80">
-            <li><a href="la-biografia.html" class="hover:text-vela-burdeos transition-colors">La biografía</a></li>
-            <li><a href="como-funciona.html" class="hover:text-vela-burdeos transition-colors">Cómo funciona</a></li>
-            <li><a href="ejemplos.html" class="hover:text-vela-burdeos transition-colors">Ejemplos</a></li>
-            <li><a href="precios.html" class="hover:text-vela-burdeos transition-colors">Precios</a></li>
-            <li><a href="nosotros.html" class="hover:text-vela-burdeos transition-colors">Nosotros</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-xs uppercase tracking-wider text-vela-topo font-semibold mb-4">Plantillas</h4>
-          <ul class="space-y-2 text-xs text-vela-chocolate/80">
-            <li><a href="#carlota" class="hover:text-vela-burdeos transition-colors">Nude · Cálida y atemporal</a></li>
-            <li><a href="#juan" class="hover:text-vela-burdeos transition-colors">Noir · Moderna y sobria</a></li>
-            <li><a href="#carmen" class="hover:text-vela-burdeos transition-colors">Letter · Clásica e íntima</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-xs uppercase tracking-wider text-vela-topo font-semibold mb-4">Contacto</h4>
-          <ul class="space-y-2 text-xs text-vela-chocolate/80">
-            <li><a href="mailto:hola@legadosvela.com" class="hover:text-vela-burdeos transition-colors">hola@legadosvela.com</a></li>
-            <li class="pt-2 text-[11px] text-vela-topo">Valencia & Madrid, España</li>
-          </ul>
-        </div>
+  <footer class="bg-[#1E1B18] text-vela-marfil/80 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-5 space-y-4">
+        <a href="index.html" class="inline-flex items-center gap-3 text-vela-marfil font-serif tracking-[0.22em] text-lg uppercase">
+          <img src="assets/vela-mark.png" alt="VELA" class="w-7 h-7 object-contain brightness-0 invert opacity-90" />
+          <span>VELA</span>
+        </a>
+        <p class="text-sm text-vela-marfil/65 font-light leading-relaxed max-w-sm">
+          Preservamos la voz, las anécdotas y el legado de las personas que más quieres en biografías editoriales cuidadas al detalle.
+        </p>
       </div>
 
-      <div class="pt-8 border-t border-vela-linea flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-vela-topo">
-        <p>© 2026 VELA. Todos los derechos reservados.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:underline">Aviso legal</a>
-          <a href="#" class="hover:underline">Privacidad</a>
-          <a href="#" class="hover:underline">Cookies</a>
-        </div>
+      <div class="md:col-span-3 space-y-3 text-sm">
+        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Explorar</p>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="la-biografia.html" class="hover:text-vela-marfil transition-colors">La biografía</a></li>
+          <li><a href="como-funciona.html" class="hover:text-vela-marfil transition-colors">Cómo funciona</a></li>
+          <li><a href="ejemplos.html" class="hover:text-vela-marfil transition-colors">Ejemplos</a></li>
+          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Precios</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-3 text-sm">
+        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Proyecto</p>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="nosotros.html" class="hover:text-vela-marfil transition-colors">Sobre nosotros</a></li>
+          <li><a href="https://www.legadosvela.com/login" class="hover:text-vela-marfil transition-colors">Iniciar sesión</a></li>
+          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Crear biografía</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-vela-marfil/50 font-light">
+        <p>© 2026 VELA · Legados para siempre.</p>
+        <p>Hecho para guardar historias reales en familia.</p>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT INTERACTIVO DE CARROUSEL EDITORIAL -->
-  <script>
-    // Páginas de cada plantilla
-    const slidesData = {
-      nude: [
-        { cover: 'assets/templates/nude_page_01.jpg', spread1: 'assets/templates/nude_page_02.jpg', spread2: 'assets/templates/nude_page_03.jpg' },
-        { cover: 'assets/templates/nude_page_04.jpg', spread1: 'assets/templates/nude_page_05.jpg', spread2: 'assets/templates/nude_page_06.jpg' },
-        { cover: 'assets/templates/nude_page_07.jpg', spread1: 'assets/templates/nude_page_08.jpg', spread2: 'assets/templates/nude_page_01.jpg' },
-        { cover: 'assets/templates/nude_page_03.jpg', spread1: 'assets/templates/nude_page_04.jpg', spread2: 'assets/templates/nude_page_05.jpg' }
-      ],
-      noir: [
-        { cover: 'assets/templates/noir_page_01.jpg', spread1: 'assets/templates/noir_page_02.jpg', spread2: 'assets/templates/noir_page_03.jpg' },
-        { cover: 'assets/templates/noir_page_04.jpg', spread1: 'assets/templates/noir_page_05.jpg', spread2: 'assets/templates/noir_page_06.jpg' },
-        { cover: 'assets/templates/noir_page_07.jpg', spread1: 'assets/templates/noir_page_08.jpg', spread2: 'assets/templates/noir_page_01.jpg' },
-        { cover: 'assets/templates/noir_page_03.jpg', spread1: 'assets/templates/noir_page_04.jpg', spread2: 'assets/templates/noir_page_05.jpg' }
-      ],
-      letter: [
-        { cover: 'assets/templates/letter_page_01.jpg', spread1: 'assets/templates/letter_page_02.jpg', spread2: 'assets/templates/letter_page_03.jpg' },
-        { cover: 'assets/templates/letter_page_04.jpg', spread1: 'assets/templates/letter_page_05.jpg', spread2: 'assets/templates/letter_page_06.jpg' },
-        { cover: 'assets/templates/letter_page_07.jpg', spread1: 'assets/templates/letter_page_08.jpg', spread2: 'assets/templates/letter_page_01.jpg' },
-        { cover: 'assets/templates/letter_page_03.jpg', spread1: 'assets/templates/letter_page_04.jpg', spread2: 'assets/templates/letter_page_05.jpg' }
-      ]
-    };
-
-    const currentSlide = { nude: 0, noir: 0, letter: 0 };
-
-    function renderSlide(template) {
-      const idx = currentSlide[template];
-      const data = slidesData[template][idx];
-      const coverEl = document.getElementById(`${template}-cover`);
-      const s1El = document.getElementById(`${template}-spread1`);
-      const s2El = document.getElementById(`${template}-spread2`);
-
-      if (coverEl) coverEl.src = data.cover;
-      if (s1El) s1El.src = data.spread1;
-      if (s2El) s2El.src = data.spread2;
-
-      // Actualizar dots
-      for (let i = 0; i < 4; i++) {
-        const dot = document.getElementById(`dot-${template}-${i}`);
-        if (dot) {
-          if (i === idx) {
-            dot.className = 'w-2.5 h-2.5 rounded-full bg-vela-chocolate transition-all';
-          } else {
-            dot.className = 'w-2 h-2 rounded-full bg-vela-linea transition-all';
-          }
-        }
-      }
-    }
-
-    function nextSlide(template) {
-      currentSlide[template] = (currentSlide[template] + 1) % slidesData[template].length;
-      renderSlide(template);
-    }
-
-    function prevSlide(template) {
-      currentSlide[template] = (currentSlide[template] - 1 + slidesData[template].length) % slidesData[template].length;
-      renderSlide(template);
-    }
-
-    // Toggle menu móvil
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-  </script>
+  <script type="module" src="assets/vela-3d-examples.js"></script>
+  <script src="assets/vela-ui.js" defer></script>
 </body>
+
 </html>

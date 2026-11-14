@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nosotros | VELA</title>
+  <title>Sobre nosotros | VELA — Guardamos las historias que más importan</title>
+  <meta name="description" content="Conoce a las personas detrás de VELA: nuestro propósito, nuestro origen familiar y el compromiso de transformar los recuerdos de tus seres queridos en un legado eterno." />
+  <link rel="icon" href="assets/vela-mark.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/vela-polish.css">
   <script>
     tailwind.config = {
       theme: {
@@ -32,20 +35,17 @@
       }
     }
   </script>
-  <style>
-    body { background-color: #F8F6F0; color: #26231F; }
-  </style>
 </head>
-<body class="font-sans antialiased selection:bg-vela-topo selection:text-white">
+<body class="bg-[#F8F6F0] text-vela-chocolate font-sans antialiased selection:bg-vela-topo selection:text-white vela-page-subpage">
 
-  <!-- HEADER CON LOGO OFICIAL -->
-  <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
+  <!-- HEADER UNIFICADO -->
+  <header class="vela-site-header sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="inicio.html" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3">
         <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80">
+      <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide font-medium text-vela-chocolate/80" aria-label="Navegación principal">
         <a href="la-biografia.html" class="hover:text-vela-chocolate transition-colors py-1">La biografía</a>
         <a href="como-funciona.html" class="hover:text-vela-chocolate transition-colors py-1">Cómo funciona</a>
         <a href="ejemplos.html" class="hover:text-vela-chocolate transition-colors py-1">Ejemplos</a>
@@ -54,50 +54,70 @@
       </nav>
 
       <div class="flex items-center gap-4">
+        <a href="https://www.legadosvela.com/login" class="hidden sm:inline-flex items-center text-[13px] font-medium text-vela-chocolate/75 hover:text-vela-chocolate transition-colors">
+          Iniciar sesión
+        </a>
         <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
           Crear biografía
         </a>
-        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú">
+        <button id="menu-btn" class="md:hidden p-2 text-vela-chocolate focus:outline-none" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
     </div>
 
+    <!-- MENÚ MÓVIL DESPLEGABLE -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-4">
-      <a href="la-biografia.html" class="block text-base text-vela-chocolate py-1">La biografía</a>
-      <a href="como-funciona.html" class="block text-base text-vela-chocolate py-1">Cómo funciona</a>
-      <a href="ejemplos.html" class="block text-base text-vela-chocolate py-1">Ejemplos</a>
-      <a href="precios.html" class="block text-base text-vela-chocolate py-1">Precios</a>
-      <a href="nosotros.html" class="block text-base font-semibold text-vela-burdeos py-1">Nosotros</a>
-      <div class="pt-2">
+      <nav class="flex flex-col gap-3 text-base font-medium text-vela-chocolate" aria-label="Menú móvil">
+        <a href="la-biografia.html" class="py-1 border-b border-vela-linea/60">La biografía</a>
+        <a href="como-funciona.html" class="py-1 border-b border-vela-linea/60">Cómo funciona</a>
+        <a href="ejemplos.html" class="py-1 border-b border-vela-linea/60">Ejemplos</a>
+        <a href="precios.html" class="py-1 border-b border-vela-linea/60">Precios</a>
+        <a href="nosotros.html" class="py-1 border-b border-vela-linea/60 text-vela-burdeos font-semibold">Nosotros</a>
+      </nav>
+      <div class="pt-2 flex flex-col gap-3">
+        <a href="https://www.legadosvela.com/login" class="block w-full text-center py-2.5 border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium rounded-sm">Iniciar sesión</a>
         <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- SECCIÓN 1: QUIÉNES SOMOS -->
+
+    <!-- SECCIÓN 1: HERO CÁLIDO EDITORIAL -->
     <section class="py-20 lg:py-28 bg-[#F8F6F0] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <div class="lg:col-span-6 space-y-6">
-            <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Origen y propósito</span>
-            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-vela-chocolate leading-tight">
-              Porque una vida merece <span class="italic text-vela-topo">ser contada</span>.
+          <div class="lg:col-span-7 space-y-6">
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.45rem] font-normal text-vela-chocolate leading-[1.1] tracking-tight">
+              Porque una vida merece <em class="italic text-vela-burdeos">ser contada</em> con todo el cariño del mundo.
             </h1>
-            <p class="text-lg text-vela-chocolate/85 font-light leading-relaxed">
-              Hay historias que no aparecen en los libros, pero que merecen ser recordadas. Las de nuestros padres, nuestros abuelos y las personas que han dado forma a quienes somos.
+            <p class="text-base sm:text-lg text-vela-chocolate/85 font-light leading-relaxed max-w-2xl">
+              Hay historias que nunca aparecerán en los libros de historia, pero que han cambiado la vida de quienes vinieron después. Las vidas de nuestros padres, de nuestras abuelas, de quienes sacaron adelante un hogar trabajando con las manos y dejando una huella imborrable.
             </p>
-            <p class="text-base text-vela-chocolate/75 font-light leading-relaxed">
-              VELA nace de una idea sencilla: ayudar a conservar esas vidas a través de los recuerdos y las voces de quienes las conocen.
+            <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed max-w-2xl">
+              VELA nace de una certeza compartida: la verdadera herencia familiar no son las cosas que dejamos, sino las anécdotas compartidas, las risas en la cocina y las voces que nos enseñaron a vivir.
             </p>
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <a href="precios.html" class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
+                Guardar una historia familiar
+              </a>
+              <a href="ejemplos.html" class="inline-flex items-center justify-center px-6 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-vela-crema transition-colors">
+                Ver biografías de ejemplo
+              </a>
+            </div>
           </div>
 
-          <!-- Fotografía familiar limpia de sobremesa -->
-          <div class="lg:col-span-6">
-            <div class="rounded-sm overflow-hidden border border-vela-linea shadow-xl">
-              <img src="assets/carmen-family-1200.webp" alt="Familia compartiendo recuerdos juntos" class="w-full h-auto object-cover" />
+          <!-- Fotografía familiar cálida con marco suave -->
+          <div class="lg:col-span-5">
+            <div class="rounded-sm overflow-hidden border border-vela-linea bg-white p-3 sm:p-4 shadow-[0_20px_50px_-20px_rgba(48,32,20,0.18)]">
+              <div class="aspect-[4/3] overflow-hidden rounded-[2px] bg-[#EAE1D3]">
+                <img src="assets/carmen-family-1200.webp" alt="Familia reunida compartiendo historias y fotografías antiguas" class="w-full h-full object-cover filter contrast-[1.02]" />
+              </div>
+              <p class="font-serif italic text-xs text-vela-chocolate/70 text-center mt-3 pt-2 border-t border-vela-linea/60">
+                Una sobremesa tranquila donde cada anécdota encuentra quien la escuche con cariño.
+              </p>
             </div>
           </div>
 
@@ -105,129 +125,166 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 2: POR QUÉ VELA -->
-    <section class="py-24 sm:py-32 bg-[#F1EBE2] border-b border-vela-linea">
-      <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-        <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">El símbolo</span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate">
-          Una pequeña luz puede conservar una vida entera.
-        </h2>
-        <div class="w-12 h-[1px] bg-vela-topo/40 mx-auto my-6"></div>
-        <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-          Una vela ilumina, acompaña y mantiene vivo un instante. Para nosotros representa esa luz que cada persona deja en quienes la rodean.
-        </p>
-        <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-          Queremos que las historias de una familia sigan encontrando a quienes todavía no han tenido la oportunidad de escucharlas.
-        </p>
+    <!-- SECCIÓN 2: MANIFIESTO ÍNTIMO / EL ORIGEN DE VELA -->
+    <section class="py-24 sm:py-28 bg-[#F1EBE2] border-b border-vela-linea">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="vela-manifesto-card text-center space-y-6">
+          <div class="w-10 h-10 mx-auto rounded-full bg-[#682D35] text-vela-marfil flex items-center justify-center shadow-sm" aria-hidden="true">
+            <img src="assets/vela-mark.png" alt="" class="w-5 h-5 object-contain brightness-0 invert" />
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl text-vela-chocolate font-normal leading-snug">
+            «Un domingo de otoño comprendimos lo que estábamos a punto de perder.»
+          </h2>
+          <div class="w-16 h-[1px] bg-vela-burdeos/30 mx-auto"></div>
+          <div class="space-y-4 max-w-2xl mx-auto text-sm sm:text-base text-vela-chocolate/85 font-light leading-relaxed">
+            <p>
+              Nos dimos cuenta de que conocíamos los nombres de nuestros bisabuelos, pero apenas sabíamos qué les hacía reír cuando eran jóvenes, cómo se enamoraron o qué consejo le dieron a nuestros padres el día que salieron de casa.
+            </p>
+            <p>
+              Comprendimos una verdad silenciosa y dolorosa: <em>cuando una persona mayor se va sin haber guardado su historia, se apaga una biblioteca entera que jamás podrá volver a abrirse.</em>
+            </p>
+            <p class="font-serif italic text-base sm:text-lg text-[#682D35] pt-2">
+              Creamos VELA para que ninguna familia vuelva a sentir que llegó tarde a escuchar. Para que cualquier hijo o nieto pueda acercarle un teléfono a sus padres y decirles: «Cuéntame otra vez cómo fue, que quiero guardarlo para siempre».
+            </p>
+          </div>
+          <p class="text-xs tracking-wider uppercase text-vela-topo font-medium pt-2">
+            Francesc, José María y Francisco de Paula · Fundadores de VELA
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN DEL EQUIPO REAL (LOS TRES FUNDADORES) -->
+    <!-- SECCIÓN 3: EL EQUIPO HUMANO (LOS TRES FUNDADORES CON CALIDEZ Y VOCACIÓN) -->
     <section class="py-24 sm:py-32 bg-[#F8F6F0] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">El equipo</span>
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mt-3 mb-4">
-            Tres perfiles para una historia completa.
+        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20 space-y-3">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate">
+            Quiénes cuidamos cada historia.
           </h2>
           <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
-            Visión, tecnología y relación humana. VELA une las tres sensibilidades para convertir cada vida en un legado memorable y protegido.
+            Detrás de cada página maquetada no hay una plataforma distante, sino tres personas comprometidas con tratar cada memoria ajena con la misma devoción y respeto con la que cuidarían la de su propia familia.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           
           <!-- Francesc Osca Rangel -->
-          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between group">
-            <div>
-              <div class="w-full aspect-square rounded-sm overflow-hidden mb-6 bg-[#EFECE6] border border-vela-linea">
-                <img src="assets/team/francesc-osca-rangel.jpg" alt="Francesc Osca Rangel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <article class="vela-founder-card flex flex-col justify-between">
+            <div class="space-y-5">
+              <div class="vela-founder-portrait">
+                <img src="assets/team/francesc-osca-rangel.jpg" alt="Francesc Osca Rangel" />
               </div>
-              <span class="text-xs font-semibold uppercase tracking-wider text-vela-burdeos block mb-1">Fundador · Pasión por la historia</span>
-              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Francesc Osca Rangel</h3>
-              <p class="text-xs text-vela-chocolate/75 leading-relaxed font-light mb-4">
-                Estudiante de ADE en la Universitat de València, Francesc inició VELA desde una convicción sencilla: las historias de la gente común, de los héroes familiares, merecen una forma de no desvanecerse en el olvido. Su mirada une estrategia, curiosidad y una pasión profunda por descubrir cómo una vida se convierte en legado.
-              </p>
+              <div>
+                <p class="font-serif italic text-sm text-vela-burdeos mb-1">Fundador · Custodia del legado</p>
+                <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Francesc Osca Rangel</h3>
+                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                  Creció en Valencia fascinado por las historias que sus abuelos contaban al terminar los almuerzos de domingo. De ellos aprendió que cada anécdota dicha al paso encierra una dignidad profunda. Impulsó VELA con una misión clara: devolver a las personas mayores el lugar de honor que merecen en la memoria de sus familias.
+                </p>
+              </div>
+              <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
+                «No hay vidas comunes; solo vidas que nadie se sentó a escuchar con el tiempo y el cariño suficientes.»
+              </blockquote>
             </div>
-            <a href="https://www.linkedin.com/in/francesc-osca-rangel/" target="_blank" rel="noreferrer" class="text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
-              Ver LinkedIn →
-            </a>
-          </div>
+            <div class="pt-5 mt-5 border-t border-vela-linea/60 flex items-center justify-between text-xs">
+              <span class="text-vela-topo">Valencia, España</span>
+              <a href="https://www.linkedin.com/in/francesc-osca-rangel/" target="_blank" rel="noreferrer" class="text-vela-chocolate hover:text-vela-burdeos transition-colors font-medium">
+                Conectar en LinkedIn →
+              </a>
+            </div>
+          </article>
 
           <!-- José María Núñez Mejías -->
-          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between group">
-            <div>
-              <div class="w-full aspect-square rounded-sm overflow-hidden mb-6 bg-[#EFECE6] border border-vela-linea">
-                <img src="assets/team/jose-maria-nunez-mejias.jpg" alt="José María Núñez Mejías" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <article class="vela-founder-card flex flex-col justify-between">
+            <div class="space-y-5">
+              <div class="vela-founder-portrait">
+                <img src="assets/team/jose-maria-nunez-mejias.jpg" alt="José María Núñez Mejías" />
               </div>
-              <span class="text-xs font-semibold uppercase tracking-wider text-vela-burdeos block mb-1">Tecnología · IA y producto</span>
-              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">José María Núñez Mejías</h3>
-              <p class="text-xs text-vela-chocolate/75 leading-relaxed font-light mb-4">
-                Jurista y perfil técnico especializado en inteligencia artificial aplicada. José María convierte una idea delicada en una experiencia segura y sencilla: una tecnología capaz de ordenar voces, fotografías y recuerdos sin borrar la humanidad de quien los comparte.
-              </p>
+              <div>
+                <p class="font-serif italic text-sm text-vela-burdeos mb-1">Tecnología humana & Privacidad</p>
+                <h3 class="font-serif text-2xl text-vela-chocolate mb-3">José María Núñez Mejías</h3>
+                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                  Jurista y perfil técnico especializado en inteligencia artificial aplicada con criterio ético. José María se asegura de que la tecnología en VELA trabaje siempre en silencio: ordenando audios y notas dispersas sin alterar un ápice la forma de hablar, los silencios y la emoción de quien los comparte.
+                </p>
+              </div>
+              <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
+                «La tecnología más valiosa no es la que deslumbra, sino la que sabe apartarse para dejar brillar la voz humana.»
+              </blockquote>
             </div>
-            <a href="https://es.linkedin.com/in/jos%C3%A9mar%C3%ADan%C3%BA%C3%B1ezmej%C3%ADas" target="_blank" rel="noreferrer" class="text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
-              Ver LinkedIn →
-            </a>
-          </div>
+            <div class="pt-5 mt-5 border-t border-vela-linea/60 flex items-center justify-between text-xs">
+              <span class="text-vela-topo">Tecnología & Ética</span>
+              <a href="https://es.linkedin.com/in/jos%C3%A9mar%C3%ADan%C3%BA%C3%B1ezmej%C3%ADas" target="_blank" rel="noreferrer" class="text-vela-chocolate hover:text-vela-burdeos transition-colors font-medium">
+                Conectar en LinkedIn →
+              </a>
+            </div>
+          </article>
 
           <!-- Francisco de Paula Marín -->
-          <div class="bg-white p-8 rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between group">
-            <div>
-              <div class="w-full aspect-square rounded-sm overflow-hidden mb-6 bg-[#EFECE6] border border-vela-linea">
-                <img src="assets/team/francisco-de-paula-marin.jpg" alt="Francisco de Paula Marín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <article class="vela-founder-card flex flex-col justify-between">
+            <div class="space-y-5">
+              <div class="vela-founder-portrait">
+                <img src="assets/team/francisco-de-paula-marin.jpg" alt="Francisco de Paula Marín" />
               </div>
-              <span class="text-xs font-semibold uppercase tracking-wider text-vela-burdeos block mb-1">Relación · Confianza y crecimiento</span>
-              <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Francisco de Paula Marín</h3>
-              <p class="text-xs text-vela-chocolate/75 leading-relaxed font-light mb-4">
-                Abogado, docente y comunicador nato. Francisco de Paula aporta la escucha, la claridad y la confianza necesarias para acompañar a cada familia, explicar VELA sin artificios y ayudar a que cada historia llegue a quienes deben conocerla.
-              </p>
+              <div>
+                <p class="font-serif italic text-sm text-vela-burdeos mb-1">Acompañamiento & Confianza familiar</p>
+                <h3 class="font-serif text-2xl text-vela-chocolate mb-3">Francisco de Paula Marín</h3>
+                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                  Abogado, docente y comunicador con una vocación innata por la escucha activa y la palabra sincera. Francisco acompaña a cada familia desde el primer contacto, resolviendo dudas con cercanía y asegurando que regalar una biografía sea una experiencia serena, emocionante y llena de ternura.
+                </p>
+              </div>
+              <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
+                «Entregar una biografía es abrazar a quien quieres a través de sus propias palabras.»
+              </blockquote>
             </div>
-            <a href="https://www.linkedin.com/in/franciscodepaulamarin" target="_blank" rel="noreferrer" class="text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
-              Ver LinkedIn →
-            </a>
-          </div>
+            <div class="pt-5 mt-5 border-t border-vela-linea/60 flex items-center justify-between text-xs">
+              <span class="text-vela-topo">Atención a familias</span>
+              <a href="https://www.linkedin.com/in/franciscodepaulamarin" target="_blank" rel="noreferrer" class="text-vela-chocolate hover:text-vela-burdeos transition-colors font-medium">
+                Conectar en LinkedIn →
+              </a>
+            </div>
+          </article>
 
         </div>
 
       </div>
     </section>
 
-    <!-- SECCIÓN 3: NUESTROS VALORES -->
+    <!-- SECCIÓN 4: NUESTROS PILARES FAMILIARES -->
     <section class="py-24 sm:py-32 bg-[#F1EBE2] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         
-        <div class="max-w-3xl mb-16 sm:mb-20">
-          <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Nuestros pilares</span>
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mt-3 mb-4">
+        <div class="max-w-3xl mb-16 sm:mb-20 space-y-3">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate">
             Lo que importa permanece.
           </h2>
+          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+            Tres principios innegociables que guían cada línea, cada audio y cada página que imprimimos o guardamos.
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           
-          <div class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm space-y-4">
+          <div class="p-8 sm:p-9 bg-white/90 rounded-sm border border-vela-linea shadow-sm space-y-4">
             <span class="font-serif text-3xl font-light text-vela-burdeos">01</span>
-            <h3 class="font-serif text-2xl text-vela-chocolate">Memoria</h3>
-            <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
-              Conservar lo vivido para que no se pierda con el tiempo.
+            <h3 class="font-serif text-2xl text-vela-chocolate">La memoria no es una lista de fechas</h3>
+            <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
+              Es el aroma del café recién hecho al alba, la primera nómina guardada con orgullo en un sobre, una mirada cómplice antes de salir de viaje. Rescatamos los pequeños detalles cotidianos que de verdad despiertan una emoción viva al leerlos.
             </p>
           </div>
 
-          <div class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm space-y-4">
+          <div class="p-8 sm:p-9 bg-white/90 rounded-sm border border-vela-linea shadow-sm space-y-4">
             <span class="font-serif text-3xl font-light text-vela-burdeos">02</span>
-            <h3 class="font-serif text-2xl text-vela-chocolate">Familia</h3>
-            <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
-              Reunir las voces de quienes han compartido una historia.
+            <h3 class="font-serif text-2xl text-vela-chocolate">Toda vida es un legado extraordinario</h3>
+            <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
+              No hace falta haber salido en los periódicos ni haber gobernado un país. Sacar adelante una familia, aprender un oficio con constancia o enseñar a montar en bici a un nieto son gestas profundas que merecen ser conservadas con el máximo esmero.
             </p>
           </div>
 
-          <div class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm space-y-4">
+          <div class="p-8 sm:p-9 bg-white/90 rounded-sm border border-vela-linea shadow-sm space-y-4">
             <span class="font-serif text-3xl font-light text-vela-burdeos">03</span>
-            <h3 class="font-serif text-2xl text-vela-chocolate">Respeto</h3>
-            <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
-              Escuchar, ordenar y contar sin sustituir la voz de sus protagonistas.
+            <h3 class="font-serif text-2xl text-vela-chocolate">Respeto absoluto a la voz original</h3>
+            <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
+              Jamás alteramos las expresiones ni los giros que te definen. Conservamos tus palabras, tus pausas y tu cadencia natural, para que dentro de cincuenta años tu familia te reconozca con exactitud y calidez al pasar cada pliego.
             </p>
           </div>
 
@@ -236,33 +293,27 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 4: TECNOLOGÍA CON SENSIBILIDAD (Con imagen editorial limpia de gran calidad de persona mayor compartiendo recuerdos) -->
+    <!-- SECCIÓN 5: TECNOLOGÍA CON SENSIBILIDAD -->
     <section class="py-24 sm:py-32 bg-[#F8F6F0] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           <div class="lg:col-span-6 space-y-6">
-            <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Nuestra visión</span>
             <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-tight">
               La tecnología nos ayuda.<br/>
-              <span class="italic text-vela-topo">Las personas cuentan la historia.</span>
+              <em class="italic text-vela-burdeos">Las personas cuentan la historia.</em>
             </h2>
             <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-              VELA utiliza inteligencia artificial para facilitar la recopilación y organización de los recuerdos. Pero la historia pertenece a sus protagonistas, y son las personas quienes revisan y deciden cómo quieren contarla.
+              VELA utiliza inteligencia artificial para ordenar recuerdos dispersos, transcribir audios con fidelidad y proponer preguntas inspiradoras. Pero el alma del libro pertenece por entero a quien la vivió: cada capítulo se revisa con calma y solo se cierra cuando la familia da su visto bueno.
             </p>
-            <div class="p-4 bg-white rounded border-l-2 border-vela-burdeos text-xs text-vela-chocolate italic font-serif shadow-sm">
-              "Cada recuerdo tiene una voz. Nuestra labor es ayudar a conservarla."
+            <div class="p-5 bg-white rounded-sm border-l-2 border-vela-burdeos text-sm text-vela-chocolate italic font-serif shadow-sm">
+              «Cada recuerdo tiene una voz irrepetible. Nuestra labor no es inventar nada, sino ayudar a conservarla intacta.»
             </div>
           </div>
 
-          <!-- Fotografía editorial de alta calidad (carmen-review-900.webp) limpia y sin textos superpuestos -->
           <div class="lg:col-span-6">
-            <div class="rounded-sm overflow-hidden border border-vela-linea shadow-xl bg-white p-3">
-              <img src="assets/tecnologia-sensibilidad.webp" alt="Persona mayor compartiendo recuerdos familiares en calma" class="w-full h-auto object-cover rounded-sm" />
-              <div class="pt-3 px-1 flex justify-between text-xs text-vela-topo font-light">
-                <span>Fotografía documental familiar</span>
-                <span class="font-serif italic text-vela-burdeos">Sensibilidad y memoria</span>
-              </div>
+            <div class="rounded-sm overflow-hidden border border-vela-linea shadow-lg">
+              <img src="assets/tecnologia-sensibilidad.webp" alt="Conversación cercana grabando recuerdos en familia con VELA" class="w-full h-auto object-cover" />
             </div>
           </div>
 
@@ -270,76 +321,69 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 5: INVITACIÓN FINAL -->
+    <!-- SECCIÓN 6: CIERRE CÁLIDO EMOCIONAL -->
     <section class="py-24 sm:py-32 bg-vela-chocolate text-white text-center">
       <div class="max-w-3xl mx-auto px-6 space-y-6">
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal">
-          Algunas historias merecen llegar más lejos.
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight">
+          Toda familia tiene una historia que merece no ser olvidada.
         </h2>
-        <p class="text-base text-white/75 font-light leading-relaxed max-w-xl mx-auto">
-          Empieza a conservar la suya.
+        <p class="text-base sm:text-lg text-white/75 font-light leading-relaxed max-w-xl mx-auto">
+          No dejes que el tiempo borre las palabras de quienes más quieres. Empieza hoy mismo a construir un recuerdo para siempre.
         </p>
-        <div class="pt-4">
-          <a href="precios.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-vela-crema text-vela-chocolate text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white transition-all shadow-lg">
-            Crear biografía →
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+          <a href="precios.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-vela-chocolate font-medium text-sm rounded-sm hover:bg-vela-marfil transition-all shadow-md">
+            Ver planes desde 25 €
+          </a>
+          <a href="como-funciona.html" class="inline-flex items-center justify-center px-8 py-3.5 border border-white/40 text-white font-medium text-sm rounded-sm hover:bg-white/10 transition-all">
+            Descubrir cómo funciona
           </a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- FOOTER GLOBAL CON LOGO OFICIAL -->
-  <footer class="bg-[#1E1B18] text-vela-marfil py-16 border-t border-[#2D2925]">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
-        <div class="md:col-span-5 space-y-4">
-          <img src="assets/vela-logo.png" alt="VELA" class="h-8 w-auto brightness-200 contrast-125" />
-          <p class="text-xs uppercase tracking-widest text-vela-topo">Porque una vida merece ser contada</p>
-          <p class="text-sm text-vela-marfil/60 font-light max-w-sm pt-2">
-            Plataforma editorial para transformar vivencias familiares en un legado íntimo, digital y eterno.
-          </p>
-        </div>
-
-        <div class="md:col-span-4 grid grid-cols-2 gap-8 text-xs font-light">
-          <div class="space-y-3">
-            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Navegación</span>
-            <a href="la-biografia.html" class="block hover:text-white">La biografía</a>
-            <a href="como-funciona.html" class="block hover:text-white">Cómo funciona</a>
-            <a href="ejemplos.html" class="block hover:text-white">Ejemplos</a>
-            <a href="precios.html" class="block hover:text-white">Precios</a>
-            <a href="nosotros.html" class="block hover:text-white">Nosotros</a>
-          </div>
-          <div class="space-y-3">
-            <span class="uppercase tracking-widest text-vela-topo font-normal block mb-4">Legal</span>
-            <a href="#" class="block hover:text-white">Aviso legal</a>
-            <a href="#" class="block hover:text-white">Privacidad</a>
-            <a href="#" class="block hover:text-white">Cookies</a>
-            <a href="#" class="block hover:text-white">Términos de servicio</a>
-          </div>
-        </div>
-
-        <div class="md:col-span-3 space-y-4">
-          <span class="text-xs uppercase tracking-widest text-vela-topo block font-normal">Presentación física</span>
-          <p class="text-xs text-vela-marfil/70 font-light leading-relaxed">
-            Envío a toda España del sobre marfil con sello lacrado y tarjeta de dedicatoria personalizada con código QR.
-          </p>
-          <a href="precios.html" class="inline-block text-xs text-vela-crema border-b border-vela-crema/40 pb-0.5 hover:border-white">Ver opciones de biografías →</a>
-        </div>
+  <!-- FOOTER UNIFICADO EDITORIAL OSCURO -->
+  <footer class="bg-[#1E1B18] text-vela-marfil/80 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-5 space-y-4">
+        <a href="index.html" class="inline-flex items-center gap-3 text-vela-marfil font-serif tracking-[0.22em] text-lg uppercase">
+          <img src="assets/vela-mark.png" alt="VELA" class="w-7 h-7 object-contain brightness-0 invert opacity-90" />
+          <span>VELA</span>
+        </a>
+        <p class="text-sm text-vela-marfil/65 font-light leading-relaxed max-w-sm">
+          Preservamos la voz, las anécdotas y el legado de las personas que más quieres en biografías editoriales cuidadas al detalle.
+        </p>
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-vela-marfil/40 font-light">
-        <p>© 2026 VELA. Todos los derechos reservados.</p>
-        <p class="mt-2 sm:mt-0">Diseñado con sensibilidad editorial y tipográfica.</p>
+      <div class="md:col-span-3 space-y-3 text-sm">
+        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Explorar</p>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="la-biografia.html" class="hover:text-vela-marfil transition-colors">La biografía</a></li>
+          <li><a href="como-funciona.html" class="hover:text-vela-marfil transition-colors">Cómo funciona</a></li>
+          <li><a href="ejemplos.html" class="hover:text-vela-marfil transition-colors">Ejemplos</a></li>
+          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Precios</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4 space-y-3 text-sm">
+        <p class="text-xs uppercase tracking-[0.18em] text-vela-marfil/45 font-medium">Proyecto</p>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="nosotros.html" class="hover:text-vela-marfil transition-colors">Sobre nosotros</a></li>
+          <li><a href="https://www.legadosvela.com/login" class="hover:text-vela-marfil transition-colors">Iniciar sesión</a></li>
+          <li><a href="precios.html" class="hover:text-vela-marfil transition-colors">Crear biografía</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-vela-marfil/50 font-light">
+        <p>© 2026 VELA · Legados para siempre.</p>
+        <p>Hecho para guardar historias reales en familia.</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  </script>
+  <script src="assets/vela-ui.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/vela-polish.css">
+  <link rel="icon" href="assets/vela-mark.png" type="image/png">
   <script>
     tailwind.config = {
       theme: {
@@ -41,7 +43,7 @@
   <!-- HEADER CON LOGO OFICIAL -->
   <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="inicio.html" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3">
         <img src="assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto object-contain" />
       </a>
 
@@ -54,6 +56,9 @@
       </nav>
 
       <div class="flex items-center gap-4">
+        <a href="https://www.legadosvela.com/login" class="hidden sm:inline-flex items-center text-[13px] font-medium text-vela-chocolate/75 hover:text-vela-chocolate transition-colors">
+          Iniciar sesión
+        </a>
         <a href="precios.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-sm bg-vela-chocolate text-vela-marfil text-[13px] font-medium hover:bg-black transition-all shadow-sm">
           Crear biografía
         </a>
@@ -70,6 +75,7 @@
       <a href="precios.html" class="block text-base font-semibold text-vela-burdeos py-1">Precios</a>
       <a href="nosotros.html" class="block text-base text-vela-chocolate py-1">Nosotros</a>
       <div class="pt-2">
+        <a href="https://www.legadosvela.com/login" class="block w-full text-center py-2.5 border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium rounded-sm mb-3">Iniciar sesión</a>
         <a href="precios.html" class="block w-full text-center py-3 bg-vela-chocolate text-white text-sm font-medium rounded-sm">Crear biografía</a>
       </div>
     </div>
@@ -79,7 +85,6 @@
     <!-- ENCABEZADO -->
     <section class="py-20 lg:py-24 bg-[#F8F6F0]">
       <div class="max-w-4xl mx-auto px-6 text-center">
-        <span class="text-xs uppercase tracking-[0.2em] text-vela-topo">Transparencia y claridad</span>
         <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-vela-chocolate mt-3 mb-6">
           Una vida única. <span class="italic text-vela-topo">Tres formas de contarla.</span>
         </h1>
@@ -92,7 +97,7 @@
     <!-- TARJETAS DE PRECIOS CON LAS FOTOGRAFÍAS EXACTAS DE TABLET + SOBRE QR -->
     <section class="pb-24 sm:pb-32 bg-[#F8F6F0]">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
           
           <!-- PLAN 1: ESENCIAL (25 €) -->
           <div class="bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between overflow-hidden group">
@@ -134,7 +139,7 @@
                 </ul>
               </div>
 
-              <a href="https://www.legadosvela.com/login" class="block w-full py-3 text-center border border-vela-chocolate/30 text-vela-chocolate text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
+              <a href="https://www.legadosvela.com/pago?plan=mini" class="block w-full py-3 text-center border border-vela-chocolate/30 text-vela-chocolate text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
                 Elegir Esencial
               </a>
             </div>
@@ -142,9 +147,6 @@
 
           <!-- PLAN 2: MEMORIA (30 € — MÁS ELEGIDA) -->
           <div class="bg-white rounded-sm border-2 border-vela-burdeos shadow-2xl relative flex flex-col justify-between overflow-hidden transform md:-translate-y-2 group">
-            <div class="absolute top-3 right-3 z-10 bg-vela-burdeos text-white text-[10px] uppercase tracking-widest font-semibold px-3 py-1 rounded shadow-md">
-              Más elegida
-            </div>
 
             <!-- Fotografía exacta de Tablet + Sobre Memoria -->
             <div class="h-56 overflow-hidden bg-[#FAF8F5] border-b border-vela-linea p-4 flex items-center justify-center">
@@ -153,7 +155,7 @@
 
             <div class="p-8 flex-1 flex flex-col justify-between">
               <div>
-                <span class="text-xs uppercase tracking-wider text-vela-burdeos font-semibold block mb-1">Biografía Memoria</span>
+                <p class="font-serif italic text-sm text-vela-burdeos mb-1">Opción más elegida · Biografía Memoria · Hasta 50 páginas</p>
                 <div class="flex items-baseline gap-1 mb-4">
                   <span class="font-serif text-5xl font-light text-vela-chocolate">30 €</span>
                   <span class="text-xs text-vela-topo font-light">pago único</span>
@@ -184,7 +186,7 @@
                 </ul>
               </div>
 
-              <a href="https://www.legadosvela.com/login" class="block w-full py-3.5 text-center bg-vela-chocolate text-white text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-black transition-all shadow-md">
+              <a href="https://www.legadosvela.com/pago?plan=estandar" class="block w-full py-3.5 text-center bg-vela-chocolate text-white text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-black transition-all shadow-md">
                 Elegir Memoria
               </a>
             </div>
@@ -230,7 +232,7 @@
                 </ul>
               </div>
 
-              <a href="https://www.legadosvela.com/login" class="block w-full py-3 text-center border border-vela-chocolate/30 text-vela-chocolate text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
+              <a href="https://www.legadosvela.com/pago?plan=amplia" class="block w-full py-3 text-center border border-vela-chocolate/30 text-vela-chocolate text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-vela-chocolate hover:text-white transition-all">
                 Elegir Legado
               </a>
             </div>
@@ -240,7 +242,7 @@
 
         <!-- CONDICIONES CLARAS -->
         <div class="mt-16 p-8 bg-[#F1EBE2] rounded-sm border border-vela-linea">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-vela-chocolate/80">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 text-xs text-vela-chocolate/80">
             <div>
               <h4 class="font-serif text-sm font-semibold text-vela-chocolate mb-1">Cualquier estilo editorial</h4>
               <p class="font-light leading-relaxed">Los tres planes te permiten elegir libremente entre Letter, Noir o Nude según la personalidad de la persona.</p>
@@ -257,13 +259,19 @@
         </div>
 
         <!-- SECCIÓN SEPARADA: PRÓXIMAMENTE EDICIÓN IMPRESA -->
-        <div class="mt-12 p-8 bg-white rounded-sm border border-dashed border-vela-topo/40 text-center max-w-2xl mx-auto space-y-3">
-          <span class="text-[11px] uppercase tracking-widest text-vela-burdeos font-semibold">En desarrollo artesanal</span>
-          <h3 class="font-serif text-2xl text-vela-chocolate">Próximamente: edición impresa</h3>
-          <p class="text-xs text-vela-chocolate/75 font-light leading-relaxed">
-            Estamos perfeccionando la encuadernación en tapa dura y papel verjurado para quienes deseen sumar un ejemplar físico impreso a su biografía digital. Estará disponible como ampliación opcional próximamente.
-          </p>
-          <span class="text-[11px] text-vela-topo italic block pt-1">Actualmente todos los planes comercializados incluyen biografía digital + sobre físico con QR.</span>
+        <div class="mt-14 max-w-4xl mx-auto bg-white rounded-sm border border-vela-linea shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center">
+          <div class="md:col-span-5 h-56 md:h-full bg-[#FAF8F5] border-b md:border-b-0 md:border-r border-vela-linea">
+            <img src="assets/planes/plan-fisica.webp" alt="Edición impresa en tapa dura y papel verjurado VELA" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="md:col-span-7 p-7 sm:p-9 space-y-3 text-left">
+            <h3 class="font-serif text-2xl sm:text-[1.7rem] text-vela-chocolate leading-snug">Próximamente: edición impresa en tapa dura</h3>
+            <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
+              Estamos ultimando la encuadernación artesanal en tela y papel verjurado para quienes deseen sumar ejemplares impresos de biblioteca a su biografía digital.
+            </p>
+            <p class="text-xs text-vela-topo font-light pt-1">
+              Todos los planes actuales ya incluyen la biografía digital completa y el sobre físico lacrado con tarjeta QR.
+            </p>
+          </div>
         </div>
 
       </div>
@@ -317,11 +325,7 @@
   </footer>
 
   <script>
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
   </script>
+  <script src="assets/vela-ui.js" defer></script>
 </body>
 </html>
