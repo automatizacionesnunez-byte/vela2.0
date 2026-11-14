@@ -85,7 +85,7 @@
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          <!-- Izquierda: Escena editorial construida con iPad + Libreto con modelos reales + Sobre real con lacre y QR -->
+          <!-- Izquierda: Escena editorial cálida de estudio (estilo mesa de madera con luz natural) -->
           <div class="lg:col-span-6">
             <div class="vela-bio-stage">
               <!-- Controles de modelos y vista del sobre -->
@@ -108,10 +108,19 @@
                 </button>
               </div>
 
+              <!-- Composición cálida sobre mesa de madera de estudio -->
               <div class="vela-bio-stage__composition">
-                <!-- iPad inclinado con pliego editorial real y dinámico -->
+                <!-- Mini polaroids antiguas de recuerdo en la mesa -->
+                <div class="vela-stage-polaroid vela-stage-polaroid--1" aria-hidden="true">
+                  <img src="assets/carmen-hero-1600.webp" alt="" />
+                </div>
+                <div class="vela-stage-polaroid vela-stage-polaroid--2" aria-hidden="true">
+                  <img src="assets/carmen-family-1200.webp" alt="" />
+                </div>
+
+                <!-- iPad inclinado con pliego editorial real, dinámico y 100% legible -->
                 <div class="vela-css-ipad">
-                  <div class="vela-css-ipad__screen">
+                  <div class="vela-css-ipad__screen" id="stageIpadScreen">
                     <span class="vela-css-ipad__num" id="stageIpadNum">01</span>
                     <h2 class="vela-css-ipad__chapter" id="stageIpadChapter">Orígenes</h2>
                     <p class="vela-css-ipad__subtitle" id="stageIpadSubtitle">Una vida llena de pequeñas grandes historias</p>
@@ -123,17 +132,17 @@
                   </div>
                 </div>
 
-                <!-- Portada física impresa del modelo seleccionado -->
+                <!-- Portada física impresa del modelo seleccionado (apoyada abajo a la izquierda sin tapar texto) -->
                 <div class="vela-css-booklet" aria-label="Portada editorial del modelo">
                   <img id="stageBookletImg" src="assets/templates/letter_page_01.jpg" alt="Portada del modelo Letter de Carmen Rodríguez Sánchez" class="transition-opacity duration-200" />
                 </div>
 
-                <!-- Fotografía real del Sobre con Lacre y tarjeta QR física -->
+                <!-- Fotografía real del Sobre con Lacre y tarjeta QR física (apoyada abajo a la derecha) -->
                 <div class="vela-real-envelope-set" id="velaRealEnvelopeContainer" title="Haz clic para alternar entre sobre cerrado con lacre y dedicatoria abierta" aria-label="Sobre VELA real en papel verjurado con sello de lacre rojo y tarjeta física con QR">
                   <img id="velaRealEnvelopeImg" src="assets/sobre-lacre-cerrado-transparente.webp" alt="Sobre VELA cerrado con sello de lacre rojo burdeos y tarjeta con código QR" class="transition-opacity duration-200" />
                 </div>
               </div>
-              <p class="vela-bio-stage__caption">Biografía digital &nbsp;+&nbsp; libreto editorial &nbsp;+&nbsp; sobre físico con lacre y QR</p>
+              <p class="vela-bio-stage__caption">Biografía digital en pantalla &nbsp;+&nbsp; libro impreso de recuerdo &nbsp;+&nbsp; sobre físico con lacre</p>
             </div>
           </div>
 
@@ -652,6 +661,7 @@
         noir: {
           cover: 'assets/templates/noir_page_01.jpg',
           alt: 'Portada del modelo Noir de Juan Román',
+          theme: 'is-noir',
           num: '01',
           chapter: 'Infancia',
           subtitle: 'El compañero de camino',
@@ -660,8 +670,9 @@
           footer: '— Colección Noir VELA · Modelo Noir —'
         },
         nude: {
-          cover: 'assets/templates/nude_page_01.jpg',
+          cover: 'assets/templates/nude_cover_warm.jpg',
           alt: 'Portada del modelo Nude de Carlota Medina García',
+          theme: 'is-nude',
           num: '01',
           chapter: 'Orígenes',
           subtitle: 'Una familia entre dos mundos',
@@ -674,6 +685,7 @@
       // Selector de modelos en el Hero
       const modelBtns = document.querySelectorAll('.vela-stage-model-btn');
       const bookletImg = document.getElementById('stageBookletImg');
+      const ipadScreen = document.getElementById('stageIpadScreen');
       const ipadNum = document.getElementById('stageIpadNum');
       const ipadChapter = document.getElementById('stageIpadChapter');
       const ipadSubtitle = document.getElementById('stageIpadSubtitle');
@@ -701,6 +713,11 @@
               bookletImg.alt = data.alt;
               bookletImg.style.opacity = '1';
             }, 180);
+          }
+
+          if (ipadScreen) {
+            ipadScreen.classList.remove('is-noir', 'is-nude');
+            if (data.theme) ipadScreen.classList.add(data.theme);
           }
 
           if (ipadNum) ipadNum.textContent = data.num;

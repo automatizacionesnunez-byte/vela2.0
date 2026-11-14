@@ -1165,18 +1165,20 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   font-weight: 300;
 }
 
-/* --- La Biografia Hero Stage (iPad + Letter Booklet + Envelope & Wax Seal + QR Card) --- */
+/* --- La Biografia Hero Stage: Escena Calida de Estudio (Estilo Mesa de Madera) --- */
 .vela-bio-stage {
   position: relative;
-  min-height: 28rem;
-  padding: 2.2rem 1.8rem 2.8rem;
-  border-radius: .45rem;
+  min-height: 31rem;
+  padding: 1.8rem 1.6rem 2.4rem;
+  border-radius: .65rem;
   overflow: hidden;
-  border: 1px solid rgba(38, 35, 31, .1);
+  border: 1px solid rgba(140, 105, 78, .3);
   background:
-    radial-gradient(ellipse 68% 58% at 24% 18%, rgba(255, 253, 248, .92) 0%, transparent 65%),
-    linear-gradient(125deg, #F5EFE6 0%, #EADFCF 58%, #DFD0BD 100%);
-  box-shadow: 0 28px 65px -18px rgba(48, 32, 20, .18);
+    linear-gradient(180deg, rgba(26, 18, 12, .12) 0%, rgba(18, 12, 8, .36) 100%),
+    url('mesa-estudio-madera.webp') center / cover no-repeat;
+  box-shadow:
+    0 32px 75px -18px rgba(30, 18, 10, .45),
+    inset 0 1px 0 rgba(255, 255, 255, .18);
 }
 
 .vela-bio-stage::before {
@@ -1184,53 +1186,201 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(112deg, transparent 15%, rgba(255, 255, 255, .36) 32%, transparent 48%, rgba(255, 255, 255, .2) 64%, transparent 80%);
+  background: radial-gradient(ellipse 75% 55% at 30% 20%, rgba(255, 240, 215, .22) 0%, transparent 68%);
+}
+
+.vela-stage-controls {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: 1.6rem;
+}
+
+.vela-stage-models {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .3rem;
+  background: rgba(253, 249, 242, .92);
+  backdrop-filter: blur(14px);
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(24, 14, 8, .2), inset 0 1px 0 rgba(255, 255, 255, .7);
+  border: 1px solid rgba(165, 135, 110, .28);
+}
+
+.vela-stage-model-btn {
+  padding: .4rem .9rem;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #4A3A2F;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all .22s cubic-bezier(.2,.8,.2,1);
+}
+
+.vela-stage-model-btn:hover {
+  color: #1A130D;
+  background: rgba(230, 215, 198, .45);
+}
+
+.vela-stage-model-btn.is-active {
+  background: #26231F;
+  color: #FAF6EE;
+  box-shadow: 0 3px 8px rgba(22, 14, 8, .24);
+}
+
+.vela-stage-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .4rem .85rem;
+  background: rgba(253, 249, 242, .88);
+  backdrop-filter: blur(12px);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5C4B3E;
+  border: 1px solid rgba(165, 135, 110, .25);
+  box-shadow: 0 4px 14px rgba(24, 14, 8, .16);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.vela-stage-view-toggle:hover {
+  background: #FAF6EE;
+  color: #1E1B18;
+  box-shadow: 0 6px 18px rgba(24, 14, 8, .22);
+  transform: translateY(-1px);
 }
 
 .vela-bio-stage__composition {
   position: relative;
   z-index: 2;
-  max-width: 34rem;
+  max-width: 32rem;
   margin: 0 auto;
-  padding-bottom: 3.5rem;
+  padding-bottom: 2.8rem;
 }
 
+/* Mini Polaroids vintage decorativas en la mesa */
+.vela-stage-polaroid {
+  position: absolute;
+  z-index: 1;
+  width: 4.8rem;
+  padding: .32rem .32rem 1.1rem;
+  background: #FAF7F2;
+  border-radius: .12rem;
+  box-shadow: 0 14px 22px rgba(18, 10, 5, .32), 0 1px 3px rgba(0, 0, 0, .1);
+  pointer-events: none;
+  transition: transform .4s ease;
+}
+
+.vela-stage-polaroid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: sepia(.2) contrast(.95) brightness(.98);
+  display: block;
+}
+
+.vela-stage-polaroid--1 {
+  left: -2%;
+  top: 1.8rem;
+  transform: rotate(-12deg);
+}
+
+.vela-stage-polaroid--2 {
+  left: 2%;
+  top: 6.2rem;
+  transform: rotate(6deg);
+}
+
+/* iPad de lectura editorial: centrado, despejado y legible */
 .vela-css-ipad {
   position: relative;
-  width: min(100%, 24rem);
+  z-index: 2;
+  width: min(100%, 23.5rem);
   margin: 0 auto;
-  padding: .68rem;
-  border-radius: 1.15rem;
-  background: linear-gradient(145deg, #2d2a27, #131210);
+  padding: .65rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, #3A3530, #141312 65%, #23201C);
   box-shadow:
-    0 28px 46px -12px rgba(24, 16, 10, .34),
-    inset 0 1px 0 rgba(255, 255, 255, .24);
-  transform: rotate(-1.5deg);
+    0 32px 55px -12px rgba(16, 9, 5, .58),
+    0 12px 24px rgba(16, 9, 5, .32),
+    inset 0 1px 1px rgba(255, 255, 255, .24);
+  transform: rotate(-0.5deg);
+  transition: transform .4s ease;
 }
 
 .vela-css-ipad__screen {
   background: #FAF6EE;
-  border-radius: .65rem;
-  padding: 1.65rem 1.45rem 2.1rem;
+  border-radius: .72rem;
+  padding: 1.7rem 1.55rem 2.2rem;
   color: #342B24;
-  min-height: 20.5rem;
+  min-height: 21rem;
   position: relative;
-  box-shadow: inset 0 0 0 1px rgba(38, 35, 31, .08);
+  box-shadow: inset 0 0 0 1px rgba(50, 38, 28, .08);
+  transition: background-color .3s ease, color .3s ease;
+}
+
+/* Temas del iPad según modelo */
+.vela-css-ipad__screen.is-noir {
+  background: #1C1917;
+  color: #FAF6EE;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+
+.vela-css-ipad__screen.is-noir .vela-css-ipad__chapter {
+  color: #FFFFFF;
+}
+
+.vela-css-ipad__screen.is-noir .vela-css-ipad__subtitle {
+  color: #C5B6A6;
+}
+
+.vela-css-ipad__screen.is-noir .vela-css-ipad__copy {
+  color: rgba(245, 238, 230, .85);
+}
+
+.vela-css-ipad__screen.is-noir .vela-css-ipad__footer {
+  color: #9C8979;
+}
+
+.vela-css-ipad__screen.is-nude {
+  background: #F4EFE6;
+  color: #2E251E;
+}
+
+.vela-css-ipad__screen.is-nude .vela-css-ipad__chapter {
+  color: #26231F;
+}
+
+.vela-css-ipad__screen.is-nude .vela-css-ipad__subtitle {
+  color: #7E6554;
+}
+
+.vela-css-ipad__screen.is-nude .vela-css-ipad__copy {
+  color: rgba(46, 37, 30, .85);
 }
 
 .vela-css-ipad__num {
   position: absolute;
-  top: 1.05rem;
+  top: 1.1rem;
   right: 1.35rem;
   font: 600 .8rem/1 "Plus Jakarta Sans", sans-serif;
   letter-spacing: .06em;
+  opacity: .8;
 }
 
 .vela-css-ipad__chapter {
   text-align: center;
   font-family: Newsreader, Georgia, serif;
-  font-size: 1.15rem;
-  letter-spacing: .16em;
+  font-size: 1.2rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
   margin-bottom: .75rem;
 }
@@ -1238,17 +1388,17 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 .vela-css-ipad__subtitle {
   font-family: Newsreader, Georgia, serif;
   font-style: italic;
-  font-size: .85rem;
+  font-size: .88rem;
   color: #6B5748;
-  margin-bottom: .7rem;
+  margin-bottom: .8rem;
+  text-align: center;
 }
 
 .vela-css-ipad__copy {
   font-family: Newsreader, Georgia, serif;
-  font-size: .72rem;
-  line-height: 1.56;
-  color: rgba(52, 43, 36, .84);
-  space-y: .5rem;
+  font-size: .74rem;
+  line-height: 1.6;
+  color: rgba(52, 43, 36, .85);
 }
 
 .vela-css-ipad__copy p + p {
@@ -1256,7 +1406,7 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 }
 
 .vela-css-ipad__footer {
-  margin-top: 1.15rem;
+  margin-top: 1.25rem;
   text-align: center;
   font-family: Newsreader, Georgia, serif;
   font-style: italic;
@@ -1264,18 +1414,27 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   color: #877363;
 }
 
+/* Portada física impresa del libro: ubicada abajo a la izquierda sobre la mesa */
 .vela-css-booklet {
   position: absolute;
-  left: -4%;
-  bottom: 2.3rem;
-  width: 9.8rem;
-  aspect-ratio: 3 / 4;
+  left: -2%;
+  bottom: 0.6rem;
+  width: clamp(7.8rem, 20vw, 9.8rem);
+  aspect-ratio: 3 / 4.2;
   background: #FAF7F2;
-  padding: .35rem;
-  border-radius: .15rem;
-  box-shadow: 0 20px 34px rgba(35, 22, 13, .26), 0 0 0 1px rgba(38, 35, 31, .1);
+  padding: .3rem;
+  border-radius: .18rem;
+  box-shadow:
+    -10px 22px 34px rgba(15, 8, 4, .45),
+    0 2px 6px rgba(0, 0, 0, .2),
+    inset 0 1px 0 rgba(255, 255, 255, .7);
   transform: rotate(-7deg);
   z-index: 4;
+  transition: transform .3s ease;
+}
+
+.vela-css-booklet:hover {
+  transform: rotate(-5deg) translateY(-3px);
 }
 
 .vela-css-booklet img {
@@ -1283,117 +1442,43 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: .1rem;
 }
 
-.vela-css-envelope-set {
+/* Fotografía real del Sobre con Lacre y dedicatoria: abajo a la derecha sobre la mesa */
+.vela-real-envelope-set {
   position: absolute;
   right: -2%;
-  bottom: 0;
-  display: flex;
-  align-items: flex-end;
-  gap: .65rem;
+  bottom: -0.6rem;
+  width: clamp(11rem, 28vw, 15rem);
   z-index: 5;
+  filter: drop-shadow(0 22px 34px rgba(18, 10, 5, .46));
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), filter .35s ease;
+  cursor: pointer;
 }
 
-.vela-css-envelope {
-  position: relative;
-  width: 11.4rem;
-  height: 7.4rem;
-  background: linear-gradient(165deg, #F7F1E7, #EAE0D1);
-  border: 1px solid rgba(143, 117, 99, .32);
-  border-radius: .2rem;
-  box-shadow: 0 22px 34px rgba(35, 22, 13, .25);
-  overflow: hidden;
-  transform: rotate(2deg);
+.vela-real-envelope-set:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: drop-shadow(0 28px 42px rgba(18, 10, 5, .54));
 }
 
-.vela-css-envelope::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom right, transparent 49.4%, rgba(162, 140, 121, .28) 50%, #F4ECE0 50.6%),
-    linear-gradient(to bottom left, transparent 49.4%, rgba(162, 140, 121, .22) 50%, #EFE5D7 50.6%);
-  background-size: 50% 60%, 50% 60%;
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
-
-.vela-css-envelope__flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60%;
-  background: linear-gradient(180deg, #FBF7F0 0%, #EDE3D5 100%);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  filter: drop-shadow(0 3px 4px rgba(38, 35, 31, .12));
-  z-index: 2;
-}
-
-.vela-css-envelope__seal {
-  position: absolute;
-  left: 50%;
-  top: 53%;
-  width: 2.05rem;
-  height: 2.05rem;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: radial-gradient(circle at 35% 30%, #9E3D31, #6E221A 68%, #4F150E);
-  border: 2px solid #862D23;
-  box-shadow: 0 4px 10px rgba(42, 14, 10, .38), inset 0 2px 3px rgba(255, 210, 195, .28);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(247, 224, 212, .88);
-  font-family: Newsreader, Georgia, serif;
-  font-size: .88rem;
-  z-index: 3;
-}
-
-.vela-css-envelope__brand {
-  position: absolute;
-  bottom: .62rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font: 500 .66rem/1 Newsreader, Georgia, serif;
-  letter-spacing: .28em;
-  color: #54463C;
-  z-index: 2;
-}
-
-.vela-css-qr-card {
-  width: 5.5rem;
-  background: #FAF6EE;
-  border: 1px solid rgba(151, 133, 119, .34);
-  border-radius: .16rem;
-  padding: .5rem .45rem .55rem;
-  box-shadow: 0 18px 28px rgba(35, 22, 13, .22);
-  transform: rotate(5deg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .35rem;
-  text-align: center;
-}
-
-.vela-css-qr-card span {
-  font-family: Newsreader, Georgia, serif;
-  font-style: italic;
-  font-size: .62rem;
-  color: #463A32;
+.vela-real-envelope-set img {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
 }
 
 .vela-bio-stage__caption {
   position: relative;
-  z-index: 2;
-  margin-top: 1.5rem;
+  z-index: 10;
+  margin-top: 1.2rem;
   text-align: center;
   font-family: Newsreader, Georgia, serif;
   font-style: italic;
-  font-size: .86rem;
-  color: #5D4D41;
+  font-size: .84rem;
+  color: rgba(250, 242, 232, .88);
+  text-shadow: 0 1px 3px rgba(18, 10, 5, .5);
 }
 
 /* --- Real Photographic Envelope with Wax Seal in Bio Stage --- */
@@ -2279,40 +2364,56 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 /* --- Responsive Adjustments for New CSS Components --- */
 @media (max-width: 767px) {
   .vela-bio-stage {
-    padding: 1.5rem 1rem 2rem;
+    padding: 1.4rem 1rem 1.8rem;
     min-height: auto;
   }
 
-  .vela-css-booklet {
-    width: 6.4rem;
-    left: 0;
-    bottom: 2.2rem;
+  .vela-stage-polaroid {
+    display: none;
   }
 
-  .vela-css-envelope-set {
-    right: 0;
-    gap: .35rem;
+  .vela-css-booklet {
+    width: 5.8rem;
+    left: 0;
+    bottom: 0.2rem;
   }
 
   .vela-real-envelope-set {
-    width: 11.5rem;
-    right: -2%;
+    width: 9.8rem;
+    right: 0;
     bottom: -0.4rem;
   }
 
   .vela-stage-controls {
+    flex-wrap: wrap;
     justify-content: center;
-    gap: .4rem;
+    gap: .5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .vela-stage-models {
+    gap: .2rem;
+    padding: .25rem;
   }
 
   .vela-stage-model-btn {
-    padding: .3rem .65rem;
-    font-size: 10.5px;
+    padding: .35rem .7rem;
+    font-size: 11px;
   }
 
   .vela-stage-view-toggle {
-    padding: .3rem .55rem;
-    font-size: 10px;
+    padding: .35rem .65rem;
+    font-size: 10.5px;
+  }
+
+  .vela-css-ipad__screen {
+    padding: 1.35rem 1.15rem 1.8rem;
+    min-height: 18.5rem;
+  }
+
+  .vela-css-ipad__copy {
+    font-size: .7rem;
+    line-height: 1.52;
   }
 
   .vela-css-envelope {
