@@ -570,34 +570,15 @@
             </div>
           </div>
 
-          <!-- Derecha: Composición artística de alta definición con el sobre por ambos lados + dedicatoria familiar -->
+          <!-- Derecha: Composición fotográfica editorial artística con el sobre por ambos lados -->
           <div class="lg:col-span-6">
             <div class="vela-gift-showcase">
               <div class="vela-gift-frame">
-                <img id="velaGiftMainImg" src="assets/sobre-ambos-lados-mesa.webp" alt="El sobre VELA por ambos lados: cerrado con solapa y abierto con sello de lacre rojo y dedicatoria familiar sobre mesa de madera rústica" class="transition-opacity duration-200" />
-
-                <!-- Tarjeta de dedicatoria familiar personalizada con tipografía editorial -->
-                <div class="vela-gift-dedication">
-                  <span class="block text-[10px] uppercase tracking-[0.22em] text-vela-topo mb-1.5 font-medium">Dedicatoria personalizada incluida</span>
-                  <p class="font-serif italic text-base sm:text-lg leading-snug text-vela-chocolate mb-2">
-                    La historia de la vida de Carlota Medina García
-                  </p>
-                  <div class="flex items-center justify-between text-xs pt-1 border-t border-vela-linea/60">
-                    <span class="text-vela-burdeos font-serif italic text-xs">— De tu familia que te quiere</span>
-                    <span class="text-[10px] uppercase tracking-wider text-vela-topo">QR activo</span>
-                  </div>
-                </div>
+                <img src="assets/sobre-ambos-lados-mesa.webp" alt="El sobre VELA por ambos lados: reverso cerrado y presentación abierta con dedicatoria personalizada y código QR sobre mesa de madera" class="w-full h-auto object-cover" />
               </div>
-
-              <!-- Selector de perspectiva artística -->
-              <div class="vela-gift-views" role="tablist" aria-label="Cambiar vista fotográfica del sobre">
-                <button type="button" class="vela-gift-view-btn is-active" data-gift-view="ambos" role="tab" aria-selected="true">
-                  Ambos lados en la mesa
-                </button>
-                <button type="button" class="vela-gift-view-btn" data-gift-view="detalle" role="tab" aria-selected="false">
-                  Luz de ventana y detalle
-                </button>
-              </div>
+              <p class="text-center font-serif italic text-xs sm:text-sm text-vela-chocolate/75 pt-3">
+                Sobre VELA por ambos lados: reverso cerrado con solapa y presentación abierta con tarjeta de dedicatoria y código QR
+              </p>
             </div>
           </div>
 
@@ -612,7 +593,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
         <div class="md:col-span-5 space-y-4">
-          <img src="assets/vela-logo.png" alt="VELA" class="h-8 w-auto brightness-200 contrast-125" />
+          <img src="assets/vela-logo-white.png" alt="VELA" class="h-8 w-auto object-contain" />
           <p class="text-xs uppercase tracking-widest text-vela-topo">Porque una vida merece ser contada</p>
           <p class="text-sm text-vela-marfil/60 font-light max-w-sm pt-2">
             Plataforma editorial para transformar vivencias familiares en un legado íntimo, digital y eterno.
@@ -759,36 +740,6 @@
 
       if (envelopeToggle) envelopeToggle.addEventListener('click', toggleEnvelope);
       if (envelopeContainer) envelopeContainer.addEventListener('click', toggleEnvelope);
-
-      // 3. Selector de vista fotográfica en Sección 4 (Regalar)
-      const giftMainImg = document.getElementById('velaGiftMainImg');
-      const giftViewBtns = document.querySelectorAll('.vela-gift-view-btn');
-
-      const giftSources = {
-        ambos: 'assets/sobre-ambos-lados-mesa.webp',
-        detalle: 'assets/vela-sobre-qr-1200.webp'
-      };
-
-      giftViewBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-          giftViewBtns.forEach(b => {
-            b.classList.remove('is-active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          this.classList.add('is-active');
-          this.setAttribute('aria-selected', 'true');
-
-          const viewKey = this.dataset.giftView;
-          const src = giftSources[viewKey];
-          if (giftMainImg && src) {
-            giftMainImg.style.opacity = '0';
-            setTimeout(() => {
-              giftMainImg.src = src;
-              giftMainImg.style.opacity = '1';
-            }, 180);
-          }
-        });
-      });
     });
   </script>
 </body>
