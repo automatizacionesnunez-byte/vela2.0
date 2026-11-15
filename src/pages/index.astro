@@ -8,27 +8,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-home vela-page-index"
 >
 <main>
-    <!-- SECCIÓN 1: HERO EMOCIONAL (Imagen limpia con la abuela y fondo suave, y TEXTO + BOTONES 100% HTML) -->
-    <section class="relative min-h-[85vh] lg:min-h-[88vh] flex items-center bg-[#483524] text-white overflow-hidden">
-      <!-- Imagen de fondo limpia sin ningún texto ni botones integrados -->
-      <img src="/assets/hero-clean-bg.jpg" alt="Abuela abrazada cariñosamente por su nieta" class="absolute inset-0 w-full h-full object-cover object-left lg:object-center" />
+    <!-- SECCIÓN 1: HERO EMOCIONAL (Responsive: Foto visible en móvil y desktop + Texto editorial con excelente contraste) -->
+    <section class="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col lg:flex-row items-center bg-[#3D2C1E] text-white overflow-hidden">
+      <!-- En desktop: imagen de fondo apaisada object-left. En móvil: mostrada en su propio contenedor arriba -->
+      <div class="w-full lg:absolute lg:inset-0 h-72 sm:h-96 lg:h-full shrink-0 relative overflow-hidden">
+        <img 
+          src="/assets/hero-clean-bg.jpg" 
+          alt="Abuela abrazada cariñosamente por su nieta" 
+          class="w-full h-full object-cover object-center lg:object-left"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <!-- Suave gradiente de transición en móvil hacia el bloque inferior -->
+        <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#3D2C1E] to-transparent lg:hidden" aria-hidden="true"></div>
+      </div>
 
-      <div class="relative max-w-7xl mx-auto px-6 py-16 sm:py-24 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
-        <!-- Columna izquierda: espacio libre para la fotografía del abrazo -->
+      <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 lg:py-24 w-full grid grid-cols-1 lg:grid-cols-12 items-center z-10">
+        <!-- Columna izquierda: espacio libre en desktop para la fotografía del abrazo -->
         <div class="hidden lg:block lg:col-span-6 min-h-[520px]"></div>
 
-        <!-- Columna derecha: TEXTO Y BOTONES 100% HTML (exactamente como en la captura adjunta) -->
-        <div class="lg:col-span-6 bg-[#483524]/85 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-0 p-8 lg:p-0 rounded-sm lg:pl-10">
+        <!-- Columna derecha: TEXTO Y BOTONES 100% HTML con diseño refinado -->
+        <div class="lg:col-span-6 p-2 sm:p-4 lg:p-0 rounded-sm lg:pl-10">
           
           <!-- H1 Serif Editorial -->
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] tracking-tight mb-6 text-[#F8F6F0]">
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.14] tracking-tight mb-5 text-[#F8F6F0]">
             Su vida, convertida<br/>
             en una historia<br/>
             <span class="italic text-[#E4DDD3]">para siempre.</span>
           </h1>
 
           <!-- Subtítulo refinado -->
-          <p class="text-base sm:text-lg lg:text-xl text-[#F8F6F0]/90 font-light leading-relaxed mb-10 max-w-md">
+          <p class="text-base sm:text-lg lg:text-xl text-[#F8F6F0]/90 font-light leading-relaxed mb-8 max-w-md">
             Biografías digitales personalizadas, con sobre de regalo y tarjeta QR física.
           </p>
 
@@ -69,196 +79,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- SECCIÓN 2: VÍDEO EMOCIONAL (El vídeo oficial de legadosvela.com con Rita - Cuideo) -->
-    <section class="bg-[#1E1B18] text-vela-marfil py-24 sm:py-32 border-b border-[#2D2925]">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <div class="lg:col-span-5 space-y-6">
-            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-white">
-              Cuando una voz se escucha, una vida deja de ser una lista de fechas.
-            </h2>
-            <div class="w-12 h-[1px] bg-vela-topo/40 my-4"></div>
-            <p class="text-vela-marfil/75 text-base sm:text-lg font-light leading-relaxed">
-              Hay recuerdos que viven en una conversación, en una fotografía o en las palabras que alguien repite desde hace años. Escucharlos es el primer paso para conservarlos.
-            </p>
-          </div>
-
-          <div class="lg:col-span-7">
-            <!-- Reproductor de vídeo oficial de legadosvela.com -->
-            <div id="video-container" class="relative rounded-sm overflow-hidden bg-black border border-white/10 shadow-2xl aspect-[16/9] group">
-              <img id="video-poster" src="/assets/rita-poster-1280.webp" alt="Historias de la vida con Rita" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700" />
-              
-              <div id="play-overlay" class="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer" onclick="playDocumentaryVideo()">
-                <button class="w-20 h-20 rounded-full bg-vela-marfil/90 text-vela-chocolate flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 group-hover:bg-white transition-all" aria-label="Reproducir vídeo testimonial">
-                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-              </div>
-
-              <div id="video-caption" class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-white/80 bg-black/70 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10">
-                <span>Historias de la vida, con Rita (80 años, Barcelona)</span>
-                <span class="text-vela-topoclaro font-serif italic">Fuente: Cuideo ®</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 3: LÍNEA DE VIDA -->
-    
-    <!-- DEMO INTERACTIVA 3 PASOS: ESCUCHA EL ORIGEN. DESCUBRE EL RESULTADO -->
-    <section class="py-20 lg:py-24 bg-[#EFECE6]/60 border-y border-vela-chocolate/10" id="origin-demo">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10">
-        <div class="max-w-2xl mb-12">
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] leading-[1.12] text-vela-chocolate">
-            Escucha el origen. <em class="italic text-[#682D35]">Descubre el resultado.</em>
-          </h2>
-          <p class="mt-4 text-vela-chocolate/75 font-light leading-relaxed">
-            Así pasa una conversación cotidiana en voz alta a convertirse en un recuerdo coral de toda la familia y, finalmente, en páginas maquetadas para siempre.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          <!-- PESTAÑAS DE 3 PASOS -->
-          <div class="lg:col-span-5 space-y-3" role="tablist" aria-label="Etapas del recuerdo en VELA">
-            <button type="button" class="vela-demo-tab is-active" role="tab" aria-selected="true" data-demo-tab="voz">
-              <span class="vela-demo-tab__step">01 · Tu voz</span>
-              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Un audio sin guion, contado con naturalidad</span>
-              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">Carmen graba cuatro minutos recordando los veranos en casa de sus abuelos.</span>
-            </button>
-
-            <button type="button" class="vela-demo-tab" role="tab" aria-selected="false" data-demo-tab="familia">
-              <span class="vela-demo-tab__step">02 · Otras voces</span>
-              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Hijos y nietos suman su mirada</span>
-              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">Cada familiar aporta desde su móvil anécdotas que completan la escena.</span>
-            </button>
-
-            <button type="button" class="vela-demo-tab" role="tab" aria-selected="false" data-demo-tab="biografia">
-              <span class="vela-demo-tab__step">03 · La biografía</span>
-              <span class="block font-serif text-xl text-vela-chocolate mt-1.5">Capítulos maquetados con voz e imagen</span>
-              <span class="block text-xs sm:text-sm text-vela-chocolate/70 font-light mt-1.5">El relato queda editado en formato editorial junto a sus fotos y audio original.</span>
-            </button>
-          </div>
-
-          <!-- PANEL VISUAL DINÁMICO -->
-          <div class="lg:col-span-7 bg-[#F8F6F0] border border-vela-chocolate/12 rounded-sm p-7 sm:p-9 shadow-[0_20px_50px_-24px_rgba(38,35,31,0.16)] min-h-[21rem] flex flex-col justify-between">
-            <!-- PANEL 1: TU VOZ -->
-            <div data-demo-panel="voz" class="space-y-6">
-              <div class="flex items-center gap-4">
-                <img src="/assets/carmen-hero-1600.webp" alt="Retrato de Carmen" class="w-16 h-16 rounded-full object-cover border border-vela-chocolate/15 shrink-0" loading="lazy" />
-                <div>
-                  <p class="font-serif text-xl text-vela-chocolate">Carmen, 78 años</p>
-                  <p class="text-xs text-vela-topo">Nota de voz · Capítulo 2: Veranos en el pueblo</p>
-                </div>
-              </div>
-
-              <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 flex items-center gap-4">
-                <div class="w-9 h-9 rounded-full bg-[#682D35] text-white flex items-center justify-center shrink-0" aria-hidden="true">
-                  <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                </div>
-                <div class="vela-audio-bars flex-1" aria-hidden="true">
-                  <span style="height: 35%"></span><span style="height: 65%"></span><span style="height: 90%"></span>
-                  <span style="height: 45%"></span><span style="height: 75%"></span><span style="height: 100%"></span>
-                  <span style="height: 55%"></span><span style="height: 85%"></span><span style="height: 40%"></span>
-                  <span style="height: 70%"></span><span style="height: 95%"></span><span style="height: 50%"></span>
-                  <span style="height: 65%"></span><span style="height: 80%"></span><span style="height: 38%"></span>
-                  <span style="height: 60%"></span><span style="height: 92%"></span><span style="height: 48%"></span>
-                  <span style="height: 75%"></span><span style="height: 55%"></span>
-                </div>
-                <span class="text-xs font-mono text-vela-topo shrink-0">04:12</span>
-              </div>
-
-              <blockquote class="font-serif italic text-lg sm:text-xl text-vela-chocolate/90 leading-relaxed border-l-2 border-[#682D35]/40 pl-4">
-                «Cuando llegábamos en el coche de línea ya olía a higuera y a tierra mojada. Mi madre nos dejaba correr descalzos hasta el pozo antes de llamar a cenar.»
-              </blockquote>
-            </div>
-
-            <!-- PANEL 2: OTRAS VOCES -->
-            <div data-demo-panel="familia" class="hidden space-y-5">
-              <div class="flex items-center justify-between gap-4 border-b border-vela-chocolate/10 pb-4">
-                <div class="flex items-center gap-3">
-                  <img src="/assets/carmen-family-1200.webp" alt="Familia conversando en la mesa" class="w-16 h-12 rounded-sm object-cover border border-vela-chocolate/15" loading="lazy" />
-                  <div>
-                    <p class="font-serif text-xl text-vela-chocolate">Miradas compartidas</p>
-                    <p class="text-xs text-vela-topo">2 aportaciones recibidas por enlace familiar</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="space-y-3.5">
-                <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 space-y-1.5">
-                  <p class="text-xs font-semibold text-[#682D35]">Lucía · Hija</p>
-                  <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
-                    «Siempre nos preparaba almendras garrapiñadas en una lata azul antes de volver al internado en septiembre. Todavía guardo la receta en un papel suyo.»
-                  </p>
-                </div>
-                <div class="p-4 rounded-sm bg-white border border-vela-chocolate/10 space-y-1.5">
-                  <p class="text-xs font-semibold text-[#682D35]">Marcos · Nieto</p>
-                  <p class="text-sm text-vela-chocolate/80 font-light leading-relaxed">
-                    «Lo que mejor recuerdo es verla coser botones mientras me enseñaba a decir los nombres de los ríos de memoria sin mirar el mapa.»
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- PANEL 3: LA BIOGRAFIA -->
-            <div data-demo-panel="biografia" class="hidden space-y-5">
-              <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
-                <div class="sm:col-span-6 grid grid-cols-2 gap-2.5">
-                  <div class="aspect-[3/4] rounded-[2px] overflow-hidden border border-vela-chocolate/15 shadow-sm bg-white">
-                    <img src="/assets/templates/letter_page_03.jpg" alt="Página prólogo edición Letter" class="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                  <div class="aspect-[3/4] rounded-[2px] overflow-hidden border border-vela-chocolate/15 shadow-sm bg-white translate-y-2">
-                    <img src="/assets/templates/letter_page_04.jpg" alt="Página álbum familiar edición Letter" class="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                </div>
-                <div class="sm:col-span-6 space-y-3">
-                  <p class="font-serif text-2xl text-vela-chocolate leading-snug">Edición maquetada en colección Letter</p>
-                  <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
-                    Las voces y los recuerdos familiares se funden en capítulos cuidados, listos para leer en cualquier dispositivo o abrir desde el sobre con tarjeta QR.
-                  </p>
-                  <a href="/ejemplos" class="inline-flex items-center gap-2 text-xs font-semibold text-[#682D35] hover:underline pt-1">
-                    <span>Explorar libros completos en Ejemplos</span>
-                    <span aria-hidden="true">→</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-5 mt-5 border-t border-vela-chocolate/10 flex flex-wrap items-center justify-between gap-3 text-xs text-vela-topo">
-              <span>Editable en todo momento antes de cerrar la edición</span>
-              <a href="/como-funciona" class="text-vela-chocolate font-medium hover:underline">Ver proceso completo →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        (function () {
-          var tabs = document.querySelectorAll('[data-demo-tab]');
-          var panels = document.querySelectorAll('[data-demo-panel]');
-          if (!tabs.length || !panels.length) return;
-          tabs.forEach(function (tab) {
-            tab.addEventListener('click', function () {
-              var target = tab.getAttribute('data-demo-tab');
-              tabs.forEach(function (t) {
-                var active = t === tab;
-                t.classList.toggle('is-active', active);
-                t.setAttribute('aria-selected', active ? 'true' : 'false');
-              });
-              panels.forEach(function (p) {
-                var show = p.getAttribute('data-demo-panel') === target;
-                p.classList.toggle('hidden', !show);
-              });
-            });
-          });
-        })();
-      </script>
-    </section>
-
-  <section class="py-24 sm:py-32 bg-[#F8F6F0]">
+    <!-- SECCIÓN 2: LÍNEA DE VIDA (Cronología de capítulos en fondo crema claro #F8F6F0 - Respiro visual armónico) -->
+    <section class="py-24 sm:py-28 bg-[#F8F6F0] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-3xl mb-16 sm:mb-20">
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mb-5">
@@ -320,6 +142,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
 
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: VÍDEO EMOCIONAL (Situado en tercer lugar para alternar elegantemente fondo crema y fondo oscuro, sin choques) -->
+    <section class="bg-[#1E1B18] text-vela-marfil py-24 sm:py-32 border-b border-[#2D2925]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-white">
+              Cuando una voz se escucha, una vida deja de ser una lista de fechas.
+            </h2>
+            <div class="w-12 h-[1px] bg-vela-topo/40 my-4"></div>
+            <p class="text-vela-marfil/75 text-base sm:text-lg font-light leading-relaxed">
+              Hay recuerdos que viven en una conversación, en una fotografía o en las palabras que alguien repite desde hace años. Escucharlos es el primer paso para conservarlos.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7">
+            <!-- Reproductor de vídeo oficial de legadosvela.com -->
+            <div id="video-container" class="relative rounded-sm overflow-hidden bg-black border border-white/10 shadow-2xl aspect-[16/9] group">
+              <img id="video-poster" src="/assets/rita-poster-1280.webp" alt="Historias de la vida con Rita" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700" />
+              
+              <div id="play-overlay" class="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer" onclick="playDocumentaryVideo()">
+                <button class="w-20 h-20 rounded-full bg-vela-marfil/90 text-vela-chocolate flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 group-hover:bg-white transition-all" aria-label="Reproducir vídeo testimonial">
+                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+
+              <div id="video-caption" class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-white/80 bg-black/70 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10">
+                <span>Historias de la vida, con Rita (80 años, Barcelona)</span>
+                <span class="text-vela-topoclaro font-serif italic">Fuente: Cuideo ®</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

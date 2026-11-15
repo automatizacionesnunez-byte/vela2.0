@@ -16,24 +16,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <!-- Izquierda: Escena editorial cálida de estudio (estilo mesa de madera con luz natural) -->
           <div class="lg:col-span-6">
             <div class="vela-bio-stage">
-              <!-- Controles de modelos y vista del sobre -->
+              <!-- Controles de modelos limpios (Letter, Noir, Nude) -->
               <div class="vela-stage-controls">
                 <div class="vela-stage-models" role="tablist" aria-label="Elegir modelo de biografía">
                   <button type="button" class="vela-stage-model-btn is-active" data-stage-model="letter" role="tab" aria-selected="true">
-                    Letter · Carmen
+                    Letter
                   </button>
                   <button type="button" class="vela-stage-model-btn" data-stage-model="noir" role="tab" aria-selected="false">
-                    Noir · Juan
+                    Noir
                   </button>
                   <button type="button" class="vela-stage-model-btn" data-stage-model="nude" role="tab" aria-selected="false">
-                    Nude · Carlota
+                    Nude
                   </button>
                 </div>
-
-                <button type="button" class="vela-stage-view-toggle" id="velaStageEnvelopeToggle" title="Alternar entre sobre cerrado con lacre y dedicatoria abierta">
-                  <span id="velaStageEnvelopeLabel">Ver sobre abierto</span>
-                  <svg class="w-3.5 h-3.5 text-vela-topo" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>
-                </button>
               </div>
 
               <!-- Composición cálida sobre mesa de madera de estudio -->
@@ -65,12 +60,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <img id="stageBookletImg" src="/assets/templates/letter_page_01.jpg" alt="Portada del modelo Letter de Carmen Rodríguez Sánchez" class="transition-opacity duration-200" />
                 </div>
 
-                <!-- Fotografía real del Sobre con Lacre y tarjeta QR física (apoyada abajo a la derecha) -->
-                <div class="vela-real-envelope-set" id="velaRealEnvelopeContainer" title="Haz clic para alternar entre sobre cerrado con lacre y dedicatoria abierta" aria-label="Sobre VELA real en papel verjurado con sello de lacre rojo y tarjeta física con QR">
-                  <img id="velaRealEnvelopeImg" src="/assets/sobre-lacre-cerrado-transparente.webp" alt="Sobre VELA cerrado con sello de lacre rojo burdeos y tarjeta con código QR" class="transition-opacity duration-200" />
+                <!-- Fotografía real del Sobre Abierto con Lacre y dedicatoria con tarjeta QR (fijo abierto) -->
+                <div class="vela-real-envelope-set" id="velaRealEnvelopeContainer" aria-label="Sobre VELA real abierto en papel verjurado con sello de lacre rojo y tarjeta física con dedicatoria y código QR">
+                  <img id="velaRealEnvelopeImg" src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre VELA abierto con sello de lacre rojo burdeos, tarjeta con dedicatoria personalizada y código QR" class="transition-opacity duration-200" />
                 </div>
               </div>
-              <p class="vela-bio-stage__caption">Biografía digital en pantalla &nbsp;+&nbsp; libro impreso de recuerdo &nbsp;+&nbsp; sobre físico con lacre</p>
+              <p class="vela-bio-stage__caption">Biografía digital en pantalla &nbsp;+&nbsp; libro impreso de recuerdo &nbsp;+&nbsp; sobre físico con lacre y QR</p>
             </div>
           </div>
 
@@ -610,35 +605,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           if (ipadFooter) ipadFooter.textContent = data.footer;
         });
       });
-
-      // 2. Alternancia del Sobre real con Lacre (Cerrado vs Abierto)
-      const envelopeImg = document.getElementById('velaRealEnvelopeImg');
-      const envelopeToggle = document.getElementById('velaStageEnvelopeToggle');
-      const envelopeLabel = document.getElementById('velaStageEnvelopeLabel');
-      const envelopeContainer = document.getElementById('velaRealEnvelopeContainer');
-
-      let isClosed = true;
-      function toggleEnvelope() {
-        if (!envelopeImg) return;
-        envelopeImg.style.opacity = '0';
-        setTimeout(() => {
-          if (isClosed) {
-            envelopeImg.src = 'assets/sobre-lacre-abierto-transparente.webp';
-            envelopeImg.alt = 'Sobre VELA abierto con sello de lacre rojo y dedicatoria personalizada con código QR';
-            if (envelopeLabel) envelopeLabel.textContent = 'Ver sobre cerrado';
-            isClosed = false;
-          } else {
-            envelopeImg.src = 'assets/sobre-lacre-cerrado-transparente.webp';
-            envelopeImg.alt = 'Sobre VELA cerrado con sello de lacre rojo burdeos y tarjeta con código QR';
-            if (envelopeLabel) envelopeLabel.textContent = 'Ver sobre abierto';
-            isClosed = true;
-          }
-          envelopeImg.style.opacity = '1';
-        }, 160);
-      }
-
-      if (envelopeToggle) envelopeToggle.addEventListener('click', toggleEnvelope);
-      if (envelopeContainer) envelopeContainer.addEventListener('click', toggleEnvelope);
     });
   </script>
 </BaseLayout>
