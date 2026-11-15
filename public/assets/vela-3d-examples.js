@@ -7,20 +7,20 @@
   const templates = {
     nude: {
       name: 'Carlota', label: 'NUDE', caption: 'La historia de una vida plena', style: 'Calida, elegante y atemporal', accent: '#c5a982',
-      pages: [['assets/templates/nude_page_01.jpg', 'assets/templates/nude_page_02.jpg'], ['assets/templates/nude_page_03.jpg', 'assets/templates/nude_page_04.jpg'], ['assets/templates/nude_page_05.jpg', 'assets/templates/nude_page_06.jpg'], ['assets/templates/nude_page_07.jpg', 'assets/templates/nude_page_08.jpg']],
-      memories: ['assets/templates/nude_page_07.jpg', 'assets/templates/nude_page_05.jpg', 'assets/carmen-hero-1600.webp', 'assets/carmen-family-1200.webp'],
+      pages: [['/assets/templates/nude_page_01.jpg', '/assets/templates/nude_page_02.jpg'], ['/assets/templates/nude_page_03.jpg', '/assets/templates/nude_page_04.jpg'], ['/assets/templates/nude_page_05.jpg', '/assets/templates/nude_page_06.jpg'], ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_08.jpg']],
+      memories: ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_05.jpg', '/assets/carmen-hero-1600.webp', '/assets/carmen-family-1200.webp'],
       chapters: ['Origenes', 'Infancia', 'Momentos clave', 'Legado']
     },
     noir: {
       name: 'Juan', label: 'NOIR', caption: 'El companero de camino', style: 'Moderna, sobria y con caracter', accent: '#d7c1a5',
-      pages: [['assets/templates/noir_page_01.jpg', 'assets/templates/noir_page_02.jpg'], ['assets/templates/noir_page_03.jpg', 'assets/templates/noir_page_04.jpg'], ['assets/templates/noir_page_05.jpg', 'assets/templates/noir_page_06.jpg'], ['assets/templates/noir_page_04.jpg', 'assets/templates/noir_page_08.jpg']],
-      memories: ['assets/templates/noir_page_01.jpg', 'assets/templates/noir_page_04.jpg', 'assets/tecnologia-sensibilidad.webp', 'assets/vela-sobre-qr-1200.webp'],
+      pages: [['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'], ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'], ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'], ['/assets/templates/noir_page_04.jpg', '/assets/templates/noir_page_08.jpg']],
+      memories: ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_04.jpg', '/assets/tecnologia-sensibilidad.webp', '/assets/vela-sobre-qr-1200.webp'],
       chapters: ['Origenes', 'El caracter', 'Una vida plena', 'Lo que permanece']
     },
     letter: {
       name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequenas historias', style: 'Clasica, cercana y llena de memoria', accent: '#8d504b',
-      pages: [['assets/templates/letter_page_01.jpg', 'assets/templates/letter_page_02.jpg'], ['assets/templates/letter_page_03.jpg', 'assets/templates/letter_page_04.jpg'], ['assets/templates/letter_page_05.jpg', 'assets/templates/letter_page_07.jpg'], ['assets/templates/letter_page_08.jpg', 'assets/templates/letter_page_09.jpg']],
-      memories: ['assets/carmen-family-1200.webp', 'assets/carmen-hero-1600.webp', 'assets/templates/letter_page_04.jpg', 'assets/templates/letter_page_08.jpg'],
+      pages: [['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'], ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'], ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_07.jpg'], ['/assets/templates/letter_page_08.jpg', '/assets/templates/letter_page_09.jpg']],
+      memories: ['/assets/carmen-family-1200.webp', '/assets/carmen-hero-1600.webp', '/assets/templates/letter_page_04.jpg', '/assets/templates/letter_page_08.jpg'],
       chapters: ['La carta', 'Familia', 'Viajes y hallazgos', 'Para siempre']
     }
   };
