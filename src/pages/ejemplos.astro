@@ -88,7 +88,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div class="vela-gallery-reader" data-vela-gallery-reader>
                   <div class="vela-gallery-reader__shadow"></div>
-                  <div class="vela-gallery-device"><span class="vela-gallery-device__camera"></span><div class="vela-gallery-spread" data-vela-gallery-spread><img data-vela-gallery-page-left src="/assets/templates/nude_page_01.jpg" alt="" /><img data-vela-gallery-page-right src="/assets/templates/nude_page_02.jpg" alt="" /></div><span class="vela-gallery-device__glass"></span></div>
+                  <!-- Sobre físico con sello de lacre y tarjeta QR integrado en la sala de lectura -->
+                  <div class="hidden sm:block absolute -left-12 -bottom-10 z-20 pointer-events-none drop-shadow-2xl">
+                    <img src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre físico VELA con lacre" class="w-36 lg:w-44 h-auto transform -rotate-6" />
+                  </div>
+                  <div class="vela-gallery-device relative">
+                    <span class="vela-gallery-device__camera"></span>
+                    <div class="vela-gallery-spread" data-vela-gallery-spread>
+                      <img data-vela-gallery-page-left src="/assets/templates/nude_page_01.jpg" alt="" />
+                      <!-- Sombra central del lomo del libro para dar profundidad editorial -->
+                      <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 bg-gradient-to-r from-black/15 via-black/5 to-black/15 pointer-events-none z-10" aria-hidden="true"></div>
+                      <img data-vela-gallery-page-right src="/assets/templates/nude_page_02.jpg" alt="" />
+                    </div>
+                    <span class="vela-gallery-device__glass"></span>
+                  </div>
                   <div class="vela-gallery-memory"><img data-vela-gallery-memory src="/assets/templates/nude_page_07.jpg" alt="" /></div>
                   <div class="vela-gallery-note"><small>CAPÍTULO</small><strong data-vela-gallery-note>Orígenes</strong><span data-vela-gallery-number>01</span></div>
                 </div>
@@ -108,7 +121,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <button type="button" class="vela-scene-arrow" data-vela-chapter-next aria-label="Capítulo siguiente">→</button>
             </div>
-            <button type="button" class="vela-return-archive" data-vela-close>← Volver al archivo</button>
+            
+            <div class="flex items-center gap-3">
+              <!-- Botón Modo Lectura Inmersiva / Ampliar -->
+              <button type="button" id="btn-open-zoom-modal" class="px-3.5 py-1.5 border border-vela-chocolate/30 text-vela-chocolate text-xs rounded-sm hover:bg-vela-chocolate hover:text-white transition-all flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+                <span>Ampliar pliego</span>
+              </button>
+              <button type="button" class="vela-return-archive" data-vela-close>← Volver al archivo</button>
+            </div>
           </div>
 
           <div class="vela-chapter-rail mt-7" aria-label="Recorrido por la biografía">
@@ -381,6 +402,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </script>
     </section>
 
+    <!-- MODAL DE LECTURA AMPLIADA / MODO LIBRO INMERSIVO -->
+    <div id="vela-zoom-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex-col items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Lectura inmersiva del pliego">
+      <div class="w-full max-w-5xl flex items-center justify-between text-white/80 pb-4 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <span class="text-xs uppercase tracking-widest text-[#C5A982] font-medium" id="modal-template-label">Edición Nude</span>
+          <span class="text-white/40">·</span>
+          <span class="text-sm font-serif italic text-white" id="modal-chapter-label">Capítulo 01 · Orígenes</span>
+        </div>
+        <button type="button" id="btn-close-zoom-modal" class="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all" aria-label="Cerrar lectura">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="w-full max-w-5xl flex-1 flex items-center justify-center py-6 overflow-hidden relative">
+        <button type="button" id="modal-prev" class="absolute left-2 sm:left-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all" aria-label="Pliego anterior">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <div class="max-h-[82vh] w-auto aspect-[16/10] bg-[#FAF8F5] shadow-2xl rounded-sm flex overflow-hidden border border-white/20 relative">
+          <!-- Lomo central -->
+          <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 bg-gradient-to-r from-black/20 via-black/5 to-black/20 z-10 pointer-events-none" aria-hidden="true"></div>
+          <img id="modal-img-left" src="/assets/templates/nude_page_01.jpg" alt="Página izquierda" class="w-1/2 h-full object-contain bg-[#FAF8F5]" />
+          <img id="modal-img-right" src="/assets/templates/nude_page_02.jpg" alt="Página derecha" class="w-1/2 h-full object-contain bg-[#FAF8F5]" />
+        </div>
+
+        <button type="button" id="modal-next" class="absolute right-2 sm:right-4 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all" aria-label="Pliego siguiente">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="w-full max-w-5xl pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+        <span>Usa las flechas del teclado o los botones para pasar de pliego</span>
+        <a href="/precios" class="px-5 py-2 bg-[#FAF6F0] text-vela-chocolate font-medium rounded-sm hover:bg-white transition-all">
+          Elegir este estilo y empezar →
+        </a>
+      </div>
+    </div>
+
     <!-- BANNER INFERIOR DE ACCIÓN -->
     <section class="py-20 bg-[#F1EBE2] border-t border-vela-linea text-center">
       <div class="max-w-3xl mx-auto px-6 space-y-6">
@@ -407,4 +466,99 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- FOOTER EDITORIAL -->
 <script is:inline type="module" src="/assets/vela-3d-examples.js"></script>
+
+<script>
+  (function initModal() {
+    var modal = document.getElementById('vela-zoom-modal');
+    var btnOpen = document.getElementById('btn-open-zoom-modal');
+    var btnClose = document.getElementById('btn-close-zoom-modal');
+    var btnPrev = document.getElementById('modal-prev');
+    var btnNext = document.getElementById('modal-next');
+    var imgLeft = document.getElementById('modal-img-left');
+    var imgRight = document.getElementById('modal-img-right');
+    var tplLabel = document.getElementById('modal-template-label');
+    var chapLabel = document.getElementById('modal-chapter-label');
+
+    var currentTemplate = 'nude';
+    var currentChapter = 0;
+
+    var chapters = {
+      nude: ['Orígenes', 'Infancia', 'Momentos clave', 'Legado'],
+      noir: ['Orígenes', 'El carácter', 'Una vida plena', 'Lo que permanece'],
+      letter: ['La carta', 'Familia', 'Viajes y hallazgos', 'Para siempre']
+    };
+
+    function updateModal() {
+      var pLeft = document.querySelector('[data-vela-gallery-page-left]');
+      var pRight = document.querySelector('[data-vela-gallery-page-right]');
+      if (pLeft && imgLeft) imgLeft.src = pLeft.src;
+      if (pRight && imgRight) imgRight.src = pRight.src;
+      if (tplLabel) tplLabel.textContent = 'Edición ' + currentTemplate.toUpperCase();
+      if (chapLabel) {
+        var list = chapters[currentTemplate] || chapters.nude;
+        chapLabel.textContent = 'Capítulo ' + String(currentChapter + 1).padStart(2, '0') + ' · ' + (list[currentChapter] || '');
+      }
+    }
+
+    window.addEventListener('vela-reader-open', function(e) {
+      if (e.detail) {
+        currentTemplate = e.detail.template || currentTemplate;
+        currentChapter = e.detail.chapter || 0;
+      }
+      updateModal();
+    });
+
+    window.addEventListener('vela-template-select', function(e) {
+      if (e.detail && e.detail.template) {
+        currentTemplate = e.detail.template;
+        currentChapter = 0;
+      }
+      updateModal();
+    });
+
+    window.addEventListener('vela-chapter-change', function(e) {
+      if (e.detail) {
+        currentTemplate = e.detail.template || currentTemplate;
+        currentChapter = e.detail.chapter;
+      }
+      updateModal();
+    });
+
+    if (btnOpen) {
+      btnOpen.addEventListener('click', function() {
+        updateModal();
+        if (modal) modal.classList.remove('hidden');
+      });
+    }
+
+    if (btnClose) {
+      btnClose.addEventListener('click', function() {
+        if (modal) modal.classList.add('hidden');
+      });
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener('click', function() {
+        if (window.VelaArchive3D && typeof window.VelaArchive3D.setChapter === 'function') {
+          window.VelaArchive3D.setChapter(currentTemplate, currentChapter - 1, -1);
+        }
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', function() {
+        if (window.VelaArchive3D && typeof window.VelaArchive3D.setChapter === 'function') {
+          window.VelaArchive3D.setChapter(currentTemplate, currentChapter + 1, 1);
+        }
+      });
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (!modal || modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') modal.classList.add('hidden');
+      if (e.key === 'ArrowLeft' && btnPrev) btnPrev.click();
+      if (e.key === 'ArrowRight' && btnNext) btnNext.click();
+    });
+  })();
+</script>
 </BaseLayout>
