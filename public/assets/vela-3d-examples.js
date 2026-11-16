@@ -145,15 +145,35 @@
     state.mode = 'reader';
     state.lastCard = cards.find((card) => card.dataset.velaGalleryCard === template) || cards[0];
     updateHtml();
+    
+    // Sincronizar etiqueta del sobre interactivo
+    const cardOwner = $('[data-vela-card-owner]');
+    if (cardOwner) cardOwner.textContent = templates[template].name;
+
     layer.classList.add('is-reader', 'is-transitioning');
     const selected = state.lastCard;
     const others = cards.filter((card) => card !== selected);
+    const env = $('[data-vela-envelope-unboxing]');
+    
     const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline() : null;
     if (tl) {
-      tl.to(others, { opacity: .16, scale: .78, y: 24, duration: .48, stagger: .04, ease: 'power2.inOut' }, 0)
-        .to(selected, { scale: 1.08, y: -12, rotation: 0, duration: .7, ease: 'power3.out' }, 0)
-        .fromTo(reader, { opacity: 0, scale: .72, y: 34 }, { opacity: 1, scale: 1, y: 0, duration: .88, ease: 'power3.out' }, .16)
-        .fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: 38, rotation: 12 }, { opacity: 1, x: 0, rotation: 7, duration: .55, ease: 'power2.out' }, .52)
+      // Coreografía Unboxing 3D:
+      // 1. Las otras portadas se desvanecen
+      tl.to(others, { opacity: .12, scale: .75, y: 28, duration: .44, stagger: .03, ease: 'power2.inOut' }, 0)
+        // 2. La portada seleccionada se eleva
+        .to(selected, { scale: 1.08, y: -16, rotation: 0, duration: .6, ease: 'power3.out' }, 0)
+        // 3. El atril/dispositivo emerge
+        .fromTo(reader, { opacity: 0, scale: .72, y: 38 }, { opacity: 1, scale: 1, y: 0, duration: .85, ease: 'power3.out' }, .12);
+        
+      if (env) {
+        // 4. El sobre lacrado vuela al centro y se coloca a la izquierda
+        tl.fromTo(env, 
+          { opacity: 0, scale: 0.6, x: 60, y: 30, rotationY: -25 }, 
+          { opacity: 1, scale: 1, x: 0, y: 0, rotationY: -6, duration: 0.75, ease: 'back.out(1.4)' }, 0.2
+        );
+      }
+      
+      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: 38, rotation: 12 }, { opacity: 1, x: 0, rotation: 7, duration: .55, ease: 'power2.out' }, .52)
         .fromTo($('.vela-gallery-note'), { opacity: 0, x: -28, rotation: -12 }, { opacity: 1, x: 0, rotation: -6, duration: .55, ease: 'power2.out' }, .58)
         .call(() => { layer.classList.remove('is-transitioning'); state.busy = false; }, null, .95);
     } else {
@@ -198,17 +218,77 @@
     if (!templates[template] || state.mode !== 'reader' || state.busy) return;
     state.busy = true;
     const nextChapter = (chapter + 4) % 4;
-    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline() : null;
-    if (tl) {
-      tl.to(spread, { x: direction > 0 ? -34 : 34, opacity: .18, duration: .28, ease: 'power2.in' }, 0)
-        .to($('[data-vela-gallery-memory]'), { x: direction > 0 ? 28 : -28, opacity: 0, duration: .26, ease: 'power2.in' }, 0)
-        .call(() => { state.template = template; state.chapter = nextChapter; updateHtml(); })
-        .set(spread, { x: direction > 0 ? 34 : -34 })
-        .set($('[data-vela-gallery-memory]'), { x: direction > 0 ? -28 : 28 })
-        .to(spread, { x: 0, opacity: 1, duration: .42, ease: 'power3.out' }, .3)
-        .to($('[data-vela-gallery-memory]'), { x: 0, opacity: 1, duration: .42, ease: 'power2.out' }, .32)
-        .call(() => { state.busy = false; });
-    } else { state.chapter = nextChapter; updateHtml(); state.busy = false; }
+    const curPages = templates[template].pages[state.chapter];
+    const nxtPages = templates[template].pages[nextChapter];
+
+    const flipper = $('[data-vela-page-flipper]');
+    const flipperFront = $('[data-flipper-front]');
+    const flipperBack = $('[data-flipper-back]');
+    const shadowFront = $('.vela-flipper-shadow');
+    const shadowBack = $('.vela-flipper-shadow--back');
+
+    if (flipper && flipperFront && flipperBack && window.gsap && !prefersReducedMotion) {
+      // 1. Configurar imágenes de la hoja que gira
+      if (direction > 0) {
+        // Avanzar página: girar hoja derecha hacia la izquierda
+        flipper.style.right = '0';
+        flipper.style.left = 'auto';
+        flipper.style.transformOrigin = 'left center';
+        flipperFront.src = curPages[1];
+        flipperBack.src = nxtPages[0];
+      } else {
+        // Retroceder página: girar hoja izquierda hacia la derecha
+        flipper.style.left = '0';
+        flipper.style.right = 'auto';
+        flipper.style.transformOrigin = 'right center';
+        flipperFront.src = curPages[0];
+        flipperBack.src = nxtPages[1];
+      }
+
+      flipper.classList.add('is-flipping');
+      
+      const tl = window.gsap.timeline();
+      tl.set(flipper, { rotateY: 0 })
+        .set([shadowFront, shadowBack], { opacity: 0 })
+        // Giro angular en el eje Y en 3D
+        .to(flipper, {
+          rotateY: direction > 0 ? -180 : 180,
+          duration: 0.65,
+          ease: 'power2.inOut'
+        }, 0)
+        // Sombras dinámicas simulando la curvatura de la hoja
+        .to(shadowFront, { opacity: 0.38, duration: 0.32, ease: 'power1.in' }, 0)
+        .to(shadowFront, { opacity: 0, duration: 0.33, ease: 'power1.out' }, 0.32)
+        .to(shadowBack, { opacity: 0.42, duration: 0.32, ease: 'power1.in' }, 0)
+        .to(shadowBack, { opacity: 0, duration: 0.33, ease: 'power1.out' }, 0.32)
+        .to($('[data-vela-gallery-memory]'), {
+          x: direction > 0 ? 24 : -24,
+          opacity: 0.3,
+          duration: 0.28,
+          ease: 'power2.in'
+        }, 0)
+        .call(() => {
+          state.template = template;
+          state.chapter = nextChapter;
+          updateHtml();
+        }, null, 0.34)
+        .to($('[data-vela-gallery-memory]'), {
+          x: 0,
+          opacity: 1,
+          duration: 0.38,
+          ease: 'power2.out'
+        }, 0.34)
+        .call(() => {
+          flipper.classList.remove('is-flipping');
+          window.gsap.set(flipper, { clearProps: 'all' });
+          state.busy = false;
+        });
+    } else {
+      state.chapter = nextChapter;
+      updateHtml();
+      state.busy = false;
+    }
+
     window.dispatchEvent(new CustomEvent('vela-chapter-change', { detail: { template, chapter: nextChapter, direction } }));
   }
 
@@ -218,6 +298,9 @@
     if (!prefersReducedMotion) {
       shell.style.setProperty('--vela-pointer-x', `${(50 + cx * 24).toFixed(2)}%`);
       shell.style.setProperty('--vela-pointer-y', `${(38 + cy * 18).toFixed(2)}%`);
+      // Reflejo especular que recorre el cristal
+      shell.style.setProperty('--vela-glare-x', `${(50 + cx * 35).toFixed(1)}%`);
+      shell.style.setProperty('--vela-glare-y', `${(35 + cy * 30).toFixed(1)}%`);
     }
     if (!state.camera || prefersReducedMotion) return;
     state.camera.position.x += (cx * 55 - state.camera.position.x) * .08;
@@ -299,10 +382,48 @@
   $('[data-vela-chapter-next]')?.addEventListener('click', () => changeChapter(state.template, state.chapter + 1, 1));
   shell.addEventListener('pointermove', (event) => { const rect = shell.getBoundingClientRect(); setPointerTilt(((event.clientX - rect.left) / rect.width) * 2 - 1, ((event.clientY - rect.top) / rect.height) * 2 - 1); }, { passive: true });
   shell.addEventListener('pointerleave', () => setPointerTilt(0, 0));
-  let pointerStart = 0;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let isPointerDragging = false;
   let wheelLock = false;
-  shell.addEventListener('pointerdown', (event) => { pointerStart = event.clientX; });
-  shell.addEventListener('pointerup', (event) => { const distance = event.clientX - pointerStart; if (Math.abs(distance) > 55 && state.mode === 'reader') changeChapter(state.template, state.chapter + (distance < 0 ? 1 : -1), distance < 0 ? 1 : -1); });
+
+  shell.addEventListener('pointerdown', (event) => {
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    isPointerDragging = true;
+  });
+
+  shell.addEventListener('pointermove', (event) => {
+    if (!isPointerDragging || state.mode !== 'reader' || state.busy) return;
+    const diffX = event.clientX - pointerStartX;
+    if (Math.abs(diffX) > 10 && !prefersReducedMotion) {
+      // Resistencia elástica al arrastre con el dedo
+      const tiltAngle = Math.max(-12, Math.min(12, diffX * 0.1));
+      spread.style.transform = `perspective(1200px) rotateY(${tiltAngle}deg)`;
+    }
+  });
+
+  shell.addEventListener('pointerup', (event) => {
+    if (!isPointerDragging) return;
+    isPointerDragging = false;
+    const distance = event.clientX - pointerStartX;
+    
+    // Restaurar transform de arrastre con suavidad
+    if (!prefersReducedMotion && window.gsap) {
+      window.gsap.to(spread, { rotateY: 0, duration: 0.35, ease: 'power2.out' });
+    } else {
+      spread.style.transform = '';
+    }
+
+    if (Math.abs(distance) > 55 && state.mode === 'reader') {
+      changeChapter(state.template, state.chapter + (distance < 0 ? 1 : -1), distance < 0 ? 1 : -1);
+    }
+  });
+
+  shell.addEventListener('pointercancel', () => {
+    isPointerDragging = false;
+    spread.style.transform = '';
+  });
   shell.addEventListener('wheel', (event) => {
     if (state.mode !== 'reader' || state.busy || Math.abs(event.deltaY) < 18) return;
     event.preventDefault();

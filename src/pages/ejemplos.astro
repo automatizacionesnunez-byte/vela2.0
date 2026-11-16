@@ -88,19 +88,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div class="vela-gallery-reader" data-vela-gallery-reader>
                   <div class="vela-gallery-reader__shadow"></div>
-                  <!-- Sobre físico con sello de lacre y tarjeta QR integrado en la sala de lectura -->
-                  <div class="hidden sm:block absolute -left-12 -bottom-10 z-20 pointer-events-none drop-shadow-2xl">
-                    <img src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre físico VELA con lacre" class="w-36 lg:w-44 h-auto transform -rotate-6" />
+                  <!-- Sobre físico interactivo 3D con lacre y apertura -->
+                  <div class="vela-interactive-envelope" data-vela-envelope-unboxing>
+                    <div class="vela-envelope-body">
+                      <img src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre físico VELA con lacre" class="w-full h-auto drop-shadow-2xl" />
+                      <div class="vela-envelope-card" data-vela-envelope-card>
+                        <span class="text-[9px] uppercase tracking-widest text-vela-chocolate/60">Biografía familiar</span>
+                        <strong class="font-serif text-xs text-vela-chocolate block" data-vela-card-owner>Carlota</strong>
+                        <div class="w-4 h-4 border border-vela-chocolate/30 rounded-xs mx-auto mt-1 flex items-center justify-center text-[7px]">QR</div>
+                      </div>
+                    </div>
                   </div>
+                  
                   <div class="vela-gallery-device relative">
                     <span class="vela-gallery-device__camera"></span>
-                    <div class="vela-gallery-spread" data-vela-gallery-spread>
-                      <img data-vela-gallery-page-left src="/assets/templates/nude_page_01.jpg" alt="" />
-                      <!-- Sombra central del lomo del libro para dar profundidad editorial -->
-                      <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 bg-gradient-to-r from-black/15 via-black/5 to-black/15 pointer-events-none z-10" aria-hidden="true"></div>
-                      <img data-vela-gallery-page-right src="/assets/templates/nude_page_02.jpg" alt="" />
+                    <div class="vela-gallery-spread relative" data-vela-gallery-spread>
+                      <!-- Páginas base del pliego actual -->
+                      <div class="vela-spread-page vela-spread-page--left">
+                        <img data-vela-gallery-page-left src="/assets/templates/nude_page_01.jpg" alt="Página izquierda" />
+                      </div>
+                      
+                      <!-- Sombra y curvatura del lomo central -->
+                      <div class="vela-spread-spine" aria-hidden="true"></div>
+
+                      <div class="vela-spread-page vela-spread-page--right">
+                        <img data-vela-gallery-page-right src="/assets/templates/nude_page_02.jpg" alt="Página derecha" />
+                      </div>
+
+                      <!-- Hoja móvil para animación 3D de pasapáginas (Page Flip) -->
+                      <div class="vela-page-flipper" data-vela-page-flipper aria-hidden="true">
+                        <div class="vela-flipper-front">
+                          <img data-flipper-front src="/assets/templates/nude_page_02.jpg" alt="" />
+                          <div class="vela-flipper-shadow"></div>
+                        </div>
+                        <div class="vela-flipper-back">
+                          <img data-flipper-back src="/assets/templates/nude_page_03.jpg" alt="" />
+                          <div class="vela-flipper-shadow vela-flipper-shadow--back"></div>
+                        </div>
+                      </div>
                     </div>
-                    <span class="vela-gallery-device__glass"></span>
+                    <!-- Reflejo especular dinámico (Specular Glare) -->
+                    <span class="vela-gallery-device__glass" data-vela-device-glass></span>
                   </div>
                   <div class="vela-gallery-memory"><img data-vela-gallery-memory src="/assets/templates/nude_page_07.jpg" alt="" /></div>
                   <div class="vela-gallery-note"><small>CAPÍTULO</small><strong data-vela-gallery-note>Orígenes</strong><span data-vela-gallery-number>01</span></div>
