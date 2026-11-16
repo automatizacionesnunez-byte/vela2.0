@@ -425,9 +425,9 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 }
 
 /* VELA archive / digital reading room */
-.vela-archive-instruction { color: rgba(64,54,47,.68); font: 400 13px/1.4 "Plus Jakarta Sans", sans-serif; }
+.vela-archive-instruction { color: rgba(64,54,47,.68); font: 400 clamp(11.5px, 2.5vw, 13px)/1.4 "Plus Jakarta Sans", sans-serif; }
 .vela-archive-picker button { border: 1px solid rgba(64,54,47,.18); border-radius: 999px; padding: .55rem .8rem; background: rgba(255,255,255,.35); color: #40362f; font: 500 11px/1 "Plus Jakarta Sans", sans-serif; transition: background .25s ease, color .25s ease, transform .25s ease; }
-.vela-archive-picker button em { margin-left: .25rem; color: #957b67; font: italic 13px Newsreader, Georgia, serif; }
+.vela-archive-picker button em { margin-left: .25rem; color: #957b67; font: italic clamp(11.5px, 2.5vw, 13px) Newsreader, Georgia, serif; }
 .vela-archive-picker button:hover, .vela-archive-picker button:focus-visible, .vela-archive-picker button.is-active { background: #40362f; color: #fff; transform: translateY(-1px); }
 .vela-archive-picker button.is-active em { color: #d9bea0; }
 .vela-archive-stage { position: relative; min-height: clamp(480px, 54vw, 680px); overflow: hidden; isolation: isolate; border: 1px solid rgba(38,35,31,.12); border-radius: 1.4rem; background: radial-gradient(circle at 50% 18%, #f6ede2 0, #e8d8c8 48%, #b79679 100%); box-shadow: 0 30px 80px rgba(62,46,34,.18), inset 0 0 0 1px rgba(255,255,255,.35); touch-action: pan-y; }
@@ -586,22 +586,23 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   .vela-gallery-bottomline { align-items:flex-start; flex-direction:column; gap:1rem; }
 }
 @media (max-width:700px) {
-  .vela-gallery-utility { flex-wrap:wrap; font-size:8px; line-height:1.5; }
+  .vela-gallery-utility { flex-wrap:wrap; font-size:10px; line-height:1.5; }
   .vela-gallery-scene { min-height:470px; }
-  .vela-gallery-card { top:21%; height:59%; }
+  .vela-gallery-card { top:33%; height:50%; }
   .vela-gallery-card--nude { left:18%; transform:translateX(-50%) rotate(-3deg) translateZ(30px); }
   .vela-gallery-card--noir { left:50%; transform:translateX(-50%) translateZ(75px) scale(1.02); }
   .vela-gallery-card--letter { left:82%; transform:translateX(-50%) rotate(3deg) translateZ(25px); }
   .vela-gallery-card:hover,.vela-gallery-card:focus-visible { transform:translateX(-50%) translateY(-8px) rotate(0deg) translateZ(100px) scale(1.035); }
   .vela-gallery-card__frame { padding:.42rem; }
-  .vela-gallery-card__label b { font-size:1rem; }
-  .vela-gallery-card__label small { font-size:5.5px; letter-spacing:.08em; }
-  .vela-gallery-reader { width:91vw; top:56%; }
-  .vela-gallery-memory { right:-2%; bottom:-8%; width:18%; }
-  .vela-gallery-note { left:-2%; bottom:-8%; width:20%; padding:.55rem; }
-  .vela-gallery-note strong { font-size:.86rem; }
+  .vela-gallery-card__label b { font-size:1.15rem; }
+  .vela-gallery-card__label small { font-size:8.5px; letter-spacing:.08em; }
+  .vela-gallery-reader { width:92vw; top:58%; }
+  .vela-gallery-memory { right:-2%; bottom:-6%; width:19%; }
+  .vela-gallery-note { left:-2%; bottom:-7%; width:22%; padding:.55rem; }
+  .vela-gallery-note strong { font-size:.92rem; }
+  .vela-gallery-note small, .vela-gallery-note span { font-size: 8px; }
   .vela-gallery-bottomline { margin-top:1.4rem; }
-  .vela-gallery-bottomline p { font-size:13px; }
+  .vela-gallery-bottomline p { font-size:clamp(12px, 3vw, 13px); }
 }
 @media (prefers-reduced-motion:reduce) {
   .vela-gallery-card,.vela-gallery-reader,.vela-gallery-spread img,.vela-gallery-bottomline a { transition-duration:.01ms!important; }
@@ -1085,12 +1086,38 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 }
 
 @media (max-width: 700px) {
-  .vela-archive-stage { min-height: 520px; }
+  .vela-archive-stage { min-height: 540px; border-radius: .9rem; }
   .vela-archive-copy { top: 1.15rem; left: 1.15rem; max-width: calc(100% - 2.3rem); }
-  .vela-archive-copy strong { font-size: 1.55rem; }
-  .vela-archive-copy small { font-size: 13px; max-width: 17rem; }
-  .vela-gallery-card { top: 34%; height: 47%; }
-  .vela-3d-hint { right: auto; left: 50%; bottom: .95rem; transform: translateX(-50%); letter-spacing: .12em; font-size: 8px; white-space: nowrap; }
+  .vela-archive-copy strong { font-size: clamp(1.4rem, 6vw, 1.75rem); }
+  .vela-archive-copy small { font-size: clamp(11.5px, 2.8vw, 13px); max-width: 17rem; }
+  .vela-reader-copy { top: 1.15rem; left: 1.15rem; max-width: calc(100% - 2.3rem); }
+  .vela-reader-copy strong { font-size: clamp(1.4rem, 6vw, 1.75rem); }
+  .vela-reader-copy small { font-size: clamp(11.5px, 2.8vw, 13px); max-width: 17rem; }
+  .vela-gallery-utility { flex-wrap: wrap; font-size: 10px; line-height: 1.5; }
+  .vela-gallery-card { top: 32%; height: 50%; }
+  .vela-gallery-card__label b { font-size: 1.15rem; }
+  .vela-gallery-card__label small { font-size: 8.5px; letter-spacing: .08em; }
+  .vela-gallery-reader { width: 92vw; top: 58%; }
+  .vela-gallery-memory { right: -2%; bottom: -6%; width: 19%; }
+  .vela-gallery-note { left: -2%; bottom: -7%; width: 22%; padding: .55rem; }
+  .vela-gallery-note strong { font-size: .92rem; }
+  .vela-gallery-note small, .vela-gallery-note span { font-size: 8px; }
+  .vela-gallery-bottomline p { font-size: clamp(12px, 3vw, 13px); }
+  .vela-3d-hint { right: auto; left: 50%; bottom: .85rem; transform: translateX(-50%); letter-spacing: .12em; font-size: 9px; white-space: nowrap; }
+}
+
+@media (max-width: 480px) {
+  .vela-archive-stage { min-height: 560px; }
+  .vela-gallery-card { top: 35%; height: 48%; }
+  .vela-gallery-card--nude { left: 16%; }
+  .vela-gallery-card--noir { left: 50%; }
+  .vela-gallery-card--letter { left: 84%; }
+  .vela-gallery-card__label b { font-size: 1.05rem; }
+  .vela-gallery-card__label small { font-size: 7.5px; }
+  .vela-gallery-reader { width: 95vw; top: 60%; }
+  .vela-gallery-memory { right: 0; bottom: -8%; width: 22%; }
+  .vela-gallery-note { left: 0; bottom: -9%; width: 24%; padding: .45rem; }
+  .vela-interactive-envelope { width: 7.2rem; left: 0; bottom: -1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2705,7 +2732,17 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
   z-index: 15;
 }
 
-/* 2. HOJA GIRATORIA 3D (PAGE FLIPPER) */
+/* 3D Hardware acceleration optimizations */
+.vela-gallery-card,
+.vela-gallery-reader,
+.vela-page-flipper,
+.vela-interactive-envelope {
+  will-change: transform;
+}
+
+.vela-gallery-spread {
+  contain: layout paint;
+}
 .vela-page-flipper {
   position: absolute;
   top: 0;

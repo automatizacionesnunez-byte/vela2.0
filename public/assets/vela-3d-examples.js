@@ -6,19 +6,19 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const templates = {
     nude: {
-      name: 'Carlota', label: 'NUDE', caption: 'La historia de una vida plena', style: 'Calida, elegante y atemporal', accent: '#c5a982',
+      name: 'Carlota', label: 'NUDE', caption: 'La historia de una vida plena', style: 'Cálida, elegante y atemporal', accent: '#c5a982',
       pages: [['/assets/templates/nude_page_01.jpg', '/assets/templates/nude_page_02.jpg'], ['/assets/templates/nude_page_03.jpg', '/assets/templates/nude_page_04.jpg'], ['/assets/templates/nude_page_05.jpg', '/assets/templates/nude_page_06.jpg'], ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_08.jpg']],
       memories: ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_05.jpg', '/assets/carmen-hero-1600.webp', '/assets/carmen-family-1200.webp'],
-      chapters: ['Origenes', 'Infancia', 'Momentos clave', 'Legado']
+      chapters: ['Orígenes', 'Infancia', 'Momentos clave', 'Legado']
     },
     noir: {
-      name: 'Juan', label: 'NOIR', caption: 'El companero de camino', style: 'Moderna, sobria y con caracter', accent: '#d7c1a5',
+      name: 'Juan', label: 'NOIR', caption: 'El compañero de camino', style: 'Moderna, sobria y con carácter', accent: '#d7c1a5',
       pages: [['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'], ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'], ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'], ['/assets/templates/noir_page_04.jpg', '/assets/templates/noir_page_08.jpg']],
       memories: ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_04.jpg', '/assets/tecnologia-sensibilidad.webp', '/assets/vela-sobre-qr-1200.webp'],
-      chapters: ['Origenes', 'El caracter', 'Una vida plena', 'Lo que permanece']
+      chapters: ['Orígenes', 'El carácter', 'Una vida plena', 'Lo que permanece']
     },
     letter: {
-      name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequenas historias', style: 'Clasica, cercana y llena de memoria', accent: '#8d504b',
+      name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequeñas historias', style: 'Clásica, cercana y llena de memoria', accent: '#8d504b',
       pages: [['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'], ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'], ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_07.jpg'], ['/assets/templates/letter_page_08.jpg', '/assets/templates/letter_page_09.jpg']],
       memories: ['/assets/carmen-family-1200.webp', '/assets/carmen-hero-1600.webp', '/assets/templates/letter_page_04.jpg', '/assets/templates/letter_page_08.jpg'],
       chapters: ['La carta', 'Familia', 'Viajes y hallazgos', 'Para siempre']
@@ -37,7 +37,14 @@
     baseZ: 1000,
     raf: 0,
     visible: true,
-    lastCard: null
+    lastCard: null,
+    // Rendimiento: Render on demand & Lerp damping
+    targetCamX: 0,
+    targetCamY: 0,
+    currentCamX: 0,
+    currentCamY: 0,
+    isDirty: true,
+    activeAnimCount: 0
   };
 
   const $ = (selector) => showcase.querySelector(selector);
@@ -47,6 +54,73 @@
   const reader = $('[data-vela-gallery-reader]');
   const spread = $('[data-vela-gallery-spread]');
   const cards = $$('[data-vela-gallery-card]');
+
+  // Precargar imágenes adyacentes para evitar parpadeos
+  const preloadedImages = new Set();
+  function preloadImages(srcList) {
+    srcList.forEach((src) => {
+      if (!src || preloadedImages.has(src)) return;
+      const img = new Image();
+      img.src = src;
+      preloadedImages.add(src);
+    });
+  }
+
+  function preloadAdjacentChapters(template, currentChapter) {
+    const cur = templates[template];
+    if (!cur) return;
+    const prevChap = (currentChapter + 3) % 4;
+    const nextChap = (currentChapter + 1) % 4;
+    preloadImages([
+      ...cur.pages[prevChap],
+      ...cur.pages[nextChap],
+      cur.memories[prevChap],
+      cur.memories[nextChap]
+    ]);
+  }
+
+  function markDirty() {
+    state.isDirty = true;
+    startRenderLoop();
+  }
+
+  function startRenderLoop() {
+    if (!state.visible || !state.renderer || state.raf) return;
+    state.raf = requestAnimationFrame(renderTick);
+  }
+
+  function renderTick() {
+    if (!state.visible || !state.renderer) {
+      state.raf = 0;
+      return;
+    }
+
+    let needsAnotherPass = false;
+
+    // Suavizado Lerp 60-120fps de la cámara
+    if (state.camera && !prefersReducedMotion) {
+      const dx = state.targetCamX - state.currentCamX;
+      const dy = state.targetCamY - state.currentCamY;
+
+      if (Math.abs(dx) > 0.05 || Math.abs(dy) > 0.05) {
+        state.currentCamX += dx * 0.12;
+        state.currentCamY += dy * 0.12;
+        state.camera.position.x = state.currentCamX;
+        state.camera.position.y = state.currentCamY;
+        state.camera.lookAt(0, 0, 0);
+        needsAnotherPass = true;
+      }
+    }
+
+    if (state.isDirty || needsAnotherPass || state.activeAnimCount > 0) {
+      state.renderer.render(state.scene, state.camera);
+      state.isDirty = false;
+      state.raf = requestAnimationFrame(renderTick);
+    } else {
+      // Reposo: se apaga el bucle para 0% consumo en descanso
+      state.raf = 0;
+    }
+  }
 
   function data() { return templates[state.template]; }
 
@@ -62,7 +136,7 @@
     const hint = $('.vela-3d-hint');
     if (hint) hint.textContent = state.mode === 'gallery'
       ? 'Selecciona una pieza para entrar'
-      : 'Rueda para cambiar de capítulo · arrastra o usa las flechas';
+      : 'Desliza o usa las flechas para explorar';
     const instruction = $('.vela-archive-instruction');
     if (instruction) instruction.textContent = state.mode === 'gallery'
       ? 'Explora tres ediciones y entra en la historia que quieras conocer.'
@@ -70,7 +144,7 @@
     shell.dataset.template = state.template;
     shell.dataset.velaState = state.mode;
     showcase.dataset.velaState = state.mode;
-    shell.setAttribute('aria-label', state.mode === 'reader' ? `Sala de lectura digital de ${current.name}` : 'Galeria digital de historias VELA');
+    shell.setAttribute('aria-label', state.mode === 'reader' ? `Sala de lectura digital de ${current.name}` : 'Galería digital de historias VELA');
     document.documentElement.style.setProperty('--vela-scene-accent', current.accent);
     const bottomline = $('[data-vela-bottomline-label]');
     if (bottomline) bottomline.textContent = state.mode === 'reader'
@@ -80,16 +154,16 @@
     $('[data-vela-reader-kicker]').textContent = `PLANTILLA ${current.label}`;
     $('[data-vela-reader-name]').textContent = current.name;
     $('[data-vela-reader-caption]').textContent = current.caption;
-    $('[data-vela-scene-kicker]').textContent = state.mode === 'reader' ? `EDICION ${current.label}` : 'GALERIA DIGITAL';
+    $('[data-vela-scene-kicker]').textContent = state.mode === 'reader' ? `EDICIÓN ${current.label}` : 'GALERÍA DIGITAL';
     $('[data-vela-scene-name]').textContent = state.mode === 'reader' ? current.name : 'Tres formas de conservar una vida';
-    $('[data-vela-scene-caption]').textContent = state.mode === 'reader' ? current.caption : 'Selecciona una edicion para entrar en su memoria.';
+    $('[data-vela-scene-caption]').textContent = state.mode === 'reader' ? current.caption : 'Selecciona una edición para entrar en su memoria.';
     $('[data-vela-meta-title]').textContent = current.chapters[state.chapter];
     $('[data-vela-meta-style]').textContent = current.style;
     $('[data-vela-meta-format]').textContent = 'Lectura digital · PDF · QR';
     $('[data-vela-status-text]').textContent = state.mode === 'reader' ? 'Historia abierta · usa las flechas para avanzar' : 'Selecciona una pieza para entrar';
     $('[data-vela-fallback-template]').textContent = current.label;
     $('[data-vela-fallback-cover]').src = current.pages[state.chapter][0];
-    $('[data-vela-fallback-cover]').alt = `Biografia digital de ${current.name}`;
+    $('[data-vela-fallback-cover]').alt = `Biografía digital de ${current.name}`;
 
     $('[data-vela-gallery-page-left]').src = current.pages[state.chapter][0];
     $('[data-vela-gallery-page-right]').src = current.pages[state.chapter][1];
@@ -116,6 +190,9 @@
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-selected', String(active));
     });
+
+    preloadAdjacentChapters(state.template, state.chapter);
+    markDirty();
   }
 
   function setStatus(message) {
@@ -123,22 +200,18 @@
     if (status) status.textContent = message;
   }
 
-  function tween(target, values, duration, ease = 'power3.out') {
-    if (window.gsap && !prefersReducedMotion) return window.gsap.to(target, { ...values, duration, ease });
-    Object.assign(target.style, values.css || {});
-    return { then(callback) { window.setTimeout(callback, duration * 1000); } };
-  }
-
   function resetTransforms() {
     if (!window.gsap) return;
     window.gsap.set(cards, { clearProps: 'transform,opacity,filter' });
     window.gsap.set(reader, { clearProps: 'transform,opacity' });
     window.gsap.set(spread, { clearProps: 'transform,opacity' });
+    markDirty();
   }
 
   function galleryToReader(template) {
     if (!templates[template] || state.busy) return;
     state.busy = true;
+    state.activeAnimCount++;
     delete shell.dataset.hoverTemplate;
     state.template = template;
     state.chapter = 0;
@@ -155,29 +228,36 @@
     const others = cards.filter((card) => card !== selected);
     const env = $('[data-vela-envelope-unboxing]');
     
-    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline() : null;
+    const isMobile = window.innerWidth < 700;
+    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline({
+      onUpdate: markDirty,
+      onComplete: () => {
+        layer.classList.remove('is-transitioning');
+        state.busy = false;
+        state.activeAnimCount--;
+        markDirty();
+      }
+    }) : null;
+
     if (tl) {
-      // Coreografía Unboxing 3D:
-      // 1. Las otras portadas se desvanecen
-      tl.to(others, { opacity: .12, scale: .75, y: 28, duration: .44, stagger: .03, ease: 'power2.inOut' }, 0)
-        // 2. La portada seleccionada se eleva
-        .to(selected, { scale: 1.08, y: -16, rotation: 0, duration: .6, ease: 'power3.out' }, 0)
-        // 3. El atril/dispositivo emerge
-        .fromTo(reader, { opacity: 0, scale: .72, y: 38 }, { opacity: 1, scale: 1, y: 0, duration: .85, ease: 'power3.out' }, .12);
+      tl.to(others, { opacity: .12, scale: .75, y: 24, duration: .4, stagger: .02, ease: 'power2.inOut' }, 0)
+        .to(selected, { scale: isMobile ? 1.04 : 1.08, y: isMobile ? -10 : -16, rotation: 0, duration: .55, ease: 'power3.out' }, 0)
+        .fromTo(reader, { opacity: 0, scale: .76, y: 32 }, { opacity: 1, scale: 1, y: 0, duration: .75, ease: 'power3.out' }, .1);
         
       if (env) {
-        // 4. El sobre lacrado vuela al centro y se coloca a la izquierda
         tl.fromTo(env, 
-          { opacity: 0, scale: 0.6, x: 60, y: 30, rotationY: -25 }, 
-          { opacity: 1, scale: 1, x: 0, y: 0, rotationY: -6, duration: 0.75, ease: 'back.out(1.4)' }, 0.2
+          { opacity: 0, scale: 0.65, x: isMobile ? 25 : 50, y: 25, rotationY: -20 }, 
+          { opacity: 1, scale: 1, x: 0, y: 0, rotationY: -6, duration: 0.68, ease: 'back.out(1.3)' }, 0.16
         );
       }
       
-      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: 38, rotation: 12 }, { opacity: 1, x: 0, rotation: 7, duration: .55, ease: 'power2.out' }, .52)
-        .fromTo($('.vela-gallery-note'), { opacity: 0, x: -28, rotation: -12 }, { opacity: 1, x: 0, rotation: -6, duration: .55, ease: 'power2.out' }, .58)
-        .call(() => { layer.classList.remove('is-transitioning'); state.busy = false; }, null, .95);
+      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: isMobile ? 16 : 32, rotation: 10 }, { opacity: 1, x: 0, rotation: 6, duration: .5, ease: 'power2.out' }, .45)
+        .fromTo($('.vela-gallery-note'), { opacity: 0, x: isMobile ? -14 : -24, rotation: -10 }, { opacity: 1, x: 0, rotation: -5, duration: .5, ease: 'power2.out' }, .5);
     } else {
-      layer.classList.remove('is-transitioning'); state.busy = false;
+      layer.classList.remove('is-transitioning');
+      state.busy = false;
+      state.activeAnimCount--;
+      markDirty();
     }
     window.dispatchEvent(new CustomEvent('vela-template-select', { detail: { template } }));
     window.dispatchEvent(new CustomEvent('vela-reader-open', { detail: { template, chapter: 0 } }));
@@ -186,15 +266,34 @@
   function readerToGallery() {
     if (state.busy) return;
     state.busy = true;
+    state.activeAnimCount++;
     delete shell.dataset.hoverTemplate;
     layer.classList.add('is-transitioning');
-    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline() : null;
+    
+    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline({
+      onUpdate: markDirty,
+      onComplete: () => {
+        layer.classList.remove('is-reader', 'is-transitioning');
+        resetTransforms();
+        state.mode = 'gallery';
+        state.busy = false;
+        state.activeAnimCount--;
+        updateHtml();
+        state.lastCard?.focus({ preventScroll: true });
+        markDirty();
+      }
+    }) : null;
+
     if (tl) {
-      tl.to(reader, { opacity: 0, scale: .72, y: 30, duration: .62, ease: 'power2.in' }, 0)
-        .to(cards, { opacity: 1, scale: 1, y: 0, rotation: 0, duration: .7, stagger: .04, ease: 'power3.out' }, .16)
-        .call(() => { layer.classList.remove('is-reader', 'is-transitioning'); resetTransforms(); state.mode = 'gallery'; state.busy = false; updateHtml(); state.lastCard?.focus({ preventScroll: true }); }, null, .76);
+      tl.to(reader, { opacity: 0, scale: .75, y: 24, duration: .5, ease: 'power2.in' }, 0)
+        .to(cards, { opacity: 1, scale: 1, y: 0, rotation: 0, duration: .6, stagger: .03, ease: 'power3.out' }, .12);
     } else {
-      layer.classList.remove('is-reader', 'is-transitioning'); state.mode = 'gallery'; state.busy = false; updateHtml();
+      layer.classList.remove('is-reader', 'is-transitioning');
+      state.mode = 'gallery';
+      state.busy = false;
+      state.activeAnimCount--;
+      updateHtml();
+      markDirty();
     }
     window.dispatchEvent(new CustomEvent('vela-reader-close', { detail: { template: state.template } }));
   }
@@ -203,20 +302,36 @@
     if (!templates[template] || state.busy) return;
     if (state.mode === 'gallery') return galleryToReader(template);
     state.busy = true;
+    state.activeAnimCount++;
     const old = state.template;
-    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline() : null;
+    const tl = window.gsap && !prefersReducedMotion ? window.gsap.timeline({
+      onUpdate: markDirty,
+      onComplete: () => {
+        state.busy = false;
+        state.activeAnimCount--;
+        markDirty();
+      }
+    }) : null;
+
     if (tl) {
-      tl.to(reader, { opacity: 0, x: template === 'letter' ? -32 : 32, duration: .28, ease: 'power2.in' })
+      tl.to(reader, { opacity: 0, x: template === 'letter' ? -26 : 26, duration: .24, ease: 'power2.in' })
         .call(() => { state.template = template; state.chapter = 0; updateHtml(); })
-        .fromTo(reader, { opacity: 0, x: template === 'letter' ? 32 : -32 }, { opacity: 1, x: 0, duration: .58, ease: 'power3.out' })
-        .call(() => { state.busy = false; });
-    } else { state.template = template; state.chapter = 0; state.busy = false; updateHtml(); }
+        .fromTo(reader, { opacity: 0, x: template === 'letter' ? 26 : -26 }, { opacity: 1, x: 0, duration: .5, ease: 'power3.out' });
+    } else {
+      state.template = template;
+      state.chapter = 0;
+      state.busy = false;
+      state.activeAnimCount--;
+      updateHtml();
+      markDirty();
+    }
     window.dispatchEvent(new CustomEvent('vela-template-select', { detail: { template, previous: old } }));
   }
 
   function changeChapter(template, chapter, direction = 1) {
     if (!templates[template] || state.mode !== 'reader' || state.busy) return;
     state.busy = true;
+    state.activeAnimCount++;
     const nextChapter = (chapter + 4) % 4;
     const curPages = templates[template].pages[state.chapter];
     const nxtPages = templates[template].pages[nextChapter];
@@ -228,16 +343,13 @@
     const shadowBack = $('.vela-flipper-shadow--back');
 
     if (flipper && flipperFront && flipperBack && window.gsap && !prefersReducedMotion) {
-      // 1. Configurar imágenes de la hoja que gira
       if (direction > 0) {
-        // Avanzar página: girar hoja derecha hacia la izquierda
         flipper.style.right = '0';
         flipper.style.left = 'auto';
         flipper.style.transformOrigin = 'left center';
         flipperFront.src = curPages[1];
         flipperBack.src = nxtPages[0];
       } else {
-        // Retroceder página: girar hoja izquierda hacia la derecha
         flipper.style.left = '0';
         flipper.style.right = 'auto';
         flipper.style.transformOrigin = 'right center';
@@ -247,46 +359,51 @@
 
       flipper.classList.add('is-flipping');
       
-      const tl = window.gsap.timeline();
+      const tl = window.gsap.timeline({
+        onUpdate: markDirty,
+        onComplete: () => {
+          flipper.classList.remove('is-flipping');
+          window.gsap.set(flipper, { clearProps: 'all' });
+          state.busy = false;
+          state.activeAnimCount--;
+          markDirty();
+        }
+      });
+
       tl.set(flipper, { rotateY: 0 })
         .set([shadowFront, shadowBack], { opacity: 0 })
-        // Giro angular en el eje Y en 3D
         .to(flipper, {
           rotateY: direction > 0 ? -180 : 180,
-          duration: 0.65,
+          duration: 0.58,
           ease: 'power2.inOut'
         }, 0)
-        // Sombras dinámicas simulando la curvatura de la hoja
-        .to(shadowFront, { opacity: 0.38, duration: 0.32, ease: 'power1.in' }, 0)
-        .to(shadowFront, { opacity: 0, duration: 0.33, ease: 'power1.out' }, 0.32)
-        .to(shadowBack, { opacity: 0.42, duration: 0.32, ease: 'power1.in' }, 0)
-        .to(shadowBack, { opacity: 0, duration: 0.33, ease: 'power1.out' }, 0.32)
+        .to(shadowFront, { opacity: 0.32, duration: 0.28, ease: 'power1.in' }, 0)
+        .to(shadowFront, { opacity: 0, duration: 0.28, ease: 'power1.out' }, 0.28)
+        .to(shadowBack, { opacity: 0.35, duration: 0.28, ease: 'power1.in' }, 0)
+        .to(shadowBack, { opacity: 0, duration: 0.28, ease: 'power1.out' }, 0.28)
         .to($('[data-vela-gallery-memory]'), {
-          x: direction > 0 ? 24 : -24,
-          opacity: 0.3,
-          duration: 0.28,
+          x: direction > 0 ? 18 : -18,
+          opacity: 0.35,
+          duration: 0.25,
           ease: 'power2.in'
         }, 0)
         .call(() => {
           state.template = template;
           state.chapter = nextChapter;
           updateHtml();
-        }, null, 0.34)
+        }, null, 0.3)
         .to($('[data-vela-gallery-memory]'), {
           x: 0,
           opacity: 1,
-          duration: 0.38,
+          duration: 0.34,
           ease: 'power2.out'
-        }, 0.34)
-        .call(() => {
-          flipper.classList.remove('is-flipping');
-          window.gsap.set(flipper, { clearProps: 'all' });
-          state.busy = false;
-        });
+        }, 0.3);
     } else {
       state.chapter = nextChapter;
       updateHtml();
       state.busy = false;
+      state.activeAnimCount--;
+      markDirty();
     }
 
     window.dispatchEvent(new CustomEvent('vela-chapter-change', { detail: { template, chapter: nextChapter, direction } }));
@@ -298,14 +415,15 @@
     if (!prefersReducedMotion) {
       shell.style.setProperty('--vela-pointer-x', `${(50 + cx * 24).toFixed(2)}%`);
       shell.style.setProperty('--vela-pointer-y', `${(38 + cy * 18).toFixed(2)}%`);
-      // Reflejo especular que recorre el cristal
       shell.style.setProperty('--vela-glare-x', `${(50 + cx * 35).toFixed(1)}%`);
       shell.style.setProperty('--vela-glare-y', `${(35 + cy * 30).toFixed(1)}%`);
     }
     if (!state.camera || prefersReducedMotion) return;
-    state.camera.position.x += (cx * 55 - state.camera.position.x) * .08;
-    state.camera.position.y += (-cy * 28 - state.camera.position.y) * .08;
-    state.camera.lookAt(0, 0, 0);
+    
+    // Asignar objetivo para interpolación suave (Lerp) en RAF
+    state.targetCamX = cx * (state.quality === 'mobile' ? 24 : 52);
+    state.targetCamY = -cy * (state.quality === 'mobile' ? 14 : 26);
+    markDirty();
   }
 
   function createGalleryScene() {
@@ -320,28 +438,58 @@
       state.renderer.domElement.appendChild(layer);
       const object = new CSS3DObject(layer);
       state.scene.add(object);
+      
       const resize = () => {
         const width = gallery.clientWidth;
         const height = gallery.clientHeight;
         if (!width || !height) return;
+        state.quality = width < 700 ? 'mobile' : width < 1000 ? 'tablet' : 'desktop';
         const fovRad = THREE.MathUtils.degToRad(state.camera.fov * 0.5);
         state.baseZ = (0.5 / Math.tan(fovRad)) * height;
         state.camera.position.z = state.baseZ;
         state.camera.aspect = width / height;
         state.camera.updateProjectionMatrix();
         state.renderer.setSize(width, height);
+        markDirty();
       };
-      const render = () => { if (!state.visible || !state.renderer) return; state.renderer.render(state.scene, state.camera); state.raf = requestAnimationFrame(render); };
-      const observer = new ResizeObserver(resize); observer.observe(gallery); resize();
-      const visibility = new IntersectionObserver(([entry]) => { state.visible = entry.isIntersecting; if (state.visible && !prefersReducedMotion && !state.raf) state.raf = requestAnimationFrame(render); if (!state.visible && state.raf) { cancelAnimationFrame(state.raf); state.raf = 0; } }, { threshold: .05 });
+
+      const observer = new ResizeObserver(resize);
+      observer.observe(gallery);
+      resize();
+
+      const visibility = new IntersectionObserver(([entry]) => {
+        state.visible = entry.isIntersecting;
+        if (state.visible) {
+          markDirty();
+        } else if (state.raf) {
+          cancelAnimationFrame(state.raf);
+          state.raf = 0;
+        }
+      }, { threshold: .05 });
       visibility.observe(gallery);
-      state.dispose = () => { observer.disconnect(); visibility.disconnect(); if (state.raf) cancelAnimationFrame(state.raf); state.renderer?.domElement.remove(); state.renderer = null; };
-      if (!prefersReducedMotion) state.raf = requestAnimationFrame(render); else state.renderer.render(state.scene, state.camera);
+
+      state.dispose = () => {
+        observer.disconnect();
+        visibility.disconnect();
+        if (state.raf) cancelAnimationFrame(state.raf);
+        state.renderer?.domElement.remove();
+        state.renderer = null;
+      };
+
+      state.renderer.render(state.scene, state.camera);
       showcase.classList.remove('has-scene-error');
       $('[data-vela-scene-loading]')?.classList.add('is-hidden');
       setStatus('Selecciona una pieza para entrar');
       window.dispatchEvent(new CustomEvent('vela-gallery-ready'));
-    })).catch(() => { $('[data-vela-scene-loading]')?.classList.add('is-hidden'); showcase.classList.add('is-css3d-fallback'); setStatus('Galeria editorial disponible'); window.dispatchEvent(new CustomEvent('vela-scene-error')); });
+      
+      // Precarga inicial de Carlota
+      preloadAdjacentChapters('nude', 0);
+    })).catch(() => {
+      $('[data-vela-scene-loading]')?.classList.add('is-hidden');
+      showcase.classList.add('is-css3d-fallback');
+      setStatus('Galería editorial disponible');
+      window.dispatchEvent(new CustomEvent('vela-scene-error'));
+    });
   }
 
   window.VelaArchive3D = {
@@ -353,7 +501,6 @@
     setPointerTilt,
     setQualityTier(tier) { if (['desktop', 'tablet', 'mobile'].includes(tier)) state.quality = tier; },
     disposeGalleryScene() { state.dispose?.(); },
-    // Compatibilidad con los controles existentes durante la transición de implementación.
     selectEnvelope: galleryToReader,
     closeBiography: readerToGallery,
     setBiography: changeTemplate
@@ -375,55 +522,78 @@
     card.addEventListener('focus', setFocusHover);
     card.addEventListener('blur', clearHover);
   });
+
   $$('[data-vela-archive-tab]').forEach((button) => button.addEventListener('click', () => changeTemplate(button.dataset.velaArchiveTab)));
   $('[data-vela-close]')?.addEventListener('click', readerToGallery);
   $$('[data-vela-chapter]').forEach((button) => button.addEventListener('click', () => changeChapter(state.template, Number(button.dataset.velaChapter), Number(button.dataset.velaChapter) >= state.chapter ? 1 : -1)));
   $('[data-vela-chapter-prev]')?.addEventListener('click', () => changeChapter(state.template, state.chapter - 1, -1));
   $('[data-vela-chapter-next]')?.addEventListener('click', () => changeChapter(state.template, state.chapter + 1, 1));
-  shell.addEventListener('pointermove', (event) => { const rect = shell.getBoundingClientRect(); setPointerTilt(((event.clientX - rect.left) / rect.width) * 2 - 1, ((event.clientY - rect.top) / rect.height) * 2 - 1); }, { passive: true });
+  
+  shell.addEventListener('pointermove', (event) => {
+    const rect = shell.getBoundingClientRect();
+    setPointerTilt(((event.clientX - rect.left) / rect.width) * 2 - 1, ((event.clientY - rect.top) / rect.height) * 2 - 1);
+  }, { passive: true });
+  
   shell.addEventListener('pointerleave', () => setPointerTilt(0, 0));
+
   let pointerStartX = 0;
   let pointerStartY = 0;
   let isPointerDragging = false;
+  let isHorizontalGesture = false;
   let wheelLock = false;
 
   shell.addEventListener('pointerdown', (event) => {
     pointerStartX = event.clientX;
     pointerStartY = event.clientY;
     isPointerDragging = true;
-  });
+    isHorizontalGesture = false;
+  }, { passive: true });
 
   shell.addEventListener('pointermove', (event) => {
     if (!isPointerDragging || state.mode !== 'reader' || state.busy) return;
     const diffX = event.clientX - pointerStartX;
-    if (Math.abs(diffX) > 10 && !prefersReducedMotion) {
-      // Resistencia elástica al arrastre con el dedo
-      const tiltAngle = Math.max(-12, Math.min(12, diffX * 0.1));
-      spread.style.transform = `perspective(1200px) rotateY(${tiltAngle}deg)`;
+    const diffY = event.clientY - pointerStartY;
+
+    if (!isHorizontalGesture && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        isHorizontalGesture = true;
+      } else {
+        isPointerDragging = false;
+        return;
+      }
     }
-  });
+
+    if (isHorizontalGesture && !prefersReducedMotion) {
+      const tiltAngle = Math.max(-10, Math.min(10, diffX * 0.08));
+      spread.style.transform = `perspective(1200px) rotateY(${tiltAngle}deg)`;
+      markDirty();
+    }
+  }, { passive: true });
 
   shell.addEventListener('pointerup', (event) => {
     if (!isPointerDragging) return;
     isPointerDragging = false;
     const distance = event.clientX - pointerStartX;
     
-    // Restaurar transform de arrastre con suavidad
     if (!prefersReducedMotion && window.gsap) {
-      window.gsap.to(spread, { rotateY: 0, duration: 0.35, ease: 'power2.out' });
+      window.gsap.to(spread, { rotateY: 0, duration: 0.32, ease: 'power2.out', onUpdate: markDirty });
     } else {
       spread.style.transform = '';
+      markDirty();
     }
 
-    if (Math.abs(distance) > 55 && state.mode === 'reader') {
+    if (isHorizontalGesture && Math.abs(distance) > 48 && state.mode === 'reader') {
       changeChapter(state.template, state.chapter + (distance < 0 ? 1 : -1), distance < 0 ? 1 : -1);
     }
   });
 
   shell.addEventListener('pointercancel', () => {
     isPointerDragging = false;
+    isHorizontalGesture = false;
     spread.style.transform = '';
+    markDirty();
   });
+
   shell.addEventListener('wheel', (event) => {
     if (state.mode !== 'reader' || state.busy || Math.abs(event.deltaY) < 18) return;
     event.preventDefault();
@@ -431,8 +601,9 @@
     wheelLock = true;
     const direction = event.deltaY > 0 ? 1 : -1;
     changeChapter(state.template, state.chapter + direction, direction);
-    window.setTimeout(() => { wheelLock = false; }, prefersReducedMotion ? 180 : 620);
+    window.setTimeout(() => { wheelLock = false; }, prefersReducedMotion ? 180 : 550);
   }, { passive: false });
+
   shell.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') { event.preventDefault(); changeChapter(state.template, state.chapter - 1, -1); }
     if (event.key === 'ArrowRight') { event.preventDefault(); changeChapter(state.template, state.chapter + 1, 1); }
