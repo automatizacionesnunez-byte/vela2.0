@@ -2797,16 +2797,18 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
   background: linear-gradient(270deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 80%);
 }
 
-/* 3. REFLEJO ESPECULAR REACTIVO (SPECULAR GLARE) */
+/* 3. REFLEJO ESPECULAR REACTIVO (SPECULAR GLARE ACELERADO POR GPU) */
 .vela-gallery-device__glass {
   position: absolute;
   inset: 2.2% 2.4% 2.8%;
   border-radius: 0.35rem;
-  background: radial-gradient(circle at var(--vela-glare-x, 50%) var(--vela-glare-y, 35%), rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 70%);
+  background: radial-gradient(circle at var(--vela-glare-x, 50%) var(--vela-glare-y, 35%), rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 42%, transparent 72%);
   pointer-events: none;
   z-index: 25;
-  mix-blend-mode: overlay;
-  transition: opacity 0.3s ease;
+  opacity: 0.85;
+  transform: translate3d(0, 0, 0.1px);
+  will-change: opacity, transform;
+  transition: opacity 0.25s ease;
 }
 
 /* 4. SOBRE FÍSICO INTERACTIVO (UNBOXING EMOCIONAL) */

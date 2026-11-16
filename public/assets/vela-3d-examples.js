@@ -43,8 +43,14 @@
     targetCamY: 0,
     currentCamX: 0,
     currentCamY: 0,
+    // Puntero desacoplado sincronizado a 60-120fps en RAF
+    targetPointerX: 0,
+    targetPointerY: 0,
+    currentPointerX: 0,
+    currentPointerY: 0,
     isDirty: true,
-    activeAnimCount: 0
+    activeAnimCount: 0,
+    restFrames: 0
   };
 
   const $ = (selector) => showcase.querySelector(selector);
@@ -81,6 +87,7 @@
 
   function markDirty() {
     state.isDirty = true;
+    state.restFrames = 0;
     startRenderLoop();
   }
 
@@ -97,14 +104,31 @@
 
     let needsAnotherPass = false;
 
-    // Suavizado Lerp 60-120fps de la cámara
+    // 1. Suavizado Lerp de puntero y cristal (Specular Glare) sincronizado en el frame exacto
+    if (!prefersReducedMotion) {
+      const dpx = state.targetPointerX - state.currentPointerX;
+      const dpy = state.targetPointerY - state.currentPointerY;
+      if (Math.abs(dpx) > 0.002 || Math.abs(dpy) > 0.002) {
+        state.currentPointerX += dpx * 0.16;
+        state.currentPointerY += dpy * 0.16;
+        const cx = state.currentPointerX;
+        const cy = state.currentPointerY;
+        shell.style.setProperty('--vela-pointer-x', `${(50 + cx * 24).toFixed(1)}%`);
+        shell.style.setProperty('--vela-pointer-y', `${(38 + cy * 18).toFixed(1)}%`);
+        shell.style.setProperty('--vela-glare-x', `${(50 + cx * 35).toFixed(1)}%`);
+        shell.style.setProperty('--vela-glare-y', `${(35 + cy * 30).toFixed(1)}%`);
+        needsAnotherPass = true;
+      }
+    }
+
+    // 2. Suavizado Lerp 60-120fps de la cámara 3D
     if (state.camera && !prefersReducedMotion) {
       const dx = state.targetCamX - state.currentCamX;
       const dy = state.targetCamY - state.currentCamY;
 
-      if (Math.abs(dx) > 0.05 || Math.abs(dy) > 0.05) {
-        state.currentCamX += dx * 0.12;
-        state.currentCamY += dy * 0.12;
+      if (Math.abs(dx) > 0.03 || Math.abs(dy) > 0.03) {
+        state.currentCamX += dx * 0.16;
+        state.currentCamY += dy * 0.16;
         state.camera.position.x = state.currentCamX;
         state.camera.position.y = state.currentCamY;
         state.camera.lookAt(0, 0, 0);
@@ -115,10 +139,17 @@
     if (state.isDirty || needsAnotherPass || state.activeAnimCount > 0) {
       state.renderer.render(state.scene, state.camera);
       state.isDirty = false;
+      state.restFrames = 0;
       state.raf = requestAnimationFrame(renderTick);
     } else {
-      // Reposo: se apaga el bucle para 0% consumo en descanso
-      state.raf = 0;
+      // Dejar estabilizar 5 frames adicionales antes de reposo completo
+      state.restFrames++;
+      if (state.restFrames < 5) {
+        state.renderer.render(state.scene, state.camera);
+        state.raf = requestAnimationFrame(renderTick);
+      } else {
+        state.raf = 0;
+      }
     }
   }
 
@@ -219,7 +250,6 @@
     state.lastCard = cards.find((card) => card.dataset.velaGalleryCard === template) || cards[0];
     updateHtml();
     
-    // Sincronizar etiqueta del sobre interactivo
     const cardOwner = $('[data-vela-card-owner]');
     if (cardOwner) cardOwner.textContent = templates[template].name;
 
@@ -240,19 +270,19 @@
     }) : null;
 
     if (tl) {
-      tl.to(others, { opacity: .12, scale: .75, y: 24, duration: .4, stagger: .02, ease: 'power2.inOut' }, 0)
-        .to(selected, { scale: isMobile ? 1.04 : 1.08, y: isMobile ? -10 : -16, rotation: 0, duration: .55, ease: 'power3.out' }, 0)
-        .fromTo(reader, { opacity: 0, scale: .76, y: 32 }, { opacity: 1, scale: 1, y: 0, duration: .75, ease: 'power3.out' }, .1);
+      tl.to(others, { opacity: .12, scale: .75, y: 22, duration: .35, stagger: isMobile ? 0 : .015, ease: 'power2.inOut' }, 0)
+        .to(selected, { scale: isMobile ? 1.04 : 1.08, y: isMobile ? -8 : -14, rotation: 0, duration: .48, ease: 'power2.out' }, 0)
+        .fromTo(reader, { opacity: 0, scale: .78, y: 26 }, { opacity: 1, scale: 1, y: 0, duration: .62, ease: 'power2.out' }, .08);
         
       if (env) {
         tl.fromTo(env, 
-          { opacity: 0, scale: 0.65, x: isMobile ? 25 : 50, y: 25, rotationY: -20 }, 
-          { opacity: 1, scale: 1, x: 0, y: 0, rotationY: -6, duration: 0.68, ease: 'back.out(1.3)' }, 0.16
+          { opacity: 0, scale: 0.7, x: isMobile ? 20 : 45, y: 20, rotationY: -16 }, 
+          { opacity: 1, scale: 1, x: 0, y: 0, rotationY: -6, duration: 0.58, ease: 'power2.out' }, 0.12
         );
       }
       
-      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: isMobile ? 16 : 32, rotation: 10 }, { opacity: 1, x: 0, rotation: 6, duration: .5, ease: 'power2.out' }, .45)
-        .fromTo($('.vela-gallery-note'), { opacity: 0, x: isMobile ? -14 : -24, rotation: -10 }, { opacity: 1, x: 0, rotation: -5, duration: .5, ease: 'power2.out' }, .5);
+      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: isMobile ? 14 : 26, rotation: 8 }, { opacity: 1, x: 0, rotation: 6, duration: .44, ease: 'power2.out' }, .36)
+        .fromTo($('.vela-gallery-note'), { opacity: 0, x: isMobile ? -12 : -20, rotation: -8 }, { opacity: 1, x: 0, rotation: -5, duration: .44, ease: 'power2.out' }, .4);
     } else {
       layer.classList.remove('is-transitioning');
       state.busy = false;
@@ -285,8 +315,8 @@
     }) : null;
 
     if (tl) {
-      tl.to(reader, { opacity: 0, scale: .75, y: 24, duration: .5, ease: 'power2.in' }, 0)
-        .to(cards, { opacity: 1, scale: 1, y: 0, rotation: 0, duration: .6, stagger: .03, ease: 'power3.out' }, .12);
+      tl.to(reader, { opacity: 0, scale: .76, y: 20, duration: .42, ease: 'power2.in' }, 0)
+        .to(cards, { opacity: 1, scale: 1, y: 0, rotation: 0, duration: .5, stagger: .02, ease: 'power2.out' }, .1);
     } else {
       layer.classList.remove('is-reader', 'is-transitioning');
       state.mode = 'gallery';
@@ -314,9 +344,9 @@
     }) : null;
 
     if (tl) {
-      tl.to(reader, { opacity: 0, x: template === 'letter' ? -26 : 26, duration: .24, ease: 'power2.in' })
+      tl.to(reader, { opacity: 0, x: template === 'letter' ? -22 : 22, duration: .2, ease: 'power2.in' })
         .call(() => { state.template = template; state.chapter = 0; updateHtml(); })
-        .fromTo(reader, { opacity: 0, x: template === 'letter' ? 26 : -26 }, { opacity: 1, x: 0, duration: .5, ease: 'power3.out' });
+        .fromTo(reader, { opacity: 0, x: template === 'letter' ? 22 : -22 }, { opacity: 1, x: 0, duration: .42, ease: 'power2.out' });
     } else {
       state.template = template;
       state.chapter = 0;
@@ -372,32 +402,33 @@
 
       tl.set(flipper, { rotateY: 0 })
         .set([shadowFront, shadowBack], { opacity: 0 })
+        // Giro ágil y responsivo a 0.44s con curva suave
         .to(flipper, {
           rotateY: direction > 0 ? -180 : 180,
-          duration: 0.58,
+          duration: 0.44,
           ease: 'power2.inOut'
         }, 0)
-        .to(shadowFront, { opacity: 0.32, duration: 0.28, ease: 'power1.in' }, 0)
-        .to(shadowFront, { opacity: 0, duration: 0.28, ease: 'power1.out' }, 0.28)
-        .to(shadowBack, { opacity: 0.35, duration: 0.28, ease: 'power1.in' }, 0)
-        .to(shadowBack, { opacity: 0, duration: 0.28, ease: 'power1.out' }, 0.28)
+        .to(shadowFront, { opacity: 0.28, duration: 0.22, ease: 'power1.in' }, 0)
+        .to(shadowFront, { opacity: 0, duration: 0.22, ease: 'power1.out' }, 0.22)
+        .to(shadowBack, { opacity: 0.3, duration: 0.22, ease: 'power1.in' }, 0)
+        .to(shadowBack, { opacity: 0, duration: 0.22, ease: 'power1.out' }, 0.22)
         .to($('[data-vela-gallery-memory]'), {
-          x: direction > 0 ? 18 : -18,
-          opacity: 0.35,
-          duration: 0.25,
-          ease: 'power2.in'
+          x: direction > 0 ? 14 : -14,
+          opacity: 0.45,
+          duration: 0.2,
+          ease: 'power1.in'
         }, 0)
         .call(() => {
           state.template = template;
           state.chapter = nextChapter;
           updateHtml();
-        }, null, 0.3)
+        }, null, 0.22)
         .to($('[data-vela-gallery-memory]'), {
           x: 0,
           opacity: 1,
-          duration: 0.34,
-          ease: 'power2.out'
-        }, 0.3);
+          duration: 0.26,
+          ease: 'power1.out'
+        }, 0.22);
     } else {
       state.chapter = nextChapter;
       updateHtml();
@@ -412,17 +443,19 @@
   function setPointerTilt(x, y) {
     const cx = Math.max(-1, Math.min(1, x));
     const cy = Math.max(-1, Math.min(1, y));
-    if (!prefersReducedMotion) {
-      shell.style.setProperty('--vela-pointer-x', `${(50 + cx * 24).toFixed(2)}%`);
-      shell.style.setProperty('--vela-pointer-y', `${(38 + cy * 18).toFixed(2)}%`);
-      shell.style.setProperty('--vela-glare-x', `${(50 + cx * 35).toFixed(1)}%`);
-      shell.style.setProperty('--vela-glare-y', `${(35 + cy * 30).toFixed(1)}%`);
-    }
-    if (!state.camera || prefersReducedMotion) return;
     
-    // Asignar objetivo para interpolación suave (Lerp) en RAF
-    state.targetCamX = cx * (state.quality === 'mobile' ? 24 : 52);
-    state.targetCamY = -cy * (state.quality === 'mobile' ? 14 : 26);
+    // Almacenar coordenadas para ser aplicadas exclusivamente en renderTick()
+    state.targetPointerX = cx;
+    state.targetPointerY = cy;
+
+    if (!state.camera || prefersReducedMotion) {
+      markDirty();
+      return;
+    }
+    
+    // Asignar objetivo para interpolación suave (Lerp) de cámara
+    state.targetCamX = cx * (state.quality === 'mobile' ? 20 : 45);
+    state.targetCamY = -cy * (state.quality === 'mobile' ? 12 : 22);
     markDirty();
   }
 
@@ -482,7 +515,6 @@
       setStatus('Selecciona una pieza para entrar');
       window.dispatchEvent(new CustomEvent('vela-gallery-ready'));
       
-      // Precarga inicial de Carlota
       preloadAdjacentChapters('nude', 0);
     })).catch(() => {
       $('[data-vela-scene-loading]')?.classList.add('is-hidden');
@@ -576,13 +608,13 @@
     const distance = event.clientX - pointerStartX;
     
     if (!prefersReducedMotion && window.gsap) {
-      window.gsap.to(spread, { rotateY: 0, duration: 0.32, ease: 'power2.out', onUpdate: markDirty });
+      window.gsap.to(spread, { rotateY: 0, duration: 0.28, ease: 'power2.out', onUpdate: markDirty });
     } else {
       spread.style.transform = '';
       markDirty();
     }
 
-    if (isHorizontalGesture && Math.abs(distance) > 48 && state.mode === 'reader') {
+    if (isHorizontalGesture && Math.abs(distance) > 45 && state.mode === 'reader') {
       changeChapter(state.template, state.chapter + (distance < 0 ? 1 : -1), distance < 0 ? 1 : -1);
     }
   });
@@ -601,7 +633,7 @@
     wheelLock = true;
     const direction = event.deltaY > 0 ? 1 : -1;
     changeChapter(state.template, state.chapter + direction, direction);
-    window.setTimeout(() => { wheelLock = false; }, prefersReducedMotion ? 180 : 550);
+    window.setTimeout(() => { wheelLock = false; }, prefersReducedMotion ? 180 : 450);
   }, { passive: false });
 
   shell.addEventListener('keydown', (event) => {
