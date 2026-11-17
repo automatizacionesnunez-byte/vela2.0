@@ -4,10 +4,13 @@
   if (!header) return;
 
   header.classList.add('vela-site-header');
-  const isHome = /(?:^|\/)(?:index|inicio)\.html$/.test(window.location.pathname) || window.location.pathname.endsWith('/');
+  const normalizedPath = window.location.pathname.replace(/\/+$/, '');
+  const isHome = normalizedPath === '' || /(?:^|\/)(?:index|inicio)(?:\.html)?$/.test(normalizedPath);
   if (isHome) body.classList.add('vela-home');
-  const pageName = window.location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
-  body.classList.add(`vela-page-${pageName === 'inicio' ? 'index' : pageName}`);
+  const segments = normalizedPath.split('/').filter(Boolean);
+  const lastSeg = segments.length > 0 ? segments[segments.length - 1].replace(/\.html$/, '') : 'index';
+  const pageName = lastSeg === 'inicio' ? 'index' : lastSeg;
+  body.classList.add(`vela-page-${pageName}`);
 
   const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
   updateHeader();
