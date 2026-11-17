@@ -190,6 +190,153 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
   .vela-examples-page .lg\:col-span-4 { max-width: 32rem; }
 }
 
+/* ========================================================================
+   RESPONSIVE POLISH + QUIETER 3D
+   The editorial experience stays warm and dimensional, but the layout
+   prioritises the photograph, readable copy and reliable touch behaviour.
+   ======================================================================== */
+
+/* The home hero should never inherit the old desktop-only image offset. */
+html body.vela-home img[src*="hero-clean-bg.jpg"] {
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: 42% center;
+}
+
+/* Tablet and compact laptops: keep the image generous, then give the copy
+   a comfortable reading measure instead of forcing a desktop split. */
+@media (min-width: 641px) and (max-width: 1279px) {
+  body.vela-home main > section:first-child {
+    min-height: auto;
+    align-items: stretch;
+  }
+
+  body.vela-home main > section:first-child > div:first-child {
+    height: clamp(300px, 47vw, 500px);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl {
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl > .hidden.lg\:block {
+    display: none;
+  }
+
+  body.vela-home main > section:first-child .lg\:col-span-6 {
+    grid-column: 1 / -1;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 3vw, 1.25rem);
+  }
+
+  body.vela-home main > section:first-child h1 {
+    max-width: 38rem;
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+  }
+}
+
+@media (max-width: 640px) {
+  body.vela-home main > section:first-child > div:first-child {
+    height: clamp(255px, 76vw, 380px);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl {
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
+  }
+
+  body.vela-home main > section:first-child .lg\:col-span-6 {
+    padding-inline: 0;
+  }
+
+  body.vela-home main > section:first-child h1 {
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    line-height: 1.08;
+  }
+
+  body.vela-home main > section:first-child .flex.flex-col.sm\:flex-row a {
+    width: 100%;
+  }
+
+  html body.vela-home img[src*="hero-clean-bg.jpg"] {
+    object-position: 44% center;
+  }
+}
+
+/* Simpler 3D: keep depth and selection, remove the busy showroom feel. */
+.vela-archive-stage,
+.vela-gallery-scene {
+  perspective: 1100px;
+}
+
+.vela-archive-stage .vela-scene-vignette,
+.vela-archive-stage .vela-gallery-beams,
+.vela-archive-stage .vela-gallery-ambient {
+  opacity: .35;
+}
+
+.vela-css-envelope,
+.vela-gallery-card {
+  box-shadow: 0 16px 26px rgba(37, 22, 14, .16);
+}
+
+.vela-css-envelope:hover,
+.vela-gallery-card:hover {
+  transform: translateX(-50%) rotate(0deg) translateZ(18px) scale(1.015);
+}
+
+.vela-3d-hint {
+  background: rgba(248, 246, 240, .9);
+  box-shadow: 0 6px 18px rgba(38, 35, 31, .08);
+}
+
+@media (max-width: 900px) {
+  .vela-archive-stage {
+    min-height: clamp(390px, 68vw, 500px);
+  }
+
+  .vela-archive-stage .vela-css-scene,
+  .vela-archive-stage .vela-gallery-scene {
+    perspective: 900px;
+  }
+
+  .vela-archive-stage .vela-scene-vignette,
+  .vela-archive-stage .vela-gallery-beams,
+  .vela-archive-stage .vela-gallery-ambient {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .vela-archive-stage {
+    min-height: 410px;
+    border-radius: .75rem;
+  }
+
+  .vela-css-envelope,
+  .vela-gallery-card {
+    box-shadow: 0 10px 18px rgba(37, 22, 14, .14);
+  }
+
+  .vela-3d-hint {
+    max-width: calc(100% - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse) {
+  .vela-css-envelope,
+  .vela-gallery-card,
+  .vela-gallery-reader {
+    transition-duration: .01ms !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -2858,5 +3005,141 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
     width: 8rem;
     left: -0.5rem;
     bottom: -1.5rem;
+  }
+}
+
+/* Final responsive pass: these rules intentionally come last so they win
+   over the older scene experiments above. */
+html body.vela-home img[src*="hero-clean-bg.jpg"] {
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: 42% center;
+}
+
+@media (min-width: 641px) and (max-width: 1279px) {
+  body.vela-home main > section:first-child {
+    min-height: auto;
+    align-items: stretch;
+  }
+
+  body.vela-home main > section:first-child > div:first-child {
+    height: clamp(300px, 47vw, 500px);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl {
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl > .hidden.lg\:block {
+    display: none;
+  }
+
+  body.vela-home main > section:first-child .lg\:col-span-6 {
+    grid-column: 1 / -1;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 3vw, 1.25rem);
+  }
+
+  body.vela-home main > section:first-child h1 {
+    max-width: 38rem;
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+  }
+}
+
+@media (max-width: 640px) {
+  body.vela-home main > section:first-child > div:first-child {
+    height: clamp(255px, 76vw, 380px);
+  }
+
+  body.vela-home main > section:first-child .relative.max-w-7xl {
+    padding-top: 2.25rem;
+    padding-bottom: 3rem;
+  }
+
+  body.vela-home main > section:first-child .lg\:col-span-6 {
+    padding-inline: 0;
+  }
+
+  body.vela-home main > section:first-child h1 {
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    line-height: 1.08;
+  }
+
+  body.vela-home main > section:first-child .flex.flex-col.sm\:flex-row a {
+    width: 100%;
+  }
+
+  html body.vela-home img[src*="hero-clean-bg.jpg"] {
+    object-position: 44% center;
+  }
+}
+
+/* Quieter 3D treatment: preserve depth and selection without the busy
+   showroom lighting, especially on tablets and touch devices. */
+.vela-archive-stage,
+.vela-gallery-scene {
+  perspective: 1100px;
+}
+
+.vela-archive-stage .vela-scene-vignette,
+.vela-archive-stage .vela-gallery-beams,
+.vela-archive-stage .vela-gallery-ambient {
+  opacity: .35;
+}
+
+.vela-css-envelope,
+.vela-gallery-card {
+  box-shadow: 0 16px 26px rgba(37, 22, 14, .16);
+}
+
+.vela-3d-hint {
+  background: rgba(248, 246, 240, .9);
+  box-shadow: 0 6px 18px rgba(38, 35, 31, .08);
+}
+
+@media (max-width: 900px) {
+  .vela-archive-stage {
+    min-height: clamp(390px, 68vw, 500px);
+  }
+
+  .vela-archive-stage .vela-css-scene,
+  .vela-archive-stage .vela-gallery-scene {
+    perspective: 900px;
+  }
+
+  .vela-archive-stage .vela-scene-vignette,
+  .vela-archive-stage .vela-gallery-beams,
+  .vela-archive-stage .vela-gallery-ambient {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .vela-archive-stage {
+    min-height: 410px;
+    border-radius: .75rem;
+  }
+
+  .vela-css-envelope,
+  .vela-gallery-card {
+    box-shadow: 0 10px 18px rgba(37, 22, 14, .14);
+  }
+
+  .vela-3d-hint {
+    max-width: calc(100% - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse) {
+  .vela-css-envelope,
+  .vela-gallery-card,
+  .vela-gallery-reader {
+    transition-duration: .01ms !important;
   }
 }
