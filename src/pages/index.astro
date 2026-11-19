@@ -10,12 +10,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <main>
     <!-- SECCIÓN 1: HERO EMOCIONAL (Responsive: optimizado para móvil y pantallas de 13") -->
     <section class="relative min-h-[82vh] lg:min-h-[calc(100vh-5rem)] flex flex-col lg:flex-row items-center bg-[#3D2C1E] text-white overflow-hidden">
-      <!-- En desktop: imagen de fondo apaisada object-left. En móvil: mostrada en su propio contenedor arriba -->
-      <div class="w-full lg:absolute lg:inset-0 h-72 sm:h-96 lg:h-full shrink-0 relative overflow-hidden">
+      <!-- En desktop: imagen de fondo apaisada object-left. En móvil: mostrada en su propio contenedor arriba centrada en los rostros -->
+      <div class="w-full lg:absolute lg:inset-0 h-72 sm:h-96 lg:h-full shrink-0 relative overflow-hidden bg-[#3D2C1E]">
         <img 
           src="/assets/hero-clean-bg.jpg" 
           alt="Abuela abrazada cariñosamente por su nieta" 
-          class="w-full h-full object-cover object-center lg:object-left"
+          class="w-full h-full object-cover object-[20%_25%] sm:object-[25%_30%] lg:object-left"
           loading="eager"
           fetchpriority="high"
         />
@@ -325,11 +325,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <details class="group py-6">
               <summary class="flex justify-between items-center cursor-pointer list-none text-lg font-serif text-vela-chocolate group-hover:text-vela-topo">
-                <span>8. ¿Qué diferencia hay entre los planes?</span>
+                <span>8. ¿Qué diferencia hay entre las tres opciones de biografía?</span>
                 <span class="text-xl font-light transition-transform duration-300 group-open:rotate-45">+</span>
               </summary>
               <p class="mt-4 text-sm leading-relaxed text-vela-chocolate/80 font-light pr-8">
-                Los planes varían en la extensión de la biografía (de 15 a 75 páginas), el número de fotografías incluidas y los días disponibles para recibir colaboraciones familiares. Todos comparten la misma calidad editorial y el sobre físico con QR.
+                Las biografías varían en la extensión de la historia (de 15 a 75 páginas), el número de fotografías incluidas y los días disponibles para recibir colaboraciones familiares. Todas comparten la misma calidad editorial y el sobre físico con QR.
               </p>
             </details>
 
@@ -339,7 +339,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- SECCIÓN FINAL: CTA INTERACTIVO EN 3 PASOS (De los recuerdos a una biografía que permanecerá) -->
-    <section class="vela-process-cta py-24 sm:py-28 border-t border-vela-linea">
+    <section class="vela-process-cta py-16 sm:py-20 border-t border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16 space-y-4">
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-[1.1]">

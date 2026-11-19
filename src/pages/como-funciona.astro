@@ -36,15 +36,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <div class="lg:col-span-5 flex justify-center lg:justify-end">
-            <figure class="w-full max-w-md rounded-sm overflow-hidden border border-vela-chocolate/10 shadow-[0_20px_50px_-20px_rgba(38,35,31,0.16)] bg-[#F3EAE0]">
-              <img
-                src="/assets/como-funciona-hero-mesa.jpg"
-                alt="Fotografías antiguas familiares, flores blancas y libro de recuerdos sobre mesa con luz natural"
-                class="w-full h-auto block object-cover"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </figure>
+            <!-- Composición fotográfica editorial integrada con marco doble y sombra orgánica -->
+            <div class="w-full max-w-md p-3 sm:p-4 bg-[#F5ECE1] rounded-sm border border-vela-chocolate/15 shadow-[0_20px_45px_-18px_rgba(38,35,31,0.22)] relative">
+              <figure class="rounded-[2px] overflow-hidden border border-vela-chocolate/10 bg-white">
+                <img
+                  src="/assets/sobre-regalo-mesa-v2.webp"
+                  alt="Presentación física VELA: sobre artesanal con lacre burdeos y tarjeta de dedicatoria personalizada con QR"
+                  class="w-full h-auto block object-cover aspect-[16/10]"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </figure>
+              <div class="mt-2.5 flex items-center justify-between text-[11px] text-vela-chocolate/70 font-serif italic px-1">
+                <span>Presentación física y tarjeta QR</span>
+                <span class="text-[9px] uppercase tracking-wider not-italic text-vela-topo font-sans">VELA · Memoria</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -210,7 +217,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- SECCION 2: VELA, TU GUIA EN CADA PASO + INTERFAZ PORTATIL HTML/CSS -->
-    <section class="py-20 lg:py-28 bg-vela-crema/55 border-b border-vela-chocolate/10">
+    <section class="py-14 lg:py-16 bg-vela-crema/55 border-b border-vela-chocolate/10">
       <div class="max-w-6xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
         <!-- COLUMNA IZQUIERDA: 4 PUNTOS EDITORIALES -->
@@ -422,23 +429,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- CIERRE EMOCIONAL -->
-    <section class="py-20 lg:py-24">
+    <section class="py-14 lg:py-16">
       <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] leading-tight text-vela-chocolate">
           Tu historia merece ser contada.<br />
           <em class="italic text-[#682D35]">Empieza hoy con un primer recuerdo.</em>
         </h2>
         <p class="text-base sm:text-lg text-vela-chocolate/75 font-light max-w-xl mx-auto">
-          Elige el plan que mejor encaje con vuestra familia y da el primer paso desde casa, acompañado en todo momento.
+          Elige la biografía que mejor encaje con vuestra familia y da el primer paso desde casa, acompañado en todo momento.
         </p>
         <div class="pt-2 flex flex-wrap justify-center gap-4">
           <a href="/precios"
             class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
-            Ver planes y precios
+            Ver biografías y precios
           </a>
           <a href="/ejemplos"
             class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-vela-crema transition-colors">
-            Abrir libros de ejemplo
+            Ver biografías de ejemplo
           </a>
         </div>
       </div>

@@ -176,7 +176,7 @@
       "The collection period is the window for gathering contributions from family members. Once it ends, the final edition is generated and stays available forever in digital and PDF formats.",
       "Le délai correspond au temps de collecte des témoignages. Une fois terminé, l'édition définitive est générée et reste accessible pour toujours en version numérique et PDF."
     ],
-    "8. ¿Qué diferencia hay entre los planes?": ["8. What is the difference between the plans?", "8. Quelle est la différence entre les formules ?"],
+    "8. ¿Qué diferencia hay entre las tres opciones de biografía?": ["8. What is the difference between the plans?", "8. Quelle est la différence entre les formules ?"],
     "Los planes varían en la extensión de la biografía (de 15 a 75 páginas), el número de fotografías incluidas y los días disponibles para recibir colaboraciones familiares. Todos comparten la misma calidad editorial y el sobre físico con QR.": [
       "Plans differ in biography length (from 15 to 75 pages), number of photographs included, and days available to collect family contributions. Every plan includes the same editorial quality and physical wax-sealed QR envelope.",
       "Les formules varient selon la longueur (de 15 à 75 pages), le nombre de photos incluses et la durée de collecte familiale. Toutes offrent la même qualité éditoriale et l'enveloppe physique avec QR."
@@ -416,8 +416,8 @@
       "Choose the plan that best fits your family and take the first step from home, guided all the way.",
       "Choisissez la formule la plus adaptée à votre famille et faites le premier pas depuis chez vous, accompagné à chaque étape."
     ],
-    "Ver planes y precios": ["View plans & pricing", "Voir les tarifs"],
-    "Abrir libros de ejemplo": ["Open sample books", "Ouvrir les exemples"],
+    "Ver biografías y precios": ["View plans & pricing", "Voir les tarifs"],
+    "Ver biografías de ejemplo": ["View sample biographies", "Ouvrir les exemples"],
 
     // --- EJEMPLOS ---
     "Tres vidas reales.": ["Three lifelike stories.", "Trois récits de vie."],
@@ -565,7 +565,7 @@
     "2 intentos de generación VELA IA": ["2 VELA AI editorial generations", "2 générations éditoriales VELA IA"],
     "Biografía digital descargable en PDF": ["Downloadable digital PDF biography", "Biographie numérique téléchargeable en PDF"],
     "con tarjeta QR": ["with QR card", "avec carte QR"],
-    "Elegir Esencial": ["Choose Essential", "Choisir Essentielle"],
+    "Crear biografía Esencial": ["Create Essential Biography", "Créer la biographie Essentiellele"],
     "Opción más elegida · Biografía Memoria · Hasta 50 páginas": [
       "Most popular · Memory Biography · Up to 50 pages",
       "La plus choisie · Biographie Mémoire · Jusqu'à 50 pages"
@@ -578,7 +578,7 @@
     "15 fotografías": ["15 photographs", "15 photographies"],
     "35 días": ["35 days", "35 jours"],
     "para recopilar": ["to collect stories", "pour collecter"],
-    "Elegir Memoria": ["Choose Memory", "Choisir Mémoire"],
+    "Crear biografía Memoria": ["Create Memory Biography", "Créer la biographie Mémoire"],
     "Biografía Legado": ["Legacy Biography", "Biographie Héritage"],
     "Para contar una historia con mayor profundidad y reunir las voces de toda una familia.": [
       "To tell a life story in greater depth and gather voices from across the entire family.",
@@ -587,7 +587,7 @@
     "Entre 50 y 75 páginas": ["50 to 75 pages", "De 50 à 75 pages"],
     "20 fotografías": ["20 photographs", "20 photographies"],
     "65 días": ["65 days", "65 jours"],
-    "Elegir Legado": ["Choose Legacy", "Choisir Héritage"],
+    "Crear biografía Legado": ["Create Legacy Biography", "Choisir Héritage"],
     "Cualquier estilo editorial": ["Any editorial style", "Tous les styles éditoriaux"],
     "Los tres planes te permiten elegir libremente entre Letter, Noir o Nude según la personalidad de la persona.": [
       "All three plans let you freely choose Letter, Noir, or Nude to match your loved one's personality.",

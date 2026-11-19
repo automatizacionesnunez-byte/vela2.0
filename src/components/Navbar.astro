@@ -14,7 +14,7 @@ const { currentPath = "" } = Astro.props;
     </a>
 
     <!-- Enlaces de navegación con efecto hover subrayado -->
-    <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-vela-chocolate/80">
+    <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-vela-chocolate/80">
       <a href="/la-biografia" class={`vela-nav-link ${currentPath.includes('la-biografia') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>La biografía</a>
       <a href="/como-funciona" class={`vela-nav-link ${currentPath.includes('como-funciona') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Cómo funciona</a>
       <a href="/ejemplos" class={`vela-nav-link ${currentPath.includes('ejemplos') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Ejemplos</a>
@@ -22,7 +22,7 @@ const { currentPath = "" } = Astro.props;
       <a href="/nosotros" class={`vela-nav-link ${currentPath.includes('nosotros') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Nosotros</a>
     </nav>
 
-    <div class="hidden md:flex items-center gap-4 lg:gap-5 shrink-0">
+    <div class="hidden lg:flex items-center gap-4 xl:gap-5 shrink-0">
       <!-- Selector de Idiomas Inline (las 3 opciones siempre visibles: ES · EN · FR) -->
       <div class="vela-lang-inline inline-flex items-center border border-vela-chocolate/20 rounded-sm bg-white/50 p-0.5" role="group" aria-label="Selector de idioma">
         <button type="button" class="vela-lang-btn is-selected" data-lang="ES" aria-pressed="true">ES</button>
@@ -41,15 +41,15 @@ const { currentPath = "" } = Astro.props;
       </a>
     </div>
 
-    <button id="menu-btn" class="md:hidden text-vela-chocolate p-2" aria-label="Abrir menú" aria-expanded="false">
+    <button id="menu-btn" class="lg:hidden text-vela-chocolate p-2" aria-label="Abrir menú" aria-expanded="false">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
   </div>
 
-  <!-- Menú móvil -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-2">
+  <!-- Menú móvil / tablet -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-vela-linea bg-[#F8F6F0] px-6 py-6 space-y-2">
     <a href="/la-biografia" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('la-biografia') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>La biografía</a>
     <a href="/como-funciona" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('como-funciona') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>Cómo funciona</a>
     <a href="/ejemplos" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('ejemplos') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>Ejemplos</a>
