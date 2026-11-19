@@ -10,12 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <main>
 
     <!-- HERO EDITORIAL DE PROCESO -->
-        <!-- SECCIÓN CÓMO FUNCIONA: UN PROCESO SENCILLO (REPLICA IMAGE 2 & IMAGE 1) -->
-    <section class="pt-32 pb-20 lg:pt-36 lg:pb-24 border-b border-vela-chocolate/10 bg-[#F8F6F0]">
+    <section class="pt-14 pb-16 lg:pt-16 lg:pb-20 border-b border-vela-chocolate/10 bg-[#F8F6F0]">
       <div class="max-w-6xl mx-auto px-6 lg:px-10">
 
         <!-- CABECERA PRINCIPAL CON COMPOSICIÓN FOTOGRÁFICA CÁLIDA -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16 lg:mb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-14 lg:mb-16">
           <div class="lg:col-span-7 space-y-5">
             <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.25rem] leading-[1.1] text-vela-chocolate tracking-tight">
               Un proceso sencillo,<br />
@@ -26,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </p>
             <div class="pt-2 flex flex-wrap items-center gap-4">
               <a href="/precios"
-                class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
+                class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
                 Empezar una biografía
               </a>
               <a href="/ejemplos"
@@ -37,25 +36,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <div class="lg:col-span-5 flex justify-center lg:justify-end">
-            <div class="w-full max-w-md rounded-md bg-vela-crema/75 border border-vela-chocolate/10 p-6 sm:p-8 flex flex-col items-center gap-4 shadow-[0_20px_50px_-20px_rgba(38,35,31,0.14)]">
-              <div class="vela-polaroids-stack" aria-label="Recuerdos familiares y fotografías antiguas">
-                <figure class="vela-polaroid vela-polaroid--1">
-                  <img src="/assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías antiguas" loading="eager" />
-                  <span>En familia</span>
-                </figure>
-                <figure class="vela-polaroid vela-polaroid--2">
-                  <img src="/assets/carmen-hero-1600.webp" alt="Retrato generacional cálido" loading="eager" />
-                  <span>Toda una vida</span>
-                </figure>
-                <figure class="vela-polaroid vela-polaroid--3">
-                  <img src="/assets/tecnologia-sensibilidad.webp" alt="Grabando recuerdos con calma" loading="eager" />
-                  <span>Cada detalle</span>
-                </figure>
-              </div>
-              <p class="font-serif italic text-xs text-vela-chocolate/70 text-center max-w-xs">
-                Audios breves, fotos antiguas y relatos de quienes mejor te conocen en un mismo lugar.
-              </p>
-            </div>
+            <figure class="w-full max-w-md rounded-sm overflow-hidden border border-vela-chocolate/10 shadow-[0_20px_50px_-20px_rgba(38,35,31,0.16)] bg-[#F3EAE0]">
+              <img
+                src="/assets/como-funciona-hero-mesa.jpg"
+                alt="Fotografías antiguas familiares, flores blancas y libro de recuerdos sobre mesa con luz natural"
+                class="w-full h-auto block object-cover"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </figure>
           </div>
         </div>
 
@@ -183,63 +172,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <!-- MODELOS DE BIOGRAFÍAS (LETTER, NOIR, NUDE) -->
             <div class="pt-4 border-t border-vela-chocolate/10">
-              <div class="vela-mini-covers-row mb-3">
-
-                <!-- LETTER -->
-                <figure class="text-center">
-                  <div class="vela-mini-cover vela-mini-cover--letter" title="Colección Letter">
-                    <div class="text-left text-[9px] text-[#7D6A5A] font-serif">
-                      <span>1975</span>
-                    </div>
-                    <div class="my-auto py-1">
-                      <p class="font-serif italic text-[11px] leading-tight text-vela-chocolate">Carmen</p>
-                      <p class="font-serif text-[10px] leading-tight text-vela-chocolate font-medium">Rodríguez</p>
-                      <p class="font-serif text-[10px] leading-tight text-vela-chocolate font-medium">Sánchez</p>
-                    </div>
-                    <div class="text-left text-[8px] font-serif tracking-[0.22em] text-[#7D6A5A] font-semibold">
-                      VELA
-                    </div>
-                  </div>
-                  <figcaption class="mt-2 text-xs font-medium text-vela-chocolate/80">Letter</figcaption>
-                </figure>
+              <div class="grid grid-cols-3 gap-2.5 mb-3">
 
                 <!-- NOIR -->
                 <figure class="text-center">
-                  <div class="vela-mini-cover vela-mini-cover--noir" title="Colección Noir">
-                    <div class="text-left text-[8px] font-sans tracking-[0.2em] text-white/80 font-semibold">
-                      VELA
-                    </div>
-                    <div class="my-auto py-1">
-                      <p class="font-sans font-bold text-xs tracking-wider text-white leading-tight">JUAN</p>
-                      <p class="font-sans font-bold text-xs tracking-wider text-white leading-tight">ROMÁN</p>
-                    </div>
-                    <div class="text-left text-[8px] font-sans tracking-[0.2em] text-[#C5A982] font-semibold">
-                      NOIR
-                    </div>
+                  <div class="aspect-[3/4] overflow-hidden rounded-[2px] shadow-sm border border-vela-chocolate/12 bg-[#1A1A1A]">
+                    <img src="/assets/templates/noir_page_01.jpg" alt="Portada real colección Noir" class="w-full h-full object-cover" loading="lazy" />
                   </div>
-                  <figcaption class="mt-2 text-xs font-medium text-vela-chocolate/80">Noir</figcaption>
+                  <figcaption class="mt-2 font-serif italic text-xs text-vela-chocolate/80">Noir</figcaption>
                 </figure>
 
                 <!-- NUDE -->
                 <figure class="text-center">
-                  <div class="vela-mini-cover vela-mini-cover--nude" title="Colección Nude">
-                    <div class="text-left text-[8px] font-sans tracking-[0.16em] text-[#6E5C4E] font-medium">
-                      LA VIDA DE
-                    </div>
-                    <div class="my-auto py-1">
-                      <p class="font-serif text-[11px] leading-tight text-[#3A2F26] font-medium">Carlota</p>
-                      <p class="font-serif text-[11px] leading-tight text-[#3A2F26] font-medium">Medina</p>
-                    </div>
-                    <div class="text-left text-[8px] font-sans tracking-[0.2em] text-[#6E5C4E] font-semibold">
-                      NUDE
-                    </div>
+                  <div class="aspect-[3/4] overflow-hidden rounded-[2px] shadow-sm border border-vela-chocolate/12 bg-[#EAE7E1]">
+                    <img src="/assets/templates/nude_page_01.jpg" alt="Portada real colección Nude" class="w-full h-full object-cover" loading="lazy" />
                   </div>
-                  <figcaption class="mt-2 text-xs font-medium text-vela-chocolate/80">Nude</figcaption>
+                  <figcaption class="mt-2 font-serif italic text-xs text-vela-chocolate/80">Nude</figcaption>
+                </figure>
+
+                <!-- LETTER -->
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden rounded-[2px] shadow-sm border border-vela-chocolate/12 bg-white">
+                    <img src="/assets/templates/letter_page_01.jpg" alt="Portada real colección Letter" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-2 font-serif italic text-xs text-vela-chocolate/80">Letter</figcaption>
                 </figure>
 
               </div>
               <p class="font-serif italic text-[11px] text-vela-chocolate/65 text-center pt-2 border-t border-vela-chocolate/10">
-                Descarga en PDF y sobre físico con QR entregado en mano.
+                Descarga en PDF y sobre físico con tarjeta QR para regalar.
               </p>
             </div>
           </article>
@@ -464,14 +425,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="py-20 lg:py-24">
       <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] leading-tight text-vela-chocolate">
-          Sin fechas límite. Sin página en blanco. Solo vuestra historia.
+          Tu historia merece ser contada.<br />
+          <em class="italic text-[#682D35]">Empieza hoy con un primer recuerdo.</em>
         </h2>
-        <p class="text-base text-vela-chocolate/70 font-light max-w-xl mx-auto">
-          Elige el formato que mejor se adapte a la profundidad que buscas y empieza a grabar o escribir hoy mismo desde cualquier lugar.
+        <p class="text-base sm:text-lg text-vela-chocolate/75 font-light max-w-xl mx-auto">
+          Elige el plan que mejor encaje con vuestra familia y da el primer paso desde casa, acompañado en todo momento.
         </p>
         <div class="pt-2 flex flex-wrap justify-center gap-4">
           <a href="/precios"
-            class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
+            class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
             Ver planes y precios
           </a>
           <a href="/ejemplos"

@@ -8,50 +8,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-page-ejemplos"
 >
 <main>
-    <!-- ARCHIVO 3D PROTAGONISTA: SALA DE LECTURA DIGITAL -->
-    <section class="vela-biography-experience py-16 sm:py-24" aria-labelledby="vela-3d-title">
+    <!-- ARCHIVO 3D PROTAGONISTA: SALA DE LECTURA DIGITAL SIMPLIFICADA -->
+    <section class="vela-biography-experience py-12 sm:py-16" aria-labelledby="vela-3d-title">
       <div class="max-w-[1400px] mx-auto px-6 sm:px-10">
-        <div class="vela-biography-intro grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+        <div class="vela-biography-intro grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           <div class="lg:col-span-7">
-            <h1 id="vela-3d-title" class="font-serif text-5xl sm:text-6xl xl:text-7xl text-vela-chocolate font-normal leading-[.98]">
-              Tres vidas. <br /><span class="italic text-vela-topo">Tres formas de conservarlas.</span>
+            <h1 id="vela-3d-title" class="font-serif text-4xl sm:text-5xl xl:text-6xl text-vela-chocolate font-normal leading-[1.04]">
+              Tres vidas reales.<br /><span class="italic text-vela-topo">Tres formas de conservarlas.</span>
             </h1>
-            <p class="mt-6 max-w-2xl text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
-              Elige un sobre, abre una historia y entra en la biografía digital que VELA ha creado a partir de recuerdos, fotografías y palabras.
+            <p class="mt-4 max-w-2xl text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+              Haz clic sobre cualquier biografía o elige un protagonista para abrir sus páginas y hojearla con comodidad.
             </p>
           </div>
-          <div class="lg:col-span-5 lg:pb-1">
-            <p class="text-sm text-vela-topo leading-relaxed max-w-md lg:ml-auto">
-              Una pequeña colección de vidas, presentada como una experiencia editorial viva.
-            </p>
+          <div class="lg:col-span-5 lg:pb-1 flex flex-wrap lg:justify-end gap-2" role="tablist" aria-label="Seleccionar biografía en el visor">
+            <button type="button" class="is-active px-4 py-2 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors" data-vela-archive-tab="nude" role="tab" aria-selected="true">Carlota · <em class="italic">Nude</em></button>
+            <button type="button" class="px-4 py-2 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors" data-vela-archive-tab="noir" role="tab" aria-selected="false">Juan · <em class="italic">Noir</em></button>
+            <button type="button" class="px-4 py-2 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors" data-vela-archive-tab="letter" role="tab" aria-selected="false">Carmen · <em class="italic">Letter</em></button>
           </div>
         </div>
 
-        <div class="vela-biography-showcase is-fallback mt-12 lg:mt-16" data-vela-biography-showcase data-vela-state="archive">
-          <div class="vela-biography-toolbar flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-5">
-            <div>
-              <p class="vela-archive-instruction">Desliza para recorrer la estantería o selecciona un sobre.</p>
-              <div class="vela-archive-picker mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Seleccionar historia">
-                <button type="button" class="is-active" data-vela-archive-tab="nude" role="tab" aria-selected="true">Carlota <em>Nude</em></button>
-                <button type="button" data-vela-archive-tab="noir" role="tab" aria-selected="false">Juan <em>Noir</em></button>
-                <button type="button" data-vela-archive-tab="letter" role="tab" aria-selected="false">Carmen <em>Letter</em></button>
-              </div>
-              <div class="vela-gallery-utility" aria-label="Características de la biografía digital">
-                <span>Edición digital</span><i aria-hidden="true"></i><span>Capítulos</span><i aria-hidden="true"></i><span>PDF · QR</span>
-              </div>
-            </div>
+        <div class="vela-biography-showcase is-fallback mt-8 lg:mt-10" id="vela-3d-stage" data-vela-biography-showcase data-vela-state="archive">
+          <div class="vela-biography-toolbar flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <p class="vela-archive-instruction text-sm text-vela-chocolate/75">Selecciona una portada para abrir el libro o usa las flechas para pasar páginas.</p>
             <div class="text-xs text-vela-topo flex items-center gap-2" data-vela-scene-status>
               <span class="vela-status-dot" aria-hidden="true"></span>
-              <span data-vela-status-text>Explora con el cursor o desliza</span>
+              <span data-vela-status-text>Haz clic en una portada para leer</span>
             </div>
           </div>
 
           <div class="vela-archive-stage" data-vela-scene-shell data-vela-biography-scene data-template="nude" data-vela-state="archive" tabindex="0" aria-label="Archivo de historias VELA">
-            <div class="vela-scene-loading" data-vela-scene-loading role="status">Preparando el archivo<span>···</span></div>
+            <div class="vela-scene-loading is-hidden" data-vela-scene-loading role="status" hidden>Preparando el archivo<span>···</span></div>
             <div class="vela-scene-error" data-vela-scene-error role="status">La experiencia 3D no está disponible. Puedes explorar la vista editorial.</div>
-            <div class="vela-archive-copy" aria-live="polite"><span data-vela-scene-kicker>ARCHIVO DE HISTORIAS</span><strong data-vela-scene-name>Elige una vida</strong><small data-vela-scene-caption>Abre un sobre para entrar en su memoria.</small></div>
-            <div class="vela-reader-copy" aria-live="polite"><span data-vela-reader-kicker>PLANTILLA NUDE</span><strong data-vela-reader-name>Carlota</strong><small data-vela-reader-caption>La historia de una vida plena</small></div>
-            <div class="vela-3d-hint">Mueve para explorar · selecciona un sobre</div>
+            <!-- Controles flotantes directos sobre la tablet al abrir una biografía -->
+            <button type="button" class="vela-stage-close-x" data-vela-close aria-label="Cerrar biografía y volver a la estantería" title="Volver a la estantería">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <button type="button" class="vela-stage-nav vela-stage-nav--prev" data-vela-chapter-prev aria-label="Página anterior" title="Página anterior">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button type="button" class="vela-stage-nav vela-stage-nav--next" data-vela-chapter-next aria-label="Página siguiente" title="Página siguiente">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div class="vela-archive-copy" aria-live="polite"><strong data-vela-scene-name>Elige una vida</strong><small data-vela-scene-caption>Abre un sobre para entrar en su memoria.</small></div>
+            <div class="vela-reader-copy" aria-live="polite"><strong data-vela-reader-name>Carlota</strong><small data-vela-reader-caption>La historia de una vida plena</small></div>
             <div class="vela-css-scene" data-vela-css-scene aria-hidden="true">
               <div class="vela-css-shelf-back"></div>
               <div class="vela-css-shelf-light"></div>
@@ -88,18 +93,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div class="vela-gallery-reader" data-vela-gallery-reader>
                   <div class="vela-gallery-reader__shadow"></div>
-                  <!-- Sobre físico interactivo 3D con lacre y apertura -->
-                  <div class="vela-interactive-envelope" data-vela-envelope-unboxing>
-                    <div class="vela-envelope-body">
-                      <img src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre físico VELA con lacre" class="w-full h-auto drop-shadow-2xl" />
-                      <div class="vela-envelope-card" data-vela-envelope-card>
-                        <span class="text-[9px] uppercase tracking-widest text-vela-chocolate/60">Biografía familiar</span>
-                        <strong class="font-serif text-xs text-vela-chocolate block" data-vela-card-owner>Carlota</strong>
-                        <div class="w-4 h-4 border border-vela-chocolate/30 rounded-xs mx-auto mt-1 flex items-center justify-center text-[7px]">QR</div>
-                      </div>
-                    </div>
-                  </div>
-                  
                   <div class="vela-gallery-device relative">
                     <span class="vela-gallery-device__camera"></span>
                     <div class="vela-gallery-spread relative" data-vela-gallery-spread>
@@ -130,8 +123,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <!-- Reflejo especular dinámico (Specular Glare) -->
                     <span class="vela-gallery-device__glass" data-vela-device-glass></span>
                   </div>
-                  <div class="vela-gallery-memory"><img data-vela-gallery-memory src="/assets/templates/nude_page_07.jpg" alt="" /></div>
-                  <div class="vela-gallery-note"><small>CAPÍTULO</small><strong data-vela-gallery-note>Orígenes</strong><span data-vela-gallery-number>01</span></div>
                 </div>
               </div>
             </div>
@@ -160,13 +151,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="vela-chapter-rail mt-7" aria-label="Recorrido por la biografía">
-            <div><span data-vela-chapter-label="0">Orígenes</span><small>01</small></div>
-            <div><span data-vela-chapter-label="1">Infancia</span><small>02</small></div>
-            <div><span data-vela-chapter-label="2">Momentos clave</span><small>03</small></div>
-            <div><span data-vela-chapter-label="3">Legado</span><small>04</small></div>
-          </div>
-
           <div class="vela-archive-fallback" data-vela-editorial-fallback aria-label="Vista editorial alternativa">
             <div class="vela-fallback-shelf">
               <button type="button" class="vela-fallback-envelope vela-fallback-envelope--nude" data-vela-envelope="nude"><span>CARLOTA</span><small>NUDE</small></button>
@@ -175,194 +159,197 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <div class="vela-fallback-reader"><div class="vela-fallback-device__top"><span>VELA</span><span data-vela-fallback-template>NUDE</span></div><img data-vela-fallback-cover src="/assets/templates/nude_page_01.jpg" alt="Biografía digital de Carlota" /></div>
           </div>
-
-          <div class="vela-scene-meta mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4" aria-live="polite">
-            <div><span>01</span><strong data-vela-meta-title>Una vida plena</strong></div>
-            <div><span>02</span><strong data-vela-meta-style>Cálida, elegante y atemporal</strong></div>
-            <div><span>03</span><strong data-vela-meta-format>Lectura digital · PDF · QR</strong></div>
-          </div>
         </div>
       </div>
     </section>
-    <!-- SECCIÓN PRINCIPAL: EDITORIAL SHOWCASE (ESTILO FIGMA / STITCH) -->
-    <section class="py-20 lg:py-24 bg-[#F8F6F0] border-t border-vela-chocolate/10" id="stories-showcase">
-      <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <!-- SECCIÓN PRINCIPAL: HISTORIAS DE NUESTROS PROTAGONISTAS -->
+    <section class="py-16 lg:py-20 bg-[#F8F6F0] border-t border-vela-chocolate/10" id="stories-showcase">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-        <!-- CABECERA EDITORIAL DE HISTORIAS -->
+        <!-- CABECERA EDITORIAL CON RETRATOS DE LOS 3 PROTAGONISTAS -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pb-14">
-          <div class="lg:col-span-7 space-y-5">
+          <div class="lg:col-span-6 space-y-4">
             <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] leading-[1.08] text-vela-chocolate tracking-tight">
-              Historias reales, <em class="italic text-[#682D35]">tres formas de contarlas.</em>
+              Tres protagonistas, <em class="italic text-[#682D35]">tres formas de contar una vida.</em>
             </h2>
-            <p class="text-base text-vela-chocolate/75 font-light leading-relaxed max-w-xl">
-              Cada persona tiene una cadencia y una sensibilidad propia. Aquí puedes recorrer las páginas interiores de nuestras tres colecciones editoriales antes de abrir su edición interactiva completa.
+            <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed max-w-xl">
+              Conoce a Carlota, Juan y Carmen: tres trayectorias distintas para mostrar el tono, la profundidad y el acabado real de nuestras tres colecciones editoriales.
             </p>
           </div>
-          <div class="lg:col-span-5 flex justify-center lg:justify-end">
-            <div class="vela-polaroids-stack" aria-label="Álbum de recuerdos reales">
-              <figure class="vela-polaroid vela-polaroid--1">
-                <img src="/assets/carmen-family-1200.webp" alt="Sobremesa familiar con fotografías" loading="lazy" />
-                <span>Sobremesas</span>
-              </figure>
-              <figure class="vela-polaroid vela-polaroid--2">
-                <img src="/assets/carmen-hero-1600.webp" alt="Retrato familiar generacional" loading="lazy" />
-                <span>Raíces</span>
-              </figure>
-              <figure class="vela-polaroid vela-polaroid--3">
-                <img src="/assets/vela-sobre-qr-1200.webp" alt="Sobre lacrado VELA con tarjeta QR" loading="lazy" />
-                <span>Para siempre</span>
-              </figure>
+          <div class="lg:col-span-6">
+            <div class="grid grid-cols-3 gap-3 sm:gap-4" aria-label="Protagonistas de las colecciones VELA">
+              <a href="#carlota" class="group block bg-white p-2 rounded-sm border border-vela-chocolate/12 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="aspect-[3/4] overflow-hidden rounded-[2px] bg-[#EAE1D3]">
+                  <img src="/assets/protagonista-carlota.webp" alt="Carlota Medina García - Colección Nude" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div class="pt-2 text-center">
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Carlota</p>
+                  <p class="text-[11px] uppercase tracking-wider text-vela-topo">Nude</p>
+                </div>
+              </a>
+              <a href="#juan" class="group block bg-white p-2 rounded-sm border border-vela-chocolate/12 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="aspect-[3/4] overflow-hidden rounded-[2px] bg-[#26231F]">
+                  <img src="/assets/protagonista-juan.webp" alt="Juan Román Ortiz - Colección Noir" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div class="pt-2 text-center">
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Juan</p>
+                  <p class="text-[11px] uppercase tracking-wider text-vela-topo">Noir</p>
+                </div>
+              </a>
+              <a href="#carmen" class="group block bg-white p-2 rounded-sm border border-vela-chocolate/12 shadow-sm hover:-translate-y-1 transition-transform">
+                <div class="aspect-[3/4] overflow-hidden rounded-[2px] bg-[#EFE7DB]">
+                  <img src="/assets/protagonista-carmen.webp" alt="Carmen Rodríguez Sánchez - Colección Letter" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div class="pt-2 text-center">
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Carmen</p>
+                  <p class="text-[11px] uppercase tracking-wider text-vela-topo">Letter</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- HISTORIA 1: CARLOTA (NUDE) -->
-        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="nude">
+        <!-- HISTORIA 1: CARLOTA MEDINA GARCÍA (NUDE) -->
+        <article id="carlota" class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="nude">
           <div class="lg:col-span-5 space-y-4">
-            <p class="font-serif italic text-base text-[#682D35]">Carlota Medina García · Colección Nude</p>
+            <p class="font-serif italic text-base text-[#682D35]">Carlota Medina García · Valencia, 1946 (80 años) · Colección Nude</p>
             <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
-              La historia de una vida plena
+              La vida familiar, el oficio artesanal y la tradición
             </h3>
+            <blockquote class="border-l-2 border-[#682D35]/40 pl-3.5 py-0.5 font-serif italic text-sm sm:text-base text-vela-chocolate/85">
+              «La vida se hace grande cuando aprendemos a cuidar de lo pequeño.»
+            </blockquote>
             <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
-              Un relato luminoso y sereno construido a partir de conversaciones breves, recetas anotadas y memorias compartidas por sus hijos. Papel marfil cálido y márgenes respirados.
+              Nacida en Valencia el 18 de mayo de 1946 entre el barrio de Russafa y l'Horta. Compartió casi cinco décadas junto a Juan Ferrer Vidal, dirigió su propio taller de arreglos de ropa en Campanar y atesoró viajes por Mallorca, París, Roma, Florencia, Lisboa, Praga y Viena.
             </p>
             <p class="text-xs text-vela-topo tracking-wide pt-1">
-              Capítulos: Orígenes · Infancia · Momentos clave · Legado
+              Capítulos: Orígenes · Infancia · Construir una vida · Viajes · La costura · Lo que permanece
             </p>
-            <div class="pt-3">
+            <div class="pt-3 flex flex-wrap gap-3">
               <button type="button" data-open-story="nude"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
-                <span>Abrir edición interactiva Nude</span>
-                <span aria-hidden="true">→</span>
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
+                <span>Ver la biografía de Carlota en el visor</span>
+                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
 
           <div class="lg:col-span-7 flex flex-col items-center">
-            <div class="vela-story-visor w-full">
-              <button type="button" class="vela-story-arrow" data-story-prev="nude" aria-label="Páginas anteriores de Carlota">
+            <div class="flex items-center gap-2 sm:gap-3 w-full">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-prev="nude" aria-label="Páginas anteriores de Carlota">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
               </button>
 
-              <div class="vela-story-stage">
-                <div class="vela-story-tablet">
-                  <img src="/assets/templates/nude_page_07.jpg" alt="Portada interior de la historia de Carlota" loading="lazy" />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-left="nude" src="/assets/templates/nude_page_08.jpg" alt="Página Orígenes de Carlota Medina García" class="w-full h-auto block" loading="lazy" />
                 </div>
-                <div class="vela-story-fan">
-                  <div class="vela-story-sheet">
-                    <img data-slide-left="nude" src="/assets/templates/nude_page_01.jpg" alt="Página izquierda biografía Nude" loading="lazy" />
-                  </div>
-                  <div class="vela-story-sheet">
-                    <img data-slide-right="nude" src="/assets/templates/nude_page_03.jpg" alt="Página derecha biografía Nude" loading="lazy" />
-                  </div>
+                <div class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-right="nude" src="/assets/templates/nude_viajes_mallorca.jpg" alt="Página Viajes de Carlota Medina García" class="w-full h-auto block" loading="lazy" />
                 </div>
               </div>
 
-              <button type="button" class="vela-story-arrow" data-story-next="nude" aria-label="Páginas siguientes de Carlota">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-next="nude" aria-label="Páginas siguientes de Carlota">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
-            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="nude">Pliego 1 de 3 · Portada e índice editorial</p>
+            <p class="mt-3 font-serif italic text-xs sm:text-sm text-vela-chocolate/70" data-story-caption="nude">Pliego 1 de 3 · Orígenes en Valencia y viajes (Mallorca, Madrid, París)</p>
           </div>
         </article>
 
-        <!-- HISTORIA 2: JUAN (NOIR) -->
-        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="noir">
+        <!-- HISTORIA 2: JUAN ROMÁN ORTIZ (NOIR - NUEVO PDF) -->
+        <article id="juan" class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="noir">
           <div class="lg:col-span-5 lg:order-2 space-y-4">
-            <p class="font-serif italic text-base text-[#682D35]">Juan Román Ortiz · Colección Noir</p>
+            <p class="font-serif italic text-base text-[#682D35]">Juan Román Ortiz · Cádiz, 1943 (83 años) · Colección Noir</p>
             <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
-              El compañero de camino
+              El trabajo portuario, el mar y la constancia
             </h3>
+            <blockquote class="border-l-2 border-[#682D35]/40 pl-3.5 py-0.5 font-serif italic text-sm sm:text-base text-vela-chocolate/85">
+              «El mar enseña que no todo se puede controlar, pero siempre se puede aprender a navegar.»
+            </blockquote>
             <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
-              Contrastes sobrios en tinta oscura, retrato editorial y estructura firme por décadas. Pensada para biografías llenas de oficio, criterio propio y aprendizaje familiar.
+              Nacido en Cádiz el 7 de febrero de 1943 y criado en el barrio de La Viña entre carpinteros de ribera y astilleros. Su trayectoria profesional vinculada al puerto y al mantenimiento naval se entrelaza con su vida familiar junto a Isabel Moreno Castaño y la camaradería de toda una vida.
             </p>
             <p class="text-xs text-vela-topo tracking-wide pt-1">
-              Capítulos: Orígenes · El carácter · Una vida plena · Lo que permanece
+              Capítulos: Prólogo · Orígenes gaditanos · Infancia · Crecer · Construir una vida · Momentos clave
             </p>
-            <div class="pt-3">
+            <div class="pt-3 flex flex-wrap gap-3">
               <button type="button" data-open-story="noir"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
-                <span>Abrir edición interactiva Noir</span>
-                <span aria-hidden="true">→</span>
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
+                <span>Ver la biografía de Juan en el visor</span>
+                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
 
           <div class="lg:col-span-7 lg:order-1 flex flex-col items-center">
-            <div class="vela-story-visor w-full">
-              <button type="button" class="vela-story-arrow" data-story-prev="noir" aria-label="Páginas anteriores de Juan">
+            <div class="flex items-center gap-2 sm:gap-3 w-full">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-prev="noir" aria-label="Páginas anteriores de Juan">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
               </button>
 
-              <div class="vela-story-stage">
-                <div class="vela-story-tablet">
-                  <img src="/assets/templates/noir_page_01.jpg" alt="Portada colección Noir de Juan Román Ortiz" loading="lazy" />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-left="noir" src="/assets/templates/noir_page_02.jpg" alt="Cita y dedicatoria Cádiz 1943 - Juan Román Ortiz" class="w-full h-auto block" loading="lazy" />
                 </div>
-                <div class="vela-story-fan">
-                  <div class="vela-story-sheet">
-                    <img data-slide-left="noir" src="/assets/templates/noir_page_02.jpg" alt="Página izquierda biografía Noir" loading="lazy" />
-                  </div>
-                  <div class="vela-story-sheet">
-                    <img data-slide-right="noir" src="/assets/templates/noir_page_03.jpg" alt="Página derecha biografía Noir" loading="lazy" />
-                  </div>
+                <div class="bg-[#1D1C1A] rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-right="noir" src="/assets/templates/noir_page_04.jpg" alt="Prólogo de la biografía de Juan Román Ortiz" class="w-full h-auto block" loading="lazy" />
                 </div>
               </div>
 
-              <button type="button" class="vela-story-arrow" data-story-next="noir" aria-label="Páginas siguientes de Juan">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-next="noir" aria-label="Páginas siguientes de Juan">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
-            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="noir">Pliego 1 de 3 · Ex libris y prólogo de Carlos Mendoza</p>
+            <p class="mt-3 font-serif italic text-xs sm:text-sm text-vela-chocolate/70" data-story-caption="noir">Pliego 1 de 3 · Cádiz 1943 y prólogo de Juan Román Ortiz</p>
           </div>
         </article>
 
-        <!-- HISTORIA 3: CARMEN (LETTER) -->
-        <article class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="letter">
+        <!-- HISTORIA 3: CARMEN RODRÍGUEZ SÁNCHEZ (LETTER) -->
+        <article id="carmen" class="vela-story-row grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center" data-story-card="letter">
           <div class="lg:col-span-5 space-y-4">
-            <p class="font-serif italic text-base text-[#682D35]">Carmen · Colección Letter</p>
+            <p class="font-serif italic text-base text-[#682D35]">Carmen Rodríguez Sánchez · San Sebastián, 1975 (51 años) · Colección Letter</p>
             <h3 class="font-serif text-3xl sm:text-[2.15rem] leading-tight text-vela-chocolate">
-              Una vida hecha de pequeñas historias
+              La independencia, la evolución profesional y los nuevos comienzos
             </h3>
+            <blockquote class="border-l-2 border-[#682D35]/40 pl-3.5 py-0.5 font-serif italic text-sm sm:text-base text-vela-chocolate/85">
+              «La vida no siempre nos lleva por el camino previsto, pero siempre podemos elegir cómo recorrerlo.»
+            </blockquote>
             <p class="text-sm sm:text-base text-vela-chocolate/75 font-light leading-relaxed">
-              Inspirada en el papel epistolario clásico y los álbumes anotados en casa. Perfecta cuando hijos y nietos envían voces y recuerdos desde distintas ciudades.
+              Criada en el barrio de Amara entre libros y música, estudió Arquitectura con una estancia decisiva en Florencia y desarrolló su carrera en rehabilitación urbana entre Bilbao y San Sebastián. Apasionada por el piano, la fotografía, el Cantábrico y las rutas de montaña por Pirineos y Dolomitas.
             </p>
             <p class="text-xs text-vela-topo tracking-wide pt-1">
-              Capítulos: La carta · Familia · Viajes y hallazgos · Para siempre
+              Capítulos: Prólogo · Parte 1: Orígenes en Amara · Arquitectura y Bilbao · Montaña, viajes y nuevos comienzos
             </p>
-            <div class="pt-3">
+            <div class="pt-3 flex flex-wrap gap-3">
               <button type="button" data-open-story="letter"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-vela-chocolate text-vela-marfil text-xs font-medium tracking-wide hover:bg-black transition-all shadow-sm">
-                <span>Abrir edición interactiva Letter</span>
-                <span aria-hidden="true">→</span>
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
+                <span>Ver la biografía de Carmen en el visor</span>
+                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
 
           <div class="lg:col-span-7 flex flex-col items-center">
-            <div class="vela-story-visor w-full">
-              <button type="button" class="vela-story-arrow" data-story-prev="letter" aria-label="Páginas anteriores de Carmen">
+            <div class="flex items-center gap-2 sm:gap-3 w-full">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-prev="letter" aria-label="Páginas anteriores de Carmen">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
               </button>
 
-              <div class="vela-story-stage">
-                <div class="vela-story-tablet">
-                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada colección Letter de Carmen" loading="lazy" />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-left="letter" src="/assets/templates/letter_page_02.jpg" alt="Página izquierda biografía Carmen Rodríguez" class="w-full h-auto block" loading="lazy" />
                 </div>
-                <div class="vela-story-fan">
-                  <div class="vela-story-sheet">
-                    <img data-slide-left="letter" src="/assets/templates/letter_page_02.jpg" alt="Página izquierda biografía Letter" loading="lazy" />
-                  </div>
-                  <div class="vela-story-sheet">
-                    <img data-slide-right="letter" src="/assets/templates/letter_page_03.jpg" alt="Página derecha biografía Letter" loading="lazy" />
-                  </div>
+                <div class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_18px_40px_-16px_rgba(38,35,31,0.18)] overflow-hidden">
+                  <img data-slide-right="letter" src="/assets/templates/letter_page_03.jpg" alt="Página derecha prólogo Carmen Rodríguez" class="w-full h-auto block" loading="lazy" />
                 </div>
               </div>
 
-              <button type="button" class="vela-story-arrow" data-story-next="letter" aria-label="Páginas siguientes de Carmen">
+              <button type="button" class="vela-story-arrow shrink-0" data-story-next="letter" aria-label="Páginas siguientes de Carmen">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
-            <p class="mt-2 font-serif italic text-xs text-vela-chocolate/65" data-story-caption="letter">Pliego 1 de 3 · Ex libris y prólogo familiar</p>
+            <p class="mt-3 font-serif italic text-xs sm:text-sm text-vela-chocolate/70" data-story-caption="letter">Pliego 1 de 3 · Portada interior y prólogo de Carmen Rodríguez Sánchez</p>
           </div>
         </article>
 
@@ -372,19 +359,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         (function () {
           var slides = {
             nude: [
-              { left: 'assets/templates/nude_page_01.jpg', right: 'assets/templates/nude_page_03.jpg', caption: 'Pliego 1 de 3 · Portada e índice editorial' },
-              { left: 'assets/templates/nude_page_04.jpg', right: 'assets/templates/nude_page_05.jpg', caption: 'Pliego 2 de 3 · Prólogo y nuestra familia' },
-              { left: 'assets/templates/nude_page_06.jpg', right: 'assets/templates/nude_page_08.jpg', caption: 'Pliego 3 de 3 · Línea vital y orígenes' }
+              { left: '/assets/templates/nude_page_08.jpg', right: '/assets/templates/nude_viajes_mallorca.jpg', caption: 'Pliego 1 de 3 · Orígenes en Valencia y viajes (Mallorca, Madrid, París)' },
+              { left: '/assets/templates/nude_page_04.jpg', right: '/assets/templates/nude_page_05.jpg', caption: 'Pliego 2 de 3 · Prólogo y recuerdos de familia' },
+              { left: '/assets/templates/nude_page_06.jpg', right: '/assets/templates/nude_viajes_roma.jpg', caption: 'Pliego 3 de 3 · Línea vital y viajes por Italia y Europa' }
             ],
             noir: [
-              { left: 'assets/templates/noir_page_02.jpg', right: 'assets/templates/noir_page_03.jpg', caption: 'Pliego 1 de 3 · Ex libris y prólogo de Carlos Mendoza' },
-              { left: 'assets/templates/noir_page_04.jpg', right: 'assets/templates/noir_page_05.jpg', caption: 'Pliego 2 de 3 · Nuestra familia y línea de vida' },
-              { left: 'assets/templates/noir_page_06.jpg', right: 'assets/templates/noir_page_08.jpg', caption: 'Pliego 3 de 3 · Orígenes e infancia' }
+              { left: '/assets/templates/noir_page_02.jpg', right: '/assets/templates/noir_page_04.jpg', caption: 'Pliego 1 de 3 · Cádiz 1943 y prólogo de Juan Román Ortiz' },
+              { left: '/assets/templates/noir_page_03.jpg', right: '/assets/templates/noir_page_05.jpg', caption: 'Pliego 2 de 3 · Índice y archivo fotográfico' },
+              { left: '/assets/templates/noir_page_07.jpg', right: '/assets/templates/noir_page_08.jpg', caption: 'Pliego 3 de 3 · Orígenes gaditanos y San Fernando' }
             ],
             letter: [
-              { left: 'assets/templates/letter_page_02.jpg', right: 'assets/templates/letter_page_03.jpg', caption: 'Pliego 1 de 3 · Ex libris y prólogo familiar' },
-              { left: 'assets/templates/letter_page_04.jpg', right: 'assets/templates/letter_page_05.jpg', caption: 'Pliego 2 de 3 · Álbum familiar y línea de la vida' },
-              { left: 'assets/templates/letter_page_07.jpg', right: 'assets/templates/letter_page_08.jpg', caption: 'Pliego 3 de 3 · Una infancia feliz y parte II' }
+              { left: '/assets/templates/letter_page_02.jpg', right: '/assets/templates/letter_page_03.jpg', caption: 'Pliego 1 de 3 · Portada interior y prólogo de Carmen Rodríguez Sánchez' },
+              { left: '/assets/templates/letter_page_04.jpg', right: '/assets/templates/letter_page_05.jpg', caption: 'Pliego 2 de 3 · Álbum familiar y línea de la vida' },
+              { left: '/assets/templates/letter_page_07.jpg', right: '/assets/templates/letter_page_08.jpg', caption: 'Pliego 3 de 3 · Orígenes y Parte 2: Crecer' }
             ]
           };
           var state = { nude: 0, noir: 0, letter: 0 };
@@ -419,11 +406,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           document.querySelectorAll('[data-open-story]').forEach(function (btn) {
             btn.addEventListener('click', function () {
               var tpl = btn.getAttribute('data-open-story');
-              var stage = document.getElementById('vela-3d-stage') || document.querySelector('.vela-hero-archive');
+              var stage = document.getElementById('vela-3d-stage') || document.querySelector('[data-vela-biography-showcase]');
               if (stage) stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              if (window.VelaArchive3D && typeof window.VelaArchive3D.openReader === 'function') {
-                window.VelaArchive3D.openReader(tpl);
-              }
+              setTimeout(function () {
+                if (window.VelaArchive3D && typeof window.VelaArchive3D.openReader === 'function') {
+                  window.VelaArchive3D.openReader(tpl);
+                } else {
+                  var card = document.querySelector('[data-vela-gallery-card="' + tpl + '"]') || document.querySelector('[data-vela-archive-tab="' + tpl + '"]');
+                  if (card) card.click();
+                }
+              }, 260);
             });
           });
         })();

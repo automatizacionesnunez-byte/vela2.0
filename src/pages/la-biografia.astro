@@ -7,73 +7,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Convertimos la vida de tus seres queridos en un libro editorial único."
   bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-page-la-biografia"
 >
-<main>
-    <!-- SECCIÓN 1: PRESENTACIÓN DEL PRODUCTO REPLICADA EN HTML/CSS -->
-    <section class="py-16 lg:py-24 bg-[#F8F6F0] border-b border-vela-linea">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+  <main>
+    <!-- SECCIÓN 1: PRESENTACIÓN COMPLETA DEL PRODUCTO (Solo modelo Letter, fondo enterizo y sobre integrado) -->
+    <section class="relative bg-[#EDDDD0] border-b border-vela-linea overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 py-14 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-          <!-- Izquierda: Escena editorial cálida de estudio (estilo mesa de madera con luz natural) -->
+          <!-- Izquierda: Composición editorial Letter en estudio cálido con fondo continuo -->
           <div class="lg:col-span-6">
-            <div class="vela-bio-stage">
-              <!-- Controles de modelos limpios (Letter, Noir, Nude) -->
-              <div class="vela-stage-controls">
-                <div class="vela-stage-models" role="tablist" aria-label="Elegir modelo de biografía">
-                  <button type="button" class="vela-stage-model-btn is-active" data-stage-model="letter" role="tab" aria-selected="true">
-                    Letter
-                  </button>
-                  <button type="button" class="vela-stage-model-btn" data-stage-model="noir" role="tab" aria-selected="false">
-                    Noir
-                  </button>
-                  <button type="button" class="vela-stage-model-btn" data-stage-model="nude" role="tab" aria-selected="false">
-                    Nude
-                  </button>
-                </div>
-              </div>
-
-              <!-- Composición cálida sobre mesa de madera de estudio -->
-              <div class="vela-bio-stage__composition">
-                <!-- Mini polaroids antiguas de recuerdo en la mesa -->
-                <div class="vela-stage-polaroid vela-stage-polaroid--1" aria-hidden="true">
-                  <img src="/assets/carmen-hero-1600.webp" alt="" />
-                </div>
-                <div class="vela-stage-polaroid vela-stage-polaroid--2" aria-hidden="true">
-                  <img src="/assets/carmen-family-1200.webp" alt="" />
-                </div>
-
-                <!-- iPad inclinado con pliego editorial real, dinámico y 100% legible -->
-                <div class="vela-css-ipad">
-                  <div class="vela-css-ipad__screen" id="stageIpadScreen">
-                    <span class="vela-css-ipad__num" id="stageIpadNum">01</span>
-                    <h2 class="vela-css-ipad__chapter" id="stageIpadChapter">Orígenes</h2>
-                    <p class="vela-css-ipad__subtitle" id="stageIpadSubtitle">Una vida llena de pequeñas grandes historias</p>
-                    <div class="vela-css-ipad__copy" id="stageIpadCopy">
-                      <p id="stageIpadP1">Carmen nació en un barrio de artesanos y recuerdos de infancia junto al mar. De su madre aprendió el valor de la constancia y de su padre la pasión por la música y las tertulias familiares.</p>
-                      <p id="stageIpadP2">Su historia avanza como una carta íntima escrita a mano, donde cada fotografía y cada anécdota conservan el perfume y la calidez del hogar.</p>
-                    </div>
-                    <div class="vela-css-ipad__footer" id="stageIpadFooter">— Memoria familiar VELA · Modelo Letter —</div>
-                  </div>
-                </div>
-
-                <!-- Portada física impresa del modelo seleccionado (apoyada abajo a la izquierda sin tapar texto) -->
-                <div class="vela-css-booklet" aria-label="Portada editorial del modelo">
-                  <img id="stageBookletImg" src="/assets/templates/letter_page_01.jpg" alt="Portada del modelo Letter de Carmen Rodríguez Sánchez" class="transition-opacity duration-200" />
-                </div>
-
-                <!-- Fotografía real del Sobre Abierto con Lacre y dedicatoria con tarjeta QR (fijo abierto) -->
-                <div class="vela-real-envelope-set" id="velaRealEnvelopeContainer" aria-label="Sobre VELA real abierto en papel verjurado con sello de lacre rojo y tarjeta física con dedicatoria y código QR">
-                  <img id="velaRealEnvelopeImg" src="/assets/sobre-lacre-abierto-transparente.webp" alt="Sobre VELA abierto con sello de lacre rojo burdeos, tarjeta con dedicatoria personalizada y código QR" class="transition-opacity duration-200" />
-                </div>
-              </div>
-              <p class="vela-bio-stage__caption">Biografía digital en pantalla &nbsp;+&nbsp; libro impreso de recuerdo &nbsp;+&nbsp; sobre físico con lacre y QR</p>
+            <div class="relative overflow-hidden rounded-sm">
+              <img
+                src="/assets/bio-sec1-studio.jpg"
+                alt="Presentación completa de biografía VELA modelo Letter en tablet con sobre lacrado y tarjeta QR"
+                class="w-full h-auto block object-cover"
+                loading="eager"
+                fetchpriority="high"
+              />
+              <!-- Degradado sutil en el borde derecho en escritorio para fundirse con el fondo enterizo -->
+              <div class="hidden lg:block pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#EDDDD0] to-transparent" aria-hidden="true"></div>
             </div>
           </div>
 
           <!-- Derecha: Titular limpio + 3 Filas con iconos y líneas divisorias -->
           <div class="lg:col-span-6 space-y-6">
-            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-vela-chocolate leading-[1.06]">
-              Una historia única,<br/>
-              <span class="italic text-vela-topo">en digital y para regalar.</span>
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.35rem] font-normal text-vela-chocolate leading-[1.08] tracking-tight">
+              Una historia única,<br />
+              <span class="italic text-[#6E5644]">en digital y para regalar.</span>
             </h1>
             <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed max-w-xl">
               VELA transforma recuerdos, fotografías y testimonios en una biografía digital personalizada, cuidada y lista para leer en cualquier dispositivo.
@@ -119,81 +78,79 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- SECCIÓN 2: EL PRODUCTO Y EL RESULTADO CON PLIEGOS REALES INCLINADOS -->
-    <section class="py-24 sm:py-28 bg-[#F1EBE2] border-b border-vela-linea">
-      <div class="max-w-7xl mx-auto px-6 space-y-20">
+    <!-- SECCIÓN 2: EL PRODUCTO Y EL RESULTADO (Tipografía ampliada + Pliego real de Viajes del PDF) -->
+    <section class="py-20 sm:py-24 bg-[#F1EBE2] border-b border-vela-linea">
+      <div class="max-w-7xl mx-auto px-6 space-y-16 lg:space-y-20">
 
         <!-- Bloque superior centrado -->
         <div class="text-center max-w-3xl mx-auto space-y-6">
           <h2 class="font-serif text-4xl sm:text-5xl font-normal text-vela-chocolate leading-tight">
-            Un recuerdo para leer.<br/>
+            Un recuerdo para leer.<br />
             <span class="italic text-vela-topo">Un regalo para guardar.</span>
           </h2>
-          <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-            Una biografía personalizada en formato digital, creada con los recuerdos, fotografías y testimonios de una persona, y presentada con un sobre y una tarjeta QR para entregar en mano.
+          <p class="text-lg sm:text-xl text-vela-chocolate/80 font-light leading-relaxed">
+            Una biografía personalizada en formato digital, creada con los recuerdos, fotografías y testimonios de una persona, y presentada con un sobre y una tarjeta QR para regalar.
           </p>
           <div class="pt-2 flex flex-wrap justify-center gap-4">
-            <a href="/precios" class="px-7 py-3 bg-[#7D6654] text-white text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-vela-chocolate transition-all shadow-sm">
+            <a href="/precios" class="px-8 py-3.5 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
               Crear mi biografía ↗
             </a>
-            <a href="#estilos" class="px-7 py-3 bg-[#F8F6F0] border border-vela-chocolate/25 text-vela-chocolate text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white transition-all">
+            <a href="#estilos" class="px-8 py-3.5 bg-transparent border border-vela-chocolate/30 text-vela-chocolate text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white transition-all">
               Explorar estilos ↗
             </a>
           </div>
         </div>
 
-        <!-- Bloque inferior: Qué contiene + Pliegos reales inclinados -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-8 border-t border-vela-linea">
-          <div class="lg:col-span-6 space-y-6">
+        <!-- Bloque inferior: Qué contiene + Pliegos reales ampliados para lectura inmediata -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-10 border-t border-vela-linea">
+          <div class="lg:col-span-4 space-y-5">
             <h3 class="font-serif text-3xl sm:text-4xl font-normal text-vela-chocolate leading-tight">
-              Así se transforma una vida<br/>
+              Así se transforma una vida<br />
               <span class="italic text-vela-topo">en una biografía.</span>
             </h3>
-            <p class="text-base text-vela-chocolate/80 font-light leading-relaxed">
+            <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
               VELA convierte el material aportado en una historia organizada por capítulos, con fotografías y recuerdos familiares que se pueden leer con comodidad y guardar en PDF.
             </p>
 
-            <ul class="divide-y divide-vela-linea border-t border-b border-vela-linea text-sm text-vela-chocolate font-medium">
+            <ul class="divide-y divide-vela-linea border-t border-b border-vela-linea text-base text-vela-chocolate font-medium">
               <li class="py-3.5 flex items-center gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos"></span> Portada personalizada
+                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos shrink-0"></span> Portada personalizada
               </li>
               <li class="py-3.5 flex items-center gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos"></span> Capítulos sobre momentos y personas
+                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos shrink-0"></span> Capítulos sobre momentos y personas
               </li>
               <li class="py-3.5 flex items-center gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos"></span> Fotografías y recuerdos familiares
+                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos shrink-0"></span> Fotografías y recuerdos familiares
               </li>
               <li class="py-3.5 flex items-center gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos"></span> Descarga en PDF y lectura digital
+                <span class="w-1.5 h-1.5 rounded-full bg-vela-burdeos shrink-0"></span> Descarga en PDF y lectura digital
               </li>
             </ul>
 
-            <p class="font-serif italic text-vela-chocolate/80 text-base pt-1">
+            <p class="font-serif italic text-vela-chocolate/85 text-lg pt-1">
               Una historia íntima y bien maquetada que permanece siempre accesible.
             </p>
           </div>
 
-          <div class="lg:col-span-6">
-            <div class="vela-spread-showcase">
-              <div class="vela-spread-sheet vela-spread-sheet--left">
-                <img src="/assets/templates/nude_page_08.jpg" alt="Página editorial Capítulo 01 Orígenes - Plantilla Nude" />
-              </div>
-              <div class="vela-spread-sheet vela-spread-sheet--right">
-                <div class="vela-spread-photo-page__head">
-                  <h4>Paseos eternos en la Huerta</h4>
-                </div>
-                <div class="vela-spread-photo-page__photo">
-                  <img src="/assets/carmen-family-1200.webp" alt="Recuerdos y sobremesas en familia" />
-                </div>
-                <span class="vela-spread-photo-page__year">1952</span>
-                <p class="vela-spread-photo-page__copy">
-                  Las tardes largas alrededor de la mesa, las fotografías pasadas de mano en mano y esas historias compartidas que definen a toda una generación.
-                </p>
-                <div class="vela-spread-photo-page__foot">
-                  <span>VELA</span>
-                  <span>12</span>
-                </div>
-              </div>
+          <!-- Pliegos reales grandes y legibles a primera vista (márgenes ajustados + 8 columnas) -->
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 items-start">
+              <figure class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_22px_45px_-16px_rgba(38,35,31,0.18)] overflow-hidden sm:-rotate-1 hover:rotate-0 transition-transform duration-300">
+                <img
+                  src="/assets/templates/nude_page_08_large.jpg"
+                  alt="Página editorial Capítulo 01 Orígenes - Biografía VELA"
+                  class="w-full h-auto block"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="bg-white rounded-[2px] border border-vela-chocolate/12 shadow-[0_22px_45px_-16px_rgba(38,35,31,0.18)] overflow-hidden sm:rotate-1 sm:mt-4 hover:rotate-0 transition-transform duration-300">
+                <img
+                  src="/assets/templates/nude_viajes_mallorca_large.jpg"
+                  alt="Página editorial Viajes: Mallorca 1973, Madrid 1982 y París 1990 - Biografía VELA"
+                  class="w-full h-auto block"
+                  loading="lazy"
+                />
+              </figure>
             </div>
           </div>
         </div>
@@ -201,130 +158,133 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- SECCIÓN 3: TRES ESTILOS CON SUS 2 PÁGINAS INTERIORES EN MINIATURA DEBAJO -->
-    <section id="estilos" class="py-24 sm:py-28 bg-[#F8F6F0] border-b border-vela-linea">
-      <div class="max-w-7xl mx-auto px-6">
+    <!-- SECCIÓN 3: TRES ESTILOS (Proporciones optimizadas para MacBook 13" y móvil) -->
+    <section id="estilos" class="py-16 sm:py-20 bg-[#F8F6F0] border-b border-vela-linea">
+      <div class="max-w-6xl mx-auto px-6">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div class="max-w-2xl">
-            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-tight">
-              La misma emoción.<br/>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-normal text-vela-chocolate leading-tight">
+              La misma emoción.<br />
               <span class="italic text-vela-topo">Tres formas de contarla.</span>
             </h2>
-            <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed mt-4">
-              Cada historia puede maquetarse en un estilo editorial diferente. Eliges el tono visual que mejor representa la personalidad de quien protagoniza la vida.
+            <p class="text-base text-vela-chocolate/75 font-light leading-relaxed mt-3">
+              Letter, Noir y Nude son diseños editoriales independientes del plan que elijas. Explora su personalidad y decide cuál representa mejor a la persona protagonista.
             </p>
           </div>
-          <a href="/precios" class="self-start md:self-auto px-6 py-3 bg-[#7D6654] text-white text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-vela-chocolate transition-all shadow-sm shrink-0">
+          <a href="/precios" class="self-start md:self-auto px-6 py-3 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm shrink-0">
             Comparar precios ↗
           </a>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8">
 
           <!-- ESTILO 1: LETTER -->
-          <article class="flex flex-col justify-between space-y-6">
+          <article class="flex flex-col justify-between space-y-5">
             <div>
-              <div class="p-6 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-6">
-                <div class="aspect-[3/4] overflow-hidden shadow-md bg-white">
-                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada Letter - Carmen Rodríguez Sánchez" class="w-full h-full object-cover" />
+              <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
+                <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-white">
+                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada Letter - Carmen Rodríguez Sánchez" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
-              <h3 class="font-sans text-lg uppercase tracking-[0.22em] text-vela-chocolate font-medium mb-2">Letter</h3>
-              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-5">
-                Clásico y cercano, inspirado en las cartas antiguas, el papel con memoria y los recuerdos escritos a mano para quienes más quieres.
+              <h3 class="font-sans text-base uppercase tracking-[0.22em] text-vela-chocolate font-semibold mb-1.5">Letter</h3>
+              <p class="font-serif italic text-sm text-vela-topo mb-2">Clásico, cercano y lleno de memoria.</p>
+              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                El encanto de las cartas antiguas, el papel con textura y una caligrafía que recuerda a los archivos familiares.
               </p>
               <!-- 2 Páginas interiores reales en miniatura -->
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/letter_page_03.jpg" alt="Página interior Prólogo - Estilo Letter" class="w-full h-full object-cover" />
+              <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
+                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/letter_page_03.jpg" alt="Página interior Prólogo - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/letter_page_07.jpg" alt="Página interior Capítulo 01 - Estilo Letter" class="w-full h-full object-cover" />
+                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/letter_page_07.jpg" alt="Página interior Capítulo 01 - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
-            <a href="ejemplos.html#carmen" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
+            <a href="/ejemplos#carmen" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
               Ver ejemplo Letter →
             </a>
           </article>
 
           <!-- ESTILO 2: NOIR -->
-          <article class="flex flex-col justify-between space-y-6">
+          <article class="flex flex-col justify-between space-y-5">
             <div>
-              <div class="p-6 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-6">
-                <div class="aspect-[3/4] overflow-hidden shadow-md bg-[#1A1A1A]">
-                  <img src="/assets/templates/noir_page_01.jpg" alt="Portada Noir - Juan Román Ortiz" class="w-full h-full object-cover" />
+              <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
+                <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-[#1A1A1A]">
+                  <img src="/assets/templates/noir_page_01.jpg" alt="Portada Noir - Juan Román Ortiz" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
-              <h3 class="font-sans text-lg uppercase tracking-[0.22em] text-vela-chocolate font-medium mb-2">Noir</h3>
-              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-5">
-                Más gráfico y contemporáneo, con contrastes definidos en negro carbón, tipografía rotunda y una puesta en página de carácter sólido.
+              <h3 class="font-sans text-base uppercase tracking-[0.22em] text-vela-chocolate font-semibold mb-1.5">Noir</h3>
+              <p class="font-serif italic text-sm text-vela-topo mb-2">Gráfico, sobrio y con carácter.</p>
+              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                Una propuesta audaz y contemporánea, con contrastes definidos en negro carbón y una presencia muy marcada.
               </p>
               <!-- 2 Páginas interiores reales en miniatura -->
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-[#1D1C1A] border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/noir_page_03.jpg" alt="Página interior Prólogo - Estilo Noir" class="w-full h-full object-cover" />
+              <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
+                <div class="aspect-[3/4] overflow-hidden bg-[#1D1C1A] border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/noir_page_03.jpg" alt="Página interior Prólogo - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/noir_page_05.jpg" alt="Página interior Línea de la vida - Estilo Noir" class="w-full h-full object-cover" />
+                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/noir_page_05.jpg" alt="Página interior Línea de la vida - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
-            <a href="ejemplos.html#juan" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
+            <a href="/ejemplos#juan" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
               Ver ejemplo Noir →
             </a>
           </article>
 
           <!-- ESTILO 3: NUDE -->
-          <article class="flex flex-col justify-between space-y-6">
+          <article class="flex flex-col justify-between space-y-5">
             <div>
-              <div class="p-6 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-6">
-                <div class="aspect-[3/4] overflow-hidden shadow-md bg-[#EAE7E1]">
-                  <img src="/assets/templates/nude_page_01.jpg" alt="Portada Nude - Carlota Medina García" class="w-full h-full object-cover" />
+              <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
+                <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-[#EAE7E1]">
+                  <img src="/assets/templates/nude_page_01.jpg" alt="Portada Nude - Carlota Medina García" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
-              <h3 class="font-sans text-lg uppercase tracking-[0.22em] text-vela-chocolate font-medium mb-2">Nude</h3>
-              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-5">
-                Sereno, cálido y atemporal, en tonos neutros con márgenes amplios que dejan respirar las fotografías y la intimidad del relato.
+              <h3 class="font-sans text-base uppercase tracking-[0.22em] text-vela-chocolate font-semibold mb-1.5">Nude</h3>
+              <p class="font-serif italic text-sm text-vela-topo mb-2">Sereno, delicado y atemporal.</p>
+              <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
+                Una maquetación suave y elegante, con tonos empolvados, márgenes amplios y una presencia cálida y silenciosa.
               </p>
               <!-- 2 Páginas interiores reales en miniatura -->
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/nude_page_04.jpg" alt="Página interior Prólogo - Estilo Nude" class="w-full h-full object-cover" />
+              <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
+                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/nude_page_04.jpg" alt="Página interior Prólogo - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-sm">
-                  <img src="/assets/templates/nude_page_08.jpg" alt="Página interior Capítulo 01 Orígenes - Estilo Nude" class="w-full h-full object-cover" />
+                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                  <img src="/assets/templates/nude_page_08.jpg" alt="Página interior Capítulo 01 Orígenes - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
-            <a href="ejemplos.html#carlota" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
+            <a href="/ejemplos#carlota" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
               Ver ejemplo Nude →
             </a>
           </article>
 
         </div>
 
-        <p class="text-center text-xs text-vela-topo mt-12">
+        <p class="text-center text-xs text-vela-topo mt-10">
           Los tres estilos editoriales están disponibles en todos los planes, listos para lectura digital y descarga en PDF.
         </p>
 
       </div>
     </section>
 
-    <!-- SECCIÓN 4: LECTURA MULTIDISPOSITIVO (iMac + Tablet + Móvil en CSS) -->
-    <section class="py-24 sm:py-28 bg-[#F1EBE2] border-b border-vela-linea">
+    <!-- SECCIÓN 4: LECTURA MULTIDISPOSITIVO (Escena cálida de estudio con mesa, tela, flores y sombras) -->
+    <section class="py-20 sm:py-24 bg-[#F6E9E1] border-b border-vela-linea overflow-hidden">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
           <div class="lg:col-span-5 space-y-6">
             <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-tight">
-              Tu biografía,<br/>
-              siempre contigo.<br/>
-              <span class="italic text-vela-topo">En móvil, tablet y ordenador.</span>
+              Tu biografía,<br />
+              siempre contigo.<br />
+              <span class="italic text-[#6E5644]">En móvil, tablet y ordenador.</span>
             </h2>
-            <p class="text-base text-vela-chocolate/80 font-light leading-relaxed">
-              La biografía puede leerse con comodidad en cualquier momento y desde cualquier dispositivo. Está pensada para acompañarte en ordenador, tablet o móvil y para compartirla con tu familia.
+            <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
+              La biografía puede leerse con comodidad en cualquier momento y desde cualquier dispositivo. Está pensada para acompañarte en ordenador, tablet o móvil y para compartirla fácilmente con quienes forman parte de la historia.
             </p>
 
             <div class="vela-icon-rows pt-2">
@@ -364,97 +324,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <div class="lg:col-span-7">
-            <div class="vela-multidevice-stage">
-              <!-- Monitor iMac en CSS -->
-              <div class="vela-device-imac">
-                <div class="vela-device-imac__frame">
-                  <div class="vela-device-imac__screen">
-                    <div class="vela-device-ui__top">
-                      <span>VELA</span>
-                      <span>BIOGRAFÍA</span>
-                      <span>☰</span>
-                    </div>
-                    <div class="vela-device-ui__head">
-                      <h4>La vida de<br/>Carlota Medina García</h4>
-                    </div>
-                    <div class="vela-device-ui__grid">
-                      <div>
-                        <div class="vela-device-ui__portrait">
-                          <img src="/assets/carmen-hero-1600.webp" alt="Vista de biografía digital en ordenador" />
-                        </div>
-                        <p class="vela-device-ui__caption">
-                          Los primeros años, la familia, la casa de siempre y los recuerdos que todavía iluminan su historia.
-                        </p>
-                      </div>
-                      <div class="vela-device-ui__toc">
-                        <strong>ÍNDICE</strong>
-                        <ul>
-                          <li>I. UNA INFANCIA FELIZ</li>
-                          <li>II. LOS AÑOS DE JUVENTUD</li>
-                          <li>III. UNA VIDA DE FAMILIA</li>
-                          <li>IV. LEGADO Y RECUERDOS</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="vela-device-imac__chin"></div>
-                <div class="vela-device-imac__stand"></div>
-              </div>
-
-              <!-- Móvil superpuesto izquierda -->
-              <div class="vela-device-phone" aria-hidden="true">
-                <div class="vela-device-phone__screen">
-                  <div class="vela-device-ui__top"><span>VELA</span><span>☰</span></div>
-                  <div class="text-center py-1.5">
-                    <p class="font-serif italic text-[9px] leading-tight">La vida de<br/>Carlota</p>
-                  </div>
-                  <div class="aspect-[4/3] overflow-hidden rounded-[2px] mb-1.5 bg-[#E7DDD0]">
-                    <img src="/assets/carmen-hero-1600.webp" alt="" class="w-full h-full object-cover object-top" style="filter: sepia(26%);" />
-                  </div>
-                  <div class="space-y-1 text-[6px] text-[#705D4F] tracking-wide">
-                    <div class="border-b border-[#DCD2C5] pb-0.5">I. UNA INFANCIA FELIZ</div>
-                    <div class="border-b border-[#DCD2C5] pb-0.5">II. LOS AÑOS DE JUVENTUD</div>
-                    <div>III. LEGADO Y RECUERDOS</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tablet superpuesta derecha -->
-              <div class="vela-device-tablet" aria-hidden="true">
-                <div class="vela-device-tablet__screen">
-                  <div class="vela-device-ui__top"><span>VELA</span><span>BIOGRAFÍA</span><span>☰</span></div>
-                  <div class="text-center py-2">
-                    <p class="font-serif italic text-[11px] leading-tight">La vida de<br/>Carlota Medina García</p>
-                  </div>
-                  <div class="aspect-[16/10] overflow-hidden rounded-[2px] mb-2 bg-[#E7DDD0]">
-                    <img src="/assets/carmen-hero-1600.webp" alt="" class="w-full h-full object-cover object-top" style="filter: sepia(26%);" />
-                  </div>
-                  <p class="text-[7px] text-center uppercase tracking-[0.16em] text-[#5C4B3E] mb-1">I. Una infancia feliz</p>
-                  <p class="font-serif italic text-[6.8px] text-center text-[#7D6A5A] leading-snug">Los primeros años, la familia y los recuerdos que permanecen.</p>
-                </div>
-              </div>
-
-              <p class="vela-multidevice-stage__label">Disponible en PC · móvil · tablet</p>
+            <div class="relative overflow-hidden rounded-sm">
+              <img
+                src="/assets/bio-sec4-multidevice.jpg"
+                alt="Biografía digital VELA abierta en ordenador, tablet y móvil sobre mesa cálida con luz natural"
+                class="w-full h-auto block object-cover"
+                loading="lazy"
+              />
+              <div class="hidden lg:block pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#F6E9E1] to-transparent" aria-hidden="true"></div>
             </div>
+            <p class="text-center font-serif italic text-sm text-vela-chocolate/75 mt-4">
+              Disponible en PC · móvil · tablet
+            </p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 5: REGALAR VELA -->
-    <section class="py-24 sm:py-28 bg-[#F8F6F0]">
+    <!-- SECCIÓN 5: REGALAR VELA (Sobre de Paco sin mención de motivo botánico + Botón hover invertido) -->
+    <section class="py-20 sm:py-24 bg-[#F8F6F0]">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           <div class="lg:col-span-6 space-y-6">
             <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-tight">
-              Una historia para entregar.<br/>
+              Una historia para entregar.<br />
               <span class="italic text-vela-topo">Un regalo para recordar.</span>
             </h2>
             <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
-              VELA también convierte una biografía digital en algo que se puede entregar en persona. Un sobre especial, una dedicatoria y un acceso mediante código QR para descubrir toda la historia.
+              VELA convierte una biografía digital en algo que se puede entregar en persona. Un sobre especial, una dedicatoria y un acceso mediante código QR para descubrir toda la historia.
             </p>
 
             <div class="vela-icon-rows pt-2">
@@ -464,8 +363,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div class="vela-icon-row__divider" aria-hidden="true"></div>
                 <div class="vela-icon-row__content">
-                  <h4>Sobre físico y tarjeta con dedicatoria</h4>
-                  <p>Presentación en papel verjurado: dedicatoria familiar personalizada con motivo botánico, junto al sobre abierto con sello de lacre burdeos y código QR.</p>
+                  <h4>Sobre físico VELA</h4>
+                  <p>Presentación cuidada en papel verjurado con sello de lacre burdeos para entregar un recuerdo tangible.</p>
                 </div>
               </div>
 
@@ -493,24 +392,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
 
             <div class="pt-4 space-y-5">
-              <p class="font-serif italic text-vela-chocolate text-base">
-                "Hay regalos que se guardan. Otros se vuelven parte de la familia."
+              <p class="font-serif italic text-vela-chocolate text-base sm:text-lg">
+                «Hay regalos que se guardan. Otros se vuelven parte de la familia.»
               </p>
-              <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-[#7D6654] text-white text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-vela-chocolate transition-all shadow-sm">
+              <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
                 Crear mi biografía ↗
               </a>
             </div>
           </div>
 
-          <!-- Derecha: Composición fotográfica editorial artística del sobre y dedicatoria física VELA -->
+          <!-- Derecha: Fotografía editorial del sobre VELA y tarjeta con dedicatoria y código QR sobre mesa de madera -->
           <div class="lg:col-span-6">
-            <div class="vela-gift-showcase">
-              <div class="vela-gift-frame">
-                <img src="/assets/sobre-ambos-lados-mesa.webp" alt="Presentación física VELA: tarjeta con dedicatoria personalizada a Carlota y sobre abierto en papel verjurado con sello de lacre rojo y código QR sobre mesa de madera" class="w-full h-auto object-cover" />
-              </div>
-              <p class="text-center font-serif italic text-xs sm:text-sm text-vela-chocolate/75 pt-3">
-                Presentación física VELA: tarjeta de dedicatoria familiar a Carlota y sobre en papel verjurado con sello de lacre artesanal y código QR
-              </p>
+            <div class="rounded-sm overflow-hidden shadow-[0_24px_54px_-18px_rgba(38,35,31,0.22)] border border-vela-chocolate/10">
+              <img
+                src="/assets/sobre-regalo-mesa-v2.webp"
+                alt="Sobre físico VELA en papel verjurado junto a la tarjeta con dedicatoria personal y código QR sobre mesa de madera"
+                class="w-full h-auto block object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
 
@@ -519,92 +418,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
   </main>
-
-  <!-- FOOTER GLOBAL -->
-<script is:inline>
-    document.addEventListener('DOMContentLoaded', function () {
-      // 1. Datos editoriales de nuestros modelos de biografía reales
-      const modelData = {
-        letter: {
-          cover: 'assets/templates/letter_page_01.jpg',
-          alt: 'Portada del modelo Letter de Carmen Rodríguez Sánchez',
-          num: '01',
-          chapter: 'Orígenes',
-          subtitle: 'Una vida llena de pequeñas grandes historias',
-          p1: 'Carmen nació en un barrio de artesanos y recuerdos de infancia junto al mar. De su madre aprendió el valor de la constancia y de su padre la pasión por la música y las tertulias familiares.',
-          p2: 'Su historia avanza como una carta íntima escrita a mano, donde cada fotografía y cada anécdota conservan el perfume y la calidez del hogar.',
-          footer: '— Memoria familiar VELA · Modelo Letter —'
-        },
-        noir: {
-          cover: 'assets/templates/noir_page_01.jpg',
-          alt: 'Portada del modelo Noir de Juan Román',
-          theme: 'is-noir',
-          num: '01',
-          chapter: 'Infancia',
-          subtitle: 'El compañero de camino',
-          p1: 'Juan creció en un pueblo donde la palabra dada valía más que cualquier firma. Trabajó desde muy joven en los talleres y construyó una reputación basada en la integridad y el esfuerzo.',
-          p2: 'Su legado destaca por un diseño tipográfico sobrio, contrastado y rotundo, donde los momentos clave de su trayectoria adquieren un peso visual inconfundible.',
-          footer: '— Colección Noir VELA · Modelo Noir —'
-        },
-        nude: {
-          cover: 'assets/templates/nude_cover_warm.jpg',
-          alt: 'Portada del modelo Nude de Carlota Medina García',
-          theme: 'is-nude',
-          num: '01',
-          chapter: 'Orígenes',
-          subtitle: 'Una familia entre dos mundos',
-          p1: 'Carlota nació en Valencia el 18 de mayo de 1946, en una ciudad que trataba de recuperar la normalidad. Su familia no tenía grandes recursos, pero sí una red de afectos que daba sentido al día a día.',
-          p2: 'Sus raíces se repartían entre Russafa y l’Horta. De ambas heredó la constancia de quienes trabajan con las manos y la generosidad de quienes sostienen el hogar entre todos.',
-          footer: '— La familia, el mayor tesoro · Modelo Nude —'
-        }
-      };
-
-      // Selector de modelos en el Hero
-      const modelBtns = document.querySelectorAll('.vela-stage-model-btn');
-      const bookletImg = document.getElementById('stageBookletImg');
-      const ipadScreen = document.getElementById('stageIpadScreen');
-      const ipadNum = document.getElementById('stageIpadNum');
-      const ipadChapter = document.getElementById('stageIpadChapter');
-      const ipadSubtitle = document.getElementById('stageIpadSubtitle');
-      const ipadP1 = document.getElementById('stageIpadP1');
-      const ipadP2 = document.getElementById('stageIpadP2');
-      const ipadFooter = document.getElementById('stageIpadFooter');
-
-      modelBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-          modelBtns.forEach(b => {
-            b.classList.remove('is-active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          this.classList.add('is-active');
-          this.setAttribute('aria-selected', 'true');
-
-          const key = this.dataset.stageModel;
-          const data = modelData[key];
-          if (!data) return;
-
-          if (bookletImg) {
-            bookletImg.style.opacity = '0';
-            setTimeout(() => {
-              bookletImg.src = data.cover;
-              bookletImg.alt = data.alt;
-              bookletImg.style.opacity = '1';
-            }, 180);
-          }
-
-          if (ipadScreen) {
-            ipadScreen.classList.remove('is-noir', 'is-nude');
-            if (data.theme) ipadScreen.classList.add(data.theme);
-          }
-
-          if (ipadNum) ipadNum.textContent = data.num;
-          if (ipadChapter) ipadChapter.textContent = data.chapter;
-          if (ipadSubtitle) ipadSubtitle.textContent = data.subtitle;
-          if (ipadP1) ipadP1.textContent = data.p1;
-          if (ipadP2) ipadP2.textContent = data.p2;
-          if (ipadFooter) ipadFooter.textContent = data.footer;
-        });
-      });
-    });
-  </script>
 </BaseLayout>

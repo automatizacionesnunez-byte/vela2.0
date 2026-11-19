@@ -191,34 +191,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ACTO V: QUIÉNES ESTAMOS AL OTRO LADO (CERCANÍA HUMANA, SIN TECH FRÍO) -->
-    <section class="py-24 sm:py-32 bg-[#F8F6F0] border-b border-vela-linea">
+    <!-- ACTO V: QUIÉNES ESTAMOS AL OTRO LADO (LO QUE NOS UNE + SOCIOS COMPACTOS + SELLO MAYORES DIGITALES) -->
+    <section class="py-20 sm:py-28 bg-[#F8F6F0] border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         
-        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20 space-y-3">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14 space-y-4">
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate">
             Quiénes cuidamos cada historia.
           </h2>
-          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
-            Detrás de cada página maquetada no hay una plataforma distante ni un algoritmo frío, sino tres personas que tratan cada recuerdo ajeno con el mismo cuidado y respeto con el que guardarían el de su propia madre o de su propio abuelo.
+          <p class="text-base sm:text-lg text-vela-chocolate/80 font-light leading-relaxed">
+            Detrás de VELA no hay una plataforma distante ni un algoritmo frío, sino tres personas que tratan cada recuerdo ajeno con el mismo cuidado y respeto con el que guardarían el de su propia madre o su propio abuelo.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+        <!-- LO QUE NOS UNE EN EL PROYECTO -->
+        <div class="max-w-4xl mx-auto mb-14 p-7 sm:p-9 bg-[#F1EBE2] rounded-sm border border-vela-linea space-y-4">
+          <h3 class="font-serif text-2xl sm:text-[1.75rem] text-vela-chocolate">
+            Lo que nos une en este proyecto
+          </h3>
+          <p class="text-sm sm:text-base text-vela-chocolate/80 font-light leading-relaxed">
+            Nos unió una misma inquietud: comprobar cuántas historias de nuestros abuelos y padres se quedan sin escribir por falta de tiempo, de método o porque nunca parece llegar el momento adecuado. Aunque venimos de caminos distintos —la mirada editorial, la tecnología humana y la docencia—, compartimos una misma convicción: <strong>escuchar con calma a una persona mayor es uno de los actos de cariño más grandes que existen</strong>.
+          </p>
+          <p class="text-sm sm:text-base text-vela-chocolate/80 font-light leading-relaxed">
+            Por eso diseñamos VELA juntos desde cero: para que la tecnología permanezca siempre en segundo plano y el protagonismo absoluto sea la voz real, el ritmo y la memoria de cada familia.
+          </p>
+        </div>
+
+        <!-- 3 SOCIOS CON RETRATOS COMPACTOS -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 lg:gap-8">
           
           <!-- Francesc Osca Rangel -->
-          <article class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
+          <article class="p-7 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
             <div class="space-y-4">
-              <div class="aspect-[4/5] overflow-hidden rounded-[2px] bg-[#EAE1D3] border border-vela-linea">
-                <img src="/assets/team/francesc-osca-rangel.jpg" alt="Francesc Osca Rangel" class="w-full h-full object-cover" />
+              <div class="flex items-center gap-4">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-sm bg-[#EAE1D3] border border-vela-linea">
+                  <img src="/assets/team/francesc-osca-rangel.jpg" alt="Francesc Osca Rangel" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <h3 class="font-serif text-xl sm:text-2xl text-vela-chocolate leading-snug">Francesc Osca Rangel</h3>
+                  <p class="font-serif italic text-xs text-vela-burdeos mt-1">Custodia del legado & Vocación editorial</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-serif text-2xl text-vela-chocolate">Francesc Osca Rangel</h3>
-                <p class="font-serif italic text-xs text-vela-burdeos mt-0.5">Custodia del legado & Vocación editorial</p>
-                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mt-3">
-                  Creció en Valencia fascinado por las historias que sus abuelos contaban al terminar los almuerzos de domingo. De ellos aprendió que cada anécdota dicha al paso encierra una dignidad profunda. Impulsó VELA con una misión clara: devolver a las personas mayores el lugar de honor que merecen en la memoria de sus familias.
-                </p>
-              </div>
+              <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light">
+                Creció en Valencia fascinado por las historias que sus abuelos contaban al terminar los almuerzos de domingo. De ellos aprendió que cada anécdota dicha al paso encierra una dignidad profunda. Impulsó VELA con una misión clara: devolver a las personas mayores el lugar de honor que merecen en la memoria de sus familias.
+              </p>
             </div>
             <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
               «No hay vidas comunes; solo vidas que nadie se sentó a escuchar con el tiempo y el cariño suficientes.»
@@ -226,18 +242,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </article>
 
           <!-- José María Núñez Mejías -->
-          <article class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
+          <article class="p-7 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
             <div class="space-y-4">
-              <div class="aspect-[4/5] overflow-hidden rounded-[2px] bg-[#EAE1D3] border border-vela-linea">
-                <img src="/assets/team/jose-maria-nunez-mejias.jpg" alt="José María Núñez Mejías" class="w-full h-full object-cover" />
+              <div class="flex items-center gap-4">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-sm bg-[#EAE1D3] border border-vela-linea">
+                  <img src="/assets/team/jose-maria-nunez-mejias.jpg" alt="José María Núñez Mejías" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <h3 class="font-serif text-xl sm:text-2xl text-vela-chocolate leading-snug">José María Núñez Mejías</h3>
+                  <p class="font-serif italic text-xs text-vela-burdeos mt-1">Escucha activa & Protección de la memoria</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-serif text-2xl text-vela-chocolate">José María Núñez Mejías</h3>
-                <p class="font-serif italic text-xs text-vela-burdeos mt-0.5">Escucha activa & Protección de la memoria</p>
-                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mt-3">
-                  Comprometido con que las herramientas digitales trabajen siempre en silencio y con profunda ética: ordenando grabaciones y recuerdos familiares dispersos sin alterar un ápice la forma de hablar, las pausas y la emoción real de quien los comparte en voz alta.
-                </p>
-              </div>
+              <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light">
+                Comprometido con que las herramientas digitales trabajen siempre en silencio y con profunda ética: ordenando grabaciones y recuerdos familiares dispersos sin alterar un ápice la forma de hablar, las pausas y la emoción real de quien los comparte en voz alta.
+              </p>
             </div>
             <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
               «La herramienta más valiosa no es la que deslumbra, sino la que sabe apartarse para dejar brillar la voz de una persona.»
@@ -245,24 +263,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </article>
 
           <!-- Francisco de Paula Marín -->
-          <article class="p-8 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
+          <article class="p-7 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col justify-between space-y-5">
             <div class="space-y-4">
-              <div class="aspect-[4/5] overflow-hidden rounded-[2px] bg-[#EAE1D3] border border-vela-linea">
-                <img src="/assets/team/francisco-de-paula-marin.jpg" alt="Francisco de Paula Marín" class="w-full h-full object-cover" />
+              <div class="flex items-center gap-4">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-sm bg-[#EAE1D3] border border-vela-linea">
+                  <img src="/assets/team/francisco-de-paula-marin.jpg" alt="Francisco de Paula Marín" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <h3 class="font-serif text-xl sm:text-2xl text-vela-chocolate leading-snug">Francisco de Paula Marín</h3>
+                  <p class="font-serif italic text-xs text-vela-burdeos mt-1">Acompañamiento a familias</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-serif text-2xl text-vela-chocolate">Francisco de Paula Marín</h3>
-                <p class="font-serif italic text-xs text-vela-burdeos mt-0.5">Acompañamiento a familias</p>
-                <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light mt-3">
-                  Docente y comunicador con una vocación innata por la palabra sincera y el trato humano. Francisco atiende a cada familia desde el primer momento, guiándola con paciencia y asegurando que regalar una biografía sea un proceso sereno, reconfortante y lleno de afecto.
-                </p>
-              </div>
+              <p class="text-xs sm:text-sm text-vela-chocolate/80 leading-relaxed font-light">
+                Docente y comunicador con una vocación innata por la palabra sincera y el trato humano. Francisco atiende a cada familia desde el primer momento, guiándola con paciencia y asegurando que regalar una biografía sea un proceso sereno, reconfortante y lleno de afecto.
+              </p>
             </div>
             <blockquote class="border-l-2 border-vela-burdeos/40 pl-3 py-1 font-serif italic text-xs text-vela-chocolate/85">
               «Entregar una biografía es abrazar a quien quieres a través de sus propias palabras.»
             </blockquote>
           </article>
 
+        </div>
+
+        <!-- SELLO OFICIAL: ASOCIACIÓN DE MAYORES DIGITALES -->
+        <div class="mt-14 max-w-4xl mx-auto p-6 sm:p-8 bg-white rounded-sm border border-vela-linea shadow-sm flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-sm bg-[#1E1B18] p-3.5 flex items-center justify-center shadow-inner">
+            <img
+              src="/assets/sello-mayores-digitales.png"
+              alt="Sello de la Asociación de Mayores Digitales"
+              class="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <div class="text-center sm:text-left space-y-2">
+            <p class="text-xs uppercase tracking-[0.2em] text-vela-burdeos font-semibold">Compromiso intergeneracional</p>
+            <h3 class="font-serif text-2xl text-vela-chocolate">
+              Asociación de Mayores Digitales
+            </h3>
+            <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed">
+              VELA comparte y respalda la misión de acercar la tecnología de forma sencilla, respetuosa y accesible a las personas mayores, convirtiendo lo digital en un puente para preservar su memoria y su voz dentro de la familia.
+            </p>
+          </div>
         </div>
 
       </div>

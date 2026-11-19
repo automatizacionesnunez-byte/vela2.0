@@ -32,4 +32,38 @@
       menuBtn.setAttribute('aria-label', 'Abrir menú');
     }));
   }
+
+  // --- Selector de Idiomas Inline (Desktop + Móvil sincronizados con traducción real ES / EN / FR) ---
+  const setLanguage = (code) => {
+    if (window.VelaI18n && typeof window.VelaI18n.setLanguage === 'function') {
+      window.VelaI18n.setLanguage(code);
+      return;
+    }
+    document.querySelectorAll('.vela-lang-btn').forEach((btn) => {
+      const active = btn.getAttribute('data-lang') === code;
+      btn.classList.toggle('is-selected', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+    document.querySelectorAll('[data-mobile-lang]').forEach((btn) => {
+      const active = btn.getAttribute('data-mobile-lang') === code;
+      btn.className = active
+        ? 'px-2.5 py-1 text-xs font-semibold rounded-sm bg-vela-chocolate text-white'
+        : 'px-2.5 py-1 text-xs font-semibold rounded-sm text-vela-chocolate/75 hover:bg-vela-crema';
+    });
+    document.documentElement.setAttribute('data-lang', code.toLowerCase());
+  };
+
+  document.querySelectorAll('.vela-lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const code = btn.getAttribute('data-lang');
+      if (code) setLanguage(code);
+    });
+  });
+
+  document.querySelectorAll('[data-mobile-lang]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const code = btn.getAttribute('data-mobile-lang');
+      if (code) setLanguage(code);
+    });
+  });
 })();

@@ -7,22 +7,38 @@ const { currentPath = "" } = Astro.props;
 ---
 
 <header class="sticky top-0 z-50 bg-[#F8F6F0]/95 backdrop-blur-md border-b border-vela-linea vela-site-header">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+    <!-- Logotipo con centrado óptico milimétrico -->
+    <a href="/" class="flex items-center gap-3 -translate-y-[3px] shrink-0 transition-transform">
       <img src="/assets/vela-logo.png" alt="VELA" class="h-8 sm:h-9 w-auto" />
     </a>
 
-    <nav class="hidden md:flex items-center gap-7 lg:gap-8 text-sm font-medium text-vela-chocolate/80">
-      <a href="/la-biografia" class={`hover:text-vela-chocolate transition-colors ${currentPath.includes('la-biografia') ? 'text-vela-chocolate font-semibold' : ''}`}>La biografía</a>
-      <a href="/como-funciona" class={`hover:text-vela-chocolate transition-colors ${currentPath.includes('como-funciona') ? 'text-vela-chocolate font-semibold' : ''}`}>Cómo funciona</a>
-      <a href="/ejemplos" class={`hover:text-vela-chocolate transition-colors ${currentPath.includes('ejemplos') ? 'text-vela-chocolate font-semibold' : ''}`}>Ejemplos</a>
-      <a href="/precios" class={`hover:text-vela-chocolate transition-colors ${currentPath.includes('precios') ? 'text-vela-chocolate font-semibold' : ''}`}>Precios</a>
-      <a href="/nosotros" class={`hover:text-vela-chocolate transition-colors ${currentPath.includes('nosotros') ? 'text-vela-chocolate font-semibold' : ''}`}>Nosotros</a>
+    <!-- Enlaces de navegación con efecto hover subrayado -->
+    <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-vela-chocolate/80">
+      <a href="/la-biografia" class={`vela-nav-link ${currentPath.includes('la-biografia') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>La biografía</a>
+      <a href="/como-funciona" class={`vela-nav-link ${currentPath.includes('como-funciona') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Cómo funciona</a>
+      <a href="/ejemplos" class={`vela-nav-link ${currentPath.includes('ejemplos') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Ejemplos</a>
+      <a href="/precios" class={`vela-nav-link ${currentPath.includes('precios') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Precios</a>
+      <a href="/nosotros" class={`vela-nav-link ${currentPath.includes('nosotros') ? 'text-vela-chocolate font-semibold is-active' : ''}`}>Nosotros</a>
     </nav>
 
-    <div class="hidden md:flex items-center gap-5">
-      <a href="/login" class="text-sm font-medium text-vela-chocolate/80 hover:text-vela-chocolate transition-colors">Iniciar sesión</a>
-      <a href="/precios" class="px-5 py-2.5 bg-vela-chocolate text-white text-sm font-medium rounded-sm hover:bg-black transition-colors shadow-sm">Crear biografía</a>
+    <div class="hidden md:flex items-center gap-4 lg:gap-5 shrink-0">
+      <!-- Selector de Idiomas Inline (las 3 opciones siempre visibles: ES · EN · FR) -->
+      <div class="vela-lang-inline inline-flex items-center border border-vela-chocolate/20 rounded-sm bg-white/50 p-0.5" role="group" aria-label="Selector de idioma">
+        <button type="button" class="vela-lang-btn is-selected" data-lang="ES" aria-pressed="true">ES</button>
+        <button type="button" class="vela-lang-btn" data-lang="EN" aria-pressed="false">EN</button>
+        <button type="button" class="vela-lang-btn" data-lang="FR" aria-pressed="false">FR</button>
+      </div>
+
+      <a href="/login" class="vela-nav-link text-sm font-medium text-vela-chocolate/80 vela-login-link">Iniciar sesión</a>
+      
+      <!-- Botón Siempre Negro con Hover Blanco de Alto Contraste -->
+      <a
+        href="/precios"
+        class="vela-btn-header-cta px-5 py-2.5 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium rounded-sm transition-all shadow-sm"
+      >
+        Crear biografía
+      </a>
     </div>
 
     <button id="menu-btn" class="md:hidden text-vela-chocolate p-2" aria-label="Abrir menú" aria-expanded="false">
@@ -39,9 +55,20 @@ const { currentPath = "" } = Astro.props;
     <a href="/ejemplos" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('ejemplos') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>Ejemplos</a>
     <a href="/precios" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('precios') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>Precios</a>
     <a href="/nosotros" class={`block py-2.5 text-base font-medium transition-colors ${currentPath.includes('nosotros') ? 'text-vela-chocolate font-semibold' : 'text-vela-chocolate/80 hover:text-vela-chocolate'}`}>Nosotros</a>
-    <div class="pt-4 border-t border-vela-linea space-y-3">
+    
+    <!-- Selector de Idiomas en Móvil -->
+    <div class="py-3 border-t border-vela-linea flex items-center justify-between">
+      <span class="text-xs font-medium text-vela-chocolate/70 uppercase tracking-wider">Idioma</span>
+      <div class="inline-flex rounded border border-vela-linea p-0.5 bg-white/70">
+        <button type="button" class="px-2.5 py-1 text-xs font-semibold rounded-sm bg-vela-chocolate text-white" data-mobile-lang="ES">ES</button>
+        <button type="button" class="px-2.5 py-1 text-xs font-semibold rounded-sm text-vela-chocolate/75 hover:bg-vela-crema" data-mobile-lang="EN">EN</button>
+        <button type="button" class="px-2.5 py-1 text-xs font-semibold rounded-sm text-vela-chocolate/75 hover:bg-vela-crema" data-mobile-lang="FR">FR</button>
+      </div>
+    </div>
+
+    <div class="pt-2 border-t border-vela-linea space-y-3">
       <a href="/login" class="block py-2 text-sm font-medium text-vela-chocolate hover:underline">Iniciar sesión</a>
-      <a href="/precios" class="block w-full text-center py-3.5 bg-vela-chocolate text-white text-sm font-medium rounded-sm hover:bg-black transition-colors shadow-sm min-h-[48px] flex items-center justify-center">Crear biografía</a>
+      <a href="/precios" class="block w-full text-center py-3.5 bg-[#1E1B18] text-white border border-[#1E1B18] text-sm font-medium rounded-sm hover:bg-white hover:text-[#1E1B18] transition-colors shadow-sm min-h-[48px] flex items-center justify-center">Crear biografía</a>
     </div>
   </div>
 </header>

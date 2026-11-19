@@ -8,8 +8,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-home vela-page-index"
 >
 <main>
-    <!-- SECCIÓN 1: HERO EMOCIONAL (Responsive: Foto visible en móvil y desktop + Texto editorial con excelente contraste) -->
-    <section class="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col lg:flex-row items-center bg-[#3D2C1E] text-white overflow-hidden">
+    <!-- SECCIÓN 1: HERO EMOCIONAL (Responsive: optimizado para móvil y pantallas de 13") -->
+    <section class="relative min-h-[82vh] lg:min-h-[calc(100vh-5rem)] flex flex-col lg:flex-row items-center bg-[#3D2C1E] text-white overflow-hidden">
       <!-- En desktop: imagen de fondo apaisada object-left. En móvil: mostrada en su propio contenedor arriba -->
       <div class="w-full lg:absolute lg:inset-0 h-72 sm:h-96 lg:h-full shrink-0 relative overflow-hidden">
         <img 
@@ -23,54 +23,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#3D2C1E] to-transparent lg:hidden" aria-hidden="true"></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 lg:py-24 w-full grid grid-cols-1 lg:grid-cols-12 items-center z-10">
+      <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-12 lg:py-16 xl:py-20 w-full grid grid-cols-1 lg:grid-cols-12 items-center z-10">
         <!-- Columna izquierda: espacio libre en desktop para la fotografía del abrazo -->
-        <div class="hidden lg:block lg:col-span-6 min-h-[520px]"></div>
+        <div class="hidden lg:block lg:col-span-6 min-h-[440px]"></div>
 
         <!-- Columna derecha: TEXTO Y BOTONES 100% HTML con diseño refinado -->
         <div class="lg:col-span-6 p-2 sm:p-4 lg:p-0 rounded-sm lg:pl-10">
           
           <!-- H1 Serif Editorial -->
-          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.14] tracking-tight mb-5 text-[#F8F6F0]">
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-normal leading-[1.12] tracking-tight mb-5 text-[#F8F6F0]">
             Su vida, convertida<br/>
             en una historia<br/>
             <span class="italic text-[#E4DDD3]">para siempre.</span>
           </h1>
 
           <!-- Subtítulo refinado -->
-          <p class="text-base sm:text-lg lg:text-xl text-[#F8F6F0]/90 font-light leading-relaxed mb-8 max-w-md">
+          <p class="text-base sm:text-lg lg:text-[1.125rem] text-[#F8F6F0]/90 font-light leading-relaxed mb-7 max-w-md">
             Biografías digitales personalizadas, con sobre de regalo y tarjeta QR física.
           </p>
 
           <!-- Botones 100% HTML con diseño exacto -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <!-- Botón Primario Claro -->
-            <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-[#FAF6F0] text-[#26231F] text-sm font-medium rounded-lg hover:bg-white transition-all shadow-md">
+            <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-[#FAF6F0] text-[#26231F] text-sm font-medium rounded-sm hover:bg-white transition-all shadow-md">
               Crear mi biografía
             </a>
             <!-- Botón Secundario Borde Fino -->
-            <a href="/ejemplos" class="inline-flex items-center justify-center px-8 py-3.5 border border-[#FAF6F0]/50 text-[#FAF6F0] text-sm font-medium rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm">
+            <a href="/ejemplos" class="inline-flex items-center justify-center px-8 py-3.5 border border-[#FAF6F0]/50 text-[#FAF6F0] text-sm font-medium rounded-sm hover:bg-white/10 transition-all backdrop-blur-sm">
               Ver ejemplos
             </a>
           </div>
-          <p class="mt-5 text-xs sm:text-sm text-[#F8F6F0]/85 font-light tracking-wide">
-            Desde 25 € · Pago único · Sobre con tarjeta QR física incluido
-          </p>
-          <div class="mt-5 pt-5 border-t border-[#F8F6F0]/15 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-2.5 text-[11px] sm:text-xs text-[#F8F6F0]/80 font-light max-w-2xl">
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+
+          <!-- 4 Bullet Points optimizados en 2x2 limpio para pantallas de 13" y móvil -->
+          <div class="mt-7 pt-6 border-t border-[#F8F6F0]/15 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-xs sm:text-[13px] text-[#F8F6F0]/85 font-light max-w-xl">
+            <span class="flex items-center gap-2 whitespace-nowrap">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
               Audios y textos guiados
             </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+            <span class="flex items-center gap-2 whitespace-nowrap">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
               Voz de toda la familia
             </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+            <span class="flex items-center gap-2 whitespace-nowrap">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
               3 colecciones editoriales
             </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982]" aria-hidden="true"></span>
+            <span class="flex items-center gap-2 whitespace-nowrap">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
               Lectura privada con QR
             </span>
           </div>
@@ -79,69 +78,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- SECCIÓN 2: LÍNEA DE VIDA (Cronología de capítulos en fondo crema claro #F8F6F0 - Respiro visual armónico) -->
-    <section class="py-24 sm:py-28 bg-[#F8F6F0] border-b border-vela-linea">
+    <!-- SECCIÓN 2: LÍNEA DE VIDA (Rail editorial de 5 tarjetas interactivas con fechas y efecto hover hacia adelante) -->
+    <section class="vela-life-section py-24 sm:py-28 border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-3xl mb-16 sm:mb-20">
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate mb-5">
-            Toda vida deja huellas. VELA las convierte en <span class="italic text-vela-topo">capítulos</span>.
-          </h2>
-          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
-            Desde la infancia hasta hoy, cada etapa encuentra su lugar sin reducir una vida a una lista de fechas.
-          </p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-14 sm:mb-16">
+          <div class="lg:col-span-7">
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-[1.12]">
+              Toda vida deja huellas. VELA las convierte en <span class="italic text-vela-topo">capítulos</span>.
+            </h2>
+          </div>
+          <div class="lg:col-span-5">
+            <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+              Desde la infancia hasta hoy, cada etapa encuentra su lugar sin reducir una vida a una lista de fechas.
+            </p>
+          </div>
         </div>
 
-        <div class="relative">
-          <div class="hidden lg:block absolute top-[28px] left-0 right-0 h-[1px] bg-vela-linea"></div>
+        <div class="vela-life-rail" aria-label="Capítulos de la vida de Carmen">
+          <article class="vela-life-card">
+            <span class="vela-life-card__num">01</span>
+            <time class="vela-life-card__year">1956</time>
+            <h3 class="vela-life-card__title">Infancia</h3>
+            <p class="vela-life-card__copy">
+              La casa donde empezó todo y las primeras historias que Carmen aún cuenta de memoria.
+            </p>
+          </article>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative">
-            
-            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
-              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
-              <span class="font-serif text-2xl font-light text-vela-topo">01</span>
-              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Infancia</h3>
-              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
-                La casa donde empezó todo y las primeras historias que todavía recordamos.
-              </p>
-            </div>
+          <article class="vela-life-card">
+            <span class="vela-life-card__num">02</span>
+            <time class="vela-life-card__year">1974</time>
+            <h3 class="vela-life-card__title">Decisiones</h3>
+            <p class="vela-life-card__copy">
+              El día que eligió estudiar lejos de casa y descubrió una vida que todavía estaba por escribir.
+            </p>
+          </article>
 
-            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
-              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
-              <span class="font-serif text-2xl font-light text-vela-topo">02</span>
-              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Decisiones</h3>
-              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
-                Los caminos que cambiaron nuestra vida y las oportunidades que nos hicieron crecer.
-              </p>
-            </div>
+          <article class="vela-life-card">
+            <span class="vela-life-card__num">03</span>
+            <time class="vela-life-card__year">1983</time>
+            <h3 class="vela-life-card__title">Familia</h3>
+            <p class="vela-life-card__copy">
+              Las costumbres, las sobremesas y las personas que fueron dando forma a su manera de mirar.
+            </p>
+          </article>
 
-            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
-              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
-              <span class="font-serif text-2xl font-light text-vela-topo">03</span>
-              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Familia</h3>
-              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
-                Las personas, las costumbres y los momentos compartidos.
-              </p>
-            </div>
+          <article class="vela-life-card">
+            <span class="vela-life-card__num">04</span>
+            <time class="vela-life-card__year">1991</time>
+            <h3 class="vela-life-card__title">Oficio</h3>
+            <p class="vela-life-card__copy">
+              Treinta años enseñando y una colección de aprendizajes que nunca aparecieron en los libros.
+            </p>
+          </article>
 
-            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
-              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-topo"></div>
-              <span class="font-serif text-2xl font-light text-vela-topo">04</span>
-              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Oficio</h3>
-              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
-                Los años de trabajo, los aprendizajes y las experiencias que nos definieron.
-              </p>
-            </div>
-
-            <div class="relative pt-8 lg:pt-12 border-l lg:border-l-0 pl-6 lg:pl-0 border-vela-linea">
-              <div class="hidden lg:block absolute top-[23px] left-0 w-3 h-3 rounded-full bg-vela-marfil border-2 border-vela-burdeos"></div>
-              <span class="font-serif text-2xl font-light text-vela-burdeos">05</span>
-              <h3 class="font-serif text-xl font-medium text-vela-chocolate mt-2 mb-3">Hoy</h3>
-              <p class="text-sm text-vela-chocolate/75 leading-relaxed font-light">
-                Una historia que continúa escribiéndose.
-              </p>
-            </div>
-
-          </div>
+          <article class="vela-life-card">
+            <span class="vela-life-card__num">05</span>
+            <time class="vela-life-card__year">Ahora</time>
+            <h3 class="vela-life-card__title">Hoy</h3>
+            <p class="vela-life-card__copy">
+              Carmen sigue añadiendo capítulos, corrigiendo detalles e invitando nuevas voces.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -340,31 +337,100 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- FOOTER EDITORIAL CON LOGO OFICIAL -->
-  
-    <!-- CTA EMOCIONAL FINAL -->
-    <section class="py-20 lg:py-28 bg-[#EFECE6]/75 border-t border-vela-chocolate/10">
-      <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] text-vela-chocolate">
-          Empieza por una historia. <em class="italic text-[#682D35]">Las demás llegarán después.</em>
-        </h2>
-        <p class="text-base text-vela-chocolate/75 font-light max-w-xl mx-auto leading-relaxed">
-          Basta un primer recuerdo en voz alta para encender una conversación que tu familia releerá durante años.
-        </p>
-        <div class="pt-3 flex flex-wrap justify-center gap-4">
-          <a href="/precios"
-            class="inline-flex items-center justify-center px-8 py-3.5 rounded-sm bg-vela-chocolate text-vela-marfil text-sm font-medium hover:bg-black transition-all shadow-sm">
-            Crear biografía desde 25 €
-          </a>
-          <a href="/ejemplos"
-            class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-white transition-colors">
-            Ver ejemplos reales
-          </a>
+    <!-- SECCIÓN FINAL: CTA INTERACTIVO EN 3 PASOS (De los recuerdos a una biografía que permanecerá) -->
+    <section class="vela-process-cta py-24 sm:py-28 border-t border-vela-linea">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16 space-y-4">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-[1.1]">
+            De los recuerdos a una biografía <em class="italic text-[#682D35]">que permanecerá.</em>
+          </h2>
+          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+            No necesitas tener la vida ordenada antes de empezar. Una voz abre el camino y VELA te guía hasta el resultado final.
+          </p>
+        </div>
+
+        <ol class="vela-process-grid" aria-label="Cómo empezar tu biografía en 3 pasos">
+          <!-- PASO 01 -->
+          <li class="vela-process-card">
+            <div class="vela-process-card__icon" aria-hidden="true">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+            <span class="vela-process-card__num">01</span>
+            <h3 class="vela-process-card__title">Empieza</h3>
+            <p class="vela-process-card__copy">
+              Responde a preguntas sencillas por escrito o con tu voz. Añade fotografías cuando quieras.
+            </p>
+            <div class="vela-process-card__sample">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h2m4-6v12m4-9v6m4-10v14m4-7h2" />
+              </svg>
+              <span>¿Cuál es el primer lugar que recuerdas?</span>
+            </div>
+          </li>
+
+          <!-- PASO 02 -->
+          <li class="vela-process-card">
+            <div class="vela-process-card__icon" aria-hidden="true">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+            </div>
+            <span class="vela-process-card__num">02</span>
+            <h3 class="vela-process-card__title">Invita</h3>
+            <p class="vela-process-card__copy">
+              Comparte un enlace privado. Familiares y amistades pueden participar sin crear una cuenta.
+            </p>
+            <div class="vela-process-card__sample">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+              </svg>
+              <span>3 voces han añadido un recuerdo</span>
+            </div>
+          </li>
+
+          <!-- PASO 03 -->
+          <li class="vela-process-card">
+            <div class="vela-process-card__icon" aria-hidden="true">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+              </svg>
+            </div>
+            <span class="vela-process-card__num">03</span>
+            <h3 class="vela-process-card__title">Da forma</h3>
+            <p class="vela-process-card__copy">
+              VELA organiza el material y propone un borrador. Tú revisas cada capítulo antes de conservarlo.
+            </p>
+            <div class="vela-process-card__sample">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Capítulo listo para revisar</span>
+            </div>
+          </li>
+        </ol>
+
+        <div class="mt-14 text-center space-y-5">
+          <p class="font-serif italic text-lg sm:text-xl text-vela-chocolate/85">
+            Una primera pregunta puede abrir una vida entera.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/precios"
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
+              <span>Crear mi biografía</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="/ejemplos"
+              class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-white transition-colors">
+              Ver ejemplos reales
+            </a>
+          </div>
         </div>
       </div>
     </section>
+  </main>
 <script is:inline>
     function playDocumentaryVideo() {
       const container = document.getElementById('video-container');

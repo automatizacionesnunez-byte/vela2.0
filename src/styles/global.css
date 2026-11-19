@@ -19,29 +19,83 @@ header.vela-site-header {
   transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease, transform .35s ease;
 }
 
+/* Efecto hover subrayado animado en enlaces de navegación */
+.vela-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  transition: color 0.25s ease;
+}
+
+.vela-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: #682D35; /* Burdeos VELA */
+  border-radius: 1px;
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vela-nav-link:hover::after,
+.vela-nav-link.is-active::after {
+  width: 100%;
+}
+
+.vela-nav-link:hover {
+  color: #26231F !important;
+}
+
+/* Selector de idiomas inline (ES | EN | CA siempre visibles) */
+.vela-lang-btn {
+  padding: 0.28rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(38, 35, 31, 0.65) !important;
+  background: transparent;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.vela-lang-btn:hover {
+  color: #26231F !important;
+  background-color: rgba(38, 35, 31, 0.06);
+}
+
+.vela-lang-btn.is-selected {
+  background-color: #26231F !important;
+  color: #F8F6F0 !important;
+}
+
+/* Botón CTA del Header: Siempre negro con hover invertido a blanco */
+header.vela-site-header a.vela-btn-header-cta,
+body.vela-home header.vela-site-header a.vela-btn-header-cta {
+  background-color: #1E1B18 !important;
+  color: #F8F6F0 !important;
+  border: 1px solid #1E1B18 !important;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+header.vela-site-header a.vela-btn-header-cta:hover,
+body.vela-home header.vela-site-header a.vela-btn-header-cta:hover {
+  background-color: #FFFFFF !important;
+  color: #1E1B18 !important;
+  border-color: #1E1B18 !important;
+  box-shadow: 0 4px 12px rgba(30, 27, 24, 0.12) !important;
+}
+
 header.vela-site-header.is-scrolled {
-  background: rgba(248, 246, 240, .92) !important;
+  background: rgba(248, 246, 240, .94) !important;
   border-color: var(--vela-line) !important;
   box-shadow: 0 8px 28px rgba(38, 35, 31, .07);
   backdrop-filter: blur(18px);
 }
-
-body.vela-home header.vela-site-header:not(.is-scrolled) {
-  position: absolute;
-  inset: 0 0 auto;
-  background: linear-gradient(180deg, rgba(22, 18, 14, .52), transparent) !important;
-  border-color: rgba(255,255,255,.16) !important;
-  color: #fff;
-}
-
-body.vela-home header.vela-site-header:not(.is-scrolled) nav a,
-body.vela-home header.vela-site-header:not(.is-scrolled) .vela-login-link,
-body.vela-home header.vela-site-header:not(.is-scrolled) button { color: #fff !important; }
-
-body.vela-home header.vela-site-header:not(.is-scrolled) img { filter: brightness(0) invert(1); }
-
-body.vela-home header.vela-site-header:not(.is-scrolled) > div > div > a:last-child,
-body.vela-home header.vela-site-header:not(.is-scrolled) > div > div > a:last-of-type { background: #fff !important; color: var(--vela-ink) !important; }
 
 header.vela-site-header a:focus-visible,
 header.vela-site-header button:focus-visible,
@@ -427,11 +481,11 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-wall { background: radial-gradient(ellipse at 50% 15%, rgba(255,252,244,.92), transparent 42%), linear-gradient(180deg, #eee4da 0%, #d8c6b6 60%, #b3947b 100%); }
 .vela-gallery-ambient::before { opacity: .52; background: radial-gradient(ellipse at 48% 72%, rgba(255,221,183,.4), transparent 24%), linear-gradient(102deg, transparent 30%, rgba(255,255,255,.22) 48%, transparent 65%); }
 .vela-gallery-gallery { transform: translateY(2%); }
-.vela-gallery-card { transition: transform .72s cubic-bezier(.2,.78,.2,1), opacity .55s ease, filter .55s ease; }
+.vela-gallery-card { transition: transform .38s cubic-bezier(.22,1,.36,1), opacity .3s ease; }
 .vela-gallery-card--nude { transform: translateX(-50%) rotate(-4deg) translateZ(46px); }
 .vela-gallery-card--noir { transform: translateX(-50%) rotate(0deg) translateZ(110px) scale(1.035); }
 .vela-gallery-card--letter { transform: translateX(-50%) rotate(4deg) translateZ(40px); }
-.vela-gallery-card:hover, .vela-gallery-card:focus-visible { transform: translateX(-50%) translateY(-13px) rotate(0deg) translateZ(155px) scale(1.045); filter: brightness(1.04); }
+.vela-gallery-card:hover, .vela-gallery-card:focus-visible { transform: translateX(-50%) translateY(-13px) rotate(0deg) translateZ(155px) scale(1.045); }
 .vela-gallery-card__frame { padding: .72rem; background: rgba(253,250,244,.92); box-shadow: 0 38px 45px rgba(58,38,25,.2), 0 1px 0 rgba(255,255,255,.9) inset; }
 .vela-gallery-card__frame img { background: #f7f1e8; }
 .vela-gallery-card--nude .vela-gallery-card__frame { background: #f0e6d9; }
@@ -440,7 +494,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card__label { gap: .42rem; }
 .vela-gallery-card__label b { letter-spacing: -.02em; }
 .vela-gallery-card__label small { letter-spacing: .16em; }
-.vela-gallery-layer.is-reader .vela-gallery-gallery { filter: blur(1px); }
+.vela-gallery-layer.is-reader .vela-gallery-gallery { filter: none; }
 .vela-gallery-reader { width: min(63vw, 820px); top: 55%; }
 .vela-gallery-device { padding: 2.25% 2.35% 2.8%; border-radius: 1.45rem; background: linear-gradient(135deg,#55514d 0%,#171717 27%,#292724 73%,#0b0b0b 100%); box-shadow: 0 42px 68px rgba(28,17,10,.35), 0 1px 0 rgba(255,255,255,.34) inset, 0 -5px 12px rgba(0,0,0,.45) inset; }
 .vela-gallery-device::after { content: ''; position: absolute; inset: 1.5%; border: 1px solid rgba(255,255,255,.14); border-radius: 1.18rem; pointer-events: none; }
@@ -450,7 +504,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-memory { right: -9%; bottom: -8%; width: 16%; padding: .4rem; transform: rotate(6deg) translateZ(90px); box-shadow: 0 22px 30px rgba(35,21,14,.25); }
 .vela-gallery-note { left: -9%; bottom: -9%; width: 18%; padding: .95rem; transform: rotate(-5deg) translateZ(75px); box-shadow: 0 22px 30px rgba(35,21,14,.2); }
 .vela-gallery-note strong { font-size: 1.25rem; }
-.vela-gallery-reader__shadow { filter: blur(25px); opacity: .72; }
+.vela-gallery-reader__shadow { filter: none; opacity: .82; }
 .vela-gallery-bottomline { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(64,54,47,.14); }
 .vela-gallery-bottomline p { margin: 0; color: #5e5046; font: 400 14px/1.5 Newsreader, Georgia, serif; }
 .vela-gallery-bottomline p em { color: #a18b7b; font-style: italic; }
@@ -519,15 +573,15 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card__label small { color: rgba(75,58,46,.7); font: 500 8px/1.2 "Plus Jakarta Sans", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
 .vela-gallery-card--noir .vela-gallery-card__label { color: #f5eee4; }
 .vela-gallery-card--noir .vela-gallery-card__label small { color: rgba(245,238,228,.65); }
-.vela-gallery-card:hover, .vela-gallery-card:focus-visible { filter: brightness(1.06); outline: none; }
+.vela-gallery-card:hover, .vela-gallery-card:focus-visible { outline: none; }
 .vela-gallery-card:focus-visible .vela-gallery-card__frame { box-shadow: 0 28px 34px rgba(54,34,22,.22), 0 0 0 3px #fff, 0 0 0 5px var(--vela-scene-accent); }
-.vela-gallery-layer.is-reader .vela-gallery-card { opacity: .14; filter: saturate(.45) blur(.4px); }
-.vela-gallery-reader { position: absolute; left: 50%; top: 54%; width: min(59vw, 760px); aspect-ratio: 1.52; opacity: 0; pointer-events: none; transform: translate(-50%,-50%) translateZ(160px) scale(.72); transform-style: preserve-3d; transition: opacity .85s ease, transform .95s cubic-bezier(.2,.8,.2,1), filter .35s ease; }
+.vela-gallery-layer.is-reader .vela-gallery-card { opacity: .14; filter: none; }
+.vela-gallery-reader { position: absolute; left: 50%; top: 54%; width: min(59vw, 760px); aspect-ratio: 1.52; opacity: 0; pointer-events: none; transform: translate(-50%,-50%) translateZ(160px) scale(.72); transform-style: preserve-3d; transition: none; }
 .vela-gallery-layer.is-reader .vela-gallery-reader { opacity: 1; }
-.vela-gallery-reader__shadow { position: absolute; left: 8%; right: 3%; bottom: -18%; height: 22%; border-radius: 50%; background: rgba(40,24,16,.42); filter: blur(20px); transform: rotateX(70deg) translateZ(-80px); }
+.vela-gallery-reader__shadow { position: absolute; left: 4%; right: 0%; bottom: -20%; height: 26%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(40, 24, 16, .45) 0%, rgba(40, 24, 16, .18) 48%, transparent 74%); filter: none; transform: rotateX(70deg) translateZ(-80px); }
 .vela-gallery-device { position: absolute; inset: 0; padding: 2.5% 2.7% 3%; border-radius: 1.3rem; background: linear-gradient(135deg, #514b46, #151514 34%, #2c2a28 70%, #0a0a0a); box-shadow: 0 42px 55px rgba(27,17,11,.43), inset 0 1px rgba(255,255,255,.25), inset 0 -5px 12px rgba(0,0,0,.55); transform: translateZ(28px); }
 .vela-gallery-spread { display: flex; width: 100%; height: 100%; overflow: hidden; border-radius: .32rem; background: #f5eee5; box-shadow: inset 0 0 0 1px rgba(50,36,25,.25); }
-.vela-gallery-spread img { display: block; width: 50%; height: 100%; object-fit: contain; background: #f5eee5; transition: transform .6s ease, opacity .35s ease; }
+.vela-gallery-spread img { display: block; width: 50%; height: 100%; object-fit: contain; background: #f5eee5; transition: none; }
 .vela-gallery-spread img:first-child { border-right: 1px solid rgba(71,52,37,.15); }
 .vela-gallery-device__glass { position: absolute; inset: 2.5% 2.7% 3%; border-radius: .32rem; background: linear-gradient(118deg, rgba(255,255,255,.2), transparent 24%, transparent 77%, rgba(255,255,255,.06)); }
 .vela-gallery-device__camera { position: absolute; z-index: 3; top: 1.05%; left: 50%; width: .34rem; height: .34rem; border-radius: 50%; background: #080808; box-shadow: 0 0 0 .08rem rgba(255,255,255,.08); transform: translateX(-50%); }
@@ -543,7 +597,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-archive-stage[data-template="noir"] .vela-gallery-note { background: #d7d0c5; color: #332923; }
 .vela-archive-stage[data-template="letter"] .vela-gallery-wall { background: radial-gradient(circle at 50% 20%, #fff9f2 0, #ead8c9 56%, #bd9580 100%); }
 .vela-archive-stage[data-template="letter"] .vela-gallery-note { background: #e6c5b7; color: #713e3a; }
-.vela-archive-stage.is-transitioning .vela-gallery-reader { filter: brightness(.84); }
+.vela-archive-stage.is-transitioning .vela-gallery-reader { filter: none; }
 .vela-biography-showcase.is-css3d-fallback .vela-gallery-css-renderer { display: block; }
 
 @media (max-width: 900px) {
@@ -701,11 +755,11 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-utility { display:flex; align-items:center; gap:.55rem; margin-top:1rem; color:rgba(64,54,47,.55); font:500 9px/1 "Plus Jakarta Sans",sans-serif; letter-spacing:.12em; text-transform:uppercase; }
 .vela-gallery-utility i { width:3px; height:3px; border-radius:50%; background:#b79b83; }
 .vela-gallery-gallery { transform:translateY(2%); }
-.vela-gallery-card { transition:transform .72s cubic-bezier(.2,.78,.2,1),opacity .55s ease,filter .55s ease; }
+.vela-gallery-card { transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .3s ease; }
 .vela-gallery-card--nude { transform:translateX(-50%) rotate(-4deg) translateZ(46px); }
 .vela-gallery-card--noir { transform:translateX(-50%) rotate(0deg) translateZ(110px) scale(1.035); }
 .vela-gallery-card--letter { transform:translateX(-50%) rotate(4deg) translateZ(40px); }
-.vela-gallery-card:hover,.vela-gallery-card:focus-visible { transform:translateX(-50%) translateY(-13px) rotate(0deg) translateZ(155px) scale(1.045); filter:brightness(1.04); outline:none; }
+.vela-gallery-card:hover,.vela-gallery-card:focus-visible { transform:translateX(-50%) translateY(-13px) rotate(0deg) translateZ(155px) scale(1.045); outline:none; }
 .vela-gallery-card__frame { padding:.72rem; background:rgba(253,250,244,.92); box-shadow:0 38px 45px rgba(58,38,25,.2),0 1px 0 rgba(255,255,255,.9) inset; }
 .vela-gallery-card--nude .vela-gallery-card__frame { background:#f0e6d9; }
 .vela-gallery-card--letter .vela-gallery-card__frame { background:#ead7c9; }
@@ -1027,13 +1081,13 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   transform: translateZ(-110px) rotate(-14deg);
   transform-origin: 50% 0%;
   background:
-    radial-gradient(ellipse 24% 80% at 32% 16%, rgba(255, 252, 244, 0.72), transparent 72%),
-    radial-gradient(ellipse 20% 84% at 53% 10%, rgba(255, 246, 228, 0.8), transparent 70%),
-    radial-gradient(ellipse 22% 74% at 74% 18%, rgba(255, 249, 238, 0.5), transparent 72%);
-  mix-blend-mode: soft-light;
-  filter: blur(20px);
-  opacity: .85;
-  transition: opacity .65s ease, background .85s ease;
+    radial-gradient(ellipse 24% 80% at 32% 16%, rgba(255, 252, 244, 0.55), transparent 72%),
+    radial-gradient(ellipse 20% 84% at 53% 10%, rgba(255, 246, 228, 0.62), transparent 70%),
+    radial-gradient(ellipse 22% 74% at 74% 18%, rgba(255, 249, 238, 0.38), transparent 72%);
+  mix-blend-mode: normal;
+  filter: none;
+  opacity: .55;
+  transition: opacity .65s ease;
 }
 
 .vela-archive-stage[data-vela-state="gallery"][data-hover-template="noir"] .vela-gallery-beams,
@@ -1042,8 +1096,8 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
     radial-gradient(ellipse 22% 76% at 35% 15%, rgba(226, 192, 144, 0.22), transparent 72%),
     radial-gradient(ellipse 20% 82% at 54% 10%, rgba(238, 206, 162, 0.28), transparent 70%),
     radial-gradient(ellipse 20% 70% at 72% 18%, rgba(198, 164, 124, 0.16), transparent 72%);
-  mix-blend-mode: screen;
-  opacity: .58;
+  mix-blend-mode: normal;
+  opacity: .55;
 }
 
 /* 6. Architectural Exhibition Plinth / Floor Horizon */
@@ -1102,11 +1156,12 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   transform: translateZ(-25px);
   background: radial-gradient(
     circle 42% at var(--vela-pointer-x, 50%) var(--vela-pointer-y, 38%),
-    rgba(255, 248, 234, 0.62) 0%,
-    rgba(255, 235, 206, 0.24) 40%,
+    rgba(255, 248, 234, 0.42) 0%,
+    rgba(255, 235, 206, 0.16) 40%,
     transparent 74%
   );
-  mix-blend-mode: soft-light;
+  mix-blend-mode: normal;
+  opacity: .65;
   transition: opacity .5s ease;
 }
 
@@ -1114,11 +1169,12 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-archive-stage[data-vela-state="reader"][data-template="noir"] .vela-gallery-ambient {
   background: radial-gradient(
     circle 38% at var(--vela-pointer-x, 50%) var(--vela-pointer-y, 38%),
-    rgba(226, 190, 144, 0.28) 0%,
-    rgba(176, 138, 96, 0.12) 42%,
+    rgba(226, 190, 144, 0.24) 0%,
+    rgba(176, 138, 96, 0.1) 42%,
     transparent 72%
   );
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
+  opacity: .65;
 }
 
 /* 8. Tactile Museum Plaster / Paper Micro-Grain */
@@ -1127,16 +1183,16 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   inset: -24%;
   pointer-events: none;
   transform: translateZ(-12px);
-  opacity: .038;
+  opacity: .028;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.6'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 .vela-archive-stage[data-vela-state="gallery"][data-hover-template="noir"] .vela-gallery-grain,
 .vela-archive-stage[data-vela-state="reader"][data-template="noir"] .vela-gallery-grain {
-  opacity: .055;
-  mix-blend-mode: overlay;
+  opacity: .028;
+  mix-blend-mode: normal;
 }
 
 /* 9. Envelope Framing, Grounded Pedestal Shadows & Card Spacing */
@@ -1163,15 +1219,15 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card::after {
   content: '';
   position: absolute;
-  left: 11%;
-  right: 11%;
-  bottom: 12.5%;
-  height: 2.1rem;
+  left: 8%;
+  right: 8%;
+  bottom: 11%;
+  height: 2.5rem;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(36, 22, 13, 0.34) 0%, transparent 72%);
-  filter: blur(8px);
+  background: radial-gradient(ellipse at center, rgba(36, 22, 13, 0.36) 0%, rgba(36, 22, 13, 0.12) 48%, transparent 74%);
+  filter: none;
   transform: translateZ(-18px) rotateX(65deg);
-  transition: transform .72s cubic-bezier(.2, .78, .2, 1), opacity .55s ease, filter .55s ease;
+  transition: transform .45s cubic-bezier(.2, .78, .2, 1), opacity .35s ease;
   pointer-events: none;
 }
 
@@ -1179,7 +1235,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card:focus-visible::after {
   transform: translateY(10px) translateZ(-28px) rotateX(65deg) scale(1.1);
   opacity: .72;
-  filter: blur(13px);
+  filter: none;
 }
 
 .vela-gallery-layer.is-reader .vela-gallery-card::after {
@@ -2884,7 +2940,26 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
 .vela-gallery-reader,
 .vela-page-flipper,
 .vela-interactive-envelope {
-  will-change: transform;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.vela-gallery-card,
+.vela-gallery-card__frame,
+.vela-spread-page,
+.vela-envelope-body {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.vela-gallery-layer.is-transitioning .vela-gallery-card,
+.vela-gallery-layer.is-transitioning .vela-gallery-reader,
+.vela-gallery-layer.is-transitioning .vela-interactive-envelope,
+.vela-gallery-layer.is-reader .vela-gallery-card,
+.vela-gallery-reader {
+  transition: none !important;
 }
 
 .vela-gallery-spread {
@@ -2979,6 +3054,20 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
 .vela-envelope-body {
   position: relative;
   width: 100%;
+}
+
+.vela-envelope-body::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -10%;
+  height: 22%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(36, 22, 13, 0.34) 0%, rgba(36, 22, 13, 0.12) 50%, transparent 76%);
+  pointer-events: none;
+  transform: translate3d(0, 0, -6px);
+  z-index: -1;
 }
 
 .vela-envelope-card {
@@ -3091,8 +3180,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   opacity: .35;
 }
 
-.vela-css-envelope,
-.vela-gallery-card {
+.vela-css-envelope {
   box-shadow: 0 16px 26px rgba(37, 22, 14, .16);
 }
 
@@ -3103,7 +3191,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 
 @media (max-width: 900px) {
   .vela-archive-stage {
-    min-height: clamp(390px, 68vw, 500px);
+    min-height: clamp(500px, 74vw, 560px);
   }
 
   .vela-archive-stage .vela-css-scene,
@@ -3116,30 +3204,627 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   .vela-archive-stage .vela-gallery-ambient {
     display: none;
   }
+
+  .vela-archive-copy { top: 1.35rem; left: 1.4rem; }
+  .vela-gallery-card { top: 24%; width: clamp(10.5rem, 23vw, 14rem); height: 59%; }
+  .vela-gallery-reader { width: min(74vw, 620px); }
+  .vela-3d-hint { left: auto; right: 1.4rem; bottom: 1.15rem; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .vela-archive-stage {
-    min-height: 410px;
-    border-radius: .75rem;
+    min-height: 540px;
+    border-radius: .9rem;
   }
 
-  .vela-css-envelope,
+  .vela-archive-copy,
+  .vela-reader-copy {
+    top: 1.15rem;
+    left: 1.15rem;
+    max-width: calc(100% - 2.3rem);
+  }
+
+  .vela-archive-copy strong,
+  .vela-reader-copy strong {
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+  }
+
+  .vela-archive-copy small,
+  .vela-reader-copy small,
+  .vela-archive-instruction {
+    font-size: clamp(11.5px, 2.8vw, 13px);
+    max-width: 17rem;
+  }
+
   .vela-gallery-card {
-    box-shadow: 0 10px 18px rgba(37, 22, 14, .14);
+    top: 31%;
+    height: 50%;
+    width: 29%;
+  }
+
+  .vela-gallery-reader {
+    width: 92vw;
+    top: 57%;
   }
 
   .vela-3d-hint {
+    left: 50%;
+    right: auto;
+    bottom: .85rem;
+    transform: translateX(-50%);
     max-width: calc(100% - 2rem);
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
   }
 }
 
-@media (prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse) {
+@media (max-width: 480px) {
+  .vela-archive-stage {
+    min-height: 550px;
+    border-radius: .85rem;
+  }
+
+  .vela-gallery-card {
+    top: 34%;
+    height: 47%;
+    width: 30%;
+  }
+
+  .vela-gallery-card--nude { left: 16%; }
+  .vela-gallery-card--noir { left: 50%; }
+  .vela-gallery-card--letter { left: 84%; }
+
+  .vela-gallery-reader {
+    width: 94vw;
+    top: 58%;
+  }
+
+  .vela-interactive-envelope {
+    width: 6.8rem;
+    left: -0.25rem;
+    bottom: -1.25rem;
+  }
+
+  .vela-3d-hint {
+    font-size: 10px;
+    bottom: .75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .vela-archive-stage {
+    min-height: 540px;
+  }
+
+  .vela-gallery-card {
+    top: 36%;
+    height: 44%;
+    width: 31%;
+  }
+
+  .vela-gallery-card__label b {
+    font-size: .95rem;
+  }
+
+  .vela-interactive-envelope {
+    width: 6.1rem;
+    left: -0.15rem;
+    bottom: -1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .vela-css-envelope,
   .vela-gallery-card,
-  .vela-gallery-reader {
+  .vela-gallery-reader,
+  .vela-life-card,
+  .vela-life-card::after,
+  .vela-life-card__year,
+  .vela-life-card__title {
     transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================================================
+   HOME: LÍNEA DE VIDA (5 TARJETAS EDITORIALES CON HOVER HACIA ADELANTE)
+   ========================================================================= */
+.vela-life-section {
+  background: linear-gradient(180deg, #F8F6F0 0%, #F3E9DC 100%);
+  position: relative;
+}
+
+.vela-life-rail {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  position: relative;
+  border-top: 1px solid rgba(38, 35, 31, 0.12);
+  border-bottom: 1px solid rgba(38, 35, 31, 0.12);
+  background: rgba(255, 253, 248, 0.38);
+  box-shadow: inset 0 1px rgba(255, 253, 248, 0.55);
+}
+
+/* Línea conectora horizontal continua */
+.vela-life-rail::before {
+  content: "";
+  position: absolute;
+  top: 4.85rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #682D35 0%, #9E6E58 55%, #C5A982 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.vela-life-card {
+  position: relative;
+  min-height: 19.5rem;
+  padding: 2rem 1.5rem 2.25rem;
+  border-right: 1px solid rgba(38, 35, 31, 0.11);
+  background: transparent;
+  transition:
+    background-color 0.32s ease,
+    box-shadow 0.32s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+}
+
+.vela-life-card:last-child {
+  border-right: 0;
+}
+
+/* Nodo circular sobre la divisoria */
+.vela-life-card::after {
+  content: "";
+  position: absolute;
+  top: 4.5rem;
+  right: -0.36rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 9999px;
+  background-color: #682D35;
+  border: 2px solid #F8F6F0;
+  z-index: 3;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease;
+}
+
+.vela-life-card:last-child::after {
+  display: none;
+}
+
+.vela-life-card__num {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #7D6654;
+}
+
+.vela-life-card__year {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  margin-top: 2.55rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(38, 35, 31, 0.58);
+  transition: color 0.24s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vela-life-card__title {
+  margin: 0.45rem 0 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #26231F;
+  transition: color 0.24s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vela-life-card__copy {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.68;
+  font-weight: 300;
+  color: rgba(38, 35, 31, 0.76);
+}
+
+/* Efecto hover resalto hacia adelante */
+.vela-life-card:hover {
+  z-index: 10;
+  background-color: #FFFDF8;
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 24px 48px -12px rgba(38, 35, 31, 0.14), 0 4px 12px rgba(38, 35, 31, 0.06);
+}
+
+.vela-life-card:hover::after {
+  transform: scale(1.55);
+  box-shadow: 0 0 0 0.38rem rgba(104, 45, 53, 0.16);
+}
+
+.vela-life-card:hover .vela-life-card__year,
+.vela-life-card:hover .vela-life-card__title {
+  color: #682D35;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .vela-life-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid rgba(38, 35, 31, 0.12);
+    border-radius: 2px;
+  }
+
+  .vela-life-rail::before,
+  .vela-life-card::after {
+    display: none;
+  }
+
+  .vela-life-card {
+    min-height: auto;
+    border-right: 1px solid rgba(38, 35, 31, 0.11);
+    border-bottom: 1px solid rgba(38, 35, 31, 0.11);
+    padding: 1.75rem 1.4rem;
+  }
+
+  .vela-life-card__year {
+    margin-top: 1.1rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .vela-life-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .vela-life-card {
+    border-right: 0;
+  }
+
+  .vela-life-card:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* =========================================================================
+   HOME: CTA INTERACTIVO EN 3 PASOS (DE LOS RECUERDOS A UNA BIOGRAFÍA)
+   ========================================================================= */
+.vela-process-cta {
+  background: linear-gradient(180deg, #F8F6F0 0%, #F4ECE1 100%);
+  position: relative;
+}
+
+.vela-process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.vela-process-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 22rem;
+  padding: 2rem;
+  background: rgba(249, 245, 238, 0.78);
+  border: 1px solid rgba(38, 35, 31, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 253, 248, 0.55);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Conector fino horizontal entre tarjetas en escritorio */
+.vela-process-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 3.35rem;
+  right: -1.3rem;
+  width: 1.3rem;
+  height: 1px;
+  background: #B5956B;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.vela-process-card:hover {
+  transform: translateY(-6px);
+  background: #FFFDF8;
+  border-color: rgba(104, 45, 53, 0.28);
+  box-shadow: 0 22px 42px -14px rgba(38, 35, 31, 0.13);
+}
+
+.vela-process-card__icon {
+  width: 2.85rem;
+  height: 2.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(197, 169, 130, 0.75);
+  background: rgba(255, 253, 248, 0.75);
+  color: #682D35;
+  margin-bottom: 2.4rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.vela-process-card:hover .vela-process-card__icon {
+  background: #682D35;
+  border-color: #682D35;
+  color: #F8F6F0;
+  transform: scale(1.04);
+}
+
+.vela-process-card__num {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #7D6654;
+}
+
+.vela-process-card__title {
+  margin: 0.45rem 0 0.9rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #26231F;
+}
+
+.vela-process-card__copy {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(38, 35, 31, 0.76);
+}
+
+.vela-process-card__sample {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(38, 35, 31, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  color: rgba(38, 35, 31, 0.68);
+  font-weight: 400;
+}
+
+@media (max-width: 1023px) {
+  .vela-process-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .vela-process-card {
+    min-height: auto;
+    padding: 1.75rem;
+  }
+
+  .vela-process-card:not(:last-child)::after {
+    display: none;
+  }
+
+  .vela-process-card__icon {
+    margin-bottom: 1.5rem;
+  }
+
+  .vela-process-card__sample {
+    margin-top: 1.5rem;
+  }
+}
+
+/* =========================================================================
+   EJEMPLOS: FONDO DE ESTANTERÍA DE ROBLE REAL + CONTROLES FLOTANTES SOBRE TABLET
+   ========================================================================= */
+.vela-archive-stage,
+.vela-archive-stage[data-template="nude"],
+.vela-archive-stage[data-template="noir"],
+.vela-archive-stage[data-template="letter"] {
+  background: #EFE7DB url('/assets/estanteria-roble-bg.webp') center bottom / cover no-repeat !important;
+  border: 1px solid rgba(38, 35, 31, 0.14) !important;
+  box-shadow: 0 24px 56px -24px rgba(38, 35, 31, 0.22) !important;
+}
+
+.vela-scene-loading {
+  display: none !important;
+}
+
+.vela-archive-stage::before,
+.vela-archive-stage .vela-gallery-wall,
+.vela-archive-stage .vela-gallery-wall::before,
+.vela-archive-stage .vela-gallery-beams,
+.vela-archive-stage .vela-gallery-plinth,
+.vela-archive-stage .vela-gallery-ambient,
+.vela-archive-stage .vela-gallery-grain,
+.vela-archive-stage .vela-scene-vignette {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* Sombra realista de apoyo de los 3 libros sobre la estantería de madera */
+.vela-archive-stage .vela-gallery-card {
+  filter: drop-shadow(0 22px 24px rgba(38, 26, 16, 0.28));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+}
+
+.vela-archive-stage .vela-gallery-card:hover {
+  filter: drop-shadow(0 30px 32px rgba(38, 26, 16, 0.36));
+}
+
+/* Mantener siempre tipografía oscura legible sobre el fondo de estantería */
+.vela-archive-stage .vela-archive-copy strong,
+.vela-archive-stage .vela-reader-copy strong,
+.vela-archive-stage .vela-gallery-card__label b {
+  color: #26231F !important;
+}
+
+.vela-archive-stage .vela-archive-copy small,
+.vela-archive-stage .vela-reader-copy small,
+.vela-archive-stage .vela-gallery-card__label small,
+.vela-archive-stage .vela-3d-hint {
+  color: rgba(38, 35, 31, 0.72) !important;
+}
+
+/* Bloquear y ocultar las tarjetas de fondo mientras se lee una biografía */
+.vela-gallery-layer.is-reader .vela-gallery-gallery {
+  pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.vela-gallery-layer.is-reader .vela-gallery-card {
+  pointer-events: none !important;
+}
+
+/* Controles flotantes directos sobre la tablet (X cerrar + flechas ← / →) */
+.vela-stage-close-x,
+.vela-stage-nav {
+  position: absolute;
+  z-index: 30;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(248, 246, 240, 0.94);
+  color: #1E1B18;
+  border: 1px solid rgba(38, 35, 31, 0.18);
+  box-shadow: 0 12px 28px -8px rgba(30, 27, 24, 0.28);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.86);
+  transition:
+    opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.vela-stage-close-x {
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.vela-stage-nav {
+  top: 50%;
+  margin-top: -1.425rem;
+}
+
+.vela-stage-nav--prev {
+  left: 1.25rem;
+}
+
+.vela-stage-nav--next {
+  right: 1.25rem;
+}
+
+.vela-archive-stage[data-vela-state="reader"] .vela-stage-close-x,
+.vela-archive-stage[data-vela-state="reader"] .vela-stage-nav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.vela-stage-close-x:hover,
+.vela-stage-nav:hover {
+  background: #1E1B18;
+  color: #F8F6F0;
+  border-color: #1E1B18;
+  transform: scale(1.08);
+}
+
+@media (max-width: 640px) {
+  .vela-stage-close-x,
+  .vela-stage-nav {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .vela-stage-close-x {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .vela-stage-nav--prev {
+    left: 0.65rem;
+  }
+
+  .vela-stage-nav--next {
+    right: 0.65rem;
+  }
+}
+
+/* Limpieza total del visor de tablet: sin elementos flotantes ni solapes */
+.vela-3d-hint,
+.vela-interactive-envelope,
+.vela-gallery-memory,
+.vela-gallery-note {
+  display: none !important;
+}
+
+.vela-archive-stage .vela-reader-copy {
+  top: 1.35rem !important;
+  left: 1.5rem !important;
+  max-width: 10.25rem !important;
+  z-index: 12 !important;
+}
+
+.vela-archive-stage .vela-reader-copy strong {
+  font-size: clamp(1.7rem, 2.5vw, 2.25rem) !important;
+  line-height: 1 !important;
+}
+
+.vela-archive-stage .vela-reader-copy small {
+  margin-top: 0.35rem !important;
+  max-width: 10rem !important;
+  font-size: 0.85rem !important;
+  line-height: 1.35 !important;
+}
+
+.vela-archive-stage .vela-gallery-reader,
+.vela-archive-stage[data-template="nude"] .vela-gallery-reader,
+.vela-archive-stage[data-template="noir"] .vela-gallery-reader,
+.vela-archive-stage[data-template="letter"] .vela-gallery-reader {
+  width: min(56vw, 740px) !important;
+  top: 52% !important;
+}
+
+@media (max-width: 900px) {
+  .vela-archive-stage .vela-reader-copy {
+    top: 0.9rem !important;
+    left: 1.1rem !important;
+    right: 3.75rem !important;
+    max-width: none !important;
+  }
+
+  .vela-archive-stage .vela-reader-copy small {
+    max-width: 20rem !important;
+  }
+
+  .vela-archive-stage .vela-gallery-reader,
+  .vela-archive-stage[data-template="nude"] .vela-gallery-reader,
+  .vela-archive-stage[data-template="noir"] .vela-gallery-reader,
+  .vela-archive-stage[data-template="letter"] .vela-gallery-reader {
+    width: min(86vw, 620px) !important;
+    top: 58% !important;
   }
 }

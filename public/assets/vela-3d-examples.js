@@ -13,15 +13,15 @@
     },
     noir: {
       name: 'Juan', label: 'NOIR', caption: 'El compañero de camino', style: 'Moderna, sobria y con carácter', accent: '#d7c1a5',
-      pages: [['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'], ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'], ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'], ['/assets/templates/noir_page_04.jpg', '/assets/templates/noir_page_08.jpg']],
+      pages: [['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'], ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'], ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'], ['/assets/templates/noir_page_07.jpg', '/assets/templates/noir_page_08.jpg']],
       memories: ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_04.jpg', '/assets/tecnologia-sensibilidad.webp', '/assets/vela-sobre-qr-1200.webp'],
       chapters: ['Orígenes', 'El carácter', 'Una vida plena', 'Lo que permanece']
     },
     letter: {
       name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequeñas historias', style: 'Clásica, cercana y llena de memoria', accent: '#8d504b',
-      pages: [['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'], ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'], ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_07.jpg'], ['/assets/templates/letter_page_08.jpg', '/assets/templates/letter_page_09.jpg']],
+      pages: [['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'], ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'], ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_06.jpg'], ['/assets/templates/letter_page_07.jpg', '/assets/templates/letter_page_08.jpg']],
       memories: ['/assets/carmen-family-1200.webp', '/assets/carmen-hero-1600.webp', '/assets/templates/letter_page_04.jpg', '/assets/templates/letter_page_08.jpg'],
-      chapters: ['La carta', 'Familia', 'Viajes y hallazgos', 'Para siempre']
+      chapters: ['Portada y Ex Libris', 'Prólogo y Familia', 'Línea de vida y Orígenes', 'Infancia y Crecer']
     }
   };
 
@@ -162,7 +162,8 @@
   }
 
   function updateHtml() {
-    ensureBottomline();
+    const setText = (sel, val) => { const el = $(sel); if (el) el.textContent = val; };
+    const setAttr = (sel, attr, val) => { const el = $(sel); if (el) el[attr] = val; };
     const current = data();
     const hint = $('.vela-3d-hint');
     if (hint) hint.textContent = state.mode === 'gallery'
@@ -177,30 +178,26 @@
     showcase.dataset.velaState = state.mode;
     shell.setAttribute('aria-label', state.mode === 'reader' ? `Sala de lectura digital de ${current.name}` : 'Galería digital de historias VELA');
     document.documentElement.style.setProperty('--vela-scene-accent', current.accent);
-    const bottomline = $('[data-vela-bottomline-label]');
-    if (bottomline) bottomline.textContent = state.mode === 'reader'
-      ? `${current.name}: ${current.chapters[state.chapter]}.`
-      : 'Una historia no se archiva: se vuelve a visitar.';
 
-    $('[data-vela-reader-kicker]').textContent = `PLANTILLA ${current.label}`;
-    $('[data-vela-reader-name]').textContent = current.name;
-    $('[data-vela-reader-caption]').textContent = current.caption;
-    $('[data-vela-scene-kicker]').textContent = state.mode === 'reader' ? `EDICIÓN ${current.label}` : 'GALERÍA DIGITAL';
-    $('[data-vela-scene-name]').textContent = state.mode === 'reader' ? current.name : 'Tres formas de conservar una vida';
-    $('[data-vela-scene-caption]').textContent = state.mode === 'reader' ? current.caption : 'Selecciona una edición para entrar en su memoria.';
-    $('[data-vela-meta-title]').textContent = current.chapters[state.chapter];
-    $('[data-vela-meta-style]').textContent = current.style;
-    $('[data-vela-meta-format]').textContent = 'Lectura digital · PDF · QR';
-    $('[data-vela-status-text]').textContent = state.mode === 'reader' ? 'Historia abierta · usa las flechas para avanzar' : 'Selecciona una pieza para entrar';
-    $('[data-vela-fallback-template]').textContent = current.label;
-    $('[data-vela-fallback-cover]').src = current.pages[state.chapter][0];
-    $('[data-vela-fallback-cover]').alt = `Biografía digital de ${current.name}`;
+    setText('[data-vela-reader-kicker]', `PLANTILLA ${current.label}`);
+    setText('[data-vela-reader-name]', current.name);
+    setText('[data-vela-reader-caption]', current.caption);
+    setText('[data-vela-scene-kicker]', state.mode === 'reader' ? `EDICIÓN ${current.label}` : 'GALERÍA DIGITAL');
+    setText('[data-vela-scene-name]', state.mode === 'reader' ? current.name : 'Tres formas de conservar una vida');
+    setText('[data-vela-scene-caption]', state.mode === 'reader' ? current.caption : 'Selecciona una edición para entrar en su memoria.');
+    setText('[data-vela-meta-title]', current.chapters[state.chapter]);
+    setText('[data-vela-meta-style]', current.style);
+    setText('[data-vela-meta-format]', 'Lectura digital · PDF · QR');
+    setText('[data-vela-status-text]', state.mode === 'reader' ? 'Historia abierta · usa las flechas para avanzar' : 'Selecciona una pieza para entrar');
+    setText('[data-vela-fallback-template]', current.label);
+    setAttr('[data-vela-fallback-cover]', 'src', current.pages[state.chapter][0]);
+    setAttr('[data-vela-fallback-cover]', 'alt', `Biografía digital de ${current.name}`);
 
-    $('[data-vela-gallery-page-left]').src = current.pages[state.chapter][0];
-    $('[data-vela-gallery-page-right]').src = current.pages[state.chapter][1];
-    $('[data-vela-gallery-memory]').src = current.memories[state.chapter];
-    $('[data-vela-gallery-note]').textContent = current.chapters[state.chapter];
-    $('[data-vela-gallery-number]').textContent = String(state.chapter + 1).padStart(2, '0');
+    setAttr('[data-vela-gallery-page-left]', 'src', current.pages[state.chapter][0]);
+    setAttr('[data-vela-gallery-page-right]', 'src', current.pages[state.chapter][1]);
+    setAttr('[data-vela-gallery-memory]', 'src', current.memories[state.chapter]);
+    setText('[data-vela-gallery-note]', current.chapters[state.chapter]);
+    setText('[data-vela-gallery-number]', String(state.chapter + 1).padStart(2, '0'));
 
     $$('[data-vela-gallery-cover]').forEach((image) => {
       const key = image.dataset.velaGalleryCover;
@@ -281,8 +278,14 @@
         );
       }
       
-      tl.fromTo($('[data-vela-gallery-memory]'), { opacity: 0, x: isMobile ? 14 : 26, rotation: 8 }, { opacity: 1, x: 0, rotation: 6, duration: .44, ease: 'power2.out' }, .36)
-        .fromTo($('.vela-gallery-note'), { opacity: 0, x: isMobile ? -12 : -20, rotation: -8 }, { opacity: 1, x: 0, rotation: -5, duration: .44, ease: 'power2.out' }, .4);
+      const memEl = $('[data-vela-gallery-memory]');
+      const noteEl = $('.vela-gallery-note');
+      if (memEl) {
+        tl.fromTo(memEl, { opacity: 0, x: isMobile ? 14 : 26, rotation: 8 }, { opacity: 1, x: 0, rotation: 6, duration: .44, ease: 'power2.out' }, .36);
+      }
+      if (noteEl) {
+        tl.fromTo(noteEl, { opacity: 0, x: isMobile ? -12 : -20, rotation: -8 }, { opacity: 1, x: 0, rotation: -5, duration: .44, ease: 'power2.out' }, .4);
+      }
     } else {
       layer.classList.remove('is-transitioning');
       state.busy = false;
@@ -294,7 +297,10 @@
   }
 
   function readerToGallery() {
-    if (state.busy) return;
+    if (state.mode !== 'reader') return;
+    if (window.gsap) {
+      window.gsap.killTweensOf([reader, cards, $('[data-vela-page-flipper]')]);
+    }
     state.busy = true;
     state.activeAnimCount++;
     delete shell.dataset.hoverTemplate;
@@ -330,6 +336,7 @@
 
   function changeTemplate(template) {
     if (!templates[template] || state.busy) return;
+    if (state.mode === 'reader' && state.template === template) return;
     if (state.mode === 'gallery') return galleryToReader(template);
     state.busy = true;
     state.activeAnimCount++;
@@ -539,27 +546,17 @@
   };
 
   cards.forEach((card) => {
-    card.addEventListener('click', () => galleryToReader(card.dataset.velaGalleryCard));
-    const setHover = () => {
-      if (state.mode === 'gallery') shell.dataset.hoverTemplate = card.dataset.velaGalleryCard;
-    };
-    const setFocusHover = () => {
-      if (state.mode === 'gallery' && card.matches(':focus-visible')) shell.dataset.hoverTemplate = card.dataset.velaGalleryCard;
-    };
-    const clearHover = () => {
-      if (shell.dataset.hoverTemplate === card.dataset.velaGalleryCard) delete shell.dataset.hoverTemplate;
-    };
-    card.addEventListener('pointerenter', setHover);
-    card.addEventListener('pointerleave', clearHover);
-    card.addEventListener('focus', setFocusHover);
-    card.addEventListener('blur', clearHover);
+    card.addEventListener('click', () => {
+      if (state.mode !== 'gallery') return;
+      galleryToReader(card.dataset.velaGalleryCard);
+    });
   });
 
   $$('[data-vela-archive-tab]').forEach((button) => button.addEventListener('click', () => changeTemplate(button.dataset.velaArchiveTab)));
-  $('[data-vela-close]')?.addEventListener('click', readerToGallery);
+  $$('[data-vela-close]').forEach((button) => button.addEventListener('click', readerToGallery));
   $$('[data-vela-chapter]').forEach((button) => button.addEventListener('click', () => changeChapter(state.template, Number(button.dataset.velaChapter), Number(button.dataset.velaChapter) >= state.chapter ? 1 : -1)));
-  $('[data-vela-chapter-prev]')?.addEventListener('click', () => changeChapter(state.template, state.chapter - 1, -1));
-  $('[data-vela-chapter-next]')?.addEventListener('click', () => changeChapter(state.template, state.chapter + 1, 1));
+  $$('[data-vela-chapter-prev]').forEach((button) => button.addEventListener('click', () => changeChapter(state.template, state.chapter - 1, -1)));
+  $$('[data-vela-chapter-next]').forEach((button) => button.addEventListener('click', () => changeChapter(state.template, state.chapter + 1, 1)));
   
   shell.addEventListener('pointermove', (event) => {
     const rect = shell.getBoundingClientRect();
@@ -626,21 +623,9 @@
     markDirty();
   });
 
-  shell.addEventListener('wheel', (event) => {
-    if (state.mode !== 'reader' || state.busy || Math.abs(event.deltaY) < 18) return;
-    event.preventDefault();
-    if (wheelLock) return;
-    wheelLock = true;
-    const direction = event.deltaY > 0 ? 1 : -1;
-    changeChapter(state.template, state.chapter + direction, direction);
-    window.setTimeout(() => { wheelLock = false; }, prefersReducedMotion ? 180 : 450);
-  }, { passive: false });
-
   shell.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') { event.preventDefault(); changeChapter(state.template, state.chapter - 1, -1); }
-    if (event.key === 'ArrowRight') { event.preventDefault(); changeChapter(state.template, state.chapter + 1, 1); }
-    if (event.key === 'Home') { event.preventDefault(); changeTemplate('nude'); }
-    if (event.key === 'End') { event.preventDefault(); changeTemplate('letter'); }
+    if (state.mode === 'reader' && event.key === 'ArrowLeft') { event.preventDefault(); changeChapter(state.template, state.chapter - 1, -1); }
+    if (state.mode === 'reader' && event.key === 'ArrowRight') { event.preventDefault(); changeChapter(state.template, state.chapter + 1, 1); }
     if (event.key === 'Escape' && state.mode === 'reader') { event.preventDefault(); readerToGallery(); }
   });
 
