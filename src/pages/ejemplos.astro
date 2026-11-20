@@ -20,10 +20,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               Haz clic sobre cualquier biografía o elige un protagonista para abrir sus páginas y hojearla con comodidad.
             </p>
           </div>
-          <div class="lg:col-span-4 lg:pb-1 flex flex-wrap lg:justify-end gap-2" role="tablist" aria-label="Seleccionar biografía en el visor">
-            <button type="button" class="is-active px-4 py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="nude" role="tab" aria-selected="true">Carlota · <em class="italic">Nude</em></button>
-            <button type="button" class="px-4 py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="noir" role="tab" aria-selected="false">Juan · <em class="italic">Noir</em></button>
-            <button type="button" class="px-4 py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="letter" role="tab" aria-selected="false">Carmen · <em class="italic">Letter</em></button>
+          <div class="lg:col-span-4 lg:pb-1 flex flex-nowrap lg:justify-end gap-1.5 sm:gap-2 overflow-x-auto" role="tablist" aria-label="Seleccionar biografía en el visor">
+            <button type="button" class="is-active whitespace-nowrap px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="nude" role="tab" aria-selected="true">Carlota · <em class="italic">Nude</em></button>
+            <button type="button" class="whitespace-nowrap px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="noir" role="tab" aria-selected="false">Juan · <em class="italic">Noir</em></button>
+            <button type="button" class="whitespace-nowrap px-3 sm:px-4 py-2 sm:py-2.5 text-xs font-medium rounded-sm border border-vela-chocolate/20 bg-white text-vela-chocolate hover:bg-[#1E1B18] hover:text-white transition-colors shadow-xs" data-vela-archive-tab="letter" role="tab" aria-selected="false">Carmen · <em class="italic">Letter</em></button>
           </div>
         </div>
 
