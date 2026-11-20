@@ -24,21 +24,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-12 lg:py-16 xl:py-20 w-full grid grid-cols-1 lg:grid-cols-12 items-center z-10">
-        <!-- Columna izquierda: espacio libre en desktop para la fotografía del abrazo -->
-        <div class="hidden lg:block lg:col-span-6 min-h-[440px]"></div>
+        <!-- Columna izquierda: espacio libre en desktop para la fotografía del abrazo (7 cols en lg para dar más aire al rostro de la abuela y nieta) -->
+        <div class="hidden lg:block lg:col-span-7 xl:col-span-7 min-h-[440px]"></div>
 
         <!-- Columna derecha: TEXTO Y BOTONES 100% HTML con diseño refinado -->
-        <div class="lg:col-span-6 p-2 sm:p-4 lg:p-0 rounded-sm lg:pl-10">
+        <div class="lg:col-span-5 xl:col-span-5 p-2 sm:p-4 lg:p-0 rounded-sm lg:pl-8 xl:pl-10">
           
           <!-- H1 Serif Editorial -->
-          <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-normal leading-[1.12] tracking-tight mb-5 text-[#F8F6F0]">
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-[2.25rem] xl:text-[3.15rem] 2xl:text-6xl font-normal leading-[1.12] tracking-tight mb-5 text-[#F8F6F0]">
             Su vida, convertida<br/>
             en una historia<br/>
             <span class="italic text-[#E4DDD3]">para siempre.</span>
           </h1>
 
           <!-- Subtítulo refinado -->
-          <p class="text-base sm:text-lg lg:text-[1.125rem] text-[#F8F6F0]/90 font-light leading-relaxed mb-7 max-w-md">
+          <p class="text-base sm:text-lg lg:text-sm xl:text-[1.125rem] text-[#F8F6F0]/90 font-light leading-relaxed mb-7 max-w-md">
             Biografías digitales personalizadas, con sobre de regalo y tarjeta QR física.
           </p>
 
@@ -52,26 +52,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <a href="/ejemplos" class="inline-flex items-center justify-center px-8 py-3.5 border border-[#FAF6F0]/50 text-[#FAF6F0] text-sm font-medium rounded-sm hover:bg-white/10 transition-all backdrop-blur-sm">
               Ver ejemplos
             </a>
-          </div>
-
-          <!-- 4 Bullet Points optimizados en 2x2 limpio para pantallas de 13" y móvil -->
-          <div class="mt-7 pt-6 border-t border-[#F8F6F0]/15 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-xs sm:text-[13px] text-[#F8F6F0]/85 font-light max-w-xl">
-            <span class="flex items-center gap-2 whitespace-nowrap">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
-              Audios y textos guiados
-            </span>
-            <span class="flex items-center gap-2 whitespace-nowrap">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
-              Voz de toda la familia
-            </span>
-            <span class="flex items-center gap-2 whitespace-nowrap">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
-              3 colecciones editoriales
-            </span>
-            <span class="flex items-center gap-2 whitespace-nowrap">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#C5A982] shrink-0" aria-hidden="true"></span>
-              Lectura privada con QR
-            </span>
           </div>
 
         </div>

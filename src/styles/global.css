@@ -261,7 +261,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 
 /* Tablet and compact laptops: keep the image generous, then give the copy
    a comfortable reading measure instead of forcing a desktop split. */
-@media (min-width: 641px) and (max-width: 1279px) {
+@media (min-width: 641px) and (max-width: 1023px) {
   body.vela-home main > section:first-child {
     min-height: auto;
     align-items: stretch;
@@ -3131,7 +3131,7 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
   object-position: left center;
 }
 
-@media (min-width: 641px) and (max-width: 1279px) {
+@media (min-width: 641px) and (max-width: 1023px) {
   body.vela-home main > section:first-child {
     min-height: auto;
     align-items: stretch;

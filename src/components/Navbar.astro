@@ -22,11 +22,53 @@ const isActive = (path: string) => currentPath.includes(path);
     </nav>
 
     <div class="hidden lg:flex items-center gap-4 xl:gap-5 shrink-0">
-      <div class="vela-lang-inline inline-flex items-center border border-vela-chocolate/20 rounded-sm bg-white/50 p-0.5" role="group" aria-label="Selector de idioma">
-        <button type="button" class="vela-lang-btn is-selected" data-lang="ES" aria-pressed="true">ES</button>
-        <button type="button" class="vela-lang-btn" data-lang="EN" aria-pressed="false">EN</button>
-        <button type="button" class="vela-lang-btn" data-lang="FR" aria-pressed="false">FR</button>
+      <!-- Selector de Idiomas Dropdown (Fiel al diseño editorial) -->
+      <div class="relative vela-lang-dropdown" id="vela-lang-dropdown">
+        <button
+          type="button"
+          class="vela-lang-trigger flex items-center justify-center border border-vela-chocolate/25 bg-transparent text-vela-chocolate px-3 py-1.5 text-xs font-serif font-medium hover:border-vela-chocolate transition-colors"
+          id="vela-lang-trigger"
+          aria-expanded="false"
+          aria-haspopup="true"
+        >
+          <span id="current-lang-label">ES</span>
+        </button>
+
+        <div
+          id="vela-lang-menu"
+          class="hidden absolute right-0 mt-1 w-44 bg-[#F8F6F0] border border-vela-chocolate/15 shadow-[0_12px_28px_-6px_rgba(38,35,31,0.18)] z-50 py-1"
+          role="menu"
+        >
+          <button
+            type="button"
+            class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-serif text-left hover:bg-[#EFE7DB] text-vela-chocolate transition-colors vela-lang-item is-active"
+            data-lang="ES"
+            role="menuitem"
+          >
+            <span class="font-medium text-[#682D35]">Español</span>
+            <span class="text-[10px] tracking-wider text-vela-topo uppercase font-sans">ES</span>
+          </button>
+          <button
+            type="button"
+            class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-serif text-left hover:bg-[#EFE7DB] text-vela-chocolate/80 hover:text-vela-chocolate transition-colors vela-lang-item"
+            data-lang="EN"
+            role="menuitem"
+          >
+            <span>English</span>
+            <span class="text-[10px] tracking-wider text-vela-topo uppercase font-sans">EN</span>
+          </button>
+          <button
+            type="button"
+            class="w-full flex items-center justify-between px-4 py-2.5 text-xs font-serif text-left hover:bg-[#EFE7DB] text-vela-chocolate/80 hover:text-vela-chocolate transition-colors vela-lang-item"
+            data-lang="FR"
+            role="menuitem"
+          >
+            <span>Français</span>
+            <span class="text-[10px] tracking-wider text-vela-topo uppercase font-sans">FR</span>
+          </button>
+        </div>
       </div>
+
       <a href="/como-funciona" class="vela-nav-link text-sm font-medium text-vela-chocolate/80 vela-login-link">Ver el proceso</a>
       <a href="/precios" class="vela-btn-header-cta px-5 py-2.5 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium rounded-sm transition-all shadow-sm">Crear biografía</a>
     </div>

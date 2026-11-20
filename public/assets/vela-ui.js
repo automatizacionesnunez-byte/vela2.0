@@ -33,8 +33,46 @@
     }));
   }
 
-  // --- Selector de Idiomas Inline (Desktop + Móvil sincronizados con traducción real ES / EN / FR) ---
+  // --- Selector de Idiomas Dropdown (Desktop) y Selector en Móvil ---
+  const currentLangLabel = document.getElementById('current-lang-label');
+  const langTrigger = document.getElementById('vela-lang-trigger');
+  const langMenu = document.getElementById('vela-lang-menu');
+  const langDropdown = document.getElementById('vela-lang-dropdown');
+
+  if (langTrigger && langMenu) {
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !langMenu.classList.contains('hidden');
+      langMenu.classList.toggle('hidden', isOpen);
+      langTrigger.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (langDropdown && !langDropdown.contains(e.target)) {
+        langMenu.classList.add('hidden');
+        langTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   const setLanguage = (code) => {
+    if (currentLangLabel) currentLangLabel.textContent = code;
+    document.querySelectorAll('.vela-lang-item').forEach((item) => {
+      const active = item.getAttribute('data-lang') === code;
+      item.classList.toggle('is-active', active);
+      const span = item.querySelector('span:first-child');
+      if (span) {
+        if (active) {
+          span.className = 'font-medium text-[#682D35]';
+        } else {
+          span.className = '';
+        }
+      }
+    });
+
+    if (langMenu) langMenu.classList.add('hidden');
+    if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+
     if (window.VelaI18n && typeof window.VelaI18n.setLanguage === 'function') {
       window.VelaI18n.setLanguage(code);
       return;
@@ -52,6 +90,14 @@
     });
     document.documentElement.setAttribute('data-lang', code.toLowerCase());
   };
+
+  document.querySelectorAll('.vela-lang-item').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const code = item.getAttribute('data-lang');
+      if (code) setLanguage(code);
+    });
+  });
 
   document.querySelectorAll('.vela-lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
