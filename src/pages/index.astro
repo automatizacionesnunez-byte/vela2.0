@@ -213,7 +213,113 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-  <section class="py-24 sm:py-32 bg-[#F1EBE2] border-t border-b border-vela-linea">
+    <!-- SECCIÓN INTERACTIVA EN 3 PASOS (De los recuerdos a una biografía que permanecerá) - Reubicada antes de las FAQs -->
+    <section class="vela-process-cta py-16 sm:py-24 border-t border-vela-linea bg-[#F8F6F0]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16 space-y-4">
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-[1.1]">
+            De los recuerdos a una biografía <em class="italic text-[#682D35]">que permanecerá.</em>
+          </h2>
+          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
+            No necesitas tener la vida ordenada antes de empezar. Una voz abre el camino y VELA te guía hasta el resultado final.
+          </p>
+        </div>
+
+        <ol class="vela-process-grid grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch" aria-label="Cómo empezar tu biografía en 3 pasos">
+          <!-- PASO 01 -->
+          <li class="vela-process-card p-6 sm:p-8 bg-white border border-vela-chocolate/10 rounded-sm flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-10 h-10 rounded-full bg-[#F5EDE4] flex items-center justify-center text-vela-chocolate" aria-hidden="true">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  </svg>
+                </div>
+                <span class="font-serif italic text-2xl text-vela-topo">01</span>
+              </div>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-2.5">Empieza</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                Responde a preguntas sencillas por escrito o con tu voz. Añade fotografías cuando quieras.
+              </p>
+            </div>
+            <div class="p-3 bg-[#FAF6F0] rounded-sm border border-vela-chocolate/10 flex items-center gap-2.5 text-xs text-vela-chocolate/80 italic font-serif">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0 not-italic" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h2m4-6v12m4-9v6m4-10v14m4-7h2" />
+              </svg>
+              <span>¿Cuál es el primer lugar que recuerdas?</span>
+            </div>
+          </li>
+
+          <!-- PASO 02 -->
+          <li class="vela-process-card p-6 sm:p-8 bg-white border border-vela-chocolate/10 rounded-sm flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-10 h-10 rounded-full bg-[#F5EDE4] flex items-center justify-center text-vela-chocolate" aria-hidden="true">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                  </svg>
+                </div>
+                <span class="font-serif italic text-2xl text-vela-topo">02</span>
+              </div>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-2.5">Invita</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                Comparte un enlace privado. Familiares y amistades pueden participar sin crear una cuenta.
+              </p>
+            </div>
+            <div class="p-3 bg-[#FAF6F0] rounded-sm border border-vela-chocolate/10 flex items-center gap-2.5 text-xs text-vela-chocolate/80 italic font-serif">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0 not-italic" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+              </svg>
+              <span>3 voces han añadido un recuerdo</span>
+            </div>
+          </li>
+
+          <!-- PASO 03 -->
+          <li class="vela-process-card p-6 sm:p-8 bg-white border border-vela-chocolate/10 rounded-sm flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-10 h-10 rounded-full bg-[#F5EDE4] flex items-center justify-center text-vela-chocolate" aria-hidden="true">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                  </svg>
+                </div>
+                <span class="font-serif italic text-2xl text-vela-topo">03</span>
+              </div>
+              <h3 class="font-serif text-2xl text-vela-chocolate mb-2.5">Da forma</h3>
+              <p class="text-sm text-vela-chocolate/75 font-light leading-relaxed mb-6">
+                VELA organiza el material y propone un borrador. Tú revisas cada capítulo antes de conservarlo.
+              </p>
+            </div>
+            <div class="p-3 bg-[#FAF6F0] rounded-sm border border-vela-chocolate/10 flex items-center gap-2.5 text-xs text-vela-chocolate/80 italic font-serif">
+              <svg class="w-4 h-4 text-[#682D35] shrink-0 not-italic" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Capítulo listo para revisar</span>
+            </div>
+          </li>
+        </ol>
+
+        <div class="mt-14 text-center space-y-5">
+          <p class="font-serif italic text-lg sm:text-xl text-vela-chocolate/85">
+            Una primera pregunta puede abrir una vida entera.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/precios"
+              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
+              <span>Crear mi biografía</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="/ejemplos"
+              class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-white transition-colors">
+              Ver ejemplos reales
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: PREGUNTAS FRECUENTES (Último bloque antes del footer) -->
+    <section class="py-24 sm:py-32 bg-[#F1EBE2] border-t border-b border-vela-linea">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
@@ -313,99 +419,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </p>
             </details>
 
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN FINAL: CTA INTERACTIVO EN 3 PASOS (De los recuerdos a una biografía que permanecerá) -->
-    <section class="vela-process-cta py-16 sm:py-20 border-t border-vela-linea">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16 space-y-4">
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-vela-chocolate leading-[1.1]">
-            De los recuerdos a una biografía <em class="italic text-[#682D35]">que permanecerá.</em>
-          </h2>
-          <p class="text-base sm:text-lg text-vela-chocolate/75 font-light leading-relaxed">
-            No necesitas tener la vida ordenada antes de empezar. Una voz abre el camino y VELA te guía hasta el resultado final.
-          </p>
-        </div>
-
-        <ol class="vela-process-grid" aria-label="Cómo empezar tu biografía en 3 pasos">
-          <!-- PASO 01 -->
-          <li class="vela-process-card">
-            <div class="vela-process-card__icon" aria-hidden="true">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-              </svg>
-            </div>
-            <span class="vela-process-card__num">01</span>
-            <h3 class="vela-process-card__title">Empieza</h3>
-            <p class="vela-process-card__copy">
-              Responde a preguntas sencillas por escrito o con tu voz. Añade fotografías cuando quieras.
-            </p>
-            <div class="vela-process-card__sample">
-              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h2m4-6v12m4-9v6m4-10v14m4-7h2" />
-              </svg>
-              <span>¿Cuál es el primer lugar que recuerdas?</span>
-            </div>
-          </li>
-
-          <!-- PASO 02 -->
-          <li class="vela-process-card">
-            <div class="vela-process-card__icon" aria-hidden="true">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-              </svg>
-            </div>
-            <span class="vela-process-card__num">02</span>
-            <h3 class="vela-process-card__title">Invita</h3>
-            <p class="vela-process-card__copy">
-              Comparte un enlace privado. Familiares y amistades pueden participar sin crear una cuenta.
-            </p>
-            <div class="vela-process-card__sample">
-              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-              </svg>
-              <span>3 voces han añadido un recuerdo</span>
-            </div>
-          </li>
-
-          <!-- PASO 03 -->
-          <li class="vela-process-card">
-            <div class="vela-process-card__icon" aria-hidden="true">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-              </svg>
-            </div>
-            <span class="vela-process-card__num">03</span>
-            <h3 class="vela-process-card__title">Da forma</h3>
-            <p class="vela-process-card__copy">
-              VELA organiza el material y propone un borrador. Tú revisas cada capítulo antes de conservarlo.
-            </p>
-            <div class="vela-process-card__sample">
-              <svg class="w-4 h-4 text-[#682D35] shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Capítulo listo para revisar</span>
-            </div>
-          </li>
-        </ol>
-
-        <div class="mt-14 text-center space-y-5">
-          <p class="font-serif italic text-lg sm:text-xl text-vela-chocolate/85">
-            Una primera pregunta puede abrir una vida entera.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="/precios"
-              class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-sm font-medium hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
-              <span>Crear mi biografía</span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="/ejemplos"
-              class="inline-flex items-center justify-center px-7 py-3.5 rounded-sm border border-vela-chocolate/25 text-vela-chocolate text-sm font-medium hover:bg-white transition-colors">
-              Ver ejemplos reales
-            </a>
           </div>
         </div>
       </div>

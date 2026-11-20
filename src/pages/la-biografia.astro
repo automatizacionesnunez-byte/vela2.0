@@ -8,29 +8,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   bodyClass="bg-[#F8F6F0] text-[#26231F] font-sans antialiased selection:bg-vela-burdeos selection:text-white vela-page-la-biografia"
 >
   <main>
-    <!-- SECCIÓN 1: PRESENTACIÓN COMPLETA DEL PRODUCTO (Solo modelo Letter, fondo enterizo y sobre integrado) -->
-    <section class="relative bg-[#EDDDD0] border-b border-vela-linea overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 py-14 lg:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <!-- SECCIÓN 1: PRESENTACIÓN COMPLETA DEL PRODUCTO (Solo modelo Letter, fondo continuo cálido y sobre integrado sin cortes) -->
+    <section class="relative bg-[#F4EBE1] border-b border-vela-linea overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 py-12 sm:py-16 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-          <!-- Izquierda: Composición editorial Letter en estudio cálido con fondo continuo -->
-          <div class="lg:col-span-6">
-            <div class="relative overflow-hidden rounded-sm">
+          <!-- Izquierda: Composición editorial Letter en tablet con sobre oficial y tarjeta QR integrada con degradado perimetral que se funde en la sección -->
+          <div class="lg:col-span-6 flex justify-center">
+            <div class="relative w-full max-w-xl overflow-hidden rounded-sm [mask-image:linear-gradient(to_right,black_80%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,black_85%,transparent_100%)]">
               <img
                 src="/assets/bio-sec1-studio.jpg"
                 alt="Presentación completa de biografía VELA modelo Letter en tablet con sobre lacrado y tarjeta QR"
-                class="w-full h-auto block object-cover"
+                class="w-full h-auto block object-cover mix-blend-multiply sm:mix-blend-normal"
                 loading="eager"
                 fetchpriority="high"
               />
-              <!-- Degradado sutil en el borde derecho en escritorio para fundirse con el fondo enterizo -->
-              <div class="hidden lg:block pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#EDDDD0] to-transparent" aria-hidden="true"></div>
+              <!-- Degradados perimetrales suaves para eliminar cualquier línea de corte -->
+              <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#F4EBE1] via-[#F4EBE1]/60 to-transparent" aria-hidden="true"></div>
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4EBE1] via-[#F4EBE1]/50 to-transparent" aria-hidden="true"></div>
             </div>
           </div>
 
           <!-- Derecha: Titular limpio + 3 Filas con iconos y líneas divisorias -->
           <div class="lg:col-span-6 space-y-6">
-            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.35rem] font-normal text-vela-chocolate leading-[1.08] tracking-tight">
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.25rem] font-normal text-vela-chocolate leading-[1.08] tracking-tight">
               Una historia única,<br />
               <span class="italic text-[#6E5644]">en digital y para regalar.</span>
             </h1>
@@ -173,7 +174,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </p>
           </div>
           <a href="/precios" class="self-start md:self-auto px-6 py-3 bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium uppercase tracking-wider rounded-sm hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm shrink-0">
-            Comparar precios ↗
+            Elegir biografía ↗
           </a>
         </div>
 

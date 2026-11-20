@@ -262,6 +262,7 @@
       "Letter, Noir et Nude sont des styles éditoriaux disponibles dans toutes les formules. Découvrez leur personnalité pour choisir celui qui correspond le mieux."
     ],
     "Comparar precios ↗": ["Compare plans ↗", "Comparer les tarifs ↗"],
+    "Elegir biografía ↗": ["Choose biography ↗", "Choisir la biographie ↗"],
     "Clásico, cercano y lleno de memoria.": ["Classic, warm, and full of memory.", "Classique, chaleureux et plein de mémoire."],
     "El encanto de las cartas antiguas, el papel con textura y una caligrafía que recuerda a los archivos familiares.": [
       "The charm of handwritten letters, textured paper, and calligraphy inspired by treasured family archives.",
