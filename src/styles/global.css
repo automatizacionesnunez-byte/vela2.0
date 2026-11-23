@@ -516,8 +516,21 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
 .vela-archive-stage[data-template="noir"] .vela-gallery-wall { background: radial-gradient(ellipse at 50% 16%, #49443f 0, transparent 42%), linear-gradient(180deg,#272522 0%,#171614 65%,#0b0b0a 100%); }
 .vela-archive-stage[data-template="noir"] .vela-gallery-ambient::before { opacity: .28; background: radial-gradient(ellipse at 47% 70%, rgba(206,170,130,.28), transparent 23%), linear-gradient(102deg, transparent 30%, rgba(255,255,255,.08) 48%, transparent 65%); }
 .vela-archive-stage[data-template="letter"] .vela-gallery-wall { background: radial-gradient(ellipse at 50% 13%, #fffaf1 0, transparent 43%), linear-gradient(180deg,#f1e0d3 0%,#e0c6b4 62%,#bb9079 100%); }
-.vela-archive-stage[data-template="letter"] .vela-gallery-reader { transform: translate(-50%,-50%) translateZ(160px) rotateX(2deg) rotateY(1deg) scale(.72); }
-.vela-archive-stage[data-template="letter"] .vela-gallery-layer.is-reader .vela-gallery-reader { transform: translate(-50%,-50%) translateZ(160px) rotateX(2deg) rotateY(1deg) scale(1); }
+/* Los 3 modelos (Nude, Noir y Letter) comparten exactamente las mismas dimensiones y escala de tablet 3D */
+.vela-archive-stage[data-template="letter"] .vela-gallery-reader,
+.vela-archive-stage[data-template="noir"] .vela-gallery-reader,
+.vela-archive-stage[data-template="nude"] .vela-gallery-reader,
+.vela-archive-stage .vela-gallery-reader {
+  width: min(59vw, 760px) !important;
+  aspect-ratio: 1.52 !important;
+}
+
+.vela-archive-stage[data-template="letter"] .vela-gallery-layer.is-reader .vela-gallery-reader,
+.vela-archive-stage[data-template="noir"] .vela-gallery-layer.is-reader .vela-gallery-reader,
+.vela-archive-stage[data-template="nude"] .vela-gallery-layer.is-reader .vela-gallery-reader,
+.vela-archive-stage .vela-gallery-layer.is-reader .vela-gallery-reader {
+  transform: translate(-50%,-50%) translateZ(160px) rotateX(2deg) rotateY(1deg) scale(1) !important;
+}
 
 @media (max-width: 900px) {
   .vela-gallery-reader { width: min(72vw, 650px); }
@@ -3859,8 +3872,9 @@ html body.vela-home > header #menu-btn:not(#_never_) {
 .vela-archive-stage[data-template="nude"] .vela-gallery-reader,
 .vela-archive-stage[data-template="noir"] .vela-gallery-reader,
 .vela-archive-stage[data-template="letter"] .vela-gallery-reader {
-  width: min(56vw, 740px) !important;
-  top: 52% !important;
+  width: min(59vw, 760px) !important;
+  aspect-ratio: 1.52 !important;
+  top: 54% !important;
 }
 
 @media (max-width: 900px) {
@@ -3879,7 +3893,8 @@ html body.vela-home > header #menu-btn:not(#_never_) {
   .vela-archive-stage[data-template="nude"] .vela-gallery-reader,
   .vela-archive-stage[data-template="noir"] .vela-gallery-reader,
   .vela-archive-stage[data-template="letter"] .vela-gallery-reader {
-    width: min(86vw, 620px) !important;
+    width: min(86vw, 650px) !important;
+    aspect-ratio: 1.52 !important;
     top: 58% !important;
   }
 }
