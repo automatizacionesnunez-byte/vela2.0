@@ -486,11 +486,11 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card--noir { transform: translateX(-50%) rotate(0deg) translateZ(110px) scale(1.035); }
 .vela-gallery-card--letter { transform: translateX(-50%) rotate(4deg) translateZ(40px); }
 .vela-gallery-card:hover, .vela-gallery-card:focus-visible { transform: translateX(-50%) translateY(-13px) rotate(0deg) translateZ(155px) scale(1.045); }
-.vela-gallery-card__frame { padding: .72rem; background: rgba(253,250,244,.92); box-shadow: 0 38px 45px rgba(58,38,25,.2), 0 1px 0 rgba(255,255,255,.9) inset; }
-.vela-gallery-card__frame img { background: #f7f1e8; }
-.vela-gallery-card--nude .vela-gallery-card__frame { background: #f0e6d9; }
-.vela-gallery-card--letter .vela-gallery-card__frame { background: #ead7c9; }
-.vela-gallery-card--noir .vela-gallery-card__frame { background: #171614; box-shadow: 0 42px 50px rgba(10,9,8,.42), 0 1px 0 rgba(255,255,255,.12) inset; }
+.vela-gallery-card__frame { padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+.vela-gallery-card__frame img { background: transparent !important; }
+.vela-gallery-card--nude .vela-gallery-card__frame { background: transparent !important; }
+.vela-gallery-card--letter .vela-gallery-card__frame { background: transparent !important; }
+.vela-gallery-card--noir .vela-gallery-card__frame { background: transparent !important; box-shadow: none !important; }
 .vela-gallery-card__label { gap: .42rem; }
 .vela-gallery-card__label b { letter-spacing: -.02em; }
 .vela-gallery-card__label small { letter-spacing: .16em; }
@@ -562,12 +562,12 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 .vela-gallery-card--nude { left: 25%; transform: translateX(-50%) rotate(-5deg) translateZ(80px); }
 .vela-gallery-card--noir { left: 50%; transform: translateX(-50%) rotate(1deg) translateZ(150px) scale(1.06); }
 .vela-gallery-card--letter { left: 75%; transform: translateX(-50%) rotate(5deg) translateZ(70px); }
-.vela-gallery-card__frame { position: absolute; inset: 0 0 17%; display: block; overflow: hidden; padding: .55rem; background: #f7f2eb; box-shadow: 0 28px 34px rgba(54,34,22,.22), 0 0 0 1px rgba(72,46,29,.12); transform: translateZ(20px); }
-.vela-gallery-card__frame::after { content: ''; position: absolute; inset: .55rem; border: 1px solid rgba(75,52,38,.12); pointer-events: none; }
-.vela-gallery-card__frame img { display: block; width: 100%; height: 100%; object-fit: contain; background: #f3ece3; }
-.vela-gallery-card--noir .vela-gallery-card__frame { padding: .7rem; background: #1d1c1a; box-shadow: 0 30px 38px rgba(13,12,11,.4), 0 0 0 1px rgba(255,255,255,.12); }
-.vela-gallery-card--noir .vela-gallery-card__frame img { background: #242321; }
-.vela-gallery-card--letter .vela-gallery-card__frame { background: #eee0d4; }
+.vela-gallery-card__frame { position: absolute; inset: 0 0 17%; display: block; overflow: hidden; padding: 0 !important; background: transparent !important; box-shadow: none !important; border: none !important; transform: translateZ(20px); }
+.vela-gallery-card__frame::after { display: none !important; }
+.vela-gallery-card__frame img { display: block; width: 100%; height: 100%; object-fit: contain; background: transparent !important; }
+.vela-gallery-card--noir .vela-gallery-card__frame { padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+.vela-gallery-card--noir .vela-gallery-card__frame img { background: transparent !important; }
+.vela-gallery-card--letter .vela-gallery-card__frame { background: transparent !important; }
 .vela-gallery-card__label { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: .3rem; align-items: center; color: #4d3a2d; text-align: center; transform: translateZ(30px); }
 .vela-gallery-card__label b { font: 400 clamp(1.4rem, 2.7vw, 2.1rem)/1 Newsreader, Georgia, serif; }
 .vela-gallery-card__label small { color: rgba(75,58,46,.7); font: 500 8px/1.2 "Plus Jakarta Sans", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
@@ -3682,12 +3682,37 @@ html body.vela-home img[src*="hero-clean-bg.jpg"] {
 
 /* Sombra realista de apoyo de los 3 libros sobre la estantería de madera */
 .vela-archive-stage .vela-gallery-card {
-  filter: drop-shadow(0 22px 24px rgba(38, 26, 16, 0.28));
+  filter: drop-shadow(0 20px 22px rgba(38, 26, 16, 0.25));
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
 }
 
 .vela-archive-stage .vela-gallery-card:hover {
-  filter: drop-shadow(0 30px 32px rgba(38, 26, 16, 0.36));
+  filter: drop-shadow(0 28px 28px rgba(38, 26, 16, 0.32));
+}
+
+/* Limpieza de marcos o bordes transparentes parásitos alrededor de los libros */
+.vela-gallery-card__frame,
+.vela-archive-stage .vela-gallery-card__frame {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.vela-gallery-card__frame::after,
+.vela-gallery-card__frame::before,
+.vela-archive-stage .vela-gallery-card__frame::after,
+.vela-archive-stage .vela-gallery-card__frame::before {
+  display: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.vela-gallery-card__frame img,
+.vela-archive-stage .vela-gallery-card__frame img {
+  border-radius: 2px;
+  background: transparent !important;
+  box-shadow: 0 8px 24px rgba(20, 15, 10, 0.22);
 }
 
 /* Mantener siempre tipografía oscura legible sobre el fondo de estantería */

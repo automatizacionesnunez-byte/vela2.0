@@ -41,10 +41,16 @@
 
   if (langTrigger && langMenu) {
     langTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       const isOpen = !langMenu.classList.contains('hidden');
-      langMenu.classList.toggle('hidden', isOpen);
-      langTrigger.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) {
+        langMenu.classList.add('hidden');
+        langTrigger.setAttribute('aria-expanded', 'false');
+      } else {
+        langMenu.classList.remove('hidden');
+        langTrigger.setAttribute('aria-expanded', 'true');
+      }
     });
 
     document.addEventListener('click', (e) => {

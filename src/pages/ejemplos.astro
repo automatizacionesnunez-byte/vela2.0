@@ -132,11 +132,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="vela-scene-controls mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
             <div class="flex items-center gap-3">
               <button type="button" class="vela-scene-arrow" data-vela-chapter-prev aria-label="Capítulo anterior">←</button>
-              <div class="vela-chapter-dots flex items-center gap-2" role="tablist" aria-label="Capítulos de la biografía">
-                <button type="button" class="is-active" data-vela-chapter="0" aria-label="Capítulo 1" aria-selected="true"></button>
-                <button type="button" data-vela-chapter="1" aria-label="Capítulo 2" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="2" aria-label="Capítulo 3" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="3" aria-label="Capítulo 4" aria-selected="false"></button>
+              <div class="vela-chapter-dots flex items-center gap-1.5" role="tablist" aria-label="Capítulos de la biografía">
+                <button type="button" class="is-active" data-vela-chapter="0" aria-label="Pliego 1" aria-selected="true"></button>
+                <button type="button" data-vela-chapter="1" aria-label="Pliego 2" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="2" aria-label="Pliego 3" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="3" aria-label="Pliego 4" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="4" aria-label="Pliego 5" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="5" aria-label="Pliego 6" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="6" aria-label="Pliego 7" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="7" aria-label="Pliego 8" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="8" aria-label="Pliego 9" aria-selected="false"></button>
+                <button type="button" data-vela-chapter="9" aria-label="Pliego 10" aria-selected="false"></button>
               </div>
               <button type="button" class="vela-scene-arrow" data-vela-chapter-next aria-label="Capítulo siguiente">→</button>
             </div>
@@ -503,9 +509,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     var currentChapter = 0;
 
     var chapters = {
-      nude: ['Orígenes', 'Infancia', 'Momentos clave', 'Legado'],
-      noir: ['Orígenes', 'El carácter', 'Una vida plena', 'Lo que permanece'],
-      letter: ['La carta', 'Familia', 'Viajes y hallazgos', 'Para siempre']
+      nude: [
+        'Portada y Ex Libris',
+        'Índice y Prólogo',
+        'Línea de vida',
+        '01. Orígenes',
+        'Raíces familiares',
+        '02. Infancia en Russafa',
+        'Juegos y recuerdos',
+        'Primeras aficiones',
+        'Juventud y vocación',
+        'Momentos y Legado'
+      ],
+      noir: [
+        'Portada y Dedicatoria',
+        'Índice y Prólogo',
+        'Línea de vida',
+        '01. Orígenes gaditanos',
+        'La estirpe y la mar',
+        '02. Infancia en La Viña',
+        'El fútbol y la calle',
+        '03. Crecer y responsabilidades',
+        'Juventud y trabajo',
+        'Una vida que permanece'
+      ],
+      letter: [
+        'Portada y Año 1975',
+        'Ex Libris y Prólogo',
+        'Línea de vida',
+        'Parte 1 - Orígenes',
+        'Parte 2 - Crecer',
+        'Parte 3 - Construir una vida',
+        'Parte 4 - Momentos',
+        'Parte 5 - Personas',
+        'Vidas entrelazadas',
+        'El legado compartido'
+      ]
     };
 
     function updateModal() {

@@ -7,21 +7,120 @@
   const templates = {
     nude: {
       name: 'Carlota', label: 'NUDE', caption: 'La historia de una vida plena', style: 'Cálida, elegante y atemporal', accent: '#c5a982',
-      pages: [['/assets/templates/nude_page_01.jpg', '/assets/templates/nude_page_02.jpg'], ['/assets/templates/nude_page_03.jpg', '/assets/templates/nude_page_04.jpg'], ['/assets/templates/nude_page_05.jpg', '/assets/templates/nude_page_06.jpg'], ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_08.jpg']],
-      memories: ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_05.jpg', '/assets/carmen-hero-1600.webp', '/assets/carmen-family-1200.webp'],
-      chapters: ['Orígenes', 'Infancia', 'Momentos clave', 'Legado']
+      pages: [
+        ['/assets/templates/nude_page_01.jpg', '/assets/templates/nude_page_02.jpg'],
+        ['/assets/templates/nude_page_03.jpg', '/assets/templates/nude_page_04.jpg'],
+        ['/assets/templates/nude_page_05.jpg', '/assets/templates/nude_page_06.jpg'],
+        ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_08.jpg'],
+        ['/assets/templates/nude_page_09.jpg', '/assets/templates/nude_page_10.jpg'],
+        ['/assets/templates/nude_page_11.jpg', '/assets/templates/nude_page_12.jpg'],
+        ['/assets/templates/nude_page_13.jpg', '/assets/templates/nude_page_14.jpg'],
+        ['/assets/templates/nude_page_15.jpg', '/assets/templates/nude_page_16.jpg'],
+        ['/assets/templates/nude_page_17.jpg', '/assets/templates/nude_page_18.jpg'],
+        ['/assets/templates/nude_page_19.jpg', '/assets/templates/nude_page_20.jpg']
+      ],
+      memories: [
+        '/assets/templates/nude_page_07.jpg',
+        '/assets/templates/nude_page_05.jpg',
+        '/assets/carmen-hero-1600.webp',
+        '/assets/carmen-family-1200.webp',
+        '/assets/templates/nude_page_09.jpg',
+        '/assets/templates/nude_page_11.jpg',
+        '/assets/templates/nude_page_13.jpg',
+        '/assets/templates/nude_page_15.jpg',
+        '/assets/templates/nude_page_17.jpg',
+        '/assets/templates/nude_page_19.jpg'
+      ],
+      chapters: [
+        'Portada y Ex Libris',
+        'Índice y Prólogo',
+        'Línea de vida',
+        '01. Orígenes',
+        'Raíces familiares',
+        '02. Infancia en Russafa',
+        'Juegos y recuerdos',
+        'Primeras aficiones',
+        'Juventud y vocación',
+        'Momentos y Legado'
+      ]
     },
     noir: {
       name: 'Juan', label: 'NOIR', caption: 'El compañero de camino', style: 'Moderna, sobria y con carácter', accent: '#d7c1a5',
-      pages: [['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'], ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'], ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'], ['/assets/templates/noir_page_07.jpg', '/assets/templates/noir_page_08.jpg']],
-      memories: ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_04.jpg', '/assets/tecnologia-sensibilidad.webp', '/assets/vela-sobre-qr-1200.webp'],
-      chapters: ['Orígenes', 'El carácter', 'Una vida plena', 'Lo que permanece']
+      pages: [
+        ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'],
+        ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'],
+        ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'],
+        ['/assets/templates/noir_page_07.jpg', '/assets/templates/noir_page_08.jpg'],
+        ['/assets/templates/noir_page_09.jpg', '/assets/templates/noir_page_10.jpg'],
+        ['/assets/templates/noir_page_11.jpg', '/assets/templates/noir_page_12.jpg'],
+        ['/assets/templates/noir_page_13.jpg', '/assets/templates/noir_page_14.jpg'],
+        ['/assets/templates/noir_page_15.jpg', '/assets/templates/noir_page_16.jpg'],
+        ['/assets/templates/noir_page_17.jpg', '/assets/templates/noir_page_18.jpg'],
+        ['/assets/templates/noir_page_19.jpg', '/assets/templates/noir_page_20.jpg']
+      ],
+      memories: [
+        '/assets/templates/noir_page_01.jpg',
+        '/assets/templates/noir_page_04.jpg',
+        '/assets/tecnologia-sensibilidad.webp',
+        '/assets/vela-sobre-qr-1200.webp',
+        '/assets/templates/noir_page_09.jpg',
+        '/assets/templates/noir_page_11.jpg',
+        '/assets/templates/noir_page_13.jpg',
+        '/assets/templates/noir_page_15.jpg',
+        '/assets/templates/noir_page_17.jpg',
+        '/assets/templates/noir_page_19.jpg'
+      ],
+      chapters: [
+        'Portada y Dedicatoria',
+        'Índice y Prólogo',
+        'Línea de vida',
+        '01. Orígenes gaditanos',
+        'La estirpe y la mar',
+        '02. Infancia en La Viña',
+        'El fútbol y la calle',
+        '03. Crecer y responsabilidades',
+        'Juventud y trabajo',
+        'Una vida que permanece'
+      ]
     },
     letter: {
       name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequeñas historias', style: 'Clásica, cercana y llena de memoria', accent: '#8d504b',
-      pages: [['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'], ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'], ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_06.jpg'], ['/assets/templates/letter_page_07.jpg', '/assets/templates/letter_page_08.jpg']],
-      memories: ['/assets/carmen-family-1200.webp', '/assets/carmen-hero-1600.webp', '/assets/templates/letter_page_04.jpg', '/assets/templates/letter_page_08.jpg'],
-      chapters: ['Portada y Ex Libris', 'Prólogo y Familia', 'Línea de vida y Orígenes', 'Infancia y Crecer']
+      pages: [
+        ['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'],
+        ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'],
+        ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_06.jpg'],
+        ['/assets/templates/letter_page_07.jpg', '/assets/templates/letter_page_08.jpg'],
+        ['/assets/templates/letter_page_09.jpg', '/assets/templates/letter_page_10.jpg'],
+        ['/assets/templates/letter_page_11.jpg', '/assets/templates/letter_page_12.jpg'],
+        ['/assets/templates/letter_page_13.jpg', '/assets/templates/letter_page_14.jpg'],
+        ['/assets/templates/letter_page_15.jpg', '/assets/templates/letter_page_16.jpg'],
+        ['/assets/templates/letter_page_17.jpg', '/assets/templates/letter_page_18.jpg'],
+        ['/assets/templates/letter_page_19.jpg', '/assets/templates/letter_page_20.jpg']
+      ],
+      memories: [
+        '/assets/carmen-family-1200.webp',
+        '/assets/carmen-hero-1600.webp',
+        '/assets/templates/letter_page_04.jpg',
+        '/assets/templates/letter_page_08.jpg',
+        '/assets/templates/letter_page_09.jpg',
+        '/assets/templates/letter_page_11.jpg',
+        '/assets/templates/letter_page_13.jpg',
+        '/assets/templates/letter_page_15.jpg',
+        '/assets/templates/letter_page_17.jpg',
+        '/assets/templates/letter_page_19.jpg'
+      ],
+      chapters: [
+        'Portada y Año 1975',
+        'Ex Libris y Prólogo',
+        'Línea de vida',
+        'Parte 1 - Orígenes',
+        'Parte 2 - Crecer',
+        'Parte 3 - Construir una vida',
+        'Parte 4 - Momentos',
+        'Parte 5 - Personas',
+        'Vidas entrelazadas',
+        'El legado compartido'
+      ]
     }
   };
 
@@ -75,8 +174,9 @@
   function preloadAdjacentChapters(template, currentChapter) {
     const cur = templates[template];
     if (!cur) return;
-    const prevChap = (currentChapter + 3) % 4;
-    const nextChap = (currentChapter + 1) % 4;
+    const total = cur.pages.length;
+    const prevChap = (currentChapter - 1 + total) % total;
+    const nextChap = (currentChapter + 1) % total;
     preloadImages([
       ...cur.pages[prevChap],
       ...cur.pages[nextChap],
@@ -369,7 +469,8 @@
     if (!templates[template] || state.mode !== 'reader' || state.busy) return;
     state.busy = true;
     state.activeAnimCount++;
-    const nextChapter = (chapter + 4) % 4;
+    const total = templates[template].pages.length;
+    const nextChapter = (chapter + total) % total;
     const curPages = templates[template].pages[state.chapter];
     const nxtPages = templates[template].pages[nextChapter];
 
