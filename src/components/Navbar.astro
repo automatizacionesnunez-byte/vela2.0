@@ -30,6 +30,7 @@ const isActive = (path: string) => currentPath.includes(path);
           id="vela-lang-trigger"
           aria-expanded="false"
           aria-haspopup="true"
+          onclick="window.toggleVelaLangMenu && window.toggleVelaLangMenu(event)"
         >
           <span id="current-lang-label" class="pointer-events-none">ES</span>
           <svg id="vela-lang-chevron" class="w-3 h-3 text-vela-chocolate/60 group-hover:text-vela-chocolate transition-transform duration-200 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,6 +41,7 @@ const isActive = (path: string) => currentPath.includes(path);
         <div
           id="vela-lang-menu"
           class="hidden absolute right-0 top-full mt-1.5 w-48 bg-[#FAF7F2] border border-[#7A6C58]/25 shadow-[0_14px_32px_-4px_rgba(44,42,40,0.18)] z-[9999] py-1 rounded-[2px] transition-all"
+          style="display: none;"
           role="menu"
         >
           <button
@@ -101,47 +103,43 @@ const isActive = (path: string) => currentPath.includes(path);
 </header>
 
 <script is:inline>
-  (function initNavbarLanguageDropdown() {
-    function setup() {
+  (function () {
+    window.toggleVelaLangMenu = function (e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const trigger = document.getElementById('vela-lang-trigger');
+      const menu = document.getElementById('vela-lang-menu');
+      const chevron = document.getElementById('vela-lang-chevron');
+      if (!trigger || !menu) return;
+
+      const isClosed = menu.style.display === 'none' || menu.classList.contains('hidden');
+      if (isClosed) {
+        menu.style.display = 'block';
+        menu.classList.remove('hidden');
+        trigger.setAttribute('aria-expanded', 'true');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+      } else {
+        menu.style.display = 'none';
+        menu.classList.add('hidden');
+        trigger.setAttribute('aria-expanded', 'false');
+        if (chevron) chevron.style.transform = 'rotate(0deg)';
+      }
+    };
+
+    function attachListeners() {
       const trigger = document.getElementById('vela-lang-trigger');
       const menu = document.getElementById('vela-lang-menu');
       const dropdown = document.getElementById('vela-lang-dropdown');
+      const chevron = document.getElementById('vela-lang-chevron');
       if (!trigger || !menu) return;
 
-      const chevron = document.getElementById('vela-lang-chevron');
+      trigger.onclick = window.toggleVelaLangMenu;
 
-      function toggle(e) {
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        const isHidden = menu.classList.contains('hidden');
-        if (isHidden) {
-          menu.classList.remove('hidden');
-          trigger.setAttribute('aria-expanded', 'true');
-          if (chevron) chevron.style.transform = 'rotate(180deg)';
-        } else {
-          menu.classList.add('hidden');
-          trigger.setAttribute('aria-expanded', 'false');
-          if (chevron) chevron.style.transform = 'rotate(0deg)';
-        }
-      }
-
-      // Soporte completo para click y puntero
-      trigger.onclick = toggle;
-
-      // Cerrar al hacer clic en un elemento del menú
-      menu.querySelectorAll('.vela-lang-item').forEach(function(item) {
-        item.addEventListener('click', function() {
-          menu.classList.add('hidden');
-          trigger.setAttribute('aria-expanded', 'false');
-          if (chevron) chevron.style.transform = 'rotate(0deg)';
-        });
-      });
-
-      // Cerrar al pulsar fuera
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (dropdown && !dropdown.contains(e.target)) {
+          menu.style.display = 'none';
           menu.classList.add('hidden');
           trigger.setAttribute('aria-expanded', 'false');
           if (chevron) chevron.style.transform = 'rotate(0deg)';
@@ -150,9 +148,9 @@ const isActive = (path: string) => currentPath.includes(path);
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setup);
+      document.addEventListener('DOMContentLoaded', attachListeners);
     } else {
-      setup();
+      attachListeners();
     }
   })();
 </script>

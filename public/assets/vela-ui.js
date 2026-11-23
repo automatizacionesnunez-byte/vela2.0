@@ -35,31 +35,11 @@
 
   // --- Selector de Idiomas Dropdown (Desktop) y Selector en Móvil ---
   const currentLangLabel = document.getElementById('current-lang-label');
-  const langTrigger = document.getElementById('vela-lang-trigger');
   const langMenu = document.getElementById('vela-lang-menu');
-  const langDropdown = document.getElementById('vela-lang-dropdown');
+  const langTrigger = document.getElementById('vela-lang-trigger');
+  const chevron = document.getElementById('vela-lang-chevron');
 
-  if (langTrigger && langMenu) {
-    langTrigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const isOpen = !langMenu.classList.contains('hidden');
-      if (isOpen) {
-        langMenu.classList.add('hidden');
-        langTrigger.setAttribute('aria-expanded', 'false');
-      } else {
-        langMenu.classList.remove('hidden');
-        langTrigger.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (langDropdown && !langDropdown.contains(e.target)) {
-        langMenu.classList.add('hidden');
-        langTrigger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  // El toggle de apertura y cierre lo gestiona de forma centralizada window.toggleVelaLangMenu en Navbar.astro
 
   const setLanguage = (code) => {
     if (currentLangLabel) currentLangLabel.textContent = code;
@@ -76,8 +56,12 @@
       }
     });
 
-    if (langMenu) langMenu.classList.add('hidden');
+    if (langMenu) {
+      langMenu.style.display = 'none';
+      langMenu.classList.add('hidden');
+    }
     if (langTrigger) langTrigger.setAttribute('aria-expanded', 'false');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
 
     if (window.VelaI18n && typeof window.VelaI18n.setLanguage === 'function') {
       window.VelaI18n.setLanguage(code);
