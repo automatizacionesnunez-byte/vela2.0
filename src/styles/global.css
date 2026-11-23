@@ -251,12 +251,14 @@ body.vela-page-ejemplos article[id]:target { border-color: rgba(143,117,99,.42);
    ======================================================================== */
 
 /* The home hero should never inherit the old desktop-only image offset. */
-html body.vela-home img[src*="hero-clean-bg.jpg"] {
-  top: 0 !important;
-  bottom: 0 !important;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: left center;
+@media (min-width: 1024px) {
+  html body.vela-home img[src*="hero-clean-bg.jpg"] {
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: left center;
+  }
 }
 
 /* Tablet and compact laptops: keep the image generous, then give the copy
@@ -2799,11 +2801,13 @@ html body.vela-home > header #menu-btn:not(#_never_) {
   color: #26231F !important;
 }
 
-html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
-  top: -108px !important;
-  bottom: auto !important;
-  height: calc(100% + 108px) !important;
-  transform: none !important;
+@media (min-width: 1024px) {
+  html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
+    top: 0 !important;
+    bottom: auto !important;
+    height: 100% !important;
+    transform: none !important;
+  }
 }
 
 /* =========================================================================
@@ -3123,12 +3127,14 @@ html body.vela-home img[src*="hero-clean-bg.jpg"]:not(#_never_) {
 
 /* Final responsive pass: these rules intentionally come last so they win
    over the older scene experiments above. */
-html body.vela-home img[src*="hero-clean-bg.jpg"] {
-  top: 0 !important;
-  bottom: 0 !important;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: left center;
+@media (min-width: 1024px) {
+  html body.vela-home img[src*="hero-clean-bg.jpg"] {
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: left center !important;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 1023px) {
