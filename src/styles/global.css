@@ -11,9 +11,24 @@
   --vela-accent: #8f7563;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
 
-body { overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  margin-bottom: 0 !important;
+}
 
 header.vela-site-header {
   transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease, transform .35s ease;
