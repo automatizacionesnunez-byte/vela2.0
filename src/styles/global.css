@@ -3927,3 +3927,15 @@ html body.vela-home > header #menu-btn:not(#_never_) {
     top: 58% !important;
   }
 }
+
+/* Limpieza definitiva: sin líneas verticales/diagonales de fondo ni sombra/marco flotante en tablets 3D */
+.vela-gallery-beams,
+.vela-gallery-wall::before,
+.vela-biography-experience::after,
+.vela-css-shelf-back::before,
+.vela-gallery-reader__shadow,
+.vela-gallery-device::after,
+.vela-gallery-device__glass {
+  display: none !important;
+  content: none !important;
+}
