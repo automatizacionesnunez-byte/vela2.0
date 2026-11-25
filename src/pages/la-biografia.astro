@@ -181,11 +181,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8">
 
           <!-- ESTILO 1: LETTER -->
-          <article class="flex flex-col justify-between space-y-5">
+          <article class="flex flex-col justify-between space-y-5 bg-white/60 p-6 rounded-sm border border-vela-linea shadow-sm">
             <div>
+              <!-- Protagonista real de la colección -->
+              <div class="flex items-center gap-3.5 mb-4 pb-3.5 border-b border-vela-linea">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-vela-chocolate/20 shrink-0 bg-[#EAE1D3] shadow-xs">
+                  <img src="/assets/protagonista-carmen.webp" alt="Carmen Rodríguez Salazar" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Carmen Rodríguez Salazar</p>
+                  <p class="text-[11px] text-vela-topo uppercase tracking-wider">San Sebastián · Colección Letter</p>
+                </div>
+              </div>
+
               <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
                 <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-white">
-                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada Letter - Carmen Rodríguez Sánchez" class="w-full h-full object-cover" loading="lazy" />
+                  <img src="/assets/templates/letter_page_01.jpg" alt="Portada Letter - Carmen Rodríguez Salazar" class="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
               <h3 class="font-sans text-base uppercase tracking-[0.22em] text-vela-chocolate font-semibold mb-1.5">Letter</h3>
@@ -193,24 +204,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
                 El encanto de las cartas antiguas, el papel con textura y una caligrafía que recuerda a los archivos familiares.
               </p>
-              <!-- 2 Páginas interiores reales en miniatura -->
+              <!-- 2 Páginas interiores visuales: Álbum y Legado final -->
               <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/letter_page_03.jpg" alt="Página interior Prólogo - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/letter_page_07.jpg" alt="Página interior Capítulo 01 - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
-                </div>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/letter_page_08.jpg" alt="Página visual Álbum y Correspondencia - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">Álbum y cartas</figcaption>
+                </figure>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/letter_page_64.jpg" alt="Página interior Su Legado y Retrato - Estilo Letter" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">Su legado final</figcaption>
+                </figure>
               </div>
             </div>
-            <a href="/ejemplos#carmen" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
-              Ver ejemplo Letter →
+            <a href="/ejemplos#carmen" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
+              Ver ejemplo Letter
             </a>
           </article>
 
           <!-- ESTILO 2: NOIR -->
-          <article class="flex flex-col justify-between space-y-5">
+          <article class="flex flex-col justify-between space-y-5 bg-white/60 p-6 rounded-sm border border-vela-linea shadow-sm">
             <div>
+              <!-- Protagonista real de la colección -->
+              <div class="flex items-center gap-3.5 mb-4 pb-3.5 border-b border-vela-linea">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-vela-chocolate/20 shrink-0 bg-[#26231F] shadow-xs">
+                  <img src="/assets/protagonista-juan.webp" alt="Juan Román Ortiz" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Juan Román Ortiz</p>
+                  <p class="text-[11px] text-vela-topo uppercase tracking-wider">Cádiz · Colección Noir</p>
+                </div>
+              </div>
+
               <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
                 <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-[#1A1A1A]">
                   <img src="/assets/templates/noir_page_01.jpg" alt="Portada Noir - Juan Román Ortiz" class="w-full h-full object-cover" loading="lazy" />
@@ -221,24 +249,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
                 Una propuesta audaz y contemporánea, con contrastes definidos en negro carbón y una presencia muy marcada.
               </p>
-              <!-- 2 Páginas interiores reales en miniatura -->
+              <!-- 2 Páginas interiores visuales: Astilleros y Legado final -->
               <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-[#1D1C1A] border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/noir_page_03.jpg" alt="Página interior Prólogo - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/noir_page_05.jpg" alt="Página interior Línea de la vida - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
-                </div>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-[#1D1C1A] border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/noir_page_12.jpg" alt="Página visual Astilleros de Cádiz - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">El oficio naval</figcaption>
+                </figure>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-[#1D1C1A] border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/noir_page_45.jpg" alt="Página interior Su Legado y Retrato - Estilo Noir" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">Su legado final</figcaption>
+                </figure>
               </div>
             </div>
-            <a href="/ejemplos#juan" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
-              Ver ejemplo Noir →
+            <a href="/ejemplos#juan" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
+              Ver ejemplo Noir
             </a>
           </article>
 
           <!-- ESTILO 3: NUDE -->
-          <article class="flex flex-col justify-between space-y-5">
+          <article class="flex flex-col justify-between space-y-5 bg-white/60 p-6 rounded-sm border border-vela-linea shadow-sm">
             <div>
+              <!-- Protagonista real de la colección -->
+              <div class="flex items-center gap-3.5 mb-4 pb-3.5 border-b border-vela-linea">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-vela-chocolate/20 shrink-0 bg-[#EAE7E1] shadow-xs">
+                  <img src="/assets/protagonista-carlota.webp" alt="Carlota Medina García" class="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div>
+                  <p class="font-serif text-sm font-medium text-vela-chocolate leading-tight">Carlota Medina García</p>
+                  <p class="text-[11px] text-vela-topo uppercase tracking-wider">Valencia · Colección Nude</p>
+                </div>
+              </div>
+
               <div class="p-4 sm:p-5 bg-[#EFE7DB] rounded-sm border border-vela-linea mb-5">
                 <div class="aspect-[3/4] max-w-[220px] mx-auto overflow-hidden shadow-md bg-[#EAE7E1]">
                   <img src="/assets/templates/nude_page_01.jpg" alt="Portada Nude - Carlota Medina García" class="w-full h-full object-cover" loading="lazy" />
@@ -249,18 +294,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="text-sm text-vela-chocolate/80 leading-relaxed font-light mb-4">
                 Una maquetación suave y elegante, con tonos empolvados, márgenes amplios y una presencia cálida y silenciosa.
               </p>
-              <!-- 2 Páginas interiores reales en miniatura -->
+              <!-- 2 Páginas interiores visuales: Taller de costura y Legado final -->
               <div class="grid grid-cols-2 gap-3 pt-3.5 border-t border-vela-linea">
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/nude_page_04.jpg" alt="Página interior Prólogo - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
-                  <img src="/assets/templates/nude_page_08.jpg" alt="Página interior Capítulo 01 Orígenes - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
-                </div>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/nude_page_11.jpg" alt="Página visual Taller de Costura en Campanar - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">El taller y viajes</figcaption>
+                </figure>
+                <figure class="text-center">
+                  <div class="aspect-[3/4] overflow-hidden bg-white border border-vela-linea shadow-sm rounded-[2px]">
+                    <img src="/assets/templates/nude_page_43.jpg" alt="Página interior Su Legado y Retrato - Estilo Nude" class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-1.5 text-[10px] uppercase tracking-wider text-vela-topo font-sans">Su legado final</figcaption>
+                </figure>
               </div>
             </div>
-            <a href="/ejemplos#carlota" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start">
-              Ver ejemplo Nude →
+            <a href="/ejemplos#carlota" class="inline-block text-xs font-medium uppercase tracking-wider text-vela-chocolate border-b border-vela-chocolate/30 pb-1 hover:text-vela-burdeos hover:border-vela-burdeos self-start pt-2">
+              Ver ejemplo Nude
             </a>
           </article>
 

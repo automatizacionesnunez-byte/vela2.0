@@ -5,124 +5,430 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const templates = {
-    nude: {
-      name: 'Carlota', label: 'NUDE', caption: 'La historia de una vida plena', style: 'Cálida, elegante y atemporal', accent: '#c5a982',
-      pages: [
-        ['/assets/templates/nude_page_01.jpg', '/assets/templates/nude_page_02.jpg'],
-        ['/assets/templates/nude_page_03.jpg', '/assets/templates/nude_page_04.jpg'],
-        ['/assets/templates/nude_page_05.jpg', '/assets/templates/nude_page_06.jpg'],
-        ['/assets/templates/nude_page_07.jpg', '/assets/templates/nude_page_08.jpg'],
-        ['/assets/templates/nude_page_09.jpg', '/assets/templates/nude_page_10.jpg'],
-        ['/assets/templates/nude_page_11.jpg', '/assets/templates/nude_page_12.jpg'],
-        ['/assets/templates/nude_page_13.jpg', '/assets/templates/nude_page_14.jpg'],
-        ['/assets/templates/nude_page_15.jpg', '/assets/templates/nude_page_16.jpg'],
-        ['/assets/templates/nude_page_17.jpg', '/assets/templates/nude_page_18.jpg'],
-        ['/assets/templates/nude_page_19.jpg', '/assets/templates/nude_page_20.jpg']
-      ],
-      memories: [
-        '/assets/templates/nude_page_07.jpg',
-        '/assets/templates/nude_page_05.jpg',
-        '/assets/carmen-hero-1600.webp',
-        '/assets/carmen-family-1200.webp',
-        '/assets/templates/nude_page_09.jpg',
-        '/assets/templates/nude_page_11.jpg',
-        '/assets/templates/nude_page_13.jpg',
-        '/assets/templates/nude_page_15.jpg',
-        '/assets/templates/nude_page_17.jpg',
-        '/assets/templates/nude_page_19.jpg'
-      ],
-      chapters: [
-        'Portada y Ex Libris',
-        'Índice y Prólogo',
-        'Línea de vida',
-        '01. Orígenes',
-        'Raíces familiares',
-        '02. Infancia en Russafa',
-        'Juegos y recuerdos',
-        'Primeras aficiones',
-        'Juventud y vocación',
-        'Momentos y Legado'
-      ]
+    "nude": {
+        "name": "Carlota",
+        "label": "NUDE",
+        "caption": "La historia de una vida plena",
+        "style": "Cálida, elegante y atemporal",
+        "accent": "#c5a982",
+        "pages": [
+            [
+                "/assets/templates/nude_page_01.jpg",
+                "/assets/templates/nude_page_02.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_03.jpg",
+                "/assets/templates/nude_page_04.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_05.jpg",
+                "/assets/templates/nude_page_06.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_07.jpg",
+                "/assets/templates/nude_page_08.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_09.jpg",
+                "/assets/templates/nude_page_10.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_11.jpg",
+                "/assets/templates/nude_page_12.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_13.jpg",
+                "/assets/templates/nude_page_14.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_15.jpg",
+                "/assets/templates/nude_page_16.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_17.jpg",
+                "/assets/templates/nude_page_18.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_19.jpg",
+                "/assets/templates/nude_page_20.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_21.jpg",
+                "/assets/templates/nude_page_22.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_23.jpg",
+                "/assets/templates/nude_page_24.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_25.jpg",
+                "/assets/templates/nude_page_26.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_27.jpg",
+                "/assets/templates/nude_page_28.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_29.jpg",
+                "/assets/templates/nude_page_30.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_31.jpg",
+                "/assets/templates/nude_page_32.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_33.jpg",
+                "/assets/templates/nude_page_34.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_35.jpg",
+                "/assets/templates/nude_page_36.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_37.jpg",
+                "/assets/templates/nude_page_38.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_39.jpg",
+                "/assets/templates/nude_page_40.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_41.jpg",
+                "/assets/templates/nude_page_42.jpg"
+            ],
+            [
+                "/assets/templates/nude_page_43.jpg",
+                "/assets/templates/nude_page_44.jpg"
+            ]
+        ],
+        "chapters": [
+            "Portada y Ex Libris",
+            "Índice y Prólogo",
+            "Línea de vida",
+            "01. Orígenes en Valencia",
+            "Familias de l'Horta y Russafa",
+            "02. Infancia en Russafa",
+            "Juegos y primeros recuerdos",
+            "03. Crecer y juventud",
+            "El oficio de la costura",
+            "El taller en Campanar",
+            "04. Construir una vida",
+            "Años de madurez",
+            "05. Momentos clave",
+            "Viajes por Mallorca y París",
+            "Viajes por Italia y Europa",
+            "Álbum fotográfico familiar",
+            "La casa de Campanar y las plantas",
+            "Las recetas familiares",
+            "Celebraciones y nietos",
+            "Las personas de su vida",
+            "09. Su legado: Lo que permanece",
+            "Carlota Medina García · Retrato final"
+        ]
     },
-    noir: {
-      name: 'Juan', label: 'NOIR', caption: 'El compañero de camino', style: 'Moderna, sobria y con carácter', accent: '#d7c1a5',
-      pages: [
-        ['/assets/templates/noir_page_01.jpg', '/assets/templates/noir_page_02.jpg'],
-        ['/assets/templates/noir_page_03.jpg', '/assets/templates/noir_page_04.jpg'],
-        ['/assets/templates/noir_page_05.jpg', '/assets/templates/noir_page_06.jpg'],
-        ['/assets/templates/noir_page_07.jpg', '/assets/templates/noir_page_08.jpg'],
-        ['/assets/templates/noir_page_09.jpg', '/assets/templates/noir_page_10.jpg'],
-        ['/assets/templates/noir_page_11.jpg', '/assets/templates/noir_page_12.jpg'],
-        ['/assets/templates/noir_page_13.jpg', '/assets/templates/noir_page_14.jpg'],
-        ['/assets/templates/noir_page_15.jpg', '/assets/templates/noir_page_16.jpg'],
-        ['/assets/templates/noir_page_17.jpg', '/assets/templates/noir_page_18.jpg'],
-        ['/assets/templates/noir_page_19.jpg', '/assets/templates/noir_page_20.jpg']
-      ],
-      memories: [
-        '/assets/templates/noir_page_01.jpg',
-        '/assets/templates/noir_page_04.jpg',
-        '/assets/tecnologia-sensibilidad.webp',
-        '/assets/vela-sobre-qr-1200.webp',
-        '/assets/templates/noir_page_09.jpg',
-        '/assets/templates/noir_page_11.jpg',
-        '/assets/templates/noir_page_13.jpg',
-        '/assets/templates/noir_page_15.jpg',
-        '/assets/templates/noir_page_17.jpg',
-        '/assets/templates/noir_page_19.jpg'
-      ],
-      chapters: [
-        'Portada y Dedicatoria',
-        'Índice y Prólogo',
-        'Línea de vida',
-        '01. Orígenes gaditanos',
-        'La estirpe y la mar',
-        '02. Infancia en La Viña',
-        'El fútbol y la calle',
-        '03. Crecer y responsabilidades',
-        'Juventud y trabajo',
-        'Una vida que permanece'
-      ]
+    "noir": {
+        "name": "Juan",
+        "label": "NOIR",
+        "caption": "El compañero de camino",
+        "style": "Moderna, sobria y con carácter",
+        "accent": "#d7c1a5",
+        "pages": [
+            [
+                "/assets/templates/noir_page_01.jpg",
+                "/assets/templates/noir_page_02.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_03.jpg",
+                "/assets/templates/noir_page_04.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_05.jpg",
+                "/assets/templates/noir_page_06.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_07.jpg",
+                "/assets/templates/noir_page_08.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_09.jpg",
+                "/assets/templates/noir_page_10.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_11.jpg",
+                "/assets/templates/noir_page_12.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_13.jpg",
+                "/assets/templates/noir_page_14.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_15.jpg",
+                "/assets/templates/noir_page_16.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_17.jpg",
+                "/assets/templates/noir_page_18.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_19.jpg",
+                "/assets/templates/noir_page_20.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_21.jpg",
+                "/assets/templates/noir_page_22.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_23.jpg",
+                "/assets/templates/noir_page_24.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_25.jpg",
+                "/assets/templates/noir_page_26.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_27.jpg",
+                "/assets/templates/noir_page_28.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_29.jpg",
+                "/assets/templates/noir_page_30.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_31.jpg",
+                "/assets/templates/noir_page_32.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_33.jpg",
+                "/assets/templates/noir_page_34.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_35.jpg",
+                "/assets/templates/noir_page_36.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_37.jpg",
+                "/assets/templates/noir_page_38.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_39.jpg",
+                "/assets/templates/noir_page_40.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_41.jpg",
+                "/assets/templates/noir_page_42.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_43.jpg",
+                "/assets/templates/noir_page_44.jpg"
+            ],
+            [
+                "/assets/templates/noir_page_45.jpg",
+                "/assets/templates/noir_page_46.jpg"
+            ]
+        ],
+        "chapters": [
+            "Portada y Dedicatoria",
+            "Índice y Prólogo",
+            "Línea de vida",
+            "01. Orígenes gaditanos",
+            "Raíces y San Fernando",
+            "02. Infancia en La Viña",
+            "El fútbol y la calle",
+            "03. Crecer y responsabilidades",
+            "04. Construir una vida",
+            "La familia y los hijos",
+            "El puerto y la maestría naval",
+            "05. Momentos clave",
+            "Años de constancia",
+            "Astilleros y camaradería",
+            "Recuerdos de juventud",
+            "Álbum fotográfico",
+            "Travesías y el mar",
+            "Pasiones y aficiones",
+            "Grandes hitos familiares",
+            "08. Las personas de su vida",
+            "Compañeros de camino",
+            "09. Su legado: Lo que permanece",
+            "Juan Román Ortiz · Retrato final"
+        ]
     },
-    letter: {
-      name: 'Carmen', label: 'LETTER', caption: 'Una vida hecha de pequeñas historias', style: 'Clásica, cercana y llena de memoria', accent: '#8d504b',
-      pages: [
-        ['/assets/templates/letter_page_01.jpg', '/assets/templates/letter_page_02.jpg'],
-        ['/assets/templates/letter_page_03.jpg', '/assets/templates/letter_page_04.jpg'],
-        ['/assets/templates/letter_page_05.jpg', '/assets/templates/letter_page_06.jpg'],
-        ['/assets/templates/letter_page_07.jpg', '/assets/templates/letter_page_08.jpg'],
-        ['/assets/templates/letter_page_09.jpg', '/assets/templates/letter_page_10.jpg'],
-        ['/assets/templates/letter_page_11.jpg', '/assets/templates/letter_page_12.jpg'],
-        ['/assets/templates/letter_page_13.jpg', '/assets/templates/letter_page_14.jpg'],
-        ['/assets/templates/letter_page_15.jpg', '/assets/templates/letter_page_16.jpg'],
-        ['/assets/templates/letter_page_17.jpg', '/assets/templates/letter_page_18.jpg'],
-        ['/assets/templates/letter_page_19.jpg', '/assets/templates/letter_page_20.jpg']
-      ],
-      memories: [
-        '/assets/carmen-family-1200.webp',
-        '/assets/carmen-hero-1600.webp',
-        '/assets/templates/letter_page_04.jpg',
-        '/assets/templates/letter_page_08.jpg',
-        '/assets/templates/letter_page_09.jpg',
-        '/assets/templates/letter_page_11.jpg',
-        '/assets/templates/letter_page_13.jpg',
-        '/assets/templates/letter_page_15.jpg',
-        '/assets/templates/letter_page_17.jpg',
-        '/assets/templates/letter_page_19.jpg'
-      ],
-      chapters: [
-        'Portada y Año 1975',
-        'Ex Libris y Prólogo',
-        'Línea de vida',
-        'Parte 1 - Orígenes',
-        'Parte 2 - Crecer',
-        'Parte 3 - Construir una vida',
-        'Parte 4 - Momentos',
-        'Parte 5 - Personas',
-        'Vidas entrelazadas',
-        'El legado compartido'
-      ]
+    "letter": {
+        "name": "Carmen",
+        "label": "LETTER",
+        "caption": "Una vida hecha de pequeñas historias",
+        "style": "Clásica, cercana y llena de memoria",
+        "accent": "#8d504b",
+        "pages": [
+            [
+                "/assets/templates/letter_page_01.jpg",
+                "/assets/templates/letter_page_02.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_03.jpg",
+                "/assets/templates/letter_page_04.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_05.jpg",
+                "/assets/templates/letter_page_06.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_07.jpg",
+                "/assets/templates/letter_page_08.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_09.jpg",
+                "/assets/templates/letter_page_10.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_11.jpg",
+                "/assets/templates/letter_page_12.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_13.jpg",
+                "/assets/templates/letter_page_14.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_15.jpg",
+                "/assets/templates/letter_page_16.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_17.jpg",
+                "/assets/templates/letter_page_18.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_19.jpg",
+                "/assets/templates/letter_page_20.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_21.jpg",
+                "/assets/templates/letter_page_22.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_23.jpg",
+                "/assets/templates/letter_page_24.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_25.jpg",
+                "/assets/templates/letter_page_26.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_27.jpg",
+                "/assets/templates/letter_page_28.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_29.jpg",
+                "/assets/templates/letter_page_30.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_31.jpg",
+                "/assets/templates/letter_page_32.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_33.jpg",
+                "/assets/templates/letter_page_34.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_35.jpg",
+                "/assets/templates/letter_page_36.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_37.jpg",
+                "/assets/templates/letter_page_38.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_39.jpg",
+                "/assets/templates/letter_page_40.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_41.jpg",
+                "/assets/templates/letter_page_42.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_43.jpg",
+                "/assets/templates/letter_page_44.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_45.jpg",
+                "/assets/templates/letter_page_46.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_47.jpg",
+                "/assets/templates/letter_page_48.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_49.jpg",
+                "/assets/templates/letter_page_50.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_51.jpg",
+                "/assets/templates/letter_page_52.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_53.jpg",
+                "/assets/templates/letter_page_54.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_55.jpg",
+                "/assets/templates/letter_page_56.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_57.jpg",
+                "/assets/templates/letter_page_58.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_59.jpg",
+                "/assets/templates/letter_page_60.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_61.jpg",
+                "/assets/templates/letter_page_62.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_63.jpg",
+                "/assets/templates/letter_page_64.jpg"
+            ],
+            [
+                "/assets/templates/letter_page_65.jpg",
+                "/assets/templates/letter_page_65.jpg"
+            ]
+        ],
+        "chapters": [
+            "Portada y Año 1975",
+            "Ex Libris y Prólogo",
+            "Línea de vida",
+            "Parte 1 - Orígenes y Tolosa",
+            "Los abuelos y la familia",
+            "Los hermanos y el hogar",
+            "Parte 2 - Infancia en San Sebastián",
+            "El piano y la música",
+            "Excursiones y la montaña",
+            "Parte 3 - Crecer y juventud",
+            "Amistades y vocación",
+            "La universidad y los libros",
+            "Parte 4 - Construir: Arquitectura",
+            "Primeros proyectos y Florencia",
+            "Etapa en Bilbao y rehabilitación",
+            "Carrera profesional y estudio",
+            "Obras y dedicación",
+            "Parte 5 - Momentos clave",
+            "Viajes y nuevos horizontes",
+            "El mar Cantábrico",
+            "Álbum fotográfico personal",
+            "Parte 6 - Sus pasiones",
+            "La música y el piano",
+            "Rutas por Pirineos y Dolomitas",
+            "La fotografía y el detalle",
+            "Parte 7 - Sus lugares",
+            "San Sebastián, Florencia, Bilbao",
+            "Parte 8 - Personas de su vida",
+            "Amistades incondicionales",
+            "La familia y el hogar",
+            "Parte 9 - Su legado: La curiosidad",
+            "Una vida en construcción y retrato final",
+            "Carmen Rodríguez Salazar · Colofón VELA"
+        ]
     }
-  };
+};
 
   const state = {
     mode: 'gallery',
@@ -179,9 +485,7 @@
     const nextChap = (currentChapter + 1) % total;
     preloadImages([
       ...cur.pages[prevChap],
-      ...cur.pages[nextChap],
-      cur.memories[prevChap],
-      cur.memories[nextChap]
+      ...cur.pages[nextChap]
     ]);
   }
 
@@ -285,7 +589,8 @@
     setText('[data-vela-scene-kicker]', state.mode === 'reader' ? `EDICIÓN ${current.label}` : 'GALERÍA DIGITAL');
     setText('[data-vela-scene-name]', state.mode === 'reader' ? current.name : 'Tres formas de conservar una vida');
     setText('[data-vela-scene-caption]', state.mode === 'reader' ? current.caption : 'Selecciona una edición para entrar en su memoria.');
-    setText('[data-vela-meta-title]', current.chapters[state.chapter]);
+    setText('[data-vela-meta-title]', current.chapters[state.chapter] || ('Pliego ' + (state.chapter + 1)));
+    setText('[data-vela-chapter-counter]', 'Pliego ' + (state.chapter + 1) + ' de ' + current.pages.length + ' · ' + (current.chapters[state.chapter] || ''));
     setText('[data-vela-meta-style]', current.style);
     setText('[data-vela-meta-format]', 'Lectura digital · PDF · QR');
     setText('[data-vela-status-text]', state.mode === 'reader' ? 'Historia abierta · usa las flechas para avanzar' : 'Selecciona una pieza para entrar');

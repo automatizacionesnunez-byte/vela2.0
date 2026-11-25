@@ -82,7 +82,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="vela-gallery-scene" data-vela-gallery-scene>
               <div class="vela-gallery-layer" data-vela-gallery-layer>
                 <div class="vela-gallery-wall"></div>
-                <div class="vela-gallery-beams"></div>
                 <div class="vela-gallery-plinth"></div>
                 <div class="vela-gallery-ambient"></div>
                 <div class="vela-gallery-grain"></div>
@@ -92,7 +91,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <button type="button" class="vela-gallery-card vela-gallery-card--letter" data-vela-gallery-card="letter" tabindex="0" aria-label="Abrir la biografía de Carmen, plantilla Letter"><span class="vela-gallery-card__frame"><img data-vela-gallery-cover="letter" src="/assets/templates/letter_page_01.jpg" alt="" /></span><span class="vela-gallery-card__label"><b>Carmen</b><small>Letter · clásica e íntima</small></span></button>
                 </div>
                 <div class="vela-gallery-reader" data-vela-gallery-reader>
-                  <div class="vela-gallery-reader__shadow"></div>
                   <div class="vela-gallery-device relative">
                     <span class="vela-gallery-device__camera"></span>
                     <div class="vela-gallery-spread relative" data-vela-gallery-spread>
@@ -132,17 +130,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="vela-scene-controls mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
             <div class="flex items-center gap-3">
               <button type="button" class="vela-scene-arrow" data-vela-chapter-prev aria-label="Capítulo anterior">←</button>
-              <div class="vela-chapter-dots flex items-center gap-1.5" role="tablist" aria-label="Capítulos de la biografía">
-                <button type="button" class="is-active" data-vela-chapter="0" aria-label="Pliego 1" aria-selected="true"></button>
-                <button type="button" data-vela-chapter="1" aria-label="Pliego 2" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="2" aria-label="Pliego 3" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="3" aria-label="Pliego 4" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="4" aria-label="Pliego 5" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="5" aria-label="Pliego 6" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="6" aria-label="Pliego 7" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="7" aria-label="Pliego 8" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="8" aria-label="Pliego 9" aria-selected="false"></button>
-                <button type="button" data-vela-chapter="9" aria-label="Pliego 10" aria-selected="false"></button>
+              <div class="flex items-center gap-2">
+                <span class="font-serif italic text-xs sm:text-sm text-vela-chocolate px-3 py-1.5 rounded-sm bg-white/80 border border-vela-chocolate/15 shadow-xs" data-vela-chapter-counter>Pliego 1 de 22</span>
               </div>
               <button type="button" class="vela-scene-arrow" data-vela-chapter-next aria-label="Capítulo siguiente">→</button>
             </div>
@@ -235,7 +224,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <button type="button" data-open-story="nude"
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
                 <span>Ver la biografía de Carlota en el visor</span>
-                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
@@ -283,7 +271,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <button type="button" data-open-story="noir"
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
                 <span>Ver la biografía de Juan en el visor</span>
-                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
@@ -331,7 +318,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <button type="button" data-open-story="letter"
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-[#1E1B18] text-[#F8F6F0] border border-[#1E1B18] text-xs font-medium tracking-wide hover:bg-white hover:text-[#1E1B18] transition-all shadow-sm">
                 <span>Ver la biografía de Carmen en el visor</span>
-                <span aria-hidden="true">↑</span>
               </button>
             </div>
           </div>
@@ -366,28 +352,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           // Secuencia completa de pliegos dobles para Desktop (>= 640px)
           var spreads = {
             nude: [
-              { left: '/assets/templates/nude_page_03.jpg', right: '/assets/templates/nude_page_04.jpg', caption: 'Pliego 1 de 6 · Prólogo y dedicatoria familiar' },
-              { left: '/assets/templates/nude_page_05.jpg', right: '/assets/templates/nude_page_06.jpg', caption: 'Pliego 2 de 6 · Línea de vida y orígenes en Valencia' },
-              { left: '/assets/templates/nude_page_07.jpg', right: '/assets/templates/nude_page_08.jpg', caption: 'Pliego 3 de 6 · Infancia y juventud' },
-              { left: '/assets/templates/nude_page_11.jpg', right: '/assets/templates/nude_viajes_mallorca.jpg', caption: 'Pliego 4 de 6 · El taller de costura en Campanar y viajes' },
-              { left: '/assets/templates/nude_page_15.jpg', right: '/assets/templates/nude_page_16.jpg', caption: 'Pliego 5 de 6 · Álbum fotográfico familiar y momentos' },
-              { left: '/assets/templates/nude_page_19.jpg', right: '/assets/templates/nude_page_20.jpg', caption: 'Pliego 6 de 6 · El legado que permanece, dedicatoria y colofón final' }
+              { left: '/assets/templates/nude_page_03.jpg', right: '/assets/templates/nude_page_04.jpg', caption: 'Pliego 1 de 8 · Prólogo y dedicatoria familiar' },
+              { left: '/assets/templates/nude_page_05.jpg', right: '/assets/templates/nude_page_06.jpg', caption: 'Pliego 2 de 8 · Línea de vida y orígenes en Valencia' },
+              { left: '/assets/templates/nude_page_07.jpg', right: '/assets/templates/nude_page_08.jpg', caption: 'Pliego 3 de 8 · Infancia en Russafa y juventud' },
+              { left: '/assets/templates/nude_page_11.jpg', right: '/assets/templates/nude_page_12.jpg', caption: 'Pliego 4 de 8 · El taller de costura en Campanar' },
+              { left: '/assets/templates/nude_page_27.jpg', right: '/assets/templates/nude_page_28.jpg', caption: 'Pliego 5 de 8 · Viajes por Europa: Roma, Lisboa, Praga y Viena' },
+              { left: '/assets/templates/nude_page_35.jpg', right: '/assets/templates/nude_page_36.jpg', caption: 'Pliego 6 de 8 · Álbum fotográfico y celebraciones' },
+              { left: '/assets/templates/nude_page_41.jpg', right: '/assets/templates/nude_page_42.jpg', caption: 'Pliego 7 de 8 · Lo que permanece y memoria compartida' },
+              { left: '/assets/templates/nude_page_43.jpg', right: '/assets/templates/nude_page_44.jpg', caption: 'Pliego 8 de 8 · Carlota Medina García · Su legado, retrato final y colofón' }
             ],
             noir: [
-              { left: '/assets/templates/noir_page_02.jpg', right: '/assets/templates/noir_page_03.jpg', caption: 'Pliego 1 de 6 · Cita de vida y dedicatoria (Cádiz, 1943)' },
-              { left: '/assets/templates/noir_page_05.jpg', right: '/assets/templates/noir_page_06.jpg', caption: 'Pliego 2 de 6 · Línea de vida y orígenes gaditanos' },
-              { left: '/assets/templates/noir_page_07.jpg', right: '/assets/templates/noir_page_08.jpg', caption: 'Pliego 3 de 6 · Infancia en La Viña y fútbol de barrio' },
-              { left: '/assets/templates/noir_page_11.jpg', right: '/assets/templates/noir_page_12.jpg', caption: 'Pliego 4 de 6 · El trabajo en astilleros y maestría naval' },
-              { left: '/assets/templates/noir_page_15.jpg', right: '/assets/templates/noir_page_16.jpg', caption: 'Pliego 5 de 6 · Momentos clave, familia y travesías' },
-              { left: '/assets/templates/noir_page_19.jpg', right: '/assets/templates/noir_page_20.jpg', caption: 'Pliego 6 de 6 · Una vida que permanece, palabras de Juan y colofón final' }
+              { left: '/assets/templates/noir_page_02.jpg', right: '/assets/templates/noir_page_03.jpg', caption: 'Pliego 1 de 8 · Cita de vida y dedicatoria inicial (Cádiz, 1943)' },
+              { left: '/assets/templates/noir_page_05.jpg', right: '/assets/templates/noir_page_06.jpg', caption: 'Pliego 2 de 8 · Línea de vida y orígenes gaditanos' },
+              { left: '/assets/templates/noir_page_07.jpg', right: '/assets/templates/noir_page_08.jpg', caption: 'Pliego 3 de 8 · Infancia en La Viña y fútbol de barrio' },
+              { left: '/assets/templates/noir_page_11.jpg', right: '/assets/templates/noir_page_12.jpg', caption: 'Pliego 4 de 8 · Astilleros de Cádiz y maestría naval' },
+              { left: '/assets/templates/noir_page_23.jpg', right: '/assets/templates/noir_page_24.jpg', caption: 'Pliego 5 de 8 · Familia, mar y travesías' },
+              { left: '/assets/templates/noir_page_33.jpg', right: '/assets/templates/noir_page_34.jpg', caption: 'Pliego 6 de 8 · Álbum fotográfico y camaradería' },
+              { left: '/assets/templates/noir_page_41.jpg', right: '/assets/templates/noir_page_42.jpg', caption: 'Pliego 7 de 8 · Reflexión de vida y lo aprendido' },
+              { left: '/assets/templates/noir_page_45.jpg', right: '/assets/templates/noir_page_46.jpg', caption: 'Pliego 8 de 8 · Juan Román Ortiz · Su legado, retrato final y colofón' }
             ],
             letter: [
-              { left: '/assets/templates/letter_page_02.jpg', right: '/assets/templates/letter_page_03.jpg', caption: 'Pliego 1 de 6 · Portada interior y prólogo de Carmen' },
-              { left: '/assets/templates/letter_page_04.jpg', right: '/assets/templates/letter_page_05.jpg', caption: 'Pliego 2 de 6 · Línea de vida y Parte 1: Orígenes en Amara' },
-              { left: '/assets/templates/letter_page_06.jpg', right: '/assets/templates/letter_page_07.jpg', caption: 'Pliego 3 de 6 · Parte 2: Crecer, Florencia y arquitectura' },
-              { left: '/assets/templates/letter_page_08.jpg', right: '/assets/templates/letter_page_09.jpg', caption: 'Pliego 4 de 6 · Álbum fotográfico y correspondencia familiar' },
-              { left: '/assets/templates/letter_page_12.jpg', right: '/assets/templates/letter_page_13.jpg', caption: 'Pliego 5 de 6 · Rehabilitación urbana y nuevos comienzos' },
-              { left: '/assets/templates/letter_page_19.jpg', right: '/assets/templates/letter_page_20.jpg', caption: 'Pliego 6 de 6 · El legado compartido, dedicatoria y retrato final' }
+              { left: '/assets/templates/letter_page_02.jpg', right: '/assets/templates/letter_page_03.jpg', caption: 'Pliego 1 de 8 · Portada interior y prólogo de Carmen' },
+              { left: '/assets/templates/letter_page_04.jpg', right: '/assets/templates/letter_page_05.jpg', caption: 'Pliego 2 de 8 · Línea cronológica y orígenes en Amara' },
+              { left: '/assets/templates/letter_page_06.jpg', right: '/assets/templates/letter_page_07.jpg', caption: 'Pliego 3 de 8 · Crecer, Florencia y arquitectura' },
+              { left: '/assets/templates/letter_page_08.jpg', right: '/assets/templates/letter_page_09.jpg', caption: 'Pliego 4 de 8 · Álbum fotográfico y correspondencia familiar' },
+              { left: '/assets/templates/letter_page_21.jpg', right: '/assets/templates/letter_page_22.jpg', caption: 'Pliego 5 de 8 · Rutas de montaña y viajes' },
+              { left: '/assets/templates/letter_page_39.jpg', right: '/assets/templates/letter_page_40.jpg', caption: 'Pliego 6 de 8 · Rehabilitación urbana y nuevos comienzos' },
+              { left: '/assets/templates/letter_page_61.jpg', right: '/assets/templates/letter_page_62.jpg', caption: 'Pliego 7 de 8 · Lo que permanece y curiosidad de vida' },
+              { left: '/assets/templates/letter_page_64.jpg', right: '/assets/templates/letter_page_65.jpg', caption: 'Pliego 8 de 8 · Carmen Rodríguez Salazar · Su legado, retrato final y colofón' }
             ]
           };
 
@@ -395,17 +387,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           var singlePages = {
             nude: [
               { src: '/assets/templates/nude_page_03.jpg', caption: 'Página 1 de 12 · Prólogo' },
-              { src: '/assets/templates/nude_page_04.jpg', caption: 'Página 2 de 12 · Recuerdos de familia' },
+              { src: '/assets/templates/nude_page_04.jpg', caption: 'Página 2 de 12 · Dedicatoria familiar' },
               { src: '/assets/templates/nude_page_05.jpg', caption: 'Página 3 de 12 · Línea de vida' },
               { src: '/assets/templates/nude_page_06.jpg', caption: 'Página 4 de 12 · Orígenes en Valencia' },
               { src: '/assets/templates/nude_page_07.jpg', caption: 'Página 5 de 12 · Infancia en Russafa' },
               { src: '/assets/templates/nude_page_08.jpg', caption: 'Página 6 de 12 · Juventud' },
               { src: '/assets/templates/nude_page_11.jpg', caption: 'Página 7 de 12 · El taller de costura' },
-              { src: '/assets/templates/nude_viajes_mallorca.jpg', caption: 'Página 8 de 12 · Viajes y memoria' },
-              { src: '/assets/templates/nude_page_15.jpg', caption: 'Página 9 de 12 · Álbum fotográfico' },
-              { src: '/assets/templates/nude_page_16.jpg', caption: 'Página 10 de 12 · Celebraciones' },
-              { src: '/assets/templates/nude_page_19.jpg', caption: 'Página 11 de 12 · Lo que permanece' },
-              { src: '/assets/templates/nude_page_20.jpg', caption: 'Página 12 de 12 · Carlota Medina García · Colofón y retrato' }
+              { src: '/assets/templates/nude_page_27.jpg', caption: 'Página 8 de 12 · Viajes por Europa' },
+              { src: '/assets/templates/nude_page_35.jpg', caption: 'Página 9 de 12 · Álbum familiar' },
+              { src: '/assets/templates/nude_page_41.jpg', caption: 'Página 10 de 12 · Lo que permanece' },
+              { src: '/assets/templates/nude_page_43.jpg', caption: 'Página 11 de 12 · Carlota Medina García · Su legado y retrato de vida' },
+              { src: '/assets/templates/nude_page_44.jpg', caption: 'Página 12 de 12 · Colofón final de edición' }
             ],
             noir: [
               { src: '/assets/templates/noir_page_02.jpg', caption: 'Página 1 de 12 · Cita inicial (Cádiz 1943)' },
@@ -416,10 +408,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               { src: '/assets/templates/noir_page_08.jpg', caption: 'Página 6 de 12 · Fútbol y barrio' },
               { src: '/assets/templates/noir_page_11.jpg', caption: 'Página 7 de 12 · Los astilleros y el puerto' },
               { src: '/assets/templates/noir_page_12.jpg', caption: 'Página 8 de 12 · Maestría naval' },
-              { src: '/assets/templates/noir_page_15.jpg', caption: 'Página 9 de 12 · Momentos clave' },
-              { src: '/assets/templates/noir_page_16.jpg', caption: 'Página 10 de 12 · Travesías y familia' },
-              { src: '/assets/templates/noir_page_19.jpg', caption: 'Página 11 de 12 · Reflexión de vida' },
-              { src: '/assets/templates/noir_page_20.jpg', caption: 'Página 12 de 12 · Juan Román Ortiz · Colofón y retrato' }
+              { src: '/assets/templates/noir_page_23.jpg', caption: 'Página 9 de 12 · Travesías y familia' },
+              { src: '/assets/templates/noir_page_41.jpg', caption: 'Página 10 de 12 · Reflexión de vida' },
+              { src: '/assets/templates/noir_page_45.jpg', caption: 'Página 11 de 12 · Juan Román Ortiz · Su legado y retrato de vida' },
+              { src: '/assets/templates/noir_page_46.jpg', caption: 'Página 12 de 12 · Colofón final de edición' }
             ],
             letter: [
               { src: '/assets/templates/letter_page_02.jpg', caption: 'Página 1 de 12 · Portada interior' },
@@ -430,10 +422,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               { src: '/assets/templates/letter_page_07.jpg', caption: 'Página 6 de 12 · Crecer y vocación' },
               { src: '/assets/templates/letter_page_08.jpg', caption: 'Página 7 de 12 · Cartas y fotografías' },
               { src: '/assets/templates/letter_page_09.jpg', caption: 'Página 8 de 12 · Correspondencia familiar' },
-              { src: '/assets/templates/letter_page_12.jpg', caption: 'Página 9 de 12 · Proyectos urbanos' },
-              { src: '/assets/templates/letter_page_13.jpg', caption: 'Página 10 de 12 · Nuevos comienzos' },
-              { src: '/assets/templates/letter_page_19.jpg', caption: 'Página 11 de 12 · El legado compartido' },
-              { src: '/assets/templates/letter_page_20.jpg', caption: 'Página 12 de 12 · Carmen Rodríguez Sánchez · Colofón y retrato' }
+              { src: '/assets/templates/letter_page_21.jpg', caption: 'Página 9 de 12 · Montaña y viajes' },
+              { src: '/assets/templates/letter_page_39.jpg', caption: 'Página 10 de 12 · Nuevos comienzos' },
+              { src: '/assets/templates/letter_page_64.jpg', caption: 'Página 11 de 12 · Carmen Rodríguez Salazar · Su legado y retrato de vida' },
+              { src: '/assets/templates/letter_page_65.jpg', caption: 'Página 12 de 12 · Colofón final de edición' }
             ]
           };
 
@@ -592,7 +584,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="w-full max-w-5xl pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
         <span>Usa las flechas del teclado o los botones para pasar de pliego</span>
         <a href="/precios" class="px-5 py-2 bg-[#FAF6F0] text-vela-chocolate font-medium rounded-sm hover:bg-white transition-all">
-          Elegir este estilo y empezar →
+          Elegir este estilo y empezar
         </a>
       </div>
     </div>
