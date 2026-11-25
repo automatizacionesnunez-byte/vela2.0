@@ -614,6 +614,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </main>
 
   <!-- FOOTER EDITORIAL -->
+<script is:inline src="/assets/vendor/gsap/gsap.min.js"></script>
 <script is:inline type="module" src="/assets/vela-3d-examples.js"></script>
 
 <script>
@@ -631,54 +632,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     var currentTemplate = 'nude';
     var currentChapter = 0;
 
-    var chapters = {
-      nude: [
-        'Portada y Ex Libris',
-        'Índice y Prólogo',
-        'Línea de vida',
-        '01. Orígenes',
-        'Raíces familiares',
-        '02. Infancia en Russafa',
-        'Juegos y recuerdos',
-        'Primeras aficiones',
-        'Juventud y vocación',
-        'Momentos y Legado'
-      ],
-      noir: [
-        'Portada y Dedicatoria',
-        'Índice y Prólogo',
-        'Línea de vida',
-        '01. Orígenes gaditanos',
-        'La estirpe y la mar',
-        '02. Infancia en La Viña',
-        'El fútbol y la calle',
-        '03. Crecer y responsabilidades',
-        'Juventud y trabajo',
-        'Una vida que permanece'
-      ],
-      letter: [
-        'Portada y Año 1975',
-        'Ex Libris y Prólogo',
-        'Línea de vida',
-        'Parte 1 - Orígenes',
-        'Parte 2 - Crecer',
-        'Parte 3 - Construir una vida',
-        'Parte 4 - Momentos',
-        'Parte 5 - Personas',
-        'Vidas entrelazadas',
-        'El legado compartido'
-      ]
-    };
-
     function updateModal() {
       var pLeft = document.querySelector('[data-vela-gallery-page-left]');
       var pRight = document.querySelector('[data-vela-gallery-page-right]');
+      var counterEl = document.querySelector('[data-vela-chapter-counter]');
       if (pLeft && imgLeft) imgLeft.src = pLeft.src;
       if (pRight && imgRight) imgRight.src = pRight.src;
       if (tplLabel) tplLabel.textContent = 'Edición ' + currentTemplate.toUpperCase();
       if (chapLabel) {
-        var list = chapters[currentTemplate] || chapters.nude;
-        chapLabel.textContent = 'Capítulo ' + String(currentChapter + 1).padStart(2, '0') + ' · ' + (list[currentChapter] || '');
+        chapLabel.textContent = counterEl ? counterEl.textContent : ('Pliego ' + String(currentChapter + 1).padStart(2, '0'));
       }
     }
 

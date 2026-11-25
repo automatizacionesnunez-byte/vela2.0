@@ -600,8 +600,10 @@
 
     setAttr('[data-vela-gallery-page-left]', 'src', current.pages[state.chapter][0]);
     setAttr('[data-vela-gallery-page-right]', 'src', current.pages[state.chapter][1]);
-    setAttr('[data-vela-gallery-memory]', 'src', current.memories[state.chapter]);
-    setText('[data-vela-gallery-note]', current.chapters[state.chapter]);
+    if (current.memories && current.memories[state.chapter]) {
+      setAttr('[data-vela-gallery-memory]', 'src', current.memories[state.chapter]);
+    }
+    setText('[data-vela-gallery-note]', current.chapters[state.chapter] || '');
     setText('[data-vela-gallery-number]', String(state.chapter + 1).padStart(2, '0'));
 
     $$('[data-vela-gallery-cover]').forEach((image) => {
@@ -704,7 +706,7 @@
   function readerToGallery() {
     if (state.mode !== 'reader') return;
     if (window.gsap) {
-      window.gsap.killTweensOf([reader, cards, $('[data-vela-page-flipper]')]);
+      window.gsap.killTweensOf([reader, ...cards, $('[data-vela-page-flipper]')].filter(Boolean));
     }
     state.busy = true;
     state.activeAnimCount++;
@@ -825,23 +827,11 @@
         .to(shadowFront, { opacity: 0, duration: 0.22, ease: 'power1.out' }, 0.22)
         .to(shadowBack, { opacity: 0.3, duration: 0.22, ease: 'power1.in' }, 0)
         .to(shadowBack, { opacity: 0, duration: 0.22, ease: 'power1.out' }, 0.22)
-        .to($('[data-vela-gallery-memory]'), {
-          x: direction > 0 ? 14 : -14,
-          opacity: 0.45,
-          duration: 0.2,
-          ease: 'power1.in'
-        }, 0)
         .call(() => {
           state.template = template;
           state.chapter = nextChapter;
           updateHtml();
-        }, null, 0.22)
-        .to($('[data-vela-gallery-memory]'), {
-          x: 0,
-          opacity: 1,
-          duration: 0.26,
-          ease: 'power1.out'
-        }, 0.22);
+        }, null, 0.22);
     } else {
       state.chapter = nextChapter;
       updateHtml();
